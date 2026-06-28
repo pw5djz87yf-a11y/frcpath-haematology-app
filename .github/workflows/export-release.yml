@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - "frcpath_haematology_revision_portal (6).html"
+      - "index.html"
       - "frcpath_gs_aml_*.json"
       - "scripts/export_release.py"
       - ".github/workflows/export-release.yml"
