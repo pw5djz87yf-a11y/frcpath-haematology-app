@@ -287,7 +287,10 @@
             <h2 class="text-base font-bold text-slate-800">My Progress Dashboard</h2>
             <p id="user-sync-status" class="text-xs text-slate-500 mt-0.5">Local guest storage</p>
           </div>
-          <button onclick="CloudSync.openAccountModal()" class="text-xs font-bold text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-lg">Account & Sync</button>
+          <div class="flex flex-wrap gap-2 justify-end">
+            <button id="continue-study-button" onclick="continueFromNextUnanswered()" class="text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 px-3 py-1.5 rounded-lg">Continue from AML001</button>
+            <button onclick="CloudSync.openAccountModal()" class="text-xs font-bold text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-lg">Account & Sync</button>
+          </div>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
           <div class="bg-slate-50 rounded-lg p-3"><span class="text-[10px] uppercase font-bold text-slate-400 block">Completed</span><strong id="user-completed" class="text-xl text-slate-800">0</strong></div>
@@ -448,7 +451,10 @@
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
               <span>Prev</span>
             </button>
-            <span class="text-xs font-bold text-slate-500" id="study-counter-display">1 of 10</span>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold text-slate-500" id="study-counter-display">1 of 10</span>
+              <button onclick="skipStudyQuestion()" class="px-2.5 py-1.5 text-xs font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 rounded-lg transition">Skip</button>
+            </div>
             <button onclick="navigateStudyQuestion(1)" class="px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 rounded-lg transition duration-155 flex items-center space-x-1">
               <span>Next</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -1297,9 +1303,9 @@
        DASHBOARD CONTROLLER
        ========================================================================= */
     function renderUserDashboard() {
-      const attempts = Object.values(appState.studyProgress);
+      const attempts = Object.values(appState.studyProgress).filter(attempt => attempt.status !== 'skipped');
       const completed = attempts.length;
-      const correct = attempts.filter(attempt => attempt.correct).length;
+      const correct = attempts.filter(attempt => attempt.status === 'correct' || attempt.correct).length;
       const accuracy = completed ? Math.round((correct / completed) * 100) : 0;
       const noteCount = Object.values(appState.notes || {}).filter(note => String(note).trim()).length;
 
@@ -1308,10 +1314,18 @@
       document.getElementById('user-bookmarks').innerText = appState.bookmarks.length;
       document.getElementById('user-notes').innerText = noteCount;
 
+      const nextQuestion = haematologyQuestions.find(question => {
+        const progress = appState.studyProgress[question.code];
+        return !progress || progress.status === 'skipped';
+      });
+      const continueButton = document.getElementById('continue-study-button');
+      continueButton.innerText = nextQuestion ? 'Continue from ' + nextQuestion.code : 'Review completed bank';
+      continueButton.dataset.questionCode = nextQuestion?.code || haematologyQuestions[0]?.code || '';
+
       const weakTopics = [...new Set(haematologyQuestions.map(question => question.section))]
         .map(section => {
           const questions = haematologyQuestions.filter(question => question.section === section);
-          const answered = questions.filter(question => appState.studyProgress[question.code]);
+          const answered = questions.filter(question => appState.studyProgress[question.code] && appState.studyProgress[question.code].status !== 'skipped');
           const wrong = answered.filter(question => !appState.studyProgress[question.code].correct).length;
           return {
             section,
@@ -1337,6 +1351,11 @@
       });
     }
 
+    function continueFromNextUnanswered() {
+      const code = document.getElementById('continue-study-button').dataset.questionCode;
+      if (code) launchTargetedStudy(code);
+    }
+
     function saveStudyNote() {
       const question = appState.studyFilteredList[appState.currentStudyIndex];
       if (!question) return;
@@ -1351,7 +1370,7 @@
     function renderDashboard() {
       renderUserDashboard();
       const totalQ = haematologyQuestions.length;
-      const progressKeys = Object.keys(appState.studyProgress);
+      const progressKeys = Object.keys(appState.studyProgress).filter(code => appState.studyProgress[code].status !== 'skipped');
       const completedCount = progressKeys.length;
 
       document.getElementById('dash-progress-count').innerText = `${completedCount}/${totalQ}`;
@@ -1361,8 +1380,9 @@
       let correctAttempts = 0;
       let totalAttempts = 0;
       for (const key in appState.studyProgress) {
+        if (appState.studyProgress[key].status === 'skipped') continue;
         totalAttempts++;
-        if (appState.studyProgress[key].correct) {
+        if (appState.studyProgress[key].status === 'correct' || appState.studyProgress[key].correct) {
           correctAttempts++;
         }
       }
@@ -1387,16 +1407,16 @@
       sections.forEach(sec => {
         const secQs = haematologyQuestions.filter(q => q.section === sec);
         const secTotal = secQs.length;
-        const secCompleted = secQs.filter(q => appState.studyProgress[q.code]).length;
+        const secCompleted = secQs.filter(q => appState.studyProgress[q.code] && appState.studyProgress[q.code].status !== 'skipped').length;
         const secPct = secTotal > 0 ? Math.round((secCompleted / secTotal) * 100) : 0;
 
         let secCorrect = 0;
         let secAnswered = 0;
         secQs.forEach(q => {
           const prog = appState.studyProgress[q.code];
-          if (prog) {
+          if (prog && prog.status !== 'skipped') {
             secAnswered++;
-            if (prog.correct) secCorrect++;
+            if (prog.status === 'correct' || prog.correct) secCorrect++;
           }
         });
         const secAccuracy = secAnswered > 0 ? Math.round((secCorrect / secAnswered) * 100) : 0;
@@ -1483,9 +1503,10 @@
         const progress = appState.studyProgress[q.code];
         const isBookmarked = appState.bookmarks.includes(q.code);
 
-        if (selectedStatus === 'NOT_ATTEMPTED' && progress) return false;
-        if (selectedStatus === 'CORRECT' && (!progress || !progress.correct)) return false;
-        if (selectedStatus === 'INCORRECT' && (!progress || progress.correct)) return false;
+        const isSkipped = progress?.status === 'skipped';
+        if (selectedStatus === 'NOT_ATTEMPTED' && progress && !isSkipped) return false;
+        if (selectedStatus === 'CORRECT' && (!progress || isSkipped || !(progress.status === 'correct' || progress.correct))) return false;
+        if (selectedStatus === 'INCORRECT' && (!progress || isSkipped || progress.status === 'correct' || progress.correct)) return false;
         if (selectedStatus === 'BOOKMARKED' && !isBookmarked) return false;
 
         return true;
@@ -1512,8 +1533,10 @@
         const progress = appState.studyProgress[q.code];
         
         let statusBadge = `<span class="bg-slate-100 text-slate-600 border border-slate-200 px-2.5 py-1 rounded-full text-[10px] font-bold">NOT ATTEMPTED</span>`;
-        if (progress) {
-          statusBadge = progress.correct 
+        if (progress?.status === 'skipped') {
+          statusBadge = `<span class="bg-amber-50 text-amber-700 border border-amber-100 px-2.5 py-1 rounded-full text-[10px] font-bold">SKIPPED</span>`;
+        } else if (progress) {
+          statusBadge = (progress.status === 'correct' || progress.correct)
             ? `<span class="bg-emerald-50 text-emerald-700 border border-emerald-100 px-2.5 py-1 rounded-full text-[10px] font-bold">STUDY CORRECT</span>`
             : `<span class="bg-rose-50 text-rose-700 border border-rose-100 px-2.5 py-1 rounded-full text-[10px] font-bold">STUDY INCORRECT</span>`;
         }
@@ -1609,6 +1632,7 @@
       }
 
       const historicalProgress = appState.studyProgress[q.code];
+      const completedProgress = historicalProgress && historicalProgress.status !== 'skipped';
       const container = document.getElementById('study-options-container');
       container.innerHTML = '';
 
@@ -1616,7 +1640,7 @@
         let btnStyles = "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300";
         let statusIndicator = '';
 
-        if (historicalProgress) {
+        if (completedProgress) {
           const isUserChoice = historicalProgress.choice === key;
           const isCorrectAnswer = q.correct_answer === key;
 
@@ -1642,11 +1666,11 @@
         const optionMark = `
           <button 
             onclick="submitStudyChoice('${key}')" 
-            ${historicalProgress ? 'disabled' : ''} 
+            ${completedProgress ? 'disabled' : ''} 
             class="w-full text-left p-4 rounded-xl border ${btnStyles} transition duration-155 flex items-start justify-between space-x-3 text-xs sm:text-sm"
           >
             <div class="flex items-start space-x-3">
-              <span class="w-6 h-6 rounded bg-slate-200 text-slate-600 font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5 ${historicalProgress ? 'opacity-50' : ''}">${key}</span>
+              <span class="w-6 h-6 rounded bg-slate-200 text-slate-600 font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5 ${completedProgress ? 'opacity-50' : ''}">${key}</span>
               <span class="leading-relaxed font-medium mt-0.5">${value}</span>
             </div>
             ${statusIndicator}
@@ -1655,7 +1679,7 @@
         container.insertAdjacentHTML('beforeend', optionMark);
       });
 
-      if (historicalProgress) {
+      if (completedProgress) {
         revealStudyExplanation(q);
       }
     }
@@ -1712,14 +1736,19 @@
     function submitStudyChoice(choice) {
       const q = appState.studyFilteredList[appState.currentStudyIndex];
       const isCorrect = q.correct_answer === choice;
-
-      appState.studyProgress[q.code] = {
-        choice: choice,
-        correct: isCorrect
+      const previous = appState.studyProgress[q.code] || {};
+      const progress = {
+        choice,
+        correct: isCorrect,
+        status: isCorrect ? 'correct' : 'incorrect',
+        attempts: Number(previous.attempts || 0) + 1,
+        correctAttempts: Number(previous.correctAttempts || 0) + (isCorrect ? 1 : 0),
+        lastAttemptedAt: new Date().toISOString()
       };
-      
+
+      appState.studyProgress[q.code] = progress;
       saveState();
-      if (window.CloudSync) void window.CloudSync.recordAttempt(q.code, isCorrect);
+      if (window.CloudSync) void window.CloudSync.recordQuestionProgress(q.code, progress);
       void playFeedbackSound(isCorrect);
 
       if (isCorrect) {
@@ -1729,6 +1758,25 @@
       }
 
       renderStudyQuestion();
+    }
+
+    function skipStudyQuestion() {
+      const q = appState.studyFilteredList[appState.currentStudyIndex];
+      if (!q) return;
+      const previous = appState.studyProgress[q.code] || {};
+      const progress = {
+        ...previous,
+        status: 'skipped',
+        correct: false,
+        attempts: Number(previous.attempts || 0),
+        correctAttempts: Number(previous.correctAttempts || 0),
+        lastAttemptedAt: new Date().toISOString()
+      };
+      appState.studyProgress[q.code] = progress;
+      saveState();
+      if (window.CloudSync) void window.CloudSync.recordQuestionProgress(q.code, progress);
+      showToast(q.code + ' skipped.', 'info');
+      navigateStudyQuestion(1);
     }
 
     function revealStudyExplanation(q) {
@@ -1910,12 +1958,22 @@
       let totalCorrect = 0;
       exam.questions.forEach(q => {
         const userChoice = exam.answers[q.code];
-        if (userChoice === q.correct_answer) {
-          totalCorrect++;
-        }
-        if (userChoice && window.CloudSync) {
-          void window.CloudSync.recordAttempt(q.code, userChoice === q.correct_answer);
-        }
+        const isCorrect = userChoice === q.correct_answer;
+        if (isCorrect) totalCorrect++;
+
+        const previous = appState.studyProgress[q.code] || {};
+        const status = userChoice ? (isCorrect ? 'correct' : 'incorrect') : 'skipped';
+        const progress = {
+          ...previous,
+          choice: userChoice || null,
+          correct: isCorrect,
+          status,
+          attempts: Number(previous.attempts || 0) + (userChoice ? 1 : 0),
+          correctAttempts: Number(previous.correctAttempts || 0) + (isCorrect ? 1 : 0),
+          lastAttemptedAt: new Date().toISOString()
+        };
+        appState.studyProgress[q.code] = progress;
+        if (window.CloudSync) void window.CloudSync.recordQuestionProgress(q.code, progress);
       });
 
       const scorePercent = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
@@ -2031,8 +2089,10 @@
       bookmarkedQs.forEach(q => {
         const prog = appState.studyProgress[q.code];
         let statusTag = `<span class="bg-slate-100 text-slate-600 border border-slate-200/50 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase">Unattempted</span>`;
-        if (prog) {
-          statusTag = prog.correct
+        if (prog?.status === 'skipped') {
+          statusTag = `<span class="bg-amber-50 text-amber-700 border border-amber-100 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase">Skipped</span>`;
+        } else if (prog) {
+          statusTag = (prog.status === 'correct' || prog.correct)
             ? `<span class="bg-emerald-50 text-emerald-700 border border-emerald-100 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase">Correct</span>`
             : `<span class="bg-rose-50 text-rose-700 border border-rose-100 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase">Incorrect</span>`;
         }
