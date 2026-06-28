@@ -354,12 +354,20 @@
           <h1 class="text-2xl font-bold text-slate-800">Myeloid Revision Bank</h1>
           <p class="text-slate-500 text-sm">Review, filter, and search standard-format AML curriculum questions.</p>
         </div>
-        <!-- Matches counter -->
-        <div class="bg-brand-50 text-brand-700 px-4 py-2 rounded-lg font-bold text-sm inline-flex items-center space-x-2 border border-brand-100">
-          <span id="qbank-matches-count">0</span>
-          <span class="text-xs font-medium text-brand-600 font-semibold">questions matched</span>
+        <div class="flex flex-wrap items-center gap-2">
+          <input id="import-questions-file" type="file" accept=".json,application/json" class="hidden" onchange="importQuestionsFromFile(event)">
+          <button onclick="document.getElementById('import-questions-file').click()" class="bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-lg font-bold text-sm inline-flex items-center space-x-2 shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16V4m0 0L7 9m5-5l5 5M5 20h14"></path></svg>
+            <span>Import Questions</span>
+          </button>
+          <div class="bg-brand-50 text-brand-700 px-4 py-2 rounded-lg font-bold text-sm inline-flex items-center space-x-2 border border-brand-100">
+            <span id="qbank-matches-count">0</span>
+            <span class="text-xs font-medium text-brand-600 font-semibold">questions matched</span>
+          </div>
         </div>
       </div>
+
+      <div id="import-questions-error" class="hidden bg-rose-50 border border-rose-200 text-rose-700 rounded-lg px-4 py-3 text-sm font-medium" role="alert"></div>
 
       <!-- Filter Workbench -->
       <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -914,12 +922,146 @@
     ];
 
     const AML_QUESTION_BANK_MANIFEST = 'aml-question-bank-manifest.json';
+    const IMPORTED_QUESTIONS_STORAGE_KEY = 'frcpath_imported_questions';
+    let importedQuestionsLoadError = '';
 
     function normaliseOptions(options){const entries=Array.isArray(options)?options.map((value,index)=>[String.fromCharCode(65+index),value]):Object.entries(options||{});return Object.fromEntries(entries.map(([key,value])=>{const letter=String(key).trim().charAt(0).toUpperCase();const text=String(value).replace(/^[A-E][.)]\s*/i,'').trim();return[letter,text]}))}
 
     function formatStructuredData(label,value){if(value===null||value===undefined||value==='')return'';if(Array.isArray(value))return`\n\n${label}:\n${value.map(item=>`• ${item}`).join('\n')}`;if(typeof value==='object'){const lines=Object.entries(value).flatMap(([key,item])=>{const heading=key.replace(/_/g,' ').replace(/\b\w/g,char=>char.toUpperCase());if(Array.isArray(item))return[`${heading}: ${item.join(', ')}`];if(item&&typeof item==='object')return Object.entries(item).map(([nestedKey,nestedValue])=>`${heading} — ${nestedKey.replace(/_/g,' ')}: ${Array.isArray(nestedValue)?nestedValue.join(', '):nestedValue}`);return[`${heading}: ${item}`]});return lines.length?`\n\n${label}:\n${lines.map(line=>`• ${line}`).join('\n')}`:''}return`\n\n${label}:\n${value}`}
 
     function normaliseQuestion(question){const options=normaliseOptions(question.options);const answerMatch=String(question.correct_answer||'').trim().match(/^([A-E])(?:[.)]|\s|$)/i);const correctAnswer=answerMatch?answerMatch[1].toUpperCase():'';const vignette=[question.clinical_vignette||question.vignette||'',formatStructuredData('Laboratory Data',question.laboratory_data),formatStructuredData('Morphology',question.morphology),formatStructuredData('Flow Cytometry',question.flow_cytometry),formatStructuredData('Cytogenetics',question.cytogenetics),formatStructuredData('Molecular Genetics',question.molecular_genetics),question.question?`\n\nQuestion:\n${question.question}`:''].join('').trim();if(!question.code||Object.keys(options).length<2||!options[correctAnswer])throw new Error(`Invalid question structure for ${question.code||'unknown code'}`);return{...question,code:String(question.code).toUpperCase(),module:question.module||'AML',section:question.section||question.subsection||'General AML',title:question.title||question.question||question.code,vignette,options,correct_answer:correctAnswer,explanation:question.explanation||'',clinical_pearl:question.clinical_pearl||question.frcpath_pearl||question.take_home_message||'',references:Array.isArray(question.references)?question.references:[]}}
+
+    function extractQuestionCases(payload) {
+      if (Array.isArray(payload)) return payload;
+      if (payload && Array.isArray(payload.cases)) return payload.cases;
+      throw new Error('JSON must be an array of questions or an object containing a "cases" array.');
+    }
+
+    function validateImportedQuestions(cases, existingQuestions = []) {
+      if (!Array.isArray(cases) || cases.length === 0) {
+        throw new Error('The JSON file does not contain any questions.');
+      }
+
+      const normalised = cases.map((question, index) => {
+        if (!question || typeof question !== 'object' || Array.isArray(question)) {
+          throw new Error(`Question ${index + 1} must be a JSON object.`);
+        }
+        try {
+          return normaliseQuestion(question);
+        } catch (error) {
+          throw new Error(`Question ${index + 1}: ${error.message}`);
+        }
+      });
+
+      const invalidCodes = normalised
+        .map(question => question.code)
+        .filter(code => !/^AML\d{3,}$/i.test(code));
+      if (invalidCodes.length) {
+        throw new Error(`Invalid question code: ${[...new Set(invalidCodes)].join(', ')}. Expected a code such as AML056.`);
+      }
+
+      const uploadCounts = new Map();
+      normalised.forEach(question => {
+        uploadCounts.set(question.code, (uploadCounts.get(question.code) || 0) + 1);
+      });
+      const duplicatesInFile = [...uploadCounts.entries()]
+        .filter(([, count]) => count > 1)
+        .map(([code]) => code);
+      if (duplicatesInFile.length) {
+        throw new Error(`Duplicate question code(s) inside this file: ${duplicatesInFile.join(', ')}.`);
+      }
+
+      const existingCodes = new Set(existingQuestions.map(question => question.code));
+      const duplicatesInBank = normalised
+        .map(question => question.code)
+        .filter(code => existingCodes.has(code));
+      if (duplicatesInBank.length) {
+        throw new Error(`Question code(s) already exist in the bank: ${[...new Set(duplicatesInBank)].join(', ')}.`);
+      }
+
+      return normalised;
+    }
+
+    function loadSavedImportedQuestions(baseQuestions) {
+      const saved = localStorage.getItem(IMPORTED_QUESTIONS_STORAGE_KEY);
+      if (!saved) return [];
+
+      try {
+        const cases = JSON.parse(saved);
+        return validateImportedQuestions(cases, baseQuestions);
+      } catch (error) {
+        importedQuestionsLoadError = `Saved imported questions were ignored: ${error.message}`;
+        console.error(importedQuestionsLoadError);
+        return [];
+      }
+    }
+
+    function clearImportQuestionsError() {
+      const panel = document.getElementById('import-questions-error');
+      panel.textContent = '';
+      panel.classList.add('hidden');
+    }
+
+    function showImportQuestionsError(message) {
+      const panel = document.getElementById('import-questions-error');
+      panel.textContent = message;
+      panel.classList.remove('hidden');
+      showToast(message, 'error');
+    }
+
+    async function importQuestionsFromFile(event) {
+      const input = event.target;
+      const file = input.files && input.files[0];
+      clearImportQuestionsError();
+      if (!file) return;
+
+      try {
+        if (file.size > 5 * 1024 * 1024) {
+          throw new Error('The JSON file is too large. Maximum size is 5 MB.');
+        }
+
+        let payload;
+        try {
+          payload = JSON.parse(await file.text());
+        } catch (error) {
+          throw new Error(`Invalid JSON: ${error.message}`);
+        }
+
+        const cases = extractQuestionCases(payload);
+        const normalised = validateImportedQuestions(cases, haematologyQuestions);
+
+        let savedCases = [];
+        const saved = localStorage.getItem(IMPORTED_QUESTIONS_STORAGE_KEY);
+        if (saved) {
+          try {
+            savedCases = JSON.parse(saved);
+          } catch (_error) {
+            throw new Error('Previously imported question storage is corrupted. Clear this site\'s browser data and try again.');
+          }
+          if (!Array.isArray(savedCases)) {
+            throw new Error('Previously imported question storage has the wrong format. Clear this site\'s browser data and try again.');
+          }
+        }
+
+        localStorage.setItem(
+          IMPORTED_QUESTIONS_STORAGE_KEY,
+          JSON.stringify([...savedCases, ...cases])
+        );
+
+        haematologyQuestions = [...haematologyQuestions, ...normalised].sort((a, b) =>
+          a.code.localeCompare(b.code, undefined, { numeric: true })
+        );
+        populateFilterOptions();
+        appState.studyFilteredList = [...haematologyQuestions];
+        filterQBank();
+        renderUserDashboard();
+        showToast(`${normalised.length} questions imported.`, 'success');
+      } catch (error) {
+        showImportQuestionsError(error.message || 'The question file could not be imported.');
+      } finally {
+        input.value = '';
+      }
+    }
 
     async function fetchQuestionBankManifest() {
       const response = await fetch(AML_QUESTION_BANK_MANIFEST, { cache: 'no-store' });
@@ -971,7 +1113,8 @@
           );
         }
 
-        haematologyQuestions = loadedQuestions.sort((a, b) =>
+        const importedQuestions = loadSavedImportedQuestions(loadedQuestions);
+        haematologyQuestions = [...loadedQuestions, ...importedQuestions].sort((a, b) =>
           a.code.localeCompare(b.code, undefined, { numeric: true })
         );
         return true;
@@ -1938,6 +2081,8 @@
       if (window.CloudSync) await window.CloudSync.init();
       if (!fullBankLoaded) {
         showToast('Full AML bank could not be loaded. Using the embedded 10-question fallback.', 'error');
+      } else if (importedQuestionsLoadError) {
+        showImportQuestionsError(importedQuestionsLoadError);
       }
     };
   </script>
