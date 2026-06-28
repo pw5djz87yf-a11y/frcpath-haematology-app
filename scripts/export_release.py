@@ -11,6 +11,7 @@ import shutil
 from pathlib import Path
 
 APP_FILENAME = "index.html"
+SUPPORT_FILES = ("supabase-config.js", "auth-sync.js")
 BANK_GLOB = "frcpath_gs_aml_*.json"
 MANIFEST_FILENAME = "aml-question-bank-manifest.json"
 PACKAGE_NAME = "frcpath-haematology-release"
@@ -60,6 +61,12 @@ def build_release(source_root: Path, output_root: Path) -> tuple[Path, int, int]
     package_dir.mkdir()
 
     shutil.copy2(app_path, package_dir / "index.html")
+    for filename in SUPPORT_FILES:
+        support_path = source_root / filename
+        if not support_path.is_file():
+            raise FileNotFoundError(f"Required app file not found: {support_path}")
+        shutil.copy2(support_path, package_dir / filename)
+
     for bank_path in bank_paths:
         shutil.copy2(bank_path, package_dir / bank_path.name)
 
@@ -76,6 +83,7 @@ def build_release(source_root: Path, output_root: Path) -> tuple[Path, int, int]
         "first_question_code": ordered_codes[0],
         "last_question_code": ordered_codes[-1],
         "source_html": APP_FILENAME,
+        "support_files": list(SUPPORT_FILES),
     }
     (package_dir / "release-info.json").write_text(
         json.dumps(release_info, indent=2) + "\n",
