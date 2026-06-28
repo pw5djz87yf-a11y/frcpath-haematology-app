@@ -1,0 +1,51 @@
+name: Export test release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "frcpath_haematology_revision_portal (6).html"
+      - "frcpath_gs_aml_*.json"
+      - "scripts/export_release.py"
+      - ".github/workflows/export-release.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: export-test-release-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  export-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build and validate release
+        run: python scripts/export_release.py
+
+      - name: Upload downloadable release
+        uses: actions/upload-artifact@v4
+        with:
+          name: frcpath-haematology-release-${{ github.sha }}
+          path: build/frcpath-haematology-release.zip
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Add download instructions
+        run: |
+          {
+            echo "## Export Release"
+            echo
+            echo "Download **frcpath-haematology-release-${{ github.sha }}** from the workflow run's Artifacts section."
+            echo "Unzip it, start a local server in the extracted folder, and open http://localhost:8000."
+          } >> "$GITHUB_STEP_SUMMARY"
