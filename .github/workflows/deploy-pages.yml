@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - "index.html"
+      - "auth-sync.js"
+      - "supabase-config.js"
       - "aml-question-bank-manifest.json"
       - "frcpath_gs_aml_*.json"
       - "scripts/export_release.py"
