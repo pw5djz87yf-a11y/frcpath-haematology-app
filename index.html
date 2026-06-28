@@ -74,6 +74,15 @@
 
         <!-- Right Side Utility Controls -->
         <div class="flex items-center space-x-3">
+          <button id="sound-toggle" onclick="toggleSound()" aria-pressed="false" aria-label="Mute answer sounds" title="Mute answer sounds" class="text-xs text-slate-200 hover:text-white border border-slate-600 hover:border-sky-400/60 px-2 py-1 rounded transition duration-150 flex items-center space-x-1.5">
+            <svg id="sound-on-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H3v6h3l5 4V5zM15.5 8.5a5 5 0 010 7M18 6a8.5 8.5 0 010 12"></path>
+            </svg>
+            <svg id="sound-off-icon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H3v6h3l5 4V5zM16 9l5 5m0-5l-5 5"></path>
+            </svg>
+            <span id="sound-toggle-label" class="hidden sm:inline">Sound On</span>
+          </button>
           <button onclick="confirmResetProgress()" class="text-xs text-slate-300 hover:text-red-400 border border-slate-700 hover:border-red-500/30 px-2 py-1 rounded transition duration-150">
             Reset Progress
           </button>
@@ -876,6 +885,7 @@
       bookmarks: [],           // Question Codes
       studyProgress: {},       // { code: { choice: 'B', correct: true } }
       examHistory: [],         // Mock exam score structures
+      soundEnabled: true,       // Audible answer feedback preference
       currentStudyIndex: 0,
       activeExam: null,        // { questions: [], answers: {}, currentIdx: 0, timer: 0, intervalId: null }
       studyFilteredList: []    // Loaded cohort
@@ -890,11 +900,13 @@
           appState.bookmarks = parsed.bookmarks || [];
           appState.studyProgress = parsed.studyProgress || {};
           appState.examHistory = parsed.examHistory || [];
+          appState.soundEnabled = parsed.soundEnabled !== false;
         } catch (e) {
           console.error("Local storage corruption detected. Resetting safely.", e);
         }
       }
 
+      updateSoundToggle();
       populateFilterOptions();
       navigateTo('dashboard');
     }
@@ -903,9 +915,36 @@
       const payload = {
         bookmarks: appState.bookmarks,
         studyProgress: appState.studyProgress,
-        examHistory: appState.examHistory
+        examHistory: appState.examHistory,
+        soundEnabled: appState.soundEnabled
       };
       localStorage.setItem('frcpath_haem_state', JSON.stringify(payload));
+    }
+
+    function updateSoundToggle() {
+      const button = document.getElementById('sound-toggle');
+      if (!button) return;
+
+      const enabled = appState.soundEnabled;
+      button.setAttribute('aria-pressed', String(!enabled));
+      button.setAttribute('aria-label', enabled ? 'Mute answer sounds' : 'Enable answer sounds');
+      button.setAttribute('title', enabled ? 'Mute answer sounds' : 'Enable answer sounds');
+      document.getElementById('sound-toggle-label').innerText = enabled ? 'Sound On' : 'Muted';
+      document.getElementById('sound-on-icon').classList.toggle('hidden', !enabled);
+      document.getElementById('sound-off-icon').classList.toggle('hidden', enabled);
+    }
+
+    function toggleSound() {
+      appState.soundEnabled = !appState.soundEnabled;
+      saveState();
+      updateSoundToggle();
+
+      if (appState.soundEnabled) {
+        void playFeedbackSound(true);
+        showToast('Answer sounds enabled.', 'success');
+      } else {
+        showToast('Answer sounds muted.', 'info');
+      }
     }
 
     function confirmResetProgress() {
@@ -1316,7 +1355,9 @@
 
     let feedbackAudioContext = null;
 
-    function playFeedbackSound(isCorrect) {
+    async function playFeedbackSound(isCorrect) {
+      if (!appState.soundEnabled) return;
+
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       if (!AudioContextClass) return;
 
@@ -1325,18 +1366,18 @@
           feedbackAudioContext = new AudioContextClass();
         }
         if (feedbackAudioContext.state === 'suspended') {
-          void feedbackAudioContext.resume();
+          await feedbackAudioContext.resume();
         }
 
-        const startTime = feedbackAudioContext.currentTime;
+        const startTime = feedbackAudioContext.currentTime + 0.01;
         const notes = isCorrect
           ? [
-              { frequency: 523.25, offset: 0, duration: 0.11 },
-              { frequency: 659.25, offset: 0.1, duration: 0.18 }
+              { frequency: 523.25, offset: 0, duration: 0.16 },
+              { frequency: 659.25, offset: 0.14, duration: 0.24 }
             ]
           : [
-              { frequency: 392.0, offset: 0, duration: 0.13 },
-              { frequency: 293.66, offset: 0.12, duration: 0.2 }
+              { frequency: 392.0, offset: 0, duration: 0.18 },
+              { frequency: 293.66, offset: 0.16, duration: 0.27 }
             ];
 
         notes.forEach(note => {
@@ -1348,13 +1389,13 @@
           oscillator.type = isCorrect ? 'sine' : 'triangle';
           oscillator.frequency.setValueAtTime(note.frequency, noteStart);
           gain.gain.setValueAtTime(0.0001, noteStart);
-          gain.gain.exponentialRampToValueAtTime(0.12, noteStart + 0.015);
+          gain.gain.exponentialRampToValueAtTime(0.32, noteStart + 0.02);
           gain.gain.exponentialRampToValueAtTime(0.0001, noteEnd);
 
           oscillator.connect(gain);
           gain.connect(feedbackAudioContext.destination);
           oscillator.start(noteStart);
-          oscillator.stop(noteEnd + 0.02);
+          oscillator.stop(noteEnd + 0.03);
         });
       } catch (error) {
         console.warn('Answer feedback sound is unavailable:', error);
@@ -1371,7 +1412,7 @@
       };
       
       saveState();
-      playFeedbackSound(isCorrect);
+      void playFeedbackSound(isCorrect);
 
       if (isCorrect) {
         showToast("Correct choice selected!", "success");
