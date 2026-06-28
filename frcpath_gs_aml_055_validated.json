@@ -1,0 +1,81 @@
+[
+  {
+    "id": 55,
+    "code": "AML055",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Cytogenetics",
+    "subsection": "MECOM-rearranged AML",
+    "title": "Recognising AML with MECOM rearrangement (3q26 abnormality)",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 360,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Recognise AML associated with MECOM rearrangements",
+      "Interpret characteristic cytogenetic abnormalities involving 3q26",
+      "Understand the adverse prognostic significance of MECOM-rearranged AML"
+    ],
+    "clinical_vignette": "A 59-year-old man presents with fatigue, bruising and recurrent infections. Blood tests show anaemia, thrombocytopenia and leukocytosis. Bone marrow examination demonstrates acute myeloid leukaemia with dysplastic megakaryocytes.",
+    "laboratory_data": {
+      "Hb": "71 g/L",
+      "WBC": "41.5 x10^9/L",
+      "Platelets": "27 x10^9/L",
+      "LDH": "1490 U/L"
+    },
+    "morphology": {
+      "peripheral_blood": "Circulating myeloblasts with occasional hypogranular neutrophils.",
+      "bone_marrow": "Hypercellular marrow with increased blasts, multilineage dysplasia and numerous small hypolobated megakaryocytes."
+    },
+    "flow_cytometry": {
+      "positive": [
+        "MPO",
+        "CD13",
+        "CD33",
+        "CD34",
+        "CD117",
+        "HLA-DR"
+      ],
+      "negative": [
+        "CD19",
+        "cyCD3",
+        "CD14"
+      ],
+      "interpretation": "Acute myeloid immunophenotype without lineage ambiguity."
+    },
+    "cytogenetics": "Conventional karyotype demonstrates inv(3)(q21q26.2). FISH confirms MECOM rearrangement.",
+    "molecular_genetics": "NGS shows no NPM1 mutation. FLT3-ITD negative.",
+    "integrated_laboratory_diagnosis": "AML with MECOM rearrangement associated with inv(3)(q21q26.2).",
+    "question": "Which statement best reflects the significance of the cytogenetic finding?",
+    "options": [
+      "MECOM rearrangement defines a genetically distinct AML subtype associated with adverse prognosis.",
+      "MECOM rearrangement is characteristic of acute promyelocytic leukaemia.",
+      "MECOM rearrangement indicates favourable-risk core-binding factor AML.",
+      "MECOM rearrangement establishes mixed phenotype acute leukaemia.",
+      "MECOM rearrangement is only relevant if NPM1 is mutated."
+    ],
+    "correct_answer": "A. MECOM rearrangement defines a genetically distinct AML subtype associated with adverse prognosis.",
+    "explanation": "Rearrangements involving MECOM, typically through inv(3)(q21q26.2) or t(3;3)(q21;q26.2), define a specific AML subtype recognised by modern classifications. These cases frequently show dysplastic megakaryocytes and are associated with adverse clinical outcomes.",
+    "why_other_options_are_wrong": {
+      "B": "APL is defined by PML::RARA.",
+      "C": "Core-binding factor AML is defined by RUNX1::RUNX1T1 or CBFB::MYH11.",
+      "D": "MECOM rearrangement does not define mixed phenotype acute leukaemia.",
+      "E": "Its diagnostic significance is independent of NPM1 status."
+    },
+    "frcpath_pearl": "Always examine chromosome 3 abnormalities carefully. inv(3)/t(3;3) with MECOM rearrangement represents a high-risk AML subtype even when blast morphology is otherwise unremarkable.",
+    "take_home_message": "MECOM rearrangements define an adverse-risk AML subtype that should be recognised promptly through integrated morphology and cytogenetic assessment.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification, 2022",
+      "European LeukemiaNet AML Recommendations"
+    ],
+    "related_cases": [
+      "AML051",
+      "AML052",
+      "AML054",
+      "AML056"
+    ]
+  }
+]

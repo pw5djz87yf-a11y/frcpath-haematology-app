@@ -1,0 +1,83 @@
+[
+  {
+    "id": 54,
+    "code": "AML054",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Cytogenetics",
+    "subsection": "KMT2A-rearranged AML",
+    "title": "Recognising AML with KMT2A rearrangement from integrated laboratory findings",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 360,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Recognise morphology and immunophenotype of KMT2A-rearranged AML",
+      "Understand the role of KMT2A rearrangements in AML classification",
+      "Integrate flow cytometry, cytogenetics and molecular testing"
+    ],
+    "clinical_vignette": "A 24-year-old woman presents with fever, gingival hypertrophy and leukocytosis. Bone marrow examination demonstrates acute leukaemia with prominent monocytic differentiation. Rapid molecular cytogenetic testing is requested.",
+    "laboratory_data": {
+      "Hb": "79 g/L",
+      "WBC": "58.2 x10^9/L",
+      "Platelets": "39 x10^9/L",
+      "LDH": "1710 U/L"
+    },
+    "morphology": {
+      "peripheral_blood": "Numerous monoblasts and promonocytes with folded nuclei and abundant basophilic cytoplasm.",
+      "bone_marrow": "Hypercellular marrow extensively infiltrated by monoblasts with monocytic maturation."
+    },
+    "flow_cytometry": {
+      "positive": [
+        "MPO dim",
+        "CD33 bright",
+        "CD64 bright",
+        "CD4",
+        "CD11c",
+        "CD14 partial",
+        "HLA-DR",
+        "CD38",
+        "NG2 (CSPG4)"
+      ],
+      "negative": [
+        "CD19",
+        "cyCD3",
+        "CD10"
+      ],
+      "interpretation": "AML with monocytic differentiation; NG2 expression raises suspicion for KMT2A rearrangement."
+    },
+    "cytogenetics": "FISH demonstrates a KMT2A rearrangement. Conventional karyotype identifies t(9;11)(p21.3;q23.3).",
+    "molecular_genetics": "KMT2A::MLLT3 fusion confirmed. NPM1 and FLT3-ITD negative.",
+    "integrated_laboratory_diagnosis": "AML with KMT2A rearrangement (KMT2A::MLLT3).",
+    "question": "Which flow cytometric finding most strongly supports suspicion of a KMT2A-rearranged AML before cytogenetic confirmation?",
+    "options": [
+      "Bright CD19 expression",
+      "NG2 (CSPG4) expression with monocytic immunophenotype",
+      "Complete absence of HLA-DR",
+      "Strong glycophorin A expression",
+      "CD41 and CD61 co-expression"
+    ],
+    "correct_answer": "B. NG2 (CSPG4) expression with monocytic immunophenotype",
+    "explanation": "KMT2A-rearranged AML commonly shows monocytic differentiation with CD64/CD11c and may express NG2 (CSPG4). Definitive diagnosis requires demonstration of the rearrangement.",
+    "why_other_options_are_wrong": {
+      "A": "More typical of RUNX1::RUNX1T1 AML.",
+      "C": "Suggests APL rather than KMT2A AML.",
+      "D": "Indicates erythroid differentiation.",
+      "E": "Indicates megakaryocytic differentiation."
+    },
+    "frcpath_pearl": "Marked monocytic differentiation with gingival hypertrophy should prompt testing for KMT2A rearrangements.",
+    "take_home_message": "Integrate morphology, immunophenotype and genetics when diagnosing KMT2A-rearranged AML.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification, 2022",
+      "European LeukemiaNet AML Recommendations"
+    ],
+    "related_cases": [
+      "AML044",
+      "AML052",
+      "AML055"
+    ]
+  }
+]
