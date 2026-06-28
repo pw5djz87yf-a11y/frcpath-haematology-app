@@ -4,10 +4,12 @@
   const LOCAL_STATE_KEY = "frcpath_haem_state";
   const GUEST_BACKUP_KEY = "frcpath_guest_progress_backup";
   const IMPORT_OFFER_PREFIX = "frcpath_import_offered_";
+  const PENDING_QUESTION_PROGRESS_KEY = "frcpath_pending_question_progress";
   let client = null;
   let currentUser = null;
   let syncTimer = null;
   let applyingCloudState = false;
+  let onlineHandlerAttached = false;
 
   function isConfigured() {
     const config = window.FRCPathSupabaseConfig || {};
@@ -59,6 +61,40 @@
     };
   }
 
+  function mergeStudyProgress(cloudProgress, localProgress) {
+    const merged = {};
+    const codes = new Set([
+      ...Object.keys(cloudProgress || {}),
+      ...Object.keys(localProgress || {})
+    ]);
+
+    codes.forEach(code => {
+      const cloud = cloudProgress?.[code];
+      const local = localProgress?.[code];
+      if (!cloud) {
+        merged[code] = local;
+        return;
+      }
+      if (!local) {
+        merged[code] = cloud;
+        return;
+      }
+
+      const cloudTime = Date.parse(cloud.lastAttemptedAt || cloud.last_attempted_at || 0) || 0;
+      const localTime = Date.parse(local.lastAttemptedAt || local.last_attempted_at || 0) || 0;
+      const latest = localTime >= cloudTime ? local : cloud;
+      merged[code] = {
+        ...latest,
+        attempts: Math.max(Number(cloud.attempts || 0), Number(local.attempts || 0)),
+        correctAttempts: Math.max(
+          Number(cloud.correctAttempts || 0),
+          Number(local.correctAttempts || 0)
+        )
+      };
+    });
+    return merged;
+  }
+
   function mergeProgress(cloud, local) {
     const examByDate = new Map();
     [...(cloud?.examHistory || []), ...(local?.examHistory || [])].forEach(exam => {
@@ -67,7 +103,7 @@
 
     return {
       bookmarks: [...new Set([...(cloud?.bookmarks || []), ...(local?.bookmarks || [])])],
-      studyProgress: { ...(cloud?.studyProgress || {}), ...(local?.studyProgress || {}) },
+      studyProgress: mergeStudyProgress(cloud?.studyProgress, local?.studyProgress),
       examHistory: [...examByDate.values()].sort((a, b) => (a.date || 0) - (b.date || 0)),
       notes: { ...(cloud?.notes || {}), ...(local?.notes || {}) },
       soundEnabled: local?.soundEnabled ?? cloud?.soundEnabled ?? true
@@ -149,6 +185,25 @@
     return data?.progress || null;
   }
 
+  async function fetchQuestionProgress() {
+    const { data, error } = await client
+      .from("question_progress")
+      .select("question_code, status, attempts, correct_attempts, last_attempted_at")
+      .eq("user_id", currentUser.id);
+    if (error) throw error;
+
+    return Object.fromEntries((data || []).map(row => [
+      row.question_code,
+      {
+        status: row.status,
+        correct: row.status === "correct",
+        attempts: Number(row.attempts || 0),
+        correctAttempts: Number(row.correct_attempts || 0),
+        lastAttemptedAt: row.last_attempted_at
+      }
+    ]));
+  }
+
   async function uploadProgress(progress) {
     if (!client || !currentUser) return;
     const { error } = await client.from("user_progress").upsert({
@@ -164,7 +219,17 @@
     updateAccountUi();
 
     const local = parseLocalProgress();
-    const cloud = await fetchCloudProgress();
+    const [cloudBlob, cloudQuestionProgress] = await Promise.all([
+      fetchCloudProgress(),
+      fetchQuestionProgress()
+    ]);
+    const cloud = {
+      ...(cloudBlob || blankProgress()),
+      studyProgress: {
+        ...(cloudBlob?.studyProgress || {}),
+        ...cloudQuestionProgress
+      }
+    };
     const offeredKey = IMPORT_OFFER_PREFIX + user.id;
     const shouldOffer = hasMeaningfulProgress(local) && localStorage.getItem(offeredKey) !== "yes";
 
@@ -180,14 +245,15 @@
         applyProgress(merged);
         showToast("Local progress imported into your cloud account.", "success");
       } else {
-        applyProgress(cloud || blankProgress());
+        applyProgress(cloud);
       }
-    } else if (cloud) {
-      applyProgress(cloud);
+    } else if (cloudBlob || Object.keys(cloudQuestionProgress).length) {
+      applyProgress(mergeProgress(cloud, local));
     } else {
       await uploadProgress(currentProgress());
     }
 
+    await uploadAllQuestionProgress();
     await loadAdminDashboard();
   }
 
@@ -203,6 +269,13 @@
         detectSessionInUrl: true
       }
     });
+
+    if (!onlineHandlerAttached) {
+      window.addEventListener("online", () => {
+        if (currentUser) void syncNow();
+      });
+      onlineHandlerAttached = true;
+    }
 
     const { data, error } = await client.auth.getSession();
     if (error) {
@@ -302,9 +375,69 @@
       } catch (error) {
         console.error("Cloud sync failed:", error);
         const status = document.getElementById("user-sync-status");
-        if (status) status.textContent = "Cloud sync needs attention";
+        if (status) status.textContent = "Offline changes waiting to sync";
       }
     }, 800);
+  }
+
+  function readPendingQuestionProgress() {
+    try {
+      return JSON.parse(localStorage.getItem(PENDING_QUESTION_PROGRESS_KEY) || "{}");
+    } catch (error) {
+      console.warn("Pending question progress was reset:", error);
+      return {};
+    }
+  }
+
+  function queueQuestionProgress(questionCode, progress) {
+    const status = progress?.status;
+    if (!["correct", "incorrect", "skipped"].includes(status)) return;
+
+    const pending = readPendingQuestionProgress();
+    pending[questionCode] = {
+      status,
+      attempts: Number(progress.attempts || 0),
+      correctAttempts: Number(progress.correctAttempts || 0),
+      lastAttemptedAt: progress.lastAttemptedAt || new Date().toISOString()
+    };
+    localStorage.setItem(PENDING_QUESTION_PROGRESS_KEY, JSON.stringify(pending));
+  }
+
+  async function flushPendingQuestionProgress() {
+    if (!client || !currentUser || !navigator.onLine) return false;
+    const pending = readPendingQuestionProgress();
+    const entries = Object.entries(pending);
+
+    for (const [questionCode, progress] of entries) {
+      const { error } = await client.rpc("save_question_progress", {
+        p_question_code: questionCode,
+        p_status: progress.status,
+        p_attempts: progress.attempts,
+        p_correct_attempts: progress.correctAttempts,
+        p_last_attempted_at: progress.lastAttemptedAt
+      });
+      if (error) {
+        console.warn("Question progress is waiting to sync:", error);
+        return false;
+      }
+      delete pending[questionCode];
+      localStorage.setItem(PENDING_QUESTION_PROGRESS_KEY, JSON.stringify(pending));
+    }
+    return true;
+  }
+
+  async function uploadAllQuestionProgress() {
+    Object.entries(appState.studyProgress || {}).forEach(([questionCode, progress]) => {
+      const status = progress.status || (progress.correct ? "correct" : "incorrect");
+      queueQuestionProgress(questionCode, {
+        ...progress,
+        status,
+        attempts: Number(progress.attempts ?? (status === "skipped" ? 0 : 1)),
+        correctAttempts: Number(progress.correctAttempts ?? (status === "correct" ? 1 : 0)),
+        lastAttemptedAt: progress.lastAttemptedAt || new Date().toISOString()
+      });
+    });
+    return flushPendingQuestionProgress();
   }
 
   async function syncNow() {
@@ -314,6 +447,7 @@
     }
     try {
       await uploadProgress(currentProgress());
+      await uploadAllQuestionProgress();
       showToast("Progress synced to the cloud.", "success");
       updateAccountUi();
     } catch (error) {
@@ -321,13 +455,11 @@
     }
   }
 
-  async function recordAttempt(questionCode, wasCorrect) {
-    if (!client || !currentUser) return;
-    const { error } = await client.rpc("record_question_attempt", {
-      p_question_code: questionCode,
-      p_was_correct: Boolean(wasCorrect)
-    });
-    if (error) console.warn("Question analytics could not be recorded:", error);
+  async function recordQuestionProgress(questionCode, progress) {
+    queueQuestionProgress(questionCode, progress);
+    if (client && currentUser && navigator.onLine) {
+      await flushPendingQuestionProgress();
+    }
   }
 
   async function loadAdminDashboard() {
@@ -381,7 +513,8 @@
     isConfigured,
     isSignedIn: () => Boolean(currentUser),
     queueProgressSync,
-    recordAttempt,
+    recordQuestionProgress,
+    flushPendingQuestionProgress,
     syncNow,
     signUp,
     signIn,
