@@ -13,6 +13,13 @@ The app works immediately without an account and saves guest progress in the bro
 
 Supabase is deliberately unconfigured by default. See [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md) for the database schema, Row Level Security policies, administrator setup, and safe public configuration values.
 
+
+## Importing questions during development
+
+Open **Question Bank → Import Questions** and choose a JSON file. The file may be a direct array of questions or an object containing a `cases` array. The app validates the structure and answer options, rejects duplicate AML codes, and stores accepted questions in that browser's local storage.
+
+Imported questions supplement the repository banks loaded through `aml-question-bank-manifest.json`. They are local to the current browser and are not written to Supabase or committed to the repository.
+
 ## Export a test release
 
 The **Export test release** GitHub Actions workflow creates a downloadable, self-contained ZIP containing:
