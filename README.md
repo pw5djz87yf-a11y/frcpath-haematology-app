@@ -2,6 +2,10 @@
 
 A browser-based revision portal for professional haematology study.
 
+## Launch the app
+
+Open the [FRCPath Haematology Revision App](https://pw5djz87yf-a11y.github.io/frcpath-haematology-app/).
+
 ## Export a test release
 
 The **Export test release** GitHub Actions workflow creates a downloadable, self-contained ZIP containing:
