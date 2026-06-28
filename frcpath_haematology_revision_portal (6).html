@@ -397,7 +397,7 @@
           <div>
             <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Question Count</label>
             <select id="exam-config-count" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
-              <option value="10">All 10 Questions (Standard)</option>
+              <option value="10">10 Questions (Standard)</option>
               <option value="5">5 Focus Questions</option>
               <option value="3">3 Rapid Questions</option>
             </select>
@@ -574,9 +574,9 @@
   <!-- Single-File Orchestrated Core Application Logic & Database -->
   <script>
     /* =========================================================================
-       QUESTIONS DATABASE (AML001–AML010)
+       QUESTIONS DATABASE (embedded AML001–AML010 fallback; full bank loaded from JSON)
        ========================================================================= */
-    const haematologyQuestions = [
+    let haematologyQuestions = [
       {
         code: "AML001",
         module: "AML",
@@ -798,6 +798,36 @@
         ]
       }
     ];
+
+    const AML_QUESTION_BANK_FILES = [
+      "frcpath_gs_aml_001_010_validated.json",
+      "frcpath_gs_aml_011_015_validated.json",
+      "frcpath_gs_aml_016_020_validated.json",
+      "frcpath_gs_aml_021_025_validated.json",
+      "frcpath_gs_aml_026_030_validated.json",
+      "frcpath_gs_aml_031_035_validated.json",
+      "frcpath_gs_aml_036_040_validated (1).json",
+      "frcpath_gs_aml_041_045_validated.json",
+      "frcpath_gs_aml_046_validated.json",
+      "frcpath_gs_aml_047_validated.json",
+      "frcpath_gs_aml_048_validated.json",
+      "frcpath_gs_aml_049_validated.json",
+      "frcpath_gs_aml_050_validated.json",
+      "frcpath_gs_aml_051_validated.json",
+      "frcpath_gs_aml_052_validated.json",
+      "frcpath_gs_aml_053_validated (1).json",
+      "frcpath_gs_aml_054_validated.json",
+      "frcpath_gs_aml_055_validated.json"
+    ];
+
+    function normaliseOptions(options){const entries=Array.isArray(options)?options.map((value,index)=>[String.fromCharCode(65+index),value]):Object.entries(options||{});return Object.fromEntries(entries.map(([key,value])=>{const letter=String(key).trim().charAt(0).toUpperCase();const text=String(value).replace(/^[A-E][.)]\s*/i,'').trim();return[letter,text]}))}
+
+    function formatStructuredData(label,value){if(value===null||value===undefined||value==='')return'';if(Array.isArray(value))return`\n\n${label}:\n${value.map(item=>`• ${item}`).join('\n')}`;if(typeof value==='object'){const lines=Object.entries(value).flatMap(([key,item])=>{const heading=key.replace(/_/g,' ').replace(/\b\w/g,char=>char.toUpperCase());if(Array.isArray(item))return[`${heading}: ${item.join(', ')}`];if(item&&typeof item==='object')return Object.entries(item).map(([nestedKey,nestedValue])=>`${heading} — ${nestedKey.replace(/_/g,' ')}: ${Array.isArray(nestedValue)?nestedValue.join(', '):nestedValue}`);return[`${heading}: ${item}`]});return lines.length?`\n\n${label}:\n${lines.map(line=>`• ${line}`).join('\n')}`:''}return`\n\n${label}:\n${value}`}
+
+    function normaliseQuestion(question){const options=normaliseOptions(question.options);const answerMatch=String(question.correct_answer||'').trim().match(/^([A-E])(?:[.)]|\s|$)/i);const correctAnswer=answerMatch?answerMatch[1].toUpperCase():'';const vignette=[question.clinical_vignette||question.vignette||'',formatStructuredData('Laboratory Data',question.laboratory_data),formatStructuredData('Morphology',question.morphology),formatStructuredData('Flow Cytometry',question.flow_cytometry),formatStructuredData('Cytogenetics',question.cytogenetics),formatStructuredData('Molecular Genetics',question.molecular_genetics),question.question?`\n\nQuestion:\n${question.question}`:''].join('').trim();if(!question.code||Object.keys(options).length<2||!options[correctAnswer])throw new Error(`Invalid question structure for ${question.code||'unknown code'}`);return{...question,code:String(question.code).toUpperCase(),module:question.module||'AML',section:question.section||question.subsection||'General AML',title:question.title||question.question||question.code,vignette,options,correct_answer:correctAnswer,explanation:question.explanation||'',clinical_pearl:question.clinical_pearl||question.frcpath_pearl||question.take_home_message||'',references:Array.isArray(question.references)?question.references:[]}}
+
+    async function loadQuestionBanks(){try{const banks=await Promise.all(AML_QUESTION_BANK_FILES.map(async filename=>{const response=await fetch(encodeURI(filename),{cache:'no-store'});if(!response.ok)throw new Error(`${filename}: HTTP ${response.status}`);const payload=await response.json();const cases=Array.isArray(payload)?payload:payload.cases;if(!Array.isArray(cases))throw new Error(`${filename}: expected an array or a "cases" array`);return cases.map(normaliseQuestion)}));const loadedQuestions=banks.flat();const uniqueCodes=new Set(loadedQuestions.map(question=>question.code));if(loadedQuestions.length!==55||uniqueCodes.size!==55)throw new Error(`Expected 55 unique AML questions, received ${loadedQuestions.length} (${uniqueCodes.size} unique)`);haematologyQuestions=loadedQuestions.sort((a,b)=>a.code.localeCompare(b.code,undefined,{numeric:true}));return true}catch(error){console.error('Unable to load the AML JSON question banks:',error);return false}}
+
 
     /* =========================================================================
        CORE STATE MACHINE
@@ -1606,8 +1636,12 @@
       });
     }
 
-    window.onload = function () {
+    window.onload = async function () {
+      const fullBankLoaded = await loadQuestionBanks();
       initApp();
+      if (!fullBankLoaded) {
+        showToast('Full AML bank could not be loaded. Using the embedded 10-question fallback.', 'error');
+      }
     };
   </script>
 </body>
