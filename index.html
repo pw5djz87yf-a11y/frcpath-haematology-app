@@ -6,6 +6,9 @@
   <title>FRCPath Haematology Revision Portal</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="supabase-config.js"></script>
+  <script defer src="auth-sync.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -74,6 +77,9 @@
 
         <!-- Right Side Utility Controls -->
         <div class="flex items-center space-x-3">
+          <button id="account-button" onclick="CloudSync.openAccountModal()" class="text-xs text-slate-200 hover:text-white border border-slate-600 hover:border-sky-400/60 px-2 py-1 rounded transition duration-150">
+            Guest Mode
+          </button>
           <button id="sound-toggle" onclick="toggleSound()" aria-pressed="false" aria-label="Mute answer sounds" title="Mute answer sounds" class="text-xs text-slate-200 hover:text-white border border-slate-600 hover:border-sky-400/60 px-2 py-1 rounded transition duration-150 flex items-center space-x-1.5">
             <svg id="sound-on-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H3v6h3l5 4V5zM15.5 8.5a5 5 0 010 7M18 6a8.5 8.5 0 010 12"></path>
@@ -137,6 +143,54 @@
         <button onclick="closeConfirmModal()" class="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-medium rounded-lg hover:bg-slate-200 transition">Cancel</button>
         <button onclick="executeResetProgress()" class="px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition shadow-lg shadow-red-600/20">Reset Everything</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Optional Account and Cloud Sync Modal -->
+  <div id="account-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+    <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 space-y-5">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h3 class="text-lg font-bold text-slate-800">Account & Cloud Sync</h3>
+          <p class="text-xs text-slate-500 mt-1">Guest mode is always available. Signing in is optional.</p>
+        </div>
+        <button onclick="CloudSync.closeAccountModal()" aria-label="Close account dialog" class="text-slate-400 hover:text-slate-700 text-xl leading-none">×</button>
+      </div>
+
+      <div id="auth-config-message" class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs text-amber-800">
+        Cloud login has not been configured for this deployment. Your guest progress remains saved in this browser.
+      </div>
+
+      <div id="auth-guest-panel" class="space-y-4">
+        <div class="grid gap-3">
+          <label class="text-xs font-bold text-slate-600">
+            Email
+            <input id="auth-email" type="email" autocomplete="email" placeholder="Email address" class="mt-1 w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-normal focus:outline-none focus:ring-2 focus:ring-brand-500">
+          </label>
+          <label class="text-xs font-bold text-slate-600">
+            Password
+            <input id="auth-password" type="password" autocomplete="current-password" placeholder="At least 8 characters" class="mt-1 w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-normal focus:outline-none focus:ring-2 focus:ring-brand-500">
+          </label>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="CloudSync.signIn()" class="bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold px-3 py-2 rounded-lg">Sign In</button>
+          <button onclick="CloudSync.signUp()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-3 py-2 rounded-lg">Create Account</button>
+        </div>
+        <button onclick="CloudSync.sendMagicLink()" class="w-full border border-brand-200 text-brand-700 hover:bg-brand-50 text-xs font-bold px-3 py-2 rounded-lg">Email me a magic link</button>
+      </div>
+
+      <div id="auth-user-panel" class="hidden space-y-4">
+        <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3">
+          <span class="text-xs font-bold text-emerald-800 block">Cloud account connected</span>
+          <span class="text-xs text-emerald-700">User ID: <code id="auth-user-id"></code></span>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="CloudSync.syncNow()" class="bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold px-3 py-2 rounded-lg">Sync Now</button>
+          <button onclick="CloudSync.signOut()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-3 py-2 rounded-lg">Sign Out</button>
+        </div>
+      </div>
+
+      <p id="auth-message" class="text-xs text-emerald-700 min-h-5"></p>
     </div>
   </div>
 
@@ -223,6 +277,47 @@
             <h3 class="text-2xl font-bold text-slate-800" id="dash-bookmarks">0</h3>
             <p class="text-xs text-slate-500 mt-1">Saved study pearls</p>
           </div>
+        </div>
+      </div>
+
+      <!-- User Progress Dashboard -->
+      <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-4">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <h2 class="text-base font-bold text-slate-800">My Progress Dashboard</h2>
+            <p id="user-sync-status" class="text-xs text-slate-500 mt-0.5">Local guest storage</p>
+          </div>
+          <button onclick="CloudSync.openAccountModal()" class="text-xs font-bold text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-lg">Account & Sync</button>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="bg-slate-50 rounded-lg p-3"><span class="text-[10px] uppercase font-bold text-slate-400 block">Completed</span><strong id="user-completed" class="text-xl text-slate-800">0</strong></div>
+          <div class="bg-slate-50 rounded-lg p-3"><span class="text-[10px] uppercase font-bold text-slate-400 block">Accuracy</span><strong id="user-accuracy" class="text-xl text-slate-800">0%</strong></div>
+          <div class="bg-slate-50 rounded-lg p-3"><span class="text-[10px] uppercase font-bold text-slate-400 block">Bookmarks</span><strong id="user-bookmarks" class="text-xl text-slate-800">0</strong></div>
+          <div class="bg-slate-50 rounded-lg p-3"><span class="text-[10px] uppercase font-bold text-slate-400 block">Notes</span><strong id="user-notes" class="text-xl text-slate-800">0</strong></div>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 block mb-2">Weak Topics</span>
+          <div id="user-weak-topics" class="flex flex-wrap gap-2 text-xs text-slate-600">No weak topics identified yet.</div>
+        </div>
+      </div>
+
+      <!-- Administrator Dashboard -->
+      <div id="admin-dashboard" class="hidden bg-slate-900 text-white rounded-xl p-5 shadow-sm space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-base font-bold">Administrator Dashboard</h2>
+            <p class="text-xs text-slate-400 mt-0.5">Aggregate, privacy-preserving usage statistics</p>
+          </div>
+          <button onclick="CloudSync.loadAdminDashboard()" class="text-xs font-bold bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg">Refresh</button>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <div class="bg-slate-800 rounded-lg p-3"><span class="text-[10px] uppercase font-bold text-slate-400 block">Total Users</span><strong id="admin-total-users" class="text-xl">0</strong></div>
+          <div class="bg-slate-800 rounded-lg p-3"><span class="text-[10px] uppercase font-bold text-slate-400 block">Answers</span><strong id="admin-total-answers" class="text-xl">0</strong></div>
+          <div class="bg-slate-800 rounded-lg p-3"><span class="text-[10px] uppercase font-bold text-slate-400 block">Active 30d</span><strong id="admin-active-users" class="text-xl">0</strong></div>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 block mb-2">Most Difficult Questions</span>
+          <ul id="admin-difficult-questions" class="space-y-1 text-xs text-slate-300"></ul>
         </div>
       </div>
 
@@ -387,6 +482,16 @@
             <p class="text-xs text-slate-400 mt-1">Select an option on the left to reveal deep clinical breakdowns, pearls, and references.</p>
           </div>
         </div>
+      </div>
+      <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-3">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <h3 class="text-sm font-bold text-slate-800">My Note</h3>
+            <p class="text-xs text-slate-500">Saved locally in guest mode and synchronized when signed in.</p>
+          </div>
+          <button onclick="saveStudyNote()" class="text-xs font-bold bg-brand-600 hover:bg-brand-700 text-white px-3 py-1.5 rounded-lg">Save Note</button>
+        </div>
+        <textarea id="study-note" rows="4" placeholder="Add your own revision note for this question…" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
       </div>
     </section>
 
@@ -885,6 +990,7 @@
       bookmarks: [],           // Question Codes
       studyProgress: {},       // { code: { choice: 'B', correct: true } }
       examHistory: [],         // Mock exam score structures
+      notes: {},               // Personal notes keyed by question code
       soundEnabled: true,       // Audible answer feedback preference
       currentStudyIndex: 0,
       activeExam: null,        // { questions: [], answers: {}, currentIdx: 0, timer: 0, intervalId: null }
@@ -900,6 +1006,7 @@
           appState.bookmarks = parsed.bookmarks || [];
           appState.studyProgress = parsed.studyProgress || {};
           appState.examHistory = parsed.examHistory || [];
+          appState.notes = parsed.notes || {};
           appState.soundEnabled = parsed.soundEnabled !== false;
         } catch (e) {
           console.error("Local storage corruption detected. Resetting safely.", e);
@@ -916,9 +1023,11 @@
         bookmarks: appState.bookmarks,
         studyProgress: appState.studyProgress,
         examHistory: appState.examHistory,
+        notes: appState.notes,
         soundEnabled: appState.soundEnabled
       };
       localStorage.setItem('frcpath_haem_state', JSON.stringify(payload));
+      if (window.CloudSync) window.CloudSync.queueProgressSync(payload);
     }
 
     function updateSoundToggle() {
@@ -959,6 +1068,7 @@
       appState.bookmarks = [];
       appState.studyProgress = {};
       appState.examHistory = [];
+      appState.notes = {};
       
       if (appState.activeExam && appState.activeExam.intervalId) {
         clearInterval(appState.activeExam.intervalId);
@@ -1043,7 +1153,60 @@
     /* =========================================================================
        DASHBOARD CONTROLLER
        ========================================================================= */
+    function renderUserDashboard() {
+      const attempts = Object.values(appState.studyProgress);
+      const completed = attempts.length;
+      const correct = attempts.filter(attempt => attempt.correct).length;
+      const accuracy = completed ? Math.round((correct / completed) * 100) : 0;
+      const noteCount = Object.values(appState.notes || {}).filter(note => String(note).trim()).length;
+
+      document.getElementById('user-completed').innerText = completed;
+      document.getElementById('user-accuracy').innerText = `${accuracy}%`;
+      document.getElementById('user-bookmarks').innerText = appState.bookmarks.length;
+      document.getElementById('user-notes').innerText = noteCount;
+
+      const weakTopics = [...new Set(haematologyQuestions.map(question => question.section))]
+        .map(section => {
+          const questions = haematologyQuestions.filter(question => question.section === section);
+          const answered = questions.filter(question => appState.studyProgress[question.code]);
+          const wrong = answered.filter(question => !appState.studyProgress[question.code].correct).length;
+          return {
+            section,
+            answered: answered.length,
+            errorRate: answered.length ? wrong / answered.length : 0
+          };
+        })
+        .filter(topic => topic.answered > 0 && topic.errorRate > 0)
+        .sort((a, b) => b.errorRate - a.errorRate || b.answered - a.answered)
+        .slice(0, 5);
+
+      const container = document.getElementById('user-weak-topics');
+      container.innerHTML = '';
+      if (!weakTopics.length) {
+        container.innerText = 'No weak topics identified yet.';
+        return;
+      }
+      weakTopics.forEach(topic => {
+        const badge = document.createElement('span');
+        badge.className = 'bg-rose-50 text-rose-700 border border-rose-100 px-2.5 py-1 rounded-full';
+        badge.textContent = `${topic.section}: ${Math.round(topic.errorRate * 100)}% incorrect`;
+        container.appendChild(badge);
+      });
+    }
+
+    function saveStudyNote() {
+      const question = appState.studyFilteredList[appState.currentStudyIndex];
+      if (!question) return;
+      const note = document.getElementById('study-note').value.trim();
+      if (note) appState.notes[question.code] = note;
+      else delete appState.notes[question.code];
+      saveState();
+      showToast(note ? 'Note saved.' : 'Note removed.', 'success');
+      if (appState.currentTab === 'dashboard') renderDashboard();
+    }
+
     function renderDashboard() {
+      renderUserDashboard();
       const totalQ = haematologyQuestions.length;
       const progressKeys = Object.keys(appState.studyProgress);
       const completedCount = progressKeys.length;
@@ -1288,6 +1451,7 @@
       document.getElementById('study-question-title').innerText = q.title;
       document.getElementById('study-question-vignette').innerText = q.vignette;
       document.getElementById('study-counter-display').innerText = `${appState.currentStudyIndex + 1} of ${list.length}`;
+      document.getElementById('study-note').value = appState.notes[q.code] || '';
 
       const isBookmarked = appState.bookmarks.includes(q.code);
       const starIcon = document.getElementById('study-bookmark-icon');
@@ -1412,6 +1576,7 @@
       };
       
       saveState();
+      if (window.CloudSync) void window.CloudSync.recordAttempt(q.code, isCorrect);
       void playFeedbackSound(isCorrect);
 
       if (isCorrect) {
@@ -1605,6 +1770,9 @@
         if (userChoice === q.correct_answer) {
           totalCorrect++;
         }
+        if (userChoice && window.CloudSync) {
+          void window.CloudSync.recordAttempt(q.code, userChoice === q.correct_answer);
+        }
       });
 
       const scorePercent = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
@@ -1767,6 +1935,7 @@
     window.onload = async function () {
       const fullBankLoaded = await loadQuestionBanks();
       initApp();
+      if (window.CloudSync) await window.CloudSync.init();
       if (!fullBankLoaded) {
         showToast('Full AML bank could not be loaded. Using the embedded 10-question fallback.', 'error');
       }
