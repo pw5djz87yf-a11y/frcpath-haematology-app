@@ -6,6 +6,13 @@ A browser-based revision portal for professional haematology study.
 
 Open the [FRCPath Haematology Revision App](https://pw5djz87yf-a11y.github.io/frcpath-haematology-app/).
 
+
+## Guest mode and optional cloud sync
+
+The app works immediately without an account and saves guest progress in the browser. Optional Supabase authentication adds email/password login, magic links, cross-device progress sync, personal notes, and a protected administrator dashboard.
+
+Supabase is deliberately unconfigured by default. See [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md) for the database schema, Row Level Security policies, administrator setup, and safe public configuration values.
+
 ## Export a test release
 
 The **Export test release** GitHub Actions workflow creates a downloadable, self-contained ZIP containing:
