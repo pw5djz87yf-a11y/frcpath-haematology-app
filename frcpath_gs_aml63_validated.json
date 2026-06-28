@@ -1,0 +1,29 @@
+[
+  {
+    "id": 63,
+    "code": "AML63",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "difficulty": "Consultant",
+    "question_type": "Single best answer",
+    "title": "FLT3-ITD AML",
+    "question": "What is the major significance of FLT3-ITD in AML?",
+    "options": [
+      "It influences prognosis and targeted therapy decisions.",
+      "It defines MPAL.",
+      "It excludes NPM1 mutation.",
+      "It defines core-binding factor AML.",
+      "It is specific for therapy-related AML."
+    ],
+    "correct_answer": "A. It influences prognosis and targeted therapy decisions.",
+    "explanation": "FLT3-ITD has prognostic and therapeutic implications and should be interpreted with other molecular findings.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  }
+]

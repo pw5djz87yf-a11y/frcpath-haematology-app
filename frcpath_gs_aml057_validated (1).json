@@ -1,0 +1,32 @@
+[
+  {
+    "id": 57,
+    "code": "AML057",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Cytogenetics",
+    "subsection": "DEK::NUP214 AML",
+    "title": "AML with DEK::NUP214 (t(6;9))",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "clinical_vignette": "A 29-year-old patient presents with AML, leukocytosis and peripheral basophilia. Cytogenetic analysis demonstrates t(6;9)(p22;q34).",
+    "question": "Which additional molecular abnormality is classically associated with AML carrying DEK::NUP214?",
+    "options": [
+      "FLT3-ITD",
+      "NPM1 mutation",
+      "PML::RARA",
+      "CBFB::MYH11",
+      "SF3B1 mutation"
+    ],
+    "correct_answer": "A. FLT3-ITD",
+    "explanation": "AML with DEK::NUP214 frequently co-occurs with FLT3-ITD and is associated with adverse-risk disease. Recognition of basophilia and the characteristic translocation should prompt integrated molecular assessment.",
+    "frcpath_pearl": "Peripheral basophilia in AML is an important clue to t(6;9)/DEK::NUP214 and should trigger targeted cytogenetic review.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "ICC 2022",
+      "ELN Recommendations"
+    ]
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "id": 72,
+    "code": "AML072",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "subsection": "TET2, CHIP and AML",
+    "title": "TET2 mutation: CHIP versus AML-defining disease",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 360,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Interpret molecular findings in AML",
+      "Distinguish diagnostic, prognostic and clonal markers",
+      "Apply integrated consultant-level reporting principles"
+    ],
+    "clinical_vignette": "A 76-year-old man has AML with 28% blasts. NGS shows TET2 mutation VAF 44% and IDH2 mutation VAF 18%. NPM1, FLT3 and TP53 are negative. Karyotype is normal.",
+    "question": "Which interpretation is most appropriate?",
+    "options": [
+      "A. TET2 alone defines AML with myelodysplasia-related gene mutation.",
+      "B. TET2 may represent clonal haematopoiesis or an early cooperating lesion and must be interpreted in context.",
+      "C. TET2 mutation proves acute promyelocytic leukaemia.",
+      "D. TET2 mutation excludes AML.",
+      "E. TET2 mutation defines core-binding factor AML."
+    ],
+    "correct_answer": "B. TET2 may represent clonal haematopoiesis or an early cooperating lesion and must be interpreted in context.",
+    "explanation": "TET2 is a common age-related clonal haematopoiesis gene and may participate in AML pathogenesis, but it is not by itself an AML-defining abnormality. Interpretation requires blast count, morphology, cytogenetics and co-mutations.",
+    "why_other_options_are_wrong": {},
+    "frcpath_pearl": "Not every mutation in an AML NGS report defines the AML entity.",
+    "take_home_message": "Molecular findings in AML must be interpreted in diagnostic hierarchy and clinical context.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "European LeukemiaNet Recommendations"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": 61,
+    "code": "AML061",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "difficulty": "Consultant",
+    "question_type": "Single best answer",
+    "title": "TP53-altered AML",
+    "question": "Why is TP53 alteration important in AML?",
+    "options": [
+      "It is associated with genetically complex disease and adverse outcomes.",
+      "It defines core-binding factor AML.",
+      "It is specific for APL.",
+      "It always coexists with NPM1 mutation.",
+      "It excludes complex karyotype."
+    ],
+    "correct_answer": "A. It is associated with genetically complex disease and adverse outcomes.",
+    "explanation": "TP53 alterations commonly occur with complex cytogenetics and are associated with poor prognosis; diagnostic classification and risk assessment should be integrated.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  }
+]

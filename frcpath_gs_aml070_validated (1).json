@@ -1,0 +1,119 @@
+[
+  {
+    "id": 70,
+    "code": "AML070",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "subsection": "AML with myelodysplasia-related gene mutations",
+    "title": "Integrated interpretation of AML with myelodysplasia-related gene mutations",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 420,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Recognise myelodysplasia-related gene mutations in AML classification.",
+      "Differentiate AML with NPM1 mutation from AML with myelodysplasia-related gene mutations.",
+      "Understand why mutation context matters when applying WHO5 and ICC 2022 classification.",
+      "Integrate morphology, cytogenetics and NGS findings into a consultant-level report."
+    ],
+    "tags": [
+      "AML",
+      "myelodysplasia-related",
+      "ASXL1",
+      "SRSF2",
+      "RUNX1",
+      "BCOR",
+      "EZH2",
+      "STAG2",
+      "U2AF1",
+      "ZRSR2",
+      "NGS",
+      "WHO5",
+      "ICC2022"
+    ],
+    "clinical_vignette": "A 72-year-old man presents with progressive fatigue, recurrent infections and bruising. There is no documented previous diagnosis of MDS, but previous blood counts over the past year show persistent macrocytic anaemia and mild thrombocytopenia. Bone marrow examination now confirms acute myeloid leukaemia.",
+    "laboratory_data": {
+      "Hb": "76 g/L",
+      "WBC": "4.8 ×10⁹/L",
+      "ANC": "0.6 ×10⁹/L",
+      "Platelets": "39 ×10⁹/L",
+      "MCV": "108 fL",
+      "LDH": "740 U/L"
+    },
+    "morphology": {
+      "peripheral_blood": "Macrocytosis, hypogranular neutrophils and occasional pseudo-Pelger-Huet forms. Circulating blasts are present.",
+      "bone_marrow": "Hypercellular marrow with 32% myeloblasts. Dysplasia is present in granulocytic and megakaryocytic lineages."
+    },
+    "flow_cytometry": {
+      "positive": [
+        "CD34",
+        "CD117",
+        "CD13",
+        "CD33",
+        "HLA-DR",
+        "MPO",
+        "aberrant CD7 partial"
+      ],
+      "negative": [
+        "CD19",
+        "cyCD79a",
+        "cyCD3",
+        "CD14"
+      ],
+      "interpretation": "Expanded abnormal myeloid blast population with aberrant antigen expression, compatible with AML."
+    },
+    "cytogenetics": {
+      "karyotype": "46,XY[20]",
+      "interpretation": "Normal conventional karyotype. No recurrent AML-defining rearrangement detected by rapid FISH panel."
+    },
+    "molecular_genetics": {
+      "NPM1": "Not detected",
+      "FLT3-ITD": "Not detected",
+      "TP53": "Not detected",
+      "ASXL1": "Pathogenic frameshift mutation detected; VAF 39%",
+      "SRSF2": "Pathogenic mutation detected; VAF 42%",
+      "RUNX1": "Not detected",
+      "IDH1": "Not detected",
+      "IDH2": "Not detected"
+    },
+    "integrated_laboratory_diagnosis": "Acute myeloid leukaemia with myelodysplasia-related gene mutations, supported by ASXL1 and SRSF2 mutations and dysplastic morphology.",
+    "question": "Which statement best reflects the integrated interpretation of these findings?",
+    "options": [
+      "A. This is AML with NPM1 mutation because the karyotype is normal.",
+      "B. This is AML with myelodysplasia-related gene mutations because pathogenic ASXL1 and SRSF2 mutations are present in the appropriate AML context.",
+      "C. This is acute promyelocytic leukaemia because the WBC is not markedly elevated.",
+      "D. This is mixed phenotype acute leukaemia because CD7 is partially expressed.",
+      "E. This should be classified as AML with RUNX1::RUNX1T1 because dysplasia is present."
+    ],
+    "correct_answer": "B. This is AML with myelodysplasia-related gene mutations because pathogenic ASXL1 and SRSF2 mutations are present in the appropriate AML context.",
+    "explanation": "This case is best interpreted as AML with myelodysplasia-related gene mutations. Pathogenic mutations in genes such as ASXL1 and SRSF2 are recognised as myelodysplasia-related genetic features in modern AML classification when present in the appropriate setting and not superseded by another defining AML entity such as NPM1-mutated AML or a recurrent AML-defining fusion. The morphology and prior cytopenias further support an antecedent myelodysplastic biology, although the genetic findings alone may be sufficient for classification depending on the classification system used.",
+    "why_other_options_are_wrong": {
+      "A": "Normal karyotype does not imply NPM1 mutation. NPM1 testing is negative in this case.",
+      "C": "APL requires compatible morphology and demonstration of PML::RARA or another appropriate RARA-pathway rearrangement.",
+      "D": "Partial CD7 expression is a common aberrancy in AML and does not establish T-lineage or MPAL.",
+      "E": "Dysplasia alone does not diagnose RUNX1::RUNX1T1 AML. That entity requires demonstration of the fusion."
+    },
+    "frcpath_pearl": "Do not interpret myelodysplasia-related mutations as a simple checklist. First exclude AML-defining recurrent genetic entities such as NPM1-mutated AML and core-binding factor AML, then integrate morphology, history, cytogenetics and NGS.",
+    "common_pitfalls": [
+      "Assuming normal karyotype excludes myelodysplasia-related AML.",
+      "Overcalling MPAL because of partial CD7 expression.",
+      "Ignoring the hierarchy of AML-defining genetic abnormalities.",
+      "Confusing dysplastic morphology with a specific recurrent fusion."
+    ],
+    "take_home_message": "Myelodysplasia-related gene mutations provide powerful evidence of AML with myelodysplasia-related biology, but classification must be made in the full genetic and clinicopathological context.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "European LeukemiaNet Recommendations"
+    ],
+    "related_cases": [
+      "AML026",
+      "AML061",
+      "AML067",
+      "AML071"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": 67,
+    "code": "AML67",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "difficulty": "Consultant",
+    "question_type": "Single best answer",
+    "title": "ASXL1-mutated AML",
+    "question": "ASXL1 mutation is most closely associated with:",
+    "options": [
+      "Myelodysplasia-related genetic features and integrated risk assessment.",
+      "Acute promyelocytic leukaemia.",
+      "Pure erythroid leukaemia only.",
+      "Core-binding factor AML.",
+      "Megakaryoblastic AML exclusively."
+    ],
+    "correct_answer": "A. Myelodysplasia-related genetic features and integrated risk assessment.",
+    "explanation": "ASXL1 is an important myelodysplasia-related gene and contributes to integrated classification.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": 60,
+    "code": "AML060",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Cytogenetics",
+    "difficulty": "Consultant",
+    "question_type": "Single best answer",
+    "title": "Hyperdiploid and hypodiploid AML",
+    "question": "What is the principal significance of identifying marked hyperdiploidy or hypodiploidy in AML?",
+    "options": [
+      "It contributes to integrated cytogenetic risk assessment together with other genomic findings.",
+      "It always defines APL.",
+      "It confirms MPAL.",
+      "It excludes AML-defining fusions.",
+      "It indicates therapy-related AML."
+    ],
+    "correct_answer": "A. It contributes to integrated cytogenetic risk assessment together with other genomic findings.",
+    "explanation": "Chromosome number abnormalities should be interpreted alongside recurrent rearrangements and molecular findings.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  }
+]

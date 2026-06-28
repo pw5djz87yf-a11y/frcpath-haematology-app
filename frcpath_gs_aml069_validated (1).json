@@ -1,0 +1,115 @@
+[
+  {
+    "id": 69,
+    "code": "AML069",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "subsection": "NPM1, FLT3-ITD and DNMT3A co-mutation",
+    "title": "Integrated molecular interpretation of NPM1-mutated AML with FLT3-ITD and DNMT3A",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 420,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Interpret co-mutations in NPM1-mutated AML.",
+      "Recognise the prognostic and therapeutic relevance of FLT3-ITD.",
+      "Understand the role of DNMT3A as a common cooperating mutation.",
+      "Separate AML diagnostic classification from molecular risk refinement."
+    ],
+    "tags": [
+      "AML",
+      "NPM1",
+      "FLT3-ITD",
+      "DNMT3A",
+      "NGS",
+      "Molecular Genetics",
+      "ELN",
+      "Integrated Diagnosis"
+    ],
+    "clinical_vignette": "A 51-year-old man presents with fatigue, mouth ulcers and gum bleeding. He has no previous history of myelodysplasia or chemotherapy exposure. Bone marrow examination confirms acute myeloid leukaemia. A rapid molecular panel and NGS are performed.",
+    "laboratory_data": {
+      "Hb": "79 g/L",
+      "WBC": "67.5 ×10⁹/L",
+      "ANC": "0.8 ×10⁹/L",
+      "Platelets": "26 ×10⁹/L",
+      "LDH": "1860 U/L",
+      "Uric Acid": "590 µmol/L"
+    },
+    "morphology": {
+      "peripheral_blood": "Numerous circulating blasts with occasional cup-like nuclear invaginations. No abnormal promyelocyte predominance.",
+      "bone_marrow": "Hypercellular marrow replaced by blasts. Blasts show moderate cytoplasm and folded or cup-like nuclei. No significant multilineage dysplasia is identified."
+    },
+    "flow_cytometry": {
+      "positive": [
+        "MPO",
+        "CD33 bright",
+        "CD13",
+        "CD117",
+        "HLA-DR dim",
+        "CD38"
+      ],
+      "negative": [
+        "CD34",
+        "CD19",
+        "cyCD79a",
+        "cyCD3",
+        "CD10",
+        "CD14"
+      ],
+      "interpretation": "The immunophenotype supports AML and is compatible with an NPM1-mutated pattern, including absent CD34 and reduced HLA-DR."
+    },
+    "cytogenetics": {
+      "karyotype": "46,XY[20]",
+      "interpretation": "Normal conventional karyotype. No recurrent AML-defining rearrangement detected on rapid FISH panel."
+    },
+    "molecular_genetics": {
+      "NPM1": "Pathogenic mutation detected; VAF 42%",
+      "FLT3-ITD": "Detected",
+      "FLT3-TKD": "Not detected",
+      "DNMT3A": "Pathogenic mutation detected; VAF 46%",
+      "IDH1": "Not detected",
+      "IDH2": "Not detected",
+      "TP53": "Not detected",
+      "RUNX1": "Not detected"
+    },
+    "integrated_laboratory_diagnosis": "Acute myeloid leukaemia with NPM1 mutation, with concurrent FLT3-ITD and DNMT3A mutation.",
+    "question": "Which statement best reflects the integrated molecular interpretation of this case?",
+    "options": [
+      "A. DNMT3A mutation supersedes NPM1 and reclassifies the case as AML with myelodysplasia-related gene mutation.",
+      "B. This is AML with NPM1 mutation; FLT3-ITD and DNMT3A are important co-mutations that influence risk assessment and management but do not replace the diagnostic entity.",
+      "C. The normal karyotype means this AML cannot be genetically classified.",
+      "D. FLT3-ITD alone defines the AML subtype, regardless of NPM1 status.",
+      "E. Reduced HLA-DR and absent CD34 are sufficient to diagnose acute promyelocytic leukaemia."
+    ],
+    "correct_answer": "B. This is AML with NPM1 mutation; FLT3-ITD and DNMT3A are important co-mutations that influence risk assessment and management but do not replace the diagnostic entity.",
+    "explanation": "This case is best classified as AML with NPM1 mutation. NPM1 mutation defines the diagnostic entity. Concurrent FLT3-ITD has major prognostic and therapeutic implications, including consideration of FLT3-targeted therapy according to local protocols and current recommendations. DNMT3A is a common cooperating mutation in NPM1-mutated AML and may reflect clonal architecture, but it does not supersede the NPM1-defined entity. Normal karyotype does not exclude genetically defined AML because many defining lesions are molecular rather than cytogenetic.",
+    "why_other_options_are_wrong": {
+      "A": "DNMT3A is not one of the defining myelodysplasia-related gene mutations used to reclassify AML as AML with myelodysplasia-related gene mutation in the same way as genes such as ASXL1, RUNX1, BCOR, EZH2, SF3B1, SRSF2, STAG2, U2AF1 or ZRSR2.",
+      "C": "Many AML cases with normal karyotype are genetically defined by molecular lesions such as NPM1 mutation.",
+      "D": "FLT3-ITD is clinically important but is not the defining diagnostic entity in this case.",
+      "E": "Reduced HLA-DR and absent CD34 may be seen in NPM1-mutated AML and are not sufficient for APL; APL requires compatible morphology and PML::RARA or variant RARA rearrangement."
+    },
+    "frcpath_pearl": "When interpreting NGS, ask three separate questions: What defines the diagnosis? What modifies risk? What is therapeutically targetable?",
+    "common_pitfalls": [
+      "Assuming DNMT3A mutation automatically means AML with myelodysplasia-related gene mutation.",
+      "Treating FLT3-ITD as the diagnostic entity rather than a prognostic and therapeutic marker.",
+      "Assuming normal karyotype excludes genetically defined AML.",
+      "Mistaking reduced HLA-DR and absent CD34 for APL without PML::RARA evidence."
+    ],
+    "take_home_message": "NPM1 mutation defines the AML entity, while FLT3-ITD and DNMT3A refine risk, clonal interpretation and treatment planning.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "European LeukemiaNet Recommendations"
+    ],
+    "related_cases": [
+      "AML062",
+      "AML063",
+      "AML068",
+      "AML070"
+    ]
+  }
+]

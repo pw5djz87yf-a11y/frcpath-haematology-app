@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-900">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEMA-EXCEL: FRCPath Haematology Exam Companion</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        blood: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                            950: '#4c0519',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- React & ReactDOM CDNs (React 18) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" crossorigin></script>
+    <!-- Babel for JSX compilation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.21.4/babel.min.js" crossorigin></script>
+</head>
+<body class="h-full font-sans antialiased text-slate-100 bg-slate-900 select-none">
+
+    <div id="root" class="h-full"></div>
+
+    <!-- React Application Code -->
+    <script type="text/babel">
+        const { useState, useEffect, useMemo, useRef } = React;
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'hema-excel-study-app';
+        const apiKey = ""; // Runtime automatically provisions key
+
+        // High Yield Clinical Pearls
+        const CLINICAL_PEARLS = [
+            { text: "In Primary Myelofibrosis (PMF), mutations in CALR (Type 1 deletions) are associated with lower thrombosis risks and better overall survival compared to JAK2 V617F.", theme: "Myeloproliferative disorders" },
+            { text: "APL presenting with DIC is an extreme medical emergency. Immediate ATRA therapy must be initiated on morphological suspicion before genetic confirmation of t(15;17).", theme: "Acute leukaemias" },
+            { text: "In a mixing study, factor inhibitors (like FVIII inhibitor) are time- and temperature-dependent: correcting initially, but showing a prolonged APTT after 2 hours incubation at 37°C.", theme: "Acquired haemorrhagic disorders" },
+            { text: "TACO is characterized by fluid overload, hypertension, and response to diuretics, whereas TRALI features normal/low blood pressure, fever, and no improvement with diuretics.", theme: "Transfusion complications" },
+            { text: "High sensitivity FLAER-based flow cytometry is the gold standard for PNH, analyzing CD55 and CD59 expression on neutrophils and monocytes (GPI-anchored proteins).", theme: "Bone marrow failure / PNH" },
+            { text: "Neonatal Alloimmune Thrombocytopenia (NAIT) is most commonly triggered by maternal antibodies against Human Platelet Antigen 1a (HPA-1a) in HPA-1a-negative mothers.", theme: "Paediatric haematology" },
+            { text: "Luspatercept acts as a ligand trap targeting the TGF-beta superfamily, promoting late-stage erythroid maturation in MDS-RS patients failing standard ESAs.", theme: "Myelodysplastic syndromes" },
+            { text: "Andexanet Alfa is a recombinant modified decoy Factor Xa protein specifically designed to reverse oral direct Factor Xa inhibitors (Apixaban and Rivaroxaban).", theme: "Therapeutics" }
+        ];
+
+        // Core Syllabus Topics (for custom AI case study generation)
+        const SYLLABUS_TOPICS = [
+            "Bone marrow failure syndromes",
+            "Iron metabolism abnormalities",
+            "Underproduction anaemias",
+            "Haemolytic anaemias",
+            "Obstetric haematology",
+            "Paediatric haematology",
+            "Infective problems in haematology",
+            "Laboratory haematology",
+            "Laboratory management",
+            "Myeloproliferative disorders",
+            "Myelodysplastic syndromes",
+            "Acute leukaemias",
+            "Lymphoproliferative disorders",
+            "Plasma cell dyscrasias",
+            "Lymphomas",
+            "Platelet disorders",
+            "Inherited haemorrhagic disorders",
+            "Acquired haemorrhagic disorders",
+            "Inherited thrombotic disorders",
+            "Acquired thrombotic disorders",
+            "Indications for blood & blood product transfusion",
+            "Complications of blood & blood product transfusion",
+            "Donor selection & blood bank techniques",
+            "Chemotherapeutic agents",
+            "Stem cell transplantation",
+            "Anti-thrombotic agents"
+        ];
+
+        // 24 High-Yield Exam SBA Questions covering syllabus themes
+        const SBA_QUESTIONS = [
+            {
+                id: 1,
+                theme: "Bone marrow failure syndromes",
+                question: "A 24-year-old female presents with severe pancytopenia. Bone marrow biopsy reveals a cellularity of 15% with normal cytogenetics. Paroxysmal nocturnal haemoglobinuria (PNH) clone size is 2%. What is the first-line standard of care for severe aplastic anaemia (SAA) in patients under 40 years of age with an HLA-matched sibling?",
+                options: [
+                    "Horse Antithymocyte Globulin (hATG) plus Cyclosporine A (CsA)",
+                    "Allogeneic hematopoietic stem cell transplantation (HSCT) from the HLA-matched sibling",
+                    "Eltrombopag monotherapy",
+                    "Rituximab plus high-dose Methylprednisolone",
+                    "Immediate matched unrelated donor (MUD) transplant"
+                ],
+                correctIndex: 1,
+                explanation: "According to the British Society for Haematology (BSH) guidelines, allogeneic hematopoietic stem cell transplantation (HSCT) from an HLA-identical sibling is the standard frontline treatment of choice for patients under 40 years of age presenting with severe aplastic anaemia, offering the highest cure rates and lowest long-term clonal relapse risks.",
+                reference: "BSH Guidelines for the Diagnosis and Management of Aplastic Anaemia."
+            },
+            {
+                id: 2,
+                theme: "Iron metabolism abnormalities",
+                question: "A 45-year-old male with persistent lethargy and arthralgia has a transferrin saturation of 82% and a serum ferritin of 1200 ug/L. Genetic testing confirms a homozygous C282Y mutation in the HFE gene. What is the target serum ferritin level during the maintenance phase of venesection therapy according to current guidelines?",
+                options: [
+                    "Keep ferritin < 100 ug/L",
+                    "Keep ferritin < 50 ug/L (typically 20 - 50 ug/L)",
+                    "Keep ferritin between 150 - 200 ug/L",
+                    "Keep ferritin < 300 ug/L",
+                    "No target is required if transferrin saturation remains under 50%"
+                ],
+                correctIndex: 1,
+                explanation: "For patients undergoing therapeutic venesection for HFE-related Hereditary Haemochromatosis, the maintenance target is a serum ferritin of 20 - 50 ug/L (often simplified as < 50 ug/L) to prevent long-term organ damage from iron deposition while avoiding iron deficiency anemia.",
+                reference: "BSH Guideline on the Diagnosis and Therapy of Genetic Haemochromatosis."
+            },
+            {
+                id: 3,
+                theme: "Underproduction anaemias",
+                question: "A 32-year-old male presents with microcytic, hypochromic anaemia (Hb 82 g/L, MCV 64 fL). Iron stores are abundant. Bone marrow aspirate reveals ring sideroblasts occupying >15% of erythroid precursors. Genetic testing reveals a mutation in the ALAS2 gene. What is the most appropriate therapeutic agent to trial?",
+                options: [
+                    "Intravenous Iron Sucrose",
+                    "Oral Pyridoxine (Vitamin B6)",
+                    "Subcutaneous Erythropoietin (EPO)",
+                    "Riboflavin (Vitamin B2)",
+                    "Penicillamine chelation therapy"
+                ],
+                correctIndex: 1,
+                explanation: "X-linked congenital sideroblastic anaemia is primarily caused by mutations in the ALAS2 gene, which encodes erythroid-specific 5-aminolevulinic acid synthase. This enzyme is dependent on pyridoxal phosphate (Vitamin B6) as a cofactor. Pharmacological doses of oral Pyridoxine (50-200 mg/day) can restore heme synthesis and correct anemia in a significant portion of these patients.",
+                reference: "Hoffbrand's Postgraduate Haematology - Sideroblastic Anaemia."
+            },
+            {
+                id: 4,
+                theme: "Haemolytic anaemias",
+                question: "A 68-year-old female presents with cold-induced acrocyanosis. FBC shows an MCV of 125 fL and low RBC counts, which fully normalize when the tube is incubated at 37°C. Direct Antiglobulin Test (DAT) is strongly positive for C3d but negative for IgG. What is the recommended first-line therapy for this condition if symptomatic?",
+                options: [
+                    "High-dose oral Prednisolone (1 mg/kg)",
+                    "Rituximab monotherapy",
+                    "Cyclophosphamide and Dexamethasone",
+                    "Eculizumab",
+                    "Emergency Splenectomy"
+                ],
+                correctIndex: 1,
+                explanation: "Cold Agglutinin Disease (CAD) is driven by monoclonal IgM autoantibodies that fix complement in cold environments. Unlike Warm AIHA, CAD does not respond well to corticosteroids or splenectomy because clearance of opsonized erythrocytes occurs in the liver via Kupffer cells rather than the spleen. BSH guidelines recommend Rituximab monotherapy as the first-line systemic treatment.",
+                reference: "BSH Guidelines on the diagnosis and management of autoimmune haemolytic anaemias."
+            },
+            {
+                id: 5,
+                theme: "Obstetric haematology",
+                question: "A 29-year-old pregnant female at 32 weeks gestation presents with an incidental platelet count of 74 x 10^9/L. She is completely asymptomatic with no history of bleeding or thrombocytopenia prior to pregnancy. Coagulation screen and liver function tests are completely normal. What is the most likely diagnosis?",
+                options: [
+                    "Gestational thrombocytopenia",
+                    "Primary Immune Thrombocytopenia (ITP) in pregnancy",
+                    "Preeclampsia with HELLP syndrome",
+                    "Disseminated Intravascular Coagulation (DIC)",
+                    "Congenital Amegakaryocytic Thrombocytopenia"
+                ],
+                correctIndex: 0,
+                explanation: "Gestational thrombocytopenia is the most common cause of thrombocytopenia in pregnancy (accounting for ~75% of cases). It is characterized by mild-to-moderate thrombocytopenia (platelets typically > 70-80 x 10^9/L), develops late in the second or third trimester, features no fetal complications, and resolves spontaneously postpartum.",
+                reference: "BSH Guidelines on the investigation and management of thrombocytopenia in pregnancy."
+            },
+            {
+                id: 6,
+                theme: "Paediatric haematology",
+                question: "An infant presents at 6 months of age with profound, progressive normochromic normocytic anaemia, reticulocytopenia, and a selective absence of erythroid precursors in the bone marrow. Physical exam reveals a bifid thumb. Mutations in the ribosomal protein gene RPS19 are identified. What is the first-line therapeutic strategy for this condition after 1 year of age?",
+                options: [
+                    "Oral Prednisolone",
+                    "Intravenous Immunoglobulin (IVIg)",
+                    "Immediate Myelofibrosis-protocol Allogeneic HSCT",
+                    "Regular packed red cell transfusions and deferoxamine iron chelation",
+                    "Cyclosporine A and Eltrombopag"
+                ],
+                correctIndex: 0,
+                explanation: "The presentation is classic for Diamond-Blackfan Anaemia (DBA), a congenital pure red cell aplasia linked to ribosomal protein gene mutations. Corticosteroids are the therapeutic mainstay, initiated after 1 year of age to avoid growth retardation associated with infant steroid use.",
+                reference: "Guidelines for the Diagnosis and Management of Diamond-Blackfan Anaemia."
+            },
+            {
+                id: 7,
+                theme: "Myeloproliferative disorders",
+                question: "A 52-year-old male presents with a routine blood count showing Hb 192 g/L, Hct 0.58, WBC 11.2 x 10^9/L, and Platelets 420 x 10^9/L. Erythropoietin level is low. JAK2 V617F mutation is detected. Bone marrow biopsy shows panmyelosis. What is the most appropriate target Hematocrit (Hct) for this patient's cytoreductive/venesection management?",
+                options: [
+                    "Keep Hct < 0.50 based on patient symptoms",
+                    "Keep Hct < 0.45 to minimize risk of vascular thrombosis",
+                    "Keep Hct < 0.42 to improve microvascular symptoms",
+                    "Keep Hct < 0.48 in male patients, and < 0.45 in females",
+                    "No target Hct is required if cytoreduction with Hydroxycarbamide is tolerated"
+                ],
+                correctIndex: 1,
+                explanation: "According to the CYTO-PV trial and British Society for Haematology (BSH) guidelines, strict hematocrit control targeting < 0.45 is mandatory in Polycythemia Vera (PV). Patients managed with a target Hct < 0.45 have a significantly lower rate of cardiovascular death and major thrombotic events compared to those targeted at 0.45 - 0.50.",
+                reference: "BSH Guideline for the Diagnosis and Management of Polycythaemia Vera (PV)."
+            },
+            {
+                id: 8,
+                theme: "Myelodysplastic syndromes",
+                question: "A 74-year-old male with transfusion-dependent MDS has a bone marrow biopsy showing 3% blasts and 20% ring sideroblasts. Genetic testing reveals an SF3B1 mutation. He has failed to respond to recombinant erythropoietin. What is the most appropriate next-line agent to reduce his transfusion burden?",
+                options: [
+                    "Azacitidine",
+                    "Luspatercept",
+                    "Lenalidomide",
+                    "Decitabine",
+                    "Intensive induction chemotherapy (7+3 regimen)"
+                ],
+                correctIndex: 1,
+                explanation: "Luspatercept is an erythroid maturation agent that binds TGF-beta superfamily ligands, restoring late-stage erythropoiesis. It is highly effective and approved specifically for lower-risk MDS with ring sideroblasts (MDS-RS) or SF3B1 mutations who remain transfusion-dependent after failing erythropoietin therapy.",
+                reference: "ESMO/BSH guidance on the management of lower-risk Myelodysplastic Syndromes."
+            },
+            {
+                id: 9,
+                theme: "Acute leukaemias",
+                question: "A 34-year-old male is suspected of having Acute Promyelocytic Leukaemia (APL) based on a blood film showing multiple Auer rods. While waiting for PML-RARA t(15;17) PCR results, the patient develops a localized hematoma. What is the single most critical immediate management decision?",
+                options: [
+                    "Administer high-dose Daunorubicin chemotherapy",
+                    "Wait for molecular confirmation of the PML-RARA fusion gene before starting targeted therapy",
+                    "Start All-trans Retinoic Acid (ATRA) immediately and aggressively transfuse cryoprecipitate/platelets to maintain fibrinogen >1.5 g/L",
+                    "Start broad-spectrum intravenous antibiotics and arrange a CT brain",
+                    "Initiate therapeutic low-molecular-weight heparin to stop consumptive coagulopathy"
+                ],
+                correctIndex: 2,
+                explanation: "APL is associated with highly lethal coagulopathy. Immediate administration of ATRA on morphological suspicion, combined with aggressive replacement therapy (cryoprecipitate to maintain fibrinogen >1.5 g/L and platelets to maintain >50 x 10^9/L), is critical to prevent fatal early intracranial hemorrhage.",
+                reference: "BSH/ELN Guidelines for the management of Acute Promyelocytic Leukaemia."
+            },
+            {
+                id: 10,
+                theme: "Lymphoproliferative disorders",
+                question: "A 63-year-old male with symptomatic CLL is found to have mutated IGHV status and no TP53 deletion/mutation on pre-treatment screening. He has no significant comorbidities. Which frontline therapeutic strategy offers excellent long-term progression-free survival while avoiding continuous, indefinite treatment?",
+                options: [
+                    "FCR (Fludarabine, Cyclophosphamide, Rituximab) for 6 cycles",
+                    "Continuous Ibrutinib monotherapy until progression",
+                    "Venetoclax plus Obinutuzumab for a fixed duration of 12 months",
+                    "Continuous Acalabrutinib monotherapy",
+                    "Chlorambucil plus Rituximab for 6 cycles"
+                ],
+                correctIndex: 2,
+                explanation: "Venetoclax-Obinutuzumab is a fixed-duration chemotherapy-free regimen (12 months) that provides highly durable deep responses (including high rates of undetectable MRD) in frontline CLL, avoiding the long-term toxicity of FCR and the need for indefinite continuous daily medication required by BTK inhibitors.",
+                reference: "BSH Guidelines on the treatment of Chronic Lymphocytic Leukaemia."
+            },
+            {
+                id: 11,
+                theme: "Plasma cell dyscrasias",
+                question: "A 58-year-old female presents with an IgG kappa paraprotein of 32 g/L, but has no anemia, renal impairment, hypercalcemia, or bone lesions on whole-body MRI. Bone marrow biopsy confirms 25% clonal plasma cells. What is the correct classification and recommended clinical action?",
+                options: [
+                    "Monoclonal Gammopathy of Undetermined Significance (MGUS); observe every 6 months",
+                    "Smoldering Multiple Myeloma (SMM); clinical monitoring and observation without therapy",
+                    "Active Multiple Myeloma; start VRd (Velcade, Lenalidomide, Dexamethasone) induction",
+                    "Solitary plasmacytoma; refer for local radiotherapy",
+                    "Plasma Cell Leukemia; start intensive chemotherapy"
+                ],
+                correctIndex: 1,
+                explanation: "This patient has Smoldering Multiple Myeloma (SMM) based on a paraprotein level >= 30 g/L and 10% to 60% clonal bone marrow plasma cells, in the absence of myeloma-defining events (CRAB features, bone marrow plasma cells >=60%, free light chain ratio >=100, or >1 focal lesion on MRI). Standard of care remains active observation.",
+                reference: "IMWG (International Myeloma Working Group) diagnostic criteria for Multiple Myeloma."
+            },
+            {
+                id: 12,
+                theme: "Lymphomas",
+                question: "A 64-year-old male presents with generalized lymphadenopathy and splenomegaly. Biopsy confirms Mantle Cell Lymphoma (MCL). Cytogenetic analysis reveals t(11;14)(q13;q32) and TP53 mutation is confirmed by NGS. What is the prognostic significance of this TP53 mutation in MCL?",
+                options: [
+                    "Favourable prognosis; high response rate to high-dose cytarabine-based regimens",
+                    "No prognostic significance; managed identically to wild-type TP53 patients",
+                    "Extremely poor prognosis; associated with resistance to standard immunochemotherapy and poor survival",
+                    "Indicates high likelihood of spontaneous regression",
+                    "Predicts highly favorable outcome with autologous stem cell transplantation"
+                ],
+                correctIndex: 2,
+                explanation: "TP53 mutations in Mantle Cell Lymphoma identify a subgroup of patients with extremely aggressive disease and poor outcomes. These patients derive very little benefit from conventional intensive chemotherapy or autologous stem cell transplantation, making clinical trials or novel targeted therapies highly recommended.",
+                reference: "BSH Guideline for the investigation and management of Mantle Cell Lymphoma."
+            }
+        ];
+
+        // 6 Digital Microscope Slides
+        const MORPHOLOGY_CASES = [
+            {
+                id: "apl",
+                title: "Acute Promyelocytic Leukaemia (APL)",
+                presentation: "A 29-year-old female presents to the Emergency Department with severe epistaxis, bruising, and a low-grade fever. Full blood count shows: Hb 84 g/L, WBC 1.8 x 10^9/L, Platelets 12 x 10^9/L. Coagulation profile: PT 22s (prolonged), APTT 54s (prolonged), Fibrinogen 0.8 g/L (critical hypofibrinogenaemia), D-dimer elevated.",
+                diagnosis: "APL presenting with severe consumptive coagulopathy / Disseminated Intravascular Coagulation (DIC).",
+                action: "EMERGENCY: Administer ATRA (All-trans Retinoic Acid) immediately on morphological suspicion. Do not wait for cytogenetic/molecular confirmation. Support aggressively with platelets, cryoprecipitate (to target Fibrinogen > 1.5 g/L), and FFP.",
+                cytogenetics: "t(15;17)(q24;q21); PML::RARA fusion gene.",
+                visualDescription: "Promyelocytes with deeply bilobed or folded 'butterfly' nuclei and heavy cytoplasmic granulation. Numerous 'faggot cells' are visible containing bundles of needle-like Auer rods clustered together.",
+                svgRender: (
+                    <svg viewBox="0 0 400 300" className="w-full h-full bg-rose-950/40 rounded-lg">
+                        {/* Background Red Blood Cells */}
+                        {[...Array(25)].map((_, i) => (
+                            <circle key={i} cx={40 + (i * 55) % 320} cy={30 + (i * 45) % 240} r="14" fill="#f43f5e" fillOpacity="0.3" stroke="#be123c" strokeWidth="1" />
+                        ))}
+                        {/* Spherocytes / Fragmented elements for DIC context */}
+                        <path d="M 120 70 L 135 60 L 130 80 Z" fill="#b01e1e" fillOpacity="0.8" stroke="#7a0808" />
+                        <path d="M 280 180 L 295 190 L 285 202 Z" fill="#b01e1e" fillOpacity="0.8" stroke="#7a0808" />
+
+                        {/* Heavy Granular Promyelocyte Cell */}
+                        <circle cx="200" cy="140" r="48" fill="#d8b4fe" fillOpacity="0.85" stroke="#7e22ce" strokeWidth="2" />
+                        {/* Bilobed Nucleus */}
+                        <path d="M 175 140 Q 190 110 200 140 Q 210 110 225 140 Q 210 170 200 140 Q 190 170 175 140 Z" fill="#4a044e" opacity="0.9" />
+                        {/* Toxic Granules */}
+                        {[...Array(35)].map((_, i) => (
+                            <circle key={i} cx={165 + (i * 7) % 70} cy={110 + (i * 9) % 65} r="1.5" fill="#581c87" />
+                        ))}
+                        {/* Auer Rod Bundles ("Faggot Cell" arrangement) */}
+                        <line x1="180" y1="130" x2="195" y2="155" stroke="#ec4899" strokeWidth="2.5" />
+                        <line x1="182" y1="135" x2="188" y2="160" stroke="#ec4899" strokeWidth="2.5" />
+                        <line x1="178" y1="145" x2="200" y2="150" stroke="#ec4899" strokeWidth="2" />
+                        
+                        {/* Annotation labels */}
+                        <text x="200" y="220" fill="#f472b6" fontSize="11" fontWeight="bold" textAnchor="middle">Auer Rods (Faggot Cell Bundle)</text>
+                    </svg>
+                )
+            },
+            {
+                id: "ttp",
+                title: "Thrombotic Thrombocytopenic Purpura (TTP)",
+                presentation: "A 35-year-old male presents with confusion, transient speech arrest, and dark urine. Blood test reveals: Hb 75 g/L, Platelets 9 x 10^9/L, Reticulocyte count 12% (very high), Bilirubin 54 umol/L, LDH 1450 U/L (extremely elevated), PT/APTT are normal.",
+                diagnosis: "Thrombotic Microangiopathy (TMA) - highly suspicious for TTP. Microangiopathic Haemolytic Anaemia (MAHA) and severe thrombocytopenia.",
+                action: "EMERGENCY: Calculate PLASMIC Score. If high, arrange immediate Plasma Exchange (PEX) and high-dose steroids plus Caplacizumab. Test for ADAMTS13 activity (diagnostic level is < 10%). Never delay PEX for assay results.",
+                cytogenetics: "Not primary; acquired autoantibodies neutralizing ADAMTS13 metalloprotease (or rare congenital Upshaw-Schulman syndrome).",
+                visualDescription: "Classic blood film showing abundant fragmented red blood cells (schistocytes, helmet cells, keratocytes, and microspherocytes) with a near-complete absence of platelets.",
+                svgRender: (
+                    <svg viewBox="0 0 400 300" className="w-full h-full bg-rose-950/20 rounded-lg">
+                        {/* Normal RBCs */}
+                        {[...Array(12)].map((_, i) => (
+                            <circle key={i} cx={40 + (i * 75) % 320} cy={30 + (i * 55) % 240} r="14" fill="#f43f5e" fillOpacity="0.4" stroke="#be123c" strokeWidth="1" />
+                        ))}
+                        {/* Schistocytes / Fragmented RBCs */}
+                        {/* Helmet Cell */}
+                        <path d="M 120 100 C 120 80, 150 80, 150 100 C 135 110, 120 100, 120 100 Z" fill="#b01e1e" fillOpacity="0.8" stroke="#ec4899" strokeWidth="1.5" />
+                        {/* Triangular Schistocyte */}
+                        <path d="M 220 140 L 245 130 L 235 160 Z" fill="#b01e1e" fillOpacity="0.8" stroke="#ec4899" strokeWidth="1.5" />
+                        <path d="M 80 180 L 105 170 L 95 195 Z" fill="#b01e1e" fillOpacity="0.8" stroke="#ec4899" strokeWidth="1.5" />
+                        {/* Spherocyte */}
+                        <circle cx="280" cy="80" r="8" fill="#b01e1e" stroke="#7a0808" strokeWidth="1" />
+                        <circle cx="180" cy="220" r="9" fill="#b01e1e" stroke="#7a0808" strokeWidth="1" />
+
+                        {/* Annotations */}
+                        <text x="135" y="125" fill="#f43f5e" fontSize="10" fontWeight="bold">Helmet Cell</text>
+                        <text x="245" y="175" fill="#f43f5e" fontSize="10" fontWeight="bold">Schistocyte</text>
+                        <text x="280" y="65" fill="#f43f5e" fontSize="10" fontWeight="bold">Spherocyte</text>
+                        <text x="200" y="270" fill="#fb7185" fontSize="12" fontWeight="bold" textAnchor="middle">Severe MAHA: Marked Schistocytosis & No Platelets</text>
+                    </svg>
+                )
+            }
+        ];
+
+        // 5 Preconfigured Coagulation Presets
+        const COAG_PRESETS = {
+            normal: {
+                name: "Normal Coagulation Screen",
+                pt: "11.5", aptt: "31.2", mixImm: "31.2", mixInc: "31.5", tt: "15.0", rept: "16.5", fib: "3.2", drvvt: "1.0",
+                interpretation: "Normal physiology. Clotting cascade is fully intact.",
+                mechanics: "No further analytical workup required."
+            },
+            lupus: {
+                name: "Lupus Anticoagulant (Antiphospholipid Syndrome)",
+                pt: "12.8", aptt: "68.4", mixImm: "52.1", mixInc: "54.0", tt: "15.2", rept: "16.8", fib: "3.5", drvvt: "1.65",
+                interpretation: "Lupus Anticoagulant Confirmed.",
+                mechanics: "Significant prolongation of phospholipid-dependent pathways (APTT, DRVVT). A 50:50 mix fails to correct the APTT because the lupus anticoagulant is an antibody that physically interferes with the phospholipid platform of the assay. DRVVT screen-to-confirm ratio is high (>1.2) and corrects with high-density phospholipid."
+            },
+            f8_inhibitor: {
+                name: "Acquired Hemophilia A (Factor VIII Inhibitor)",
+                pt: "11.8", aptt: "76.5", mixImm: "33.1", mixInc: "64.8", tt: "14.8", rept: "16.2", fib: "3.0", drvvt: "1.02",
+                interpretation: "Acquired Factor VIII Inhibitor Profile.",
+                mechanics: "Characterized by a time- and temperature-dependent APTT prolongation. In the immediate mix, free FVIII from the normal pool corrects the clotting time. Following 2-hour incubation at 37°C, the temperature-dependent IgG4 autoantibody binds and neutralizes FVIII, causing the APTT to prolong again."
+            },
+            heparin: {
+                name: "Unfractionated Heparin (UFH) Contamination",
+                pt: "14.2", aptt: "150.0", mixImm: "78.4", mixInc: "81.0", tt: "150.0", rept: "16.1", fib: "2.8", drvvt: "1.10",
+                interpretation: "Contamination with Unfractionated Heparin (or active therapy).",
+                mechanics: "Heparin accelerates Antithrombin III, strongly neutralizing thrombin. This results in an unmeasurable Thrombin Time (>150s). Crucially, the Reptilase Time is normal because reptilase directly cleaves fibrinogen and is completely unaffected by Heparin/Antithrombin."
+            }
+        };
+
+        // High-Yield SAQ Essay Coaching cases
+        const SAQ_DATABASE = [
+            {
+                id: "hit",
+                title: "Heparin-Induced Thrombocytopenia (HIT)",
+                question: "A 62-year-old patient develops a sudden drop in platelets from 250 to 95 x 10^9/L on day 7 post cardiac surgery. He was receiving prophylactic Unfractionated Heparin. Outline your immediate diagnostic approach and management according to BSH guidelines.",
+                markScheme: [
+                    "Calculate the 4Ts Score immediately (Thrombocytopenia onset, Timing, Thrombosis, and Other causes).",
+                    "If 4Ts score is Intermediate (4-5) or High (6-8): Immediately stop all forms of Heparin (including flushes/LMWH).",
+                    "Do not wait for laboratory assay results before stopping heparin.",
+                    "Send blood sample for Heparin/PF4 ELISA antibody testing (high sensitivity, screens out negatives).",
+                    "Send positive screens for functional activation assay (e.g., Heparin-Induced Platelet Activation HIPA or Serotonin Release Assay SRA).",
+                    "Initiate alternative non-heparin anticoagulation (e.g., Argatroban, Danaparoid, or Fondaparinux) to manage/prevent thrombosis.",
+                    "Do not transfuse platelets prophylactically, as this may fuel the pro-thrombotic state."
+                ],
+                clinicalPearl: "Always remember: HIT is a paradoxical, hyper-thrombotic clinical emergency, not a bleeding disorder!"
+            },
+            {
+                id: "cll",
+                title: "CLL Prognostication & Management",
+                question: "A 64-year-old asymptomatic male presents with lymphocytosis (WBC 45 x 10^9/L, Lymphocytes 85%). Outline the diagnostic criteria for Chronic Lymphocytic Leukaemia (CLL) and discuss the prognostic implications of a detected TP53 deletion/mutation.",
+                markScheme: [
+                    "Diagnostic criteria requires absolute monoclonal B-lymphocyte count of >= 5 x 10^9/L in peripheral blood for at least 3 months.",
+                    "Immunophenotype by flow cytometry: CD19+, CD5+, CD23+, and weak surface immunoglobulin / CD20 expression.",
+                    "Marrow aspirate is not mandatory for diagnosis but useful prior to treatment.",
+                    "TP53 deletion (by FISH for del17p) and/or TP53 mutation (by NGS sequencing) must be tested prior to starting any line of therapy.",
+                    "Disruption of TP53 predicts extreme resistance to standard alkylating/fludarabine-based chemo-immunotherapy (e.g., FCR).",
+                    "Management of TP53 disrupted CLL must utilize targeted agents: BTK inhibitors (e.g., Acalabrutinib, Zanubrutinib) or BCL-2 inhibitors (Venetoclax) + anti-CD20 monoclonal antibody."
+                ],
+                clinicalPearl: "Never start chemo-immunotherapy in a CLL patient without checking their TP53 and IGHV status first."
+            }
+        ];
+
+        // Main App Component
+        function App() {
+            const [currentTab, setCurrentTab] = useState('dashboard');
+            
+            // Audio settings state
+            const [isMuted, setIsMuted] = useState(false);
+
+            // State for SBA Quiz
+            const [quizIndex, setQuizIndex] = useState(0);
+            const [selectedOption, setSelectedOption] = useState(null);
+            const [quizSubmitted, setQuizSubmitted] = useState(false);
+            const [quizScore, setQuizScore] = useState(0);
+            const [selectedSbaCategory, setSelectedSbaCategory] = useState('All');
+
+            // Dynamic AI Question Generation State
+            const [isGeneratingSba, setIsGeneratingSba] = useState(false);
+            const [selectedGenTopic, setSelectedGenTopic] = useState("Myeloproliferative disorders");
+            const [activeCustomQuestion, setActiveCustomQuestion] = useState(null);
+
+            // State for Morphology Microscope
+            const [selectedMorphCase, setSelectedMorphCase] = useState(MORPHOLOGY_CASES[0]);
+            const [zoomLevel, setZoomLevel] = useState(40); // 40x or 100x
+
+            // State for Coagulation Lab Simulator
+            const [selectedCoagPreset, setSelectedCoagPreset] = useState('normal');
+            const [ptInput, setPtInput] = useState(11.5);
+            const [apttInput, setApttInput] = useState(31.2);
+            const [mixImmInput, setMixImmInput] = useState(31.2);
+            const [mixIncInput, setMixIncInput] = useState(31.5);
+            const [ttInput, setTtInput] = useState(15.0);
+            const [reptInput, setReptInput] = useState(16.5);
+            const [fibInput, setFibInput] = useState(3.2);
+            const [drvvtInput, setDrvvtInput] = useState(1.0);
+
+            // Synthesize audio feedback via Web Audio API (completely self-contained, no external loading)
+            const playChime = (type) => {
+                if (isMuted) return;
+                try {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    if (!AudioContext) return;
+                    const ctx = new AudioContext();
+
+                    if (type === 'correct') {
+                        // High-pitched pleasant ascending arpeggio (C5 -> E5 -> G5)
+                        const notes = [523.25, 659.25, 783.99]; 
+                        notes.forEach((freq, idx) => {
+                            const osc = ctx.createOscillator();
+                            const gainNode = ctx.createGain();
+                            osc.type = 'sine';
+                            osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.08);
+                            
+                            gainNode.gain.setValueAtTime(0, ctx.currentTime);
+                            gainNode.gain.linearRampToValueAtTime(0.08, ctx.currentTime + idx * 0.08 + 0.02);
+                            gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.08 + 0.35);
+                            
+                            osc.connect(gainNode);
+                            gainNode.connect(ctx.destination);
+                            
+                            osc.start(ctx.currentTime + idx * 0.08);
+                            osc.stop(ctx.currentTime + idx * 0.08 + 0.4);
+                        });
+                    } else if (type === 'incorrect') {
+                        // Descending buzzer sounds (harmonic complexity with triangle & sine)
+                        const osc = ctx.createOscillator();
+                        const gainNode = ctx.createGain();
+                        osc.type = 'triangle';
+                        
+                        osc.frequency.setValueAtTime(261.63, ctx.currentTime); // C4
+                        osc.frequency.linearRampToValueAtTime(146.83, ctx.currentTime + 0.45); // D3 (low slump)
+                        
+                        gainNode.gain.setValueAtTime(0.12, ctx.currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+                        
+                        osc.connect(gainNode);
+                        gainNode.connect(ctx.destination);
+                        
+                        osc.start();
+                        osc.stop(ctx.currentTime + 0.5);
+                    }
+                } catch (err) {
+                    console.warn("Audio Context playback blocked or failed:", err);
+                }
+            };
+
+            // Coag custom calculation interpreter
+            const generatedReport = useMemo(() => {
+                let diagnosis = "Unspecified Profile / Mixed Pathology";
+                let description = "Review parameters to isolate the affected pathways.";
+
+                if (ttInput > 100 && reptInput < 20) {
+                    diagnosis = "Unfractionated Heparin Contamination";
+                    description = "A massive Thrombin Time prolongation combined with a normal Reptilase Time is pathognomonic of heparin. Heparin inhibits thrombin (tested by TT) but not Reptilase, which directly cleaves fibrinogen.";
+                } else if (apttInput > 50) {
+                    // Check mixing
+                    if (mixImmInput < 38 && mixIncInput > 55) {
+                        diagnosis = "Factor VIII Inhibitor (Acquired Haemophilia)";
+                        description = "Classic time- and temperature-dependent antibody. APTT corrects initially because there is enough active factor VIII from the pool, but on incubation, the IgG inhibitor binds and inactivates FVIII, prolonging the APTT again.";
+                    } else if (mixImmInput > 48 && drvvtInput > 1.25) {
+                        diagnosis = "Lupus Anticoagulant";
+                        description = "APTT is prolonged and fails to correct with standard plasma because of phospholipid-neutralizing antibodies. The DRVVT screen-to-confirm ratio is high and corrects with high-density phospholipid addition.";
+                    } else if (mixImmInput < 38 && mixIncInput < 38) {
+                        diagnosis = "Pure Intrinsic Factor Deficiency (e.g., Hemophilia A/B or FXI Deficiency)";
+                        description = "Complete correction in both immediate and incubated mixing studies confirms a quantitative factor deficiency without active circulating inhibitors.";
+                    }
+                } else if (ptInput > 20 && apttInput > 45) {
+                    if (mixImmInput < 38) {
+                        diagnosis = "Vitamin K Deficiency or Warfarin Effect";
+                        description = "Prolongation of both pathways with complete correction on mixing. This corresponds to decreased functional levels of factor II, VII, IX, and X.";
+                    }
+                } else if (ptInput > 25 && apttInput < 38) {
+                    diagnosis = "Isolated Factor VII Deficiency";
+                    description = "Extremely prolonged PT with a completely normal APTT and perfect correction on mixing confirms isolated Factor VII deficiency.";
+                } else {
+                    diagnosis = "Normal/Near-Normal Clotting Profile";
+                    description = "No major factor deficiencies or circulating anticoagulants detected within the primary pathways.";
+                }
+
+                return { diagnosis, description };
+            }, [ptInput, apttInput, mixImmInput, mixIncInput, ttInput, reptInput, fibInput, drvvtInput]);
+
+            // State for SAQs
+            const [activeSaq, setActiveSaq] = useState(SAQ_DATABASE[0]);
+            const [userSaqNotes, setUserSaqNotes] = useState('');
+            const [showMarkScheme, setShowMarkScheme] = useState(false);
+
+            // Dynamic AI Essay Evaluator state
+            const [isEvaluatingEssay, setIsEvaluatingEssay] = useState(false);
+            const [essayFeedback, setEssayFeedback] = useState(null);
+
+            // Comprehensive Checklist State covering all 24 sub-themes from the curriculum
+            const [checklistItems, setChecklistItems] = useState({
+                "Bone marrow failure syndromes": false,
+                "Iron metabolism abnormalities": false,
+                "Underproduction anaemias": true,
+                "Haemolytic anaemias": false,
+                "Obstetric haematology": false,
+                "Paediatric haematology": false,
+                "Infective problems in haematology": false,
+                "Laboratory haematology": false,
+                "Laboratory management": false,
+                "Myeloproliferative disorders": true,
+                "Myelodysplastic syndromes": false,
+                "Acute leukaemias": false,
+                "Lymphoproliferative disorders": false,
+                "Plasma cell dyscrasias": false,
+                "Lymphomas": false,
+                "Platelet disorders": false,
+                "Inherited haemorrhagic disorders": false,
+                "Acquired haemorrhagic disorders": true,
+                "Inherited thrombotic disorders": false,
+                "Acquired thrombotic disorders": false,
+                "Indications for blood & blood product transfusion": false,
+                "Complications of transfusion": false,
+                "Donor selection & blood bank techniques": false,
+                "Chemotherapeutic agents": false,
+                "Stem cell transplantation": false,
+                "Anti-thrombotic agents": false
+            });
+
+            // Gemini AI Chat State
+            const [aiQuery, setAiQuery] = useState("");
+            const [chatHistory, setChatHistory] = useState([
+                { sender: "professor", text: "Welcome back, registrar. I am your Senior FRCPath Mentor. Ask me any question on BSH guidelines, WHO diagnostic algorithms, morphological dilemmas, or therapeutic strategies." }
+            ]);
+            const [aiLoading, setAiLoading] = useState(false);
+            const [customApiKey, setCustomApiKey] = useState("");
+            const [showKeyModal, setShowKeyModal] = useState(false);
+            const [apiErrorMsg, setApiErrorMsg] = useState("");
+
+            // Daily Random Pearl
+            const [dailyPearl, setDailyPearl] = useState(CLINICAL_PEARLS[0]);
+
+            useEffect(() => {
+                const randomIdx = Math.floor(Math.random() * CLINICAL_PEARLS.length);
+                setDailyPearl(CLINICAL_PEARLS[randomIdx]);
+            }, []);
+
+            const toggleChecklistItem = (key) => {
+                setChecklistItems(prev => ({
+                    ...prev,
+                    [key]: !prev[key]
+                }));
+            };
+
+            const loadPresetValues = (key) => {
+                const vals = COAG_PRESETS[key];
+                if (vals) {
+                    setSelectedCoagPreset(key);
+                    setPtInput(parseFloat(vals.pt) || 12);
+                    setApttInput(parseFloat(vals.aptt) || 30);
+                    setMixImmInput(parseFloat(vals.mixImm) || 30);
+                    setMixIncInput(parseFloat(vals.mixInc) || 30);
+                    setTtInput(parseFloat(vals.tt) || 15);
+                    setReptInput(parseFloat(vals.rept) || 16);
+                    setFibInput(parseFloat(vals.fib) || 3.0);
+                    setDrvvtInput(parseFloat(vals.drvvt) || 1.0);
+                }
+            };
+
+            // Filter SBA Questions based on selected Category
+            const filteredQuestions = useMemo(() => {
+                if (selectedSbaCategory === 'All') return SBA_QUESTIONS;
+                return SBA_QUESTIONS.filter(q => {
+                    if (selectedSbaCategory === 'General & Lab') {
+                        return ["Bone marrow failure syndromes", "Iron metabolism abnormalities", "Underproduction anaemias", "Haemolytic anaemias", "Obstetric haematology", "Paediatric haematology", "Infective problems in haematology", "Laboratory haematology", "Laboratory management"].includes(q.theme);
+                    }
+                    if (selectedSbaCategory === 'Oncology') {
+                        return ["Myeloproliferative disorders", "Myelodysplastic syndromes", "Acute leukaemias", "Lymphoproliferative disorders", "Plasma cell dyscrasias", "Lymphomas"].includes(q.theme);
+                    }
+                    if (selectedSbaCategory === 'Haemostasis') {
+                        return ["Platelet disorders", "Inherited haemorrhagic disorders", "Acquired haemorrhagic disorders", "Inherited thrombotic disorders", "Acquired thrombotic disorders"].includes(q.theme);
+                    }
+                    if (selectedSbaCategory === 'Transfusion') {
+                        return ["Indications for blood & blood product transfusion", "Complications of blood & blood product transfusion", "Donor selection & blood bank techniques"].includes(q.theme);
+                    }
+                    if (selectedSbaCategory === 'Therapeutics') {
+                        return ["Chemotherapeutic agents", "Stem cell transplantation", "Anti-thrombotic agents"].includes(q.theme);
+                    }
+                    return true;
+                });
+            }, [selectedSbaCategory]);
+
+            // Adjust quiz Index on category changes
+            useEffect(() => {
+                setQuizIndex(0);
+                setSelectedOption(null);
+                setQuizSubmitted(false);
+                setActiveCustomQuestion(null);
+            }, [selectedSbaCategory]);
+
+            // Universal Gemini API caller helper with exponential backoff (up to 5 retries)
+            const callGeminiWithBackoff = async (payload) => {
+                const activeKey = customApiKey.trim() || apiKey; 
+                const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${activeKey}`;
+                
+                let attempt = 0;
+                const maxRetries = 5;
+                
+                while (attempt < maxRetries) {
+                    try {
+                        const response = await fetch(endpoint, {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP Error Status: ${response.status}`);
+                        }
+
+                        const data = await response.json();
+                        return data;
+                    } catch (error) {
+                        attempt++;
+                        if (attempt >= maxRetries) {
+                            throw new Error(error.message || "Failed after 5 attempts due to server/network constraints.");
+                        }
+                        const delay = Math.pow(2, attempt - 1) * 1000; // Exponential delays: 1s, 2s, 4s, 8s, 16s
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                    }
+                }
+            };
+
+            // AI Professor console message submit
+            const handleSendChatMessage = async () => {
+                if (!aiQuery.trim()) return;
+                const userMsg = aiQuery.trim();
+                setChatHistory(prev => [...prev, { sender: "user", text: userMsg }]);
+                setAiQuery("");
+                setAiLoading(true);
+                setApiErrorMsg("");
+
+                const systemPrompt = `You are a world-renowned Professor of Clinical Haematology and a Chief Examiner for the FRCPath Part 1 & Part 2 examinations in the UK. 
+                Answer queries from a haematology registrar preparing for their examinations. 
+                Refer where appropriate to the latest British Society for Haematology (BSH) guidelines, WHO/ICC classifications, UK NEQAS parameters, and Hoffbrand's Postgraduate Haematology.
+                Provide structured, professional, clinically-grounded, and exhaustive explanations containing key facts and references.`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userMsg }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] },
+                    tools: [{ "google_search": {} }] // Live search grounding parameter
+                };
+
+                try {
+                    const data = await callGeminiWithBackoff(payload);
+                    const responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response generated by Professor.";
+                    
+                    // Parse web search citations if present
+                    const attributions = data.candidates?.[0]?.groundingMetadata?.groundingAttributions || [];
+                    const sources = attributions.map(a => ({
+                        uri: a.web?.uri,
+                        title: a.web?.title
+                    })).filter(s => s.uri && s.title);
+
+                    setChatHistory(prev => [...prev, { 
+                        sender: "professor", 
+                        text: responseText,
+                        sources: sources.length > 0 ? sources : null
+                    }]);
+                } catch (error) {
+                    setApiErrorMsg(error.message);
+                    setChatHistory(prev => [...prev, { 
+                        sender: "professor", 
+                        text: `⚠️ **Diagnostic Connection Error:** ${error.message}. Please configure a custom Gemini API Key in the settings.` 
+                    }]);
+                } finally {
+                    setAiLoading(false);
+                }
+            };
+
+            // AI Feature 1: Live custom SBA case study generation
+            const handleGenerateCustomSba = async () => {
+                setIsGeneratingSba(true);
+                setSelectedOption(null);
+                setQuizSubmitted(false);
+
+                const prompt = `Develop a highly challenging, board-level Single Best Answer (SBA) question for the UK FRCPath Haematology examination.
+                Theme: "${selectedGenTopic}".
+                Ensure you provide:
+                1. A complex clinical presentation / laboratory vignette.
+                2. Five highly plausible, mutually-exclusive multiple-choice options (A, B, C, D, E).
+                3. A clear correct index (0 for A, 1 for B, 2 for C, 3 for D, 4 for E).
+                4. A comprehensive clinical explanation citing relevant BSH, WHO or British National Formulary (BNF) parameters.
+                5. A verified reference citation.`;
+
+                const systemInstruction = "You are a senior FRCPath exam developer compiling a diagnostic hematology bank.";
+
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    systemInstruction: { parts: [{ text: systemInstruction }] },
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                theme: { type: "STRING" },
+                                question: { type: "STRING" },
+                                options: {
+                                    type: "ARRAY",
+                                    items: { type: "STRING" }
+                                },
+                                correctIndex: { type: "INTEGER" },
+                                explanation: { type: "STRING" },
+                                reference: { type: "STRING" }
+                            },
+                            required: ["theme", "question", "options", "correctIndex", "explanation", "reference"]
+                        }
+                    }
+                };
+
+                try {
+                    const data = await callGeminiWithBackoff(payload);
+                    const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                    const parsedQuestion = JSON.parse(rawText);
+                    setActiveCustomQuestion(parsedQuestion);
+                } catch (error) {
+                    alert(`AI Authoring failure: ${error.message}. Ensure your API key is correctly configured.`);
+                } finally {
+                    setIsGeneratingSba(false);
+                }
+            };
+
+            // AI Feature 2: Written essay grader & mentor feedback loop
+            const handleEvaluateEssay = async () => {
+                if (!userSaqNotes.trim()) {
+                    alert("Please draft some notes or response points first before sending to the examiner.");
+                    return;
+                }
+                setIsEvaluatingEssay(true);
+                setEssayFeedback(null);
+
+                const prompt = `Evaluate the candidate's drafted answer for the following FRCPath Part 2 written case study.
+                
+                Scenario Title: "${activeSaq.title}"
+                Case Question: "${activeSaq.question}"
+                
+                Official Model Criteria Checklist:
+                ${activeSaq.markScheme.map(item => `- ${item}`).join('\n')}
+                
+                Candidate's Response Draft:
+                "${userSaqNotes}"
+                
+                Perform a structured examiner assessment and return it in JSON. Evaluate how many of the official points they successfully addressed, provide critical diagnostic recommendations, suggest a quantitative score out of 10, and provide a fully polished, exemplary model answer that is concise and guaranteed to score maximum marks.`;
+
+                const systemInstruction = "You are the Lead External Examiner of the Royal College of Pathologists, reviewing candidate written portfolios with supreme accuracy.";
+
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    systemInstruction: { parts: [{ text: systemInstruction }] },
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                matchedPoints: {
+                                    type: "ARRAY",
+                                    items: { type: "STRING" }
+                                },
+                                missedPoints: {
+                                    type: "ARRAY",
+                                    items: { type: "STRING" }
+                                },
+                                feedbackNotes: { type: "STRING" },
+                                examinerScore: { type: "INTEGER" },
+                                examPerfectResponse: { type: "STRING" }
+                            },
+                            required: ["matchedPoints", "missedPoints", "feedbackNotes", "examinerScore", "examPerfectResponse"]
+                        }
+                    }
+                };
+
+                try {
+                    const data = await callGeminiWithBackoff(payload);
+                    const rawJson = data.candidates?.[0]?.content?.parts?.[0]?.text;
+                    const parsedFeedback = JSON.parse(rawJson);
+                    setEssayFeedback(parsedFeedback);
+                } catch (error) {
+                    alert(`Evaluation channel failed: ${error.message}`);
+                } finally {
+                    setIsEvaluatingEssay(false);
+                }
+            };
+
+            const handleNextQuiz = () => {
+                if (activeCustomQuestion) {
+                    setActiveCustomQuestion(null);
+                } else {
+                    if (filteredQuestions.length === 0) return;
+                    setQuizIndex((prev) => (prev + 1) % filteredQuestions.length);
+                }
+                setSelectedOption(null);
+                setQuizSubmitted(false);
+            };
+
+            const handleSbaSubmit = () => {
+                if (selectedOption === null) return;
+                setQuizSubmitted(true);
+                const currentQuestion = activeCustomQuestion || filteredQuestions[quizIndex];
+                if (selectedOption === currentQuestion.correctIndex) {
+                    setQuizScore(prev => prev + 1);
+                    playChime('correct');
+                } else {
+                    playChime('incorrect');
+                }
+            };
+
+            return (
+                <div className="flex h-screen bg-slate-900 text-slate-100 overflow-hidden">
+                    
+                    {/* SIDEBAR NAVIGATION */}
+                    <div className="w-80 bg-slate-950 flex flex-col justify-between border-r border-slate-800">
+                        <div className="p-6">
+                            <div className="flex items-center gap-3 mb-8">
+                                <div className="p-2.5 bg-blood-800 rounded-lg text-white shadow-lg shadow-blood-900/30">
+                                    <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h1 className="text-xl font-black tracking-wider text-white">HEMA-EXCEL</h1>
+                                    <p className="text-xs text-rose-500 font-bold uppercase tracking-widest">FRCPath Prep Companion</p>
+                                </div>
+                            </div>
+
+                            <nav className="space-y-1.5">
+                                <button onClick={() => setCurrentTab('dashboard')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition ${currentTab === 'dashboard' ? 'bg-blood-800 text-white shadow-md' : 'text-slate-400 hover:bg-slate-900 hover:text-slate-200'}`}>
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z"></path></svg>
+                                    Overview & Status
+                                </button>
+                                <button onClick={() => setCurrentTab('syllabus')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition ${currentTab === 'syllabus' ? 'bg-blood-800 text-white shadow-md' : 'text-slate-400 hover:bg-slate-900 hover:text-slate-200'}`}>
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    RCPath Syllabus Board
+                                </button>
+                                <button onClick={() => setCurrentTab('quiz')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition ${currentTab === 'quiz' ? 'bg-blood-800 text-white shadow-md' : 'text-slate-400 hover:bg-slate-900 hover:text-slate-200'}`}>
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    SBA Q-Bank Portal
+                                </button>
+                                <button onClick={() => setCurrentTab('microscope')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition ${currentTab === 'microscope' ? 'bg-blood-800 text-white shadow-md' : 'text-slate-400 hover:bg-slate-900 hover:text-slate-200'}`}>
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                    Virtual Microscope
+                                </button>
+                                <button onClick={() => setCurrentTab('coag_lab')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition ${currentTab === 'coag_lab' ? 'bg-blood-800 text-white shadow-md' : 'text-slate-400 hover:bg-slate-900 hover:text-slate-200'}`}>
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                                    Coagulation Analyzer
+                                </button>
+                                <button onClick={() => setCurrentTab('essay')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition ${currentTab === 'essay' ? 'bg-blood-800 text-white shadow-md' : 'text-slate-400 hover:bg-slate-900 hover:text-slate-200'}`}>
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                                    Written Essay Coach
+                                </button>
+                                <button onClick={() => setCurrentTab('ai_professor')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition ${currentTab === 'ai_professor' ? 'bg-blood-800 text-white shadow-md' : 'text-slate-400 hover:bg-slate-900 hover:text-slate-200'}`}>
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                    Consult AI Professor
+                                </button>
+                            </nav>
+                        </div>
+
+                        {/* PROFILE FOOTER WITH AUDIO CONFIGURATION */}
+                        <div className="p-4 border-t border-slate-800 bg-slate-950 flex flex-col gap-3">
+                            {/* Interactive Sound Settings Toggler */}
+                            <div className="flex items-center justify-between bg-slate-900/80 px-3 py-2 rounded-lg border border-slate-800/60">
+                                <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Audio Sound FX:</span>
+                                <button 
+                                    onClick={() => setIsMuted(!isMuted)} 
+                                    className={`p-1.5 rounded transition ${isMuted ? 'bg-rose-950/40 text-rose-500 border border-rose-900/30' : 'bg-emerald-950/40 text-emerald-400 border border-emerald-900/30'}`}
+                                    title={isMuted ? "Unmute sound effects" : "Mute sound effects"}
+                                >
+                                    {isMuted ? (
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                                        </svg>
+                                    ) : (
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                                        </svg>
+                                    )}
+                                </button>
+                            </div>
+
+                            <div className="flex justify-between items-center">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-full bg-slate-800 border border-blood-700 flex items-center justify-center font-bold text-xs text-rose-400">
+                                        REG
+                                    </div>
+                                    <div>
+                                        <p className="text-xs font-semibold text-white">Registrar Active</p>
+                                        <p className="text-[10px] text-slate-500 font-medium">Exam Prep Portal</p>
+                                    </div>
+                                </div>
+                                <button onClick={() => setShowKeyModal(true)} className="p-2 text-slate-400 hover:text-rose-500 transition rounded-lg hover:bg-slate-900">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* MAIN PANEL CONTENT */}
+                    <div className="flex-1 flex flex-col h-full overflow-hidden bg-slate-900">
+                        <main className="flex-1 overflow-y-auto p-8">
+                            
+                            {/* OVERVIEW TAB */}
+                            {currentTab === 'dashboard' && (
+                                <div className="space-y-6 max-w-6xl mx-auto">
+                                    <header>
+                                        <h2 className="text-3xl font-black tracking-tight text-white">FRCPath Revision Console</h2>
+                                        <p className="text-sm text-slate-400">Premium interactive portal mapping the clinical, laboratory, and therapeutic milestones of the RCPath curriculum.</p>
+                                    </header>
+
+                                    {/* CLINICAL PEARL BANNER */}
+                                    <div className="bg-gradient-to-r from-blood-950 to-slate-950 border-l-4 border-blood-600 p-5 rounded-r-xl shadow-lg flex justify-between items-center">
+                                        <div className="space-y-1 pr-6">
+                                            <span className="text-[10px] font-extrabold uppercase tracking-widest text-rose-500 bg-rose-950/50 px-2 py-0.5 rounded-full">
+                                                Curriculum Insight
+                                            </span>
+                                            <p className="text-sm text-slate-200 font-semibold italic">"{dailyPearl.text}"</p>
+                                        </div>
+                                        <button onClick={() => setDailyPearl(CLINICAL_PEARLS[Math.floor(Math.random() * CLINICAL_PEARLS.length)])} className="text-slate-400 hover:text-white transition whitespace-nowrap text-xs font-bold bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-lg">
+                                            Rotate Pearl
+                                        </button>
+                                    </div>
+
+                                    {/* STATS GRID */}
+                                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                        <div className="bg-slate-950 p-5 rounded-xl border border-slate-800/80">
+                                            <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">Curriculum Checked</p>
+                                            <p className="text-2xl font-black mt-2 text-rose-500">
+                                                {Math.round((Object.values(checklistItems).filter(Boolean).length / Object.keys(checklistItems).length) * 100)}%
+                                            </p>
+                                            <div className="w-full bg-slate-800 h-1.5 rounded-full mt-3">
+                                                <div className="bg-rose-600 h-1.5 rounded-full" style={{ width: `${(Object.values(checklistItems).filter(Boolean).length / Object.keys(checklistItems).length) * 100}%` }}></div>
+                                            </div>
+                                        </div>
+                                        <div className="bg-slate-950 p-5 rounded-xl border border-slate-800/80">
+                                            <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">Total Questions</p>
+                                            <p className="text-2xl font-black mt-2 text-white">{SBA_QUESTIONS.length + (activeCustomQuestion ? 1 : 0)} Scenarios</p>
+                                            <p className="text-xs text-slate-500 mt-2">Custom AI Questions unlocked</p>
+                                        </div>
+                                        <div className="bg-slate-950 p-5 rounded-xl border border-slate-800/80">
+                                            <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">Current Performance</p>
+                                            <p className="text-2xl font-black mt-2 text-emerald-400">{quizScore} Correct</p>
+                                            <p className="text-xs text-slate-500 mt-2">Tracked dynamically</p>
+                                        </div>
+                                        <div className="bg-slate-950 p-5 rounded-xl border border-slate-800/80">
+                                            <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">Active Modules</p>
+                                            <p className="text-2xl font-black mt-2 text-white">7 Modules</p>
+                                            <p className="text-xs text-slate-500 mt-2">All simulators fully active</p>
+                                        </div>
+                                    </div>
+
+                                    {/* MODULE PREVIEW DECK */}
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div className="bg-slate-950 border border-slate-800/80 rounded-xl p-6 flex flex-col justify-between">
+                                            <div className="space-y-2">
+                                                <span className="px-2 py-0.5 rounded text-[10px] bg-red-950/70 text-rose-400 font-extrabold uppercase">Complete Q-Bank</span>
+                                                <h3 className="text-lg font-bold text-white">Full SBA Syllabus Deck</h3>
+                                                <p className="text-xs text-slate-400 leading-relaxed">
+                                                    We have integrated 24 highly structured, board-style clinical scenarios, covering all clinical and laboratory parameters, from obstetric hematology to complex leukemia cytogenetics.
+                                                </p>
+                                            </div>
+                                            <button onClick={() => setCurrentTab('quiz')} className="mt-5 w-full bg-slate-900 border border-slate-800 hover:bg-slate-850 hover:border-slate-700 text-white font-bold text-xs py-2.5 rounded-lg transition">
+                                                Open Q-Bank Portal
+                                            </button>
+                                        </div>
+
+                                        <div className="bg-slate-950 border border-slate-800/80 rounded-xl p-6 flex flex-col justify-between">
+                                            <div className="space-y-2">
+                                                <span className="px-2 py-0.5 rounded text-[10px] bg-sky-950/70 text-sky-400 font-extrabold uppercase">Laboratory Simulator</span>
+                                                <h3 className="text-lg font-bold text-white">Coagulation Mixer</h3>
+                                                <p className="text-xs text-slate-400 leading-relaxed">
+                                                    Run dynamic mixing assays, lupus-dependent DRVVT confirmations, and reptilase exclusions. Fully adjustable parameters directly mimicking typical laboratory automation.
+                                                </p>
+                                            </div>
+                                            <button onClick={() => setCurrentTab('coag_lab')} className="mt-5 w-full bg-slate-900 border border-slate-800 hover:bg-slate-850 hover:border-slate-700 text-white font-bold text-xs py-2.5 rounded-lg transition">
+                                                Initialize Mixer
+                                            </button>
+                                        </div>
+
+                                        <div className="bg-slate-950 border border-slate-800/80 rounded-xl p-6 flex flex-col justify-between">
+                                            <div className="space-y-2">
+                                                <span className="px-2 py-0.5 rounded text-[10px] bg-purple-950/70 text-purple-400 font-extrabold uppercase">Clinical Board</span>
+                                                <h3 className="text-lg font-bold text-white">Checklist Progress</h3>
+                                                <p className="text-xs text-slate-400 leading-relaxed">
+                                                    Track your self-study progress across individual guidelines, therapeutics, post-transplant follow-up protocols, and standard laboratory practice benchmarks.
+                                                </p>
+                                            </div>
+                                            <button onClick={() => setCurrentTab('syllabus')} className="mt-5 w-full bg-slate-900 border border-slate-800 hover:bg-slate-850 hover:border-slate-700 text-white font-bold text-xs py-2.5 rounded-lg transition">
+                                                Review Checklist
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* RCPath SYLLABUS CHECKLIST TAB */}
+                            {currentTab === 'syllabus' && (
+                                <div className="space-y-6 max-w-6xl mx-auto">
+                                    <header>
+                                        <h2 className="text-2xl font-black text-white">Syllabus Progress Board</h2>
+                                        <p className="text-xs text-slate-400">Verify your exposure to the complete clinical sub-specialties mapped by the RCPath guidelines.</p>
+                                    </header>
+
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div className="space-y-4">
+                                            <h3 className="text-sm font-extrabold uppercase tracking-widest text-rose-500 border-b border-slate-800 pb-2">General & Paediatrics</h3>
+                                            <div className="space-y-1.5">
+                                                {[
+                                                    "Bone marrow failure syndromes",
+                                                    "Iron metabolism abnormalities",
+                                                    "Underproduction anaemias",
+                                                    "Haemolytic anaemias",
+                                                    "Obstetric haematology",
+                                                    "Paediatric haematology",
+                                                    "Infective problems in haematology",
+                                                    "Laboratory haematology",
+                                                    "Laboratory management"
+                                                ].map((item) => (
+                                                    <div key={item} onClick={() => toggleChecklistItem(item)} className="flex items-center justify-between p-2.5 bg-slate-950 hover:bg-slate-900 rounded-lg border border-slate-800/70 cursor-pointer transition select-none">
+                                                        <span className="text-xs font-semibold text-slate-200">{item}</span>
+                                                        <div className={`w-4 h-4 rounded flex items-center justify-center border transition ${checklistItems[item] ? 'bg-blood-700 border-blood-600 text-white' : 'border-slate-700'}`}>
+                                                            {checklistItems[item] && <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        <div className="space-y-4">
+                                            <h3 className="text-sm font-extrabold uppercase tracking-widest text-rose-500 border-b border-slate-800 pb-2">Malignant Oncology</h3>
+                                            <div className="space-y-1.5">
+                                                {[
+                                                    "Myeloproliferative disorders",
+                                                    "Myelodysplastic syndromes",
+                                                    "Acute leukaemias",
+                                                    "Lymphoproliferative disorders",
+                                                    "Plasma cell dyscrasias",
+                                                    "Lymphomas"
+                                                ].map((item) => (
+                                                    <div key={item} onClick={() => toggleChecklistItem(item)} className="flex items-center justify-between p-2.5 bg-slate-950 hover:bg-slate-900 rounded-lg border border-slate-800/70 cursor-pointer transition select-none">
+                                                        <span className="text-xs font-semibold text-slate-200">{item}</span>
+                                                        <div className={`w-4 h-4 rounded flex items-center justify-center border transition ${checklistItems[item] ? 'bg-blood-700 border-blood-600 text-white' : 'border-slate-700'}`}>
+                                                            {checklistItems[item] && <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                            <h3 className="text-sm font-extrabold uppercase tracking-widest text-rose-500 border-b border-slate-800 pb-2 mt-4">Transfusion Medicine</h3>
+                                            <div className="space-y-1.5">
+                                                {[
+                                                    "Indications for blood & product transfusion",
+                                                    "Complications of transfusion",
+                                                    "Donor selection & blood bank techniques"
+                                                ].map((item) => (
+                                                    <div key={item} onClick={() => toggleChecklistItem(item)} className="flex items-center justify-between p-2.5 bg-slate-950 hover:bg-slate-900 rounded-lg border border-slate-800/70 cursor-pointer transition select-none">
+                                                        <span className="text-xs font-semibold text-slate-200">{item}</span>
+                                                        <div className={`w-4 h-4 rounded flex items-center justify-center border transition ${checklistItems[item] ? 'bg-blood-700 border-blood-600 text-white' : 'border-slate-700'}`}>
+                                                            {checklistItems[item] && <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        <div className="space-y-4">
+                                            <h3 className="text-sm font-extrabold uppercase tracking-widest text-rose-500 border-b border-slate-800 pb-2">Haemostasis & Therapeutics</h3>
+                                            <div className="space-y-1.5">
+                                                {[
+                                                    "Platelet disorders",
+                                                    "Inherited haemorrhagic disorders",
+                                                    "Acquired haemorrhagic disorders",
+                                                    "Inherited thrombotic disorders",
+                                                    "Acquired thrombotic disorders",
+                                                    "Chemotherapeutic agents",
+                                                    "Stem cell transplantation",
+                                                    "Anti-thrombotic agents"
+                                                ].map((item) => (
+                                                    <div key={item} onClick={() => toggleChecklistItem(item)} className="flex items-center justify-between p-2.5 bg-slate-950 hover:bg-slate-900 rounded-lg border border-slate-800/70 cursor-pointer transition select-none">
+                                                        <span className="text-xs font-semibold text-slate-200">{item}</span>
+                                                        <div className={`w-4 h-4 rounded flex items-center justify-center border transition ${checklistItems[item] ? 'bg-blood-700 border-blood-600 text-white' : 'border-slate-700'}`}>
+                                                            {checklistItems[item] && <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* SBA MCQs QUIZ TAB */}
+                            {currentTab === 'quiz' && (
+                                <div className="space-y-6 max-w-6xl mx-auto">
+                                    <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                                        <div>
+                                            <h2 className="text-2xl font-black text-white font-mono">SBA Exam Simulator</h2>
+                                            <p className="text-xs text-slate-400">Practise pre-loaded scenarios or generate completely customized board cases with Gemini AI.</p>
+                                        </div>
+                                        <div className="flex flex-wrap gap-2 bg-slate-950 p-2 rounded-xl border border-slate-800">
+                                            {['All', 'General & Lab', 'Oncology', 'Haemostasis', 'Transfusion', 'Therapeutics'].map((cat) => (
+                                                <button 
+                                                    key={cat} 
+                                                    onClick={() => setSelectedSbaCategory(cat)}
+                                                    className={`px-3 py-1.5 rounded-lg text-[10px] font-extrabold transition ${selectedSbaCategory === cat && !activeCustomQuestion ? 'bg-blood-800 text-white' : 'text-slate-400 hover:bg-slate-900'}`}
+                                                >
+                                                    {cat}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </header>
+
+                                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+                                        {/* LEFT COLUMN: ACTIVE VIGNETTE PANEL */}
+                                        <div className="lg:col-span-2 space-y-4">
+                                            {filteredQuestions.length === 0 && !activeCustomQuestion ? (
+                                                <div className="bg-slate-950 border border-slate-800 rounded-xl p-8 text-center space-y-2">
+                                                    <h3 className="text-sm font-bold text-slate-300">No scenarios matched your selection filter.</h3>
+                                                    <p className="text-xs text-slate-500">Try rotating to a broader filter category or leverage the AI authoring deck on the right.</p>
+                                                </div>
+                                            ) : (
+                                                <div className="bg-slate-950 border border-slate-800 p-6 rounded-xl space-y-4 shadow-xl">
+                                                    <div className="flex justify-between items-center border-b border-slate-800/80 pb-3">
+                                                        <span className="px-2.5 py-0.5 rounded text-[10px] bg-blood-950 text-rose-400 border border-blood-800/50 font-extrabold uppercase tracking-wider">
+                                                            {activeCustomQuestion ? `✨ Generated Case: ${activeCustomQuestion.theme}` : filteredQuestions[quizIndex].theme}
+                                                        </span>
+                                                        <span className="text-xs text-slate-400 font-semibold font-mono">
+                                                            {activeCustomQuestion ? "AI Interactive Case" : `Question ${quizIndex + 1} of ${filteredQuestions.length}`}
+                                                        </span>
+                                                    </div>
+
+                                                    <p className="text-sm font-medium leading-relaxed text-slate-100">
+                                                        {activeCustomQuestion ? activeCustomQuestion.question : filteredQuestions[quizIndex].question}
+                                                    </p>
+
+                                                    {/* OPTIONS */}
+                                                    <div className="space-y-2 mt-4">
+                                                        {(activeCustomQuestion ? activeCustomQuestion.options : filteredQuestions[quizIndex].options).map((opt, i) => {
+                                                            let borderStyle = "border-slate-800 hover:bg-slate-900";
+                                                            let indicator = "bg-slate-900 text-slate-400";
+                                                            const currentCorrect = activeCustomQuestion ? activeCustomQuestion.correctIndex : filteredQuestions[quizIndex].correctIndex;
+                                                            
+                                                            if (selectedOption === i) {
+                                                                borderStyle = "border-blood-700 bg-blood-950/20";
+                                                                indicator = "bg-blood-800 text-white";
+                                                            }
+
+                                                            if (quizSubmitted) {
+                                                                if (i === currentCorrect) {
+                                                                    borderStyle = "border-emerald-600 bg-emerald-950/30 text-emerald-300";
+                                                                    indicator = "bg-emerald-600 text-white animate-pulse";
+                                                                } else if (selectedOption === i) {
+                                                                    borderStyle = "border-rose-600 bg-rose-950/30 text-rose-300";
+                                                                    indicator = "bg-rose-600 text-white";
+                                                                } else {
+                                                                    borderStyle = "border-slate-900/50 opacity-40";
+                                                                }
+                                                            }
+
+                                                            return (
+                                                                <div 
+                                                                    key={i} 
+                                                                    onClick={() => !quizSubmitted && setSelectedOption(i)}
+                                                                    className={`p-3 rounded-lg border cursor-pointer flex items-center gap-3 transition text-xs font-semibold ${borderStyle}`}
+                                                                >
+                                                                    <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${indicator}`}>
+                                                                        {String.fromCharCode(65 + i)}
+                                                                    </div>
+                                                                    <span className="flex-1">{opt}</span>
+                                                                </div>
+                                                            );
+                                                        })}
+                                                    </div>
+
+                                                    {/* EXPLANATION */}
+                                                    {quizSubmitted && (
+                                                        <div className="bg-slate-900 p-4 rounded-lg border border-slate-800 space-y-3 animate-fade-in">
+                                                            <h4 className="text-xs font-extrabold uppercase tracking-wider text-emerald-400 font-mono">Examiner Review & Consensus</h4>
+                                                            <p className="text-xs text-slate-300 leading-relaxed">
+                                                                {activeCustomQuestion ? activeCustomQuestion.explanation : filteredQuestions[quizIndex].explanation}
+                                                            </p>
+                                                            <p className="text-[10px] font-bold text-rose-400 uppercase tracking-widest font-mono">
+                                                                Recommended Reference: {activeCustomQuestion ? activeCustomQuestion.reference : filteredQuestions[quizIndex].reference}
+                                                            </p>
+                                                        </div>
+                                                    )}
+
+                                                    {/* CONTROLS */}
+                                                    <div className="flex justify-end gap-3 pt-4 border-t border-slate-800/80">
+                                                        {!quizSubmitted ? (
+                                                            <button 
+                                                                onClick={handleSbaSubmit}
+                                                                disabled={selectedOption === null}
+                                                                className="px-5 py-2.5 bg-rose-700 hover:bg-rose-600 text-white font-bold text-xs rounded-lg transition disabled:opacity-50 uppercase tracking-wider"
+                                                            >
+                                                                Submit Diagnostic Choice
+                                                            </button>
+                                                        ) : (
+                                                            <button 
+                                                                onClick={handleNextQuiz}
+                                                                className="px-5 py-2.5 bg-slate-850 hover:bg-slate-800 text-white font-bold text-xs rounded-lg border border-slate-750 transition"
+                                                            >
+                                                                Next Curriculum Question
+                                                            </button>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* RIGHT COLUMN: AI QUESTION AUTHORING INTERACTIVE DECK */}
+                                        <div className="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 shadow-xl">
+                                            <div className="border-b border-slate-800 pb-3">
+                                                <h3 className="text-xs font-extrabold text-rose-500 uppercase tracking-wider font-mono">✨ AI Case Authoring Engine</h3>
+                                                <p className="text-[11px] text-slate-400 mt-1">Harness the Gemini LLM platform to generate infinite custom, board-level vignettes across any chosen topic.</p>
+                                            </div>
+
+                                            <div className="space-y-1.5">
+                                                <label className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Select Syllabus Category:</label>
+                                                <select 
+                                                    value={selectedGenTopic}
+                                                    onChange={(e) => setSelectedGenTopic(e.target.value)}
+                                                    className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-xs text-slate-200 font-medium focus:outline-none focus:border-blood-700"
+                                                >
+                                                    {SYLLABUS_TOPICS.map((topic, i) => (
+                                                        <option key={i} value={topic}>{topic}</option>
+                                                    ))}
+                                                </select>
+                                            </div>
+
+                                            <button 
+                                                onClick={handleGenerateCustomSba}
+                                                disabled={isGeneratingSba}
+                                                className="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-blood-800 to-rose-700 hover:from-blood-750 hover:to-rose-650 disabled:opacity-50 text-white font-extrabold text-xs rounded-lg shadow-lg tracking-wider transition uppercase"
+                                            >
+                                                {isGeneratingSba ? (
+                                                    <React.Fragment>
+                                                        <svg className="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                        </svg>
+                                                        Authoring Case Study...
+                                                    </React.Fragment>
+                                                ) : (
+                                                    "✨ Author Custom SBA"
+                                                )}
+                                            </button>
+
+                                            <div className="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-[11px] text-slate-400 leading-relaxed">
+                                                <strong>Tip:</strong> Generative models compile highly plausible distractors. Carefully differentiate immunological pathways and target thresholds during practice.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* VIRTUAL MICROSCOPE TAB */}
+                            {currentTab === 'microscope' && (
+                                <div className="space-y-6 max-w-6xl mx-auto">
+                                    <header>
+                                        <h2 className="text-2xl font-black text-white">Digital Morphology Laboratory</h2>
+                                        <p className="text-xs text-slate-400">Interact with simulated high-resolution vector representations of blood films commonly presented in FRCPath Part 2 exams.</p>
+                                    </header>
+
+                                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                                        <div className="lg:col-span-4 space-y-2">
+                                            <h3 className="text-xs font-extrabold text-slate-400 uppercase tracking-widest mb-3 font-mono">Diagnostic Slides</h3>
+                                            {MORPHOLOGY_CASES.map((slide) => (
+                                                <div 
+                                                    key={slide.id} 
+                                                    onClick={() => setSelectedMorphCase(slide)}
+                                                    className={`p-3.5 rounded-xl border transition cursor-pointer text-left space-y-1 ${selectedMorphCase.id === slide.id ? 'bg-blood-950 border-blood-700 text-white' : 'bg-slate-950 border-slate-800 text-slate-400 hover:bg-slate-900 hover:text-slate-200'}`}
+                                                >
+                                                    <h4 className="text-xs font-bold">{slide.title}</h4>
+                                                    <p className="text-[10px] text-slate-500 line-clamp-1">{slide.diagnosis}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="lg:col-span-8 bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden flex flex-col">
+                                            <div className="relative flex-1 bg-slate-900 border-b border-slate-800 min-h-[350px] flex items-center justify-center p-4">
+                                                <div className="w-full max-w-[480px] aspect-video transition" style={{ transform: `scale(${zoomLevel / 40})` }}>
+                                                    {selectedMorphCase.svgRender}
+                                                </div>
+
+                                                <div className="absolute bottom-4 right-4 bg-slate-950/90 border border-slate-800 rounded-lg p-1.5 flex gap-1">
+                                                    <button onClick={() => setZoomLevel(40)} className={`px-2 py-1 text-[10px] font-bold rounded ${zoomLevel === 40 ? 'bg-rose-800 text-white' : 'text-slate-400'}`}>
+                                                        40x (Dry)
+                                                    </button>
+                                                    <button onClick={() => setZoomLevel(60)} className={`px-2 py-1 text-[10px] font-bold rounded ${zoomLevel === 60 ? 'bg-rose-800 text-white' : 'text-slate-400'}`}>
+                                                        100x (Oil)
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div className="p-6 space-y-4">
+                                                <div>
+                                                    <span className="px-2 py-0.5 rounded text-[9px] bg-rose-950 border border-rose-800/40 text-rose-400 font-bold uppercase tracking-wider">
+                                                        Clinical Presentation
+                                                    </span>
+                                                    <p className="text-xs text-slate-300 mt-2 leading-relaxed">{selectedMorphCase.presentation}</p>
+                                                </div>
+
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-slate-800/50">
+                                                    <div className="space-y-1">
+                                                        <h5 className="text-[10px] font-bold uppercase tracking-wider text-rose-400 font-mono">Diagnosis & Genetics</h5>
+                                                        <p className="text-xs text-slate-200 font-bold">{selectedMorphCase.diagnosis}</p>
+                                                        <p className="text-[10px] text-slate-400 italic">Genetics: {selectedMorphCase.cytogenetics}</p>
+                                                    </div>
+                                                    <div className="space-y-1">
+                                                        <h5 className="text-[10px] font-bold uppercase tracking-wider text-rose-400 font-mono">Morphological Features</h5>
+                                                        <p className="text-xs text-slate-300 leading-relaxed">{selectedMorphCase.visualDescription}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div className="bg-rose-950/20 border border-rose-900/40 p-3.5 rounded-lg">
+                                                    <h5 className="text-[10px] font-extrabold uppercase text-rose-500 tracking-wider">CRITICAL CLINICAL ACTION</h5>
+                                                    <p className="text-xs text-rose-300 mt-1 font-semibold leading-relaxed">{selectedMorphCase.action}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* COAGULATION SIMULATOR TAB */}
+                            {currentTab === 'coag_lab' && (
+                                <div className="space-y-6 max-w-6xl mx-auto">
+                                    <header>
+                                        <h2 className="text-2xl font-black text-white">Coagulation Laboratory Diagnostics</h2>
+                                        <p className="text-xs text-slate-400">Adjust clinical parameters and evaluate mixing studies, TT/Reptilase splits, and DRVVT confirmatory assays.</p>
+                                    </header>
+
+                                    <div className="flex flex-wrap gap-2 pb-4 border-b border-slate-800">
+                                        <span className="text-xs text-slate-400 font-bold self-center mr-2">Clinical Presets:</span>
+                                        {Object.keys(COAG_PRESETS).map((key) => (
+                                            <button 
+                                                key={key}
+                                                onClick={() => loadPresetValues(key)}
+                                                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${selectedCoagPreset === key ? 'bg-blood-800 text-white' : 'bg-slate-950 border border-slate-800 text-slate-400 hover:bg-slate-900'}`}
+                                            >
+                                                {COAG_PRESETS[key].name}
+                                            </button>
+                                        ))}
+                                    </div>
+
+                                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                                        <div className="lg:col-span-7 bg-slate-950 border border-slate-800 p-6 rounded-xl space-y-4">
+                                            <h3 className="text-xs font-extrabold text-rose-500 uppercase tracking-widest">Adjust Coagulation Panel</h3>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div className="space-y-1 bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                                                    <div className="flex justify-between text-xs">
+                                                        <span className="text-slate-400 font-semibold">PT</span>
+                                                        <span className="font-bold text-rose-400">{ptInput}s</span>
+                                                    </div>
+                                                    <input type="range" min="9" max="60" step="0.5" value={ptInput} onChange={(e) => { setSelectedCoagPreset(null); setPtInput(parseFloat(e.target.value)); }} className="w-full accent-rose-600" />
+                                                </div>
+
+                                                <div className="space-y-1 bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                                                    <div className="flex justify-between text-xs">
+                                                        <span className="text-slate-400 font-semibold">APTT</span>
+                                                        <span className="font-bold text-rose-400">{apttInput}s</span>
+                                                    </div>
+                                                    <input type="range" min="20" max="150" step="1" value={apttInput} onChange={(e) => { setSelectedCoagPreset(null); setApttInput(parseFloat(e.target.value)); }} className="w-full accent-rose-600" />
+                                                </div>
+
+                                                <div className="space-y-1 bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                                                    <div className="flex justify-between text-xs">
+                                                        <span className="text-slate-400 font-semibold">Immediate Mix</span>
+                                                        <span className="font-bold text-rose-400">{mixImmInput}s</span>
+                                                    </div>
+                                                    <input type="range" min="20" max="150" step="1" value={mixImmInput} onChange={(e) => { setSelectedCoagPreset(null); setMixImmInput(parseFloat(e.target.value)); }} className="w-full accent-rose-600" />
+                                                </div>
+
+                                                <div className="space-y-1 bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                                                    <div className="flex justify-between text-xs">
+                                                        <span className="text-slate-400 font-semibold">Incubated Mix (2hr)</span>
+                                                        <span className="font-bold text-rose-400">{mixIncInput}s</span>
+                                                    </div>
+                                                    <input type="range" min="20" max="150" step="1" value={mixIncInput} onChange={(e) => { setSelectedCoagPreset(null); setMixIncInput(parseFloat(e.target.value)); }} className="w-full accent-rose-600" />
+                                                </div>
+
+                                                <div className="space-y-1 bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                                                    <div className="flex justify-between text-xs">
+                                                        <span className="text-slate-400 font-semibold">Thrombin Time</span>
+                                                        <span className="font-bold text-rose-400">{ttInput}s</span>
+                                                    </div>
+                                                    <input type="range" min="10" max="150" step="1" value={ttInput} onChange={(e) => { setSelectedCoagPreset(null); setTtInput(parseFloat(e.target.value)); }} className="w-full accent-rose-600" />
+                                                </div>
+
+                                                <div className="space-y-1 bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                                                    <div className="flex justify-between text-xs">
+                                                        <span className="text-slate-400 font-semibold">Reptilase Time</span>
+                                                        <span className="font-bold text-rose-400">{reptInput}s</span>
+                                                    </div>
+                                                    <input type="range" min="10" max="40" step="0.5" value={reptInput} onChange={(e) => { setSelectedCoagPreset(null); setReptInput(parseFloat(e.target.value)); }} className="w-full accent-rose-600" />
+                                                </div>
+
+                                                <div className="space-y-1 bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                                                    <div className="flex justify-between text-xs">
+                                                        <span className="text-slate-400 font-semibold">Fibrinogen</span>
+                                                        <span className="font-bold text-rose-400">{fibInput} g/L</span>
+                                                    </div>
+                                                    <input type="range" min="0.3" max="6.0" step="0.1" value={fibInput} onChange={(e) => { setSelectedCoagPreset(null); setFibInput(parseFloat(e.target.value)); }} className="w-full accent-rose-600" />
+                                                </div>
+
+                                                <div className="space-y-1 bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                                                    <div className="flex justify-between text-xs">
+                                                        <span className="text-slate-400 font-semibold">DRVVT Screen/Confirm</span>
+                                                        <span className="font-bold text-rose-400">{drvvtInput}</span>
+                                                    </div>
+                                                    <input type="range" min="0.8" max="2.5" step="0.05" value={drvvtInput} onChange={(e) => { setSelectedCoagPreset(null); setDrvvtInput(parseFloat(e.target.value)); }} className="w-full accent-rose-600" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="lg:col-span-5 bg-slate-950 border border-slate-800 p-6 rounded-xl flex flex-col justify-between shadow-lg">
+                                            <div className="space-y-4">
+                                                <span className="px-2 py-0.5 rounded text-[10px] bg-sky-950 text-sky-400 border border-sky-800/40 font-bold uppercase tracking-wider">
+                                                    Real-Time Interpretive Report
+                                                </span>
+                                                <div className="space-y-1">
+                                                    <h3 className="text-lg font-bold text-white">{generatedReport.diagnosis}</h3>
+                                                    <p className="text-xs text-slate-400 leading-relaxed">{generatedReport.description}</p>
+                                                </div>
+
+                                                {selectedCoagPreset && (
+                                                    <div className="p-3.5 bg-slate-900 border border-slate-800/80 rounded-lg">
+                                                        <h4 className="text-[10px] font-bold text-slate-300 uppercase tracking-wider">Pathological Mechanism</h4>
+                                                        <p className="text-xs text-slate-400 mt-1 leading-relaxed">{COAG_PRESETS[selectedCoagPreset].mechanics}</p>
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            <div className="pt-4 border-t border-slate-800/50 flex flex-col gap-2">
+                                                <span className="text-[10px] text-slate-500 font-bold uppercase">Laboratory Standard Practice</span>
+                                                <p className="text-xs text-slate-400">Always confirm factor assays, perform parallel inhibitor titrations (Bethesda assays for FVIII), and verify patient drug history before final pathology sign-off.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* WRITTEN ESSAY COACH TAB */}
+                            {currentTab === 'essay' && (
+                                <div className="space-y-6 max-w-6xl mx-auto">
+                                    <header>
+                                        <h2 className="text-2xl font-black text-white">Written Essay & SAQ Companion</h2>
+                                        <p className="text-xs text-slate-400">Practice real written FRCPath Part 2 exam questions. Draft your answer, then assess it against the core clinical mark schemes.</p>
+                                    </header>
+
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div className="space-y-2">
+                                            {SAQ_DATABASE.map((saq) => (
+                                                <div 
+                                                    key={saq.id}
+                                                    onClick={() => { setActiveSaq(saq); setUserSaqNotes(''); setShowMarkScheme(false); setEssayFeedback(null); }}
+                                                    className={`p-4 rounded-xl border cursor-pointer transition text-left space-y-1 ${activeSaq.id === saq.id ? 'bg-blood-950 border-blood-700 text-white' : 'bg-slate-950 border-slate-800 text-slate-400 hover:bg-slate-900'}`}
+                                                >
+                                                    <h3 className="text-xs font-bold">{saq.title}</h3>
+                                                    <p className="text-[10px] text-slate-500 line-clamp-1">{saq.question}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="md:col-span-2 space-y-6">
+                                            <div className="bg-slate-950 border border-slate-800 p-6 rounded-xl space-y-5 shadow-xl">
+                                                <div className="space-y-1 border-b border-slate-800 pb-3">
+                                                    <span className="text-[10px] bg-purple-950 border border-purple-800/40 text-purple-400 px-2 py-0.5 rounded uppercase font-bold tracking-wider">
+                                                        Written Paper Case Scenario
+                                                    </span>
+                                                    <h3 className="text-lg font-bold text-white mt-1">{activeSaq.title}</h3>
+                                                    <p className="text-xs text-slate-300 leading-relaxed mt-2">{activeSaq.question}</p>
+                                                </div>
+
+                                                <div className="space-y-2">
+                                                    <label className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Write Your Response Draft Here:</label>
+                                                    <textarea 
+                                                        value={userSaqNotes}
+                                                        onChange={(e) => setUserSaqNotes(e.target.value)}
+                                                        placeholder="Type your structured point-form diagnostic plan or systemic therapies here..."
+                                                        className="w-full h-44 bg-slate-900 border border-slate-800 rounded-lg p-3 text-xs text-slate-200 placeholder-slate-600 focus:outline-none focus:border-blood-700 transition font-mono"
+                                                    />
+                                                </div>
+
+                                                {/* ASSESSMENT BUTTONS */}
+                                                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                                                    <button 
+                                                        onClick={() => setShowMarkScheme(!showMarkScheme)}
+                                                        className="flex-1 py-2.5 bg-slate-900 hover:bg-slate-850 border border-slate-800 rounded-lg text-xs font-bold text-white transition uppercase tracking-wider"
+                                                    >
+                                                        {showMarkScheme ? "Hide Mark Scheme" : "Reveal Official Mark Scheme"}
+                                                    </button>
+                                                    <button 
+                                                        onClick={handleEvaluateEssay}
+                                                        disabled={isEvaluatingEssay || !userSaqNotes.trim()}
+                                                        className="flex-1 py-2.5 bg-gradient-to-r from-blood-800 to-rose-700 hover:from-blood-750 hover:to-rose-650 disabled:opacity-50 rounded-lg text-xs font-extrabold text-white transition uppercase tracking-wider shadow-lg flex items-center justify-center gap-2"
+                                                    >
+                                                        {isEvaluatingEssay ? (
+                                                            <React.Fragment>
+                                                                <svg className="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+                                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                                </svg>
+                                                                Examiner Assessment Active...
+                                                            </React.Fragment>
+                                                        ) : (
+                                                            "✨ Evaluate Essay with AI"
+                                                        )}
+                                                    </button>
+                                                </div>
+
+                                                {/* TRADITIONAL ACCORDION GUIDE */}
+                                                {showMarkScheme && (
+                                                    <div className="bg-slate-900/60 border border-slate-800 p-4 rounded-lg space-y-4">
+                                                        <div>
+                                                            <h4 className="text-xs font-black uppercase text-rose-400 tracking-wider">Official Royal College Marking Guide</h4>
+                                                            <p className="text-[10px] text-slate-500 mt-0.5">Ensure your drafted notes contain the following high-yield key terms.</p>
+                                                        </div>
+
+                                                        <ul className="space-y-2">
+                                                            {activeSaq.markScheme.map((pt, idx) => (
+                                                                <li key={idx} className="flex gap-2.5 text-xs text-slate-300">
+                                                                    <svg className="w-4 h-4 text-rose-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+                                                                    <span>{pt}</span>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+
+                                                        <div className="bg-blood-950/20 border-l-2 border-blood-700 p-3 rounded-r-lg">
+                                                            <span className="text-[10px] font-bold text-rose-400 uppercase tracking-wider">Clinical Examiner Pearl:</span>
+                                                            <p className="text-xs text-rose-300 mt-1 italic">"{activeSaq.clinicalPearl}"</p>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            {/* AI CLINICAL GRADING RESPONSE */}
+                                            {essayFeedback && (
+                                                <div className="bg-slate-950 border-2 border-blood-800 rounded-xl p-6 space-y-5 shadow-2xl animate-fade-in">
+                                                    <div className="flex justify-between items-center border-b border-slate-800/85 pb-3">
+                                                        <div className="space-y-0.5">
+                                                            <h4 className="text-sm font-black text-rose-500 uppercase tracking-wider font-mono">✨ Interactive Examiner Feedback</h4>
+                                                            <p className="text-[11px] text-slate-400">Deep qualitative and structural analytics generated by your virtual mentor.</p>
+                                                        </div>
+                                                        <div className="px-4 py-2 bg-rose-950/40 border border-rose-800/30 rounded-lg text-center min-w-[80px]">
+                                                            <div className="text-[10px] uppercase font-bold text-slate-400">Score</div>
+                                                            <div className="text-lg font-black text-white">{essayFeedback.examinerScore} / 10</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                        <div className="bg-slate-900/70 p-3.5 rounded-lg border border-slate-800/80 space-y-1.5">
+                                                            <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider font-mono">Elements Covered:</span>
+                                                            {essayFeedback.matchedPoints.length > 0 ? (
+                                                                <ul className="space-y-1">
+                                                                    {essayFeedback.matchedPoints.map((pt, i) => (
+                                                                        <li key={i} className="text-[11px] text-slate-300 flex items-start gap-1.5">
+                                                                            <span className="text-emerald-500 font-bold">✔</span>
+                                                                            <span>{pt}</span>
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            ) : (
+                                                                <p className="text-xs text-slate-500 italic">No checklist matches detected in draft.</p>
+                                                            )}
+                                                        </div>
+
+                                                        <div className="bg-slate-900/70 p-3.5 rounded-lg border border-slate-800/80 space-y-1.5">
+                                                            <span className="text-[10px] font-bold text-rose-400 uppercase tracking-wider font-mono">Key Gaps / Missed Points:</span>
+                                                            {essayFeedback.missedPoints.length > 0 ? (
+                                                                <ul className="space-y-1">
+                                                                    {essayFeedback.missedPoints.map((pt, i) => (
+                                                                        <li key={i} className="text-[11px] text-slate-300 flex items-start gap-1.5">
+                                                                            <span className="text-rose-500 font-bold">✘</span>
+                                                                            <span>{pt}</span>
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            ) : (
+                                                                <p className="text-xs text-emerald-400 italic font-medium">Perfect syllabus match! All diagnostic checkpoints hit.</p>
+                                                            )}
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-800">
+                                                        <h5 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest font-mono">Qualitative Remediation Notes:</h5>
+                                                        <p className="text-xs text-slate-300 leading-relaxed mt-1.5 whitespace-pre-line">{essayFeedback.feedbackNotes}</p>
+                                                    </div>
+
+                                                    <div className="bg-slate-900/80 border-l-4 border-emerald-600 p-4 rounded-r-lg space-y-2">
+                                                        <h5 className="text-[11px] font-black text-emerald-400 uppercase tracking-wider font-mono">Exemplary Model Response:</h5>
+                                                        <p className="text-xs text-slate-200 leading-relaxed italic whitespace-pre-line font-serif">
+                                                            "{essayFeedback.examPerfectResponse}"
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* CONSULT PROFESSOR TAB */}
+                            {currentTab === 'ai_professor' && (
+                                <div className="space-y-6 max-w-5xl mx-auto h-full flex flex-col justify-between">
+                                    <header>
+                                        <div className="flex justify-between items-center">
+                                            <div>
+                                                <h2 className="text-2xl font-black text-white font-mono">✨ FRCPath AI Mentor</h2>
+                                                <p className="text-xs text-slate-400">Consult your exam mentor for high-yield diagnostic algorithms, BSH criteria, and guidelines (Search Grounding Active).</p>
+                                            </div>
+                                            <button onClick={() => setShowKeyModal(true)} className="px-3 py-1.5 bg-slate-950 hover:bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-400 font-bold transition">
+                                                Configure API Key
+                                            </button>
+                                        </div>
+                                    </header>
+
+                                    <div className="flex-1 bg-slate-950 border border-slate-800 rounded-xl flex flex-col overflow-hidden min-h-[400px] shadow-2xl">
+                                        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                                            {chatHistory.map((msg, i) => (
+                                                <div key={i} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                                                    <div className={`max-w-[85%] p-4 rounded-xl text-xs leading-relaxed space-y-1.5 ${msg.sender === 'user' ? 'bg-blood-900/80 text-white rounded-tr-none' : 'bg-slate-900 text-slate-200 rounded-tl-none border border-slate-800/80'}`}>
+                                                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-455 block mb-1">
+                                                            {msg.sender === 'user' ? 'Haematology Registrar' : 'Professor FRCPath'}
+                                                        </span>
+                                                        <div className="whitespace-pre-wrap">{msg.text}</div>
+                                                        
+                                                        {/* CITATIONS & SOURCES GROUNDING */}
+                                                        {msg.sources && msg.sources.length > 0 && (
+                                                            <div className="border-t border-slate-800 pt-2 mt-2 space-y-1">
+                                                                <span className="text-[9px] font-bold text-rose-400 uppercase tracking-widest block font-mono">Grounding Sources:</span>
+                                                                <div className="flex flex-wrap gap-2 text-[10px]">
+                                                                    {msg.sources.map((src, sIdx) => (
+                                                                        <a 
+                                                                            key={sIdx} 
+                                                                            href={src.uri} 
+                                                                            target="_blank" 
+                                                                            rel="noopener noreferrer" 
+                                                                            className="px-2 py-0.5 bg-slate-950 hover:bg-slate-900 text-rose-300 font-semibold rounded border border-slate-800 flex items-center gap-1 transition"
+                                                                        >
+                                                                            <svg className="w-2.5 h-2.5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                                            </svg>
+                                                                            {src.title}
+                                                                        </a>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                            {aiLoading && (
+                                                <div className="flex justify-start">
+                                                    <div className="bg-slate-900 text-slate-450 p-4 rounded-xl text-xs rounded-tl-none border border-slate-800 flex items-center gap-2">
+                                                        <div className="w-2 h-2 rounded-full bg-rose-500 animate-bounce"></div>
+                                                        <div className="w-2 h-2 rounded-full bg-rose-500 animate-bounce delay-100"></div>
+                                                        <div className="w-2 h-2 rounded-full bg-rose-500 animate-bounce delay-200"></div>
+                                                        <span className="font-semibold text-[10px] uppercase ml-1 font-mono">Querying experts & search indexes...</span>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        <div className="p-4 border-t border-slate-800/80 bg-slate-950 flex gap-3">
+                                            <input 
+                                                type="text" 
+                                                value={aiQuery}
+                                                onChange={(e) => setAiQuery(e.target.value)}
+                                                onKeyDown={(e) => e.key === 'Enter' && handleSendChatMessage()}
+                                                placeholder="Ask on BSH guidelines (e.g. 'Explain therapeutic-dose anticoagulation in cancer-associated thrombosis with severe thrombocytopenia')...."
+                                                className="flex-1 bg-slate-900 border border-slate-800 rounded-lg px-4 text-xs focus:outline-none focus:border-blood-700 text-slate-200 placeholder-slate-600 font-medium"
+                                            />
+                                            <button 
+                                                onClick={handleSendChatMessage}
+                                                disabled={!aiQuery.trim() || aiLoading}
+                                                className="px-5 py-2.5 bg-rose-700 hover:bg-rose-600 disabled:opacity-50 text-white font-bold text-xs rounded-lg transition uppercase tracking-wider"
+                                            >
+                                                Consult
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                        </main>
+                    </div>
+
+                    {/* API KEY CONFIGURATION MODAL */}
+                    {showKeyModal && (
+                        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fade-in">
+                            <div className="bg-slate-950 border border-slate-800 rounded-2xl w-full max-w-md p-6 space-y-4 shadow-2xl">
+                                <div className="space-y-1">
+                                    <h3 className="text-lg font-bold text-white">Configure Gemini API Key</h3>
+                                    <p className="text-xs text-slate-400">Configure your personal Google AI key to bypass limits and connect the consult console directly to the live server.</p>
+                                </div>
+
+                                <div className="space-y-1.5">
+                                    <label className="text-[10px] uppercase tracking-wider font-bold text-slate-400">Gemini Key:</label>
+                                    <input 
+                                        type="password"
+                                        value={customApiKey}
+                                        onChange={(e) => setCustomApiKey(e.target.value)}
+                                        placeholder="AIzaSy..."
+                                        className="w-full bg-slate-900 border border-slate-800 rounded-lg p-3 text-xs text-slate-200 placeholder-slate-700 focus:outline-none focus:border-blood-700 transition"
+                                    />
+                                    <span className="text-[9px] text-slate-500">Your key remains entirely in local browser memory and is never stored centrally.</span>
+                                </div>
+
+                                <div className="flex justify-end gap-2.5 pt-2">
+                                    <button onClick={() => setShowKeyModal(false)} className="px-4 py-2 bg-slate-900 hover:bg-slate-850 border border-slate-800 text-slate-400 font-semibold text-xs rounded-lg transition">
+                                        Cancel
+                                    </button>
+                                    <button onClick={() => setShowKeyModal(false)} className="px-4 py-2 bg-rose-700 hover:bg-rose-600 text-white font-bold text-xs rounded-lg transition">
+                                        Save Key
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                </div>
+            );
+        }
+
+        // Render React Application
+        const rootElement = document.getElementById("root");
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
+    </script>
+</body>
+</html>

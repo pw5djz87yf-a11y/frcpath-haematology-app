@@ -1,0 +1,29 @@
+[
+  {
+    "id": 62,
+    "code": "AML62",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "difficulty": "Consultant",
+    "question_type": "Single best answer",
+    "title": "NPM1-mutated AML",
+    "question": "Which statement is correct regarding NPM1-mutated AML?",
+    "options": [
+      "NPM1 mutation defines a distinct AML entity in current classifications.",
+      "NPM1 is specific for ALL.",
+      "NPM1 always coexists with TP53 mutation.",
+      "NPM1 excludes FLT3 mutations.",
+      "NPM1 defines APL."
+    ],
+    "correct_answer": "A. NPM1 mutation defines a distinct AML entity in current classifications.",
+    "explanation": "NPM1-mutated AML is a genetically defined entity; interpretation should be integrated with co-mutations such as FLT3-ITD.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  }
+]

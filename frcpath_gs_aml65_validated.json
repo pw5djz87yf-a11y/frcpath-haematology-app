@@ -1,0 +1,29 @@
+[
+  {
+    "id": 65,
+    "code": "AML65",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "difficulty": "Consultant",
+    "question_type": "Single best answer",
+    "title": "IDH1/IDH2-mutated AML",
+    "question": "Why are IDH1/2 mutations clinically important?",
+    "options": [
+      "They identify patients who may benefit from targeted inhibitors.",
+      "They define APL.",
+      "They establish MPAL.",
+      "They are always germline.",
+      "They exclude NPM1 mutations."
+    ],
+    "correct_answer": "A. They identify patients who may benefit from targeted inhibitors.",
+    "explanation": "IDH mutations have diagnostic context and therapeutic relevance.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  }
+]

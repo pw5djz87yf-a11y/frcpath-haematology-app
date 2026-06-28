@@ -1,0 +1,29 @@
+[
+  {
+    "id": 66,
+    "code": "AML66",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "difficulty": "Consultant",
+    "question_type": "Single best answer",
+    "title": "RUNX1-mutated AML",
+    "question": "Which statement best describes RUNX1 mutations in AML?",
+    "options": [
+      "RUNX1 mutations should be interpreted with the overall genetic context and current classification.",
+      "They define APL.",
+      "They are always inherited.",
+      "They define CBF AML.",
+      "They exclude adverse risk."
+    ],
+    "correct_answer": "A. RUNX1 mutations should be interpreted with the overall genetic context and current classification.",
+    "explanation": "RUNX1 mutations require integrated interpretation rather than isolation.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  }
+]

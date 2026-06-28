@@ -1,0 +1,41 @@
+[
+  {
+    "id": 74,
+    "code": "AML074",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "subsection": "WT1 and molecular monitoring",
+    "title": "WT1 mutation and MRD interpretation in AML",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 360,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Interpret molecular findings in AML",
+      "Distinguish diagnostic, prognostic and clonal markers",
+      "Apply integrated consultant-level reporting principles"
+    ],
+    "clinical_vignette": "A 46-year-old woman has AML with normal karyotype. NGS shows WT1 mutation VAF 31% and FLT3-ITD. After induction, WT1 mutation is still detectable at low level while morphology shows remission.",
+    "question": "Which statement is most appropriate?",
+    "options": [
+      "A. WT1 persistence may suggest residual molecular disease but must be interpreted with assay sensitivity, baseline marker suitability and clinical context.",
+      "B. WT1 mutation defines APL.",
+      "C. WT1 persistence always proves relapse.",
+      "D. WT1 is never useful for monitoring.",
+      "E. WT1 mutation excludes FLT3-ITD."
+    ],
+    "correct_answer": "A. WT1 persistence may suggest residual molecular disease but must be interpreted with assay sensitivity, baseline marker suitability and clinical context.",
+    "explanation": "WT1 abnormalities may have monitoring value in selected cases, but molecular persistence requires careful interpretation. MRD reporting depends on validated assays, sensitivity and disease context.",
+    "why_other_options_are_wrong": {},
+    "frcpath_pearl": "MRD interpretation is not just positive versus negative; assay and marker suitability matter.",
+    "take_home_message": "Molecular findings in AML must be interpreted in diagnostic hierarchy and clinical context.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "European LeukemiaNet Recommendations"
+    ]
+  }
+]

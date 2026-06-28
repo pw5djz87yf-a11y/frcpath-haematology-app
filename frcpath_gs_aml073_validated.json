@@ -1,0 +1,41 @@
+[
+  {
+    "id": 73,
+    "code": "AML073",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "subsection": "KIT mutation in core-binding factor AML",
+    "title": "KIT mutation in RUNX1::RUNX1T1 or CBFB::MYH11 AML",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 360,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Interpret molecular findings in AML",
+      "Distinguish diagnostic, prognostic and clonal markers",
+      "Apply integrated consultant-level reporting principles"
+    ],
+    "clinical_vignette": "A 39-year-old man has AML with RUNX1::RUNX1T1. NGS detects a KIT exon 17 mutation. FLT3-ITD and NPM1 are negative.",
+    "question": "What is the best interpretation of the KIT mutation?",
+    "options": [
+      "A. It changes the diagnosis to AML with KIT mutation.",
+      "B. It is a prognostic modifier in core-binding factor AML but does not replace the fusion-defined diagnosis.",
+      "C. It proves acute lymphoblastic leukaemia.",
+      "D. It excludes RUNX1::RUNX1T1 AML.",
+      "E. It defines acute promyelocytic leukaemia."
+    ],
+    "correct_answer": "B. It is a prognostic modifier in core-binding factor AML but does not replace the fusion-defined diagnosis.",
+    "explanation": "KIT mutations may influence relapse risk in core-binding factor AML but the diagnostic entity remains AML with RUNX1::RUNX1T1 or CBFB::MYH11.",
+    "why_other_options_are_wrong": {},
+    "frcpath_pearl": "Separate diagnostic entity from relapse-risk modifier.",
+    "take_home_message": "Molecular findings in AML must be interpreted in diagnostic hierarchy and clinical context.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "European LeukemiaNet Recommendations"
+    ]
+  }
+]

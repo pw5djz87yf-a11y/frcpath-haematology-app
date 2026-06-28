@@ -1,0 +1,109 @@
+[
+  {
+    "id": 68,
+    "code": "AML068",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "subsection": "NPM1-mutated AML with FLT3-ITD co-mutation",
+    "title": "Integrated interpretation of NPM1-mutated AML with FLT3-ITD",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 360,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Recognise the characteristic features of NPM1-mutated AML.",
+      "Interpret the significance of concurrent FLT3-ITD.",
+      "Integrate morphology, immunophenotype, cytogenetics and molecular findings.",
+      "Differentiate diagnostic classification from prognostic and therapeutic implications."
+    ],
+    "tags": [
+      "AML",
+      "NPM1",
+      "FLT3-ITD",
+      "Molecular Genetics",
+      "WHO5",
+      "ICC2022",
+      "ELN",
+      "Integrated Diagnosis"
+    ],
+    "clinical_vignette": "A 54-year-old woman presents with fatigue, gingival bleeding and easy bruising for three weeks. Bone marrow examination demonstrates acute myeloid leukaemia. Cytogenetic and molecular studies are requested urgently.",
+    "laboratory_data": {
+      "Hb": "82 g/L",
+      "WBC": "42.0 ×10⁹/L",
+      "Platelets": "34 ×10⁹/L",
+      "LDH": "1480 U/L",
+      "Uric Acid": "510 µmol/L"
+    },
+    "morphology": {
+      "peripheral_blood": "Numerous circulating blasts with occasional cup-like nuclear invaginations. No Auer rods identified.",
+      "bone_marrow": "Hypercellular marrow with approximately 78% myeloblasts. Blasts have moderate cytoplasm and occasional cup-like nuclei."
+    },
+    "flow_cytometry": {
+      "positive": [
+        "MPO",
+        "CD33 bright",
+        "CD13",
+        "CD117",
+        "HLA-DR dim",
+        "CD38"
+      ],
+      "negative": [
+        "CD34",
+        "CD19",
+        "cyCD79a",
+        "cyCD3",
+        "CD10"
+      ],
+      "interpretation": "Immunophenotype is compatible with AML and is characteristic of many NPM1-mutated cases."
+    },
+    "cytogenetics": {
+      "karyotype": "46,XX[20]",
+      "interpretation": "Normal conventional karyotype."
+    },
+    "molecular_genetics": {
+      "NPM1": "Pathogenic mutation detected",
+      "FLT3-ITD": "Detected",
+      "FLT3-TKD": "Not detected",
+      "IDH1": "Not detected",
+      "IDH2": "Not detected",
+      "TP53": "Not detected"
+    },
+    "integrated_laboratory_diagnosis": "Acute myeloid leukaemia with NPM1 mutation and concurrent FLT3-ITD.",
+    "question": "Which statement best reflects the integrated interpretation of these findings?",
+    "options": [
+      "A. This is mixed phenotype acute leukaemia because CD34 is absent.",
+      "B. This is AML with NPM1 mutation; the concurrent FLT3-ITD has important prognostic and therapeutic implications but does not change the diagnostic entity.",
+      "C. This is acute promyelocytic leukaemia because HLA-DR expression is reduced.",
+      "D. A normal karyotype excludes a genetically defined AML.",
+      "E. FLT3-ITD alone determines the diagnostic classification."
+    ],
+    "correct_answer": "B. This is AML with NPM1 mutation; the concurrent FLT3-ITD has important prognostic and therapeutic implications but does not change the diagnostic entity.",
+    "explanation": "NPM1 mutation defines a genetically distinct AML entity. Concurrent FLT3-ITD influences prognosis and targeted treatment decisions but does not alter the diagnostic classification.",
+    "why_other_options_are_wrong": {
+      "A": "Absence of CD34 is common in NPM1-mutated AML.",
+      "C": "Reduced HLA-DR alone is insufficient for APL.",
+      "D": "Normal karyotype does not exclude molecularly defined AML.",
+      "E": "FLT3-ITD is prognostic rather than diagnostic."
+    },
+    "frcpath_pearl": "Differentiate disease classification from risk stratification. NPM1 defines the entity; FLT3-ITD modifies prognosis and therapy.",
+    "common_pitfalls": [
+      "Assuming normal karyotype excludes genetically defined AML.",
+      "Overcalling APL based on reduced HLA-DR.",
+      "Using FLT3-ITD as the defining diagnostic abnormality."
+    ],
+    "take_home_message": "Integrate morphology, flow cytometry, cytogenetics and molecular findings to classify AML accurately.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "European LeukemiaNet Recommendations"
+    ],
+    "related_cases": [
+      "AML062",
+      "AML063",
+      "AML069"
+    ]
+  }
+]

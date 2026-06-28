@@ -1,0 +1,41 @@
+[
+  {
+    "id": 71,
+    "code": "AML071",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "subsection": "DNMT3A and clonal architecture",
+    "title": "Interpreting DNMT3A mutation in AML clonal evolution",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 360,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Interpret molecular findings in AML",
+      "Distinguish diagnostic, prognostic and clonal markers",
+      "Apply integrated consultant-level reporting principles"
+    ],
+    "clinical_vignette": "A 62-year-old woman presents with AML. NGS shows NPM1 mutation VAF 34%, FLT3-ITD detected and DNMT3A R882 mutation VAF 48%. Cytogenetics show a normal karyotype.",
+    "question": "Which statement best reflects the significance of the DNMT3A mutation?",
+    "options": [
+      "A. DNMT3A mutation defines the AML entity.",
+      "B. DNMT3A commonly represents an early/founder clonal event and should be interpreted with the full mutation profile.",
+      "C. DNMT3A mutation proves therapy-related AML.",
+      "D. DNMT3A mutation excludes NPM1-mutated AML.",
+      "E. DNMT3A mutation is diagnostic of acute promyelocytic leukaemia."
+    ],
+    "correct_answer": "B. DNMT3A commonly represents an early/founder clonal event and should be interpreted with the full mutation profile.",
+    "explanation": "DNMT3A mutations are common in AML and may represent early clonal haematopoiesis or a founder lesion. They do not define the AML entity by themselves; diagnosis is integrated with NPM1, FLT3, cytogenetics and morphology.",
+    "why_other_options_are_wrong": {},
+    "frcpath_pearl": "High VAF DNMT3A may persist in remission and should not automatically be used as an MRD marker.",
+    "take_home_message": "Molecular findings in AML must be interpreted in diagnostic hierarchy and clinical context.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "European LeukemiaNet Recommendations"
+    ]
+  }
+]

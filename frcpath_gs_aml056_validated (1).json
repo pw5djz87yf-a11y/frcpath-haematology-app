@@ -1,0 +1,31 @@
+[
+  {
+    "id": 56,
+    "code": "AML056",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Cytogenetics",
+    "subsection": "NUP98-rearranged AML",
+    "title": "Recognising AML with NUP98 rearrangement",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "clinical_vignette": "A 17-year-old adolescent presents with pancytopenia and circulating blasts. Bone marrow shows AML without a defining recurrent abnormality on initial FISH. RNA fusion testing is requested because of persistent suspicion of a cryptic fusion.",
+    "question": "Which statement best reflects the role of NUP98 rearrangements in AML?",
+    "options": [
+      "NUP98 rearrangements are usually detected by routine AML FISH panels.",
+      "NUP98 rearrangements are often cryptic and may require RNA fusion testing for detection.",
+      "NUP98 rearrangements define acute promyelocytic leukaemia.",
+      "NUP98 rearrangements are characteristic of core-binding factor AML.",
+      "NUP98 rearrangements are restricted to therapy-related AML."
+    ],
+    "correct_answer": "B. NUP98 rearrangements are often cryptic and may require RNA fusion testing for detection.",
+    "explanation": "NUP98 fusion partners are diverse and may be missed by conventional cytogenetics or limited FISH panels. RNA sequencing or targeted fusion assays are frequently required. They are associated with aggressive disease in many series.",
+    "frcpath_pearl": "A normal karyotype does not exclude a clinically important fusion. Consider RNA fusion testing when morphology and immunophenotype suggest AML but routine testing is unrevealing.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "ICC 2022"
+    ]
+  }
+]

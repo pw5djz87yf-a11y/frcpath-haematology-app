@@ -1,0 +1,29 @@
+[
+  {
+    "id": 64,
+    "code": "AML64",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "difficulty": "Consultant",
+    "question_type": "Single best answer",
+    "title": "CEBPA-mutated AML",
+    "question": "Which CEBPA finding is associated with a favourable biological subgroup?",
+    "options": [
+      "Pathogenic bZIP/in-frame CEBPA mutation profile.",
+      "Any synonymous CEBPA variant.",
+      "Loss of chromosome Y.",
+      "FLT3-TKD alone.",
+      "PML::RARA fusion."
+    ],
+    "correct_answer": "A. Pathogenic bZIP/in-frame CEBPA mutation profile.",
+    "explanation": "Current classifications recognise specific pathogenic CEBPA mutation patterns as defining a favourable subgroup.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  }
+]

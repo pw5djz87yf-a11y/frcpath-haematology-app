@@ -1,0 +1,29 @@
+[
+  {
+    "id": 59,
+    "code": "AML059",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Cytogenetics",
+    "difficulty": "Consultant",
+    "question_type": "Single best answer",
+    "title": "Monosomal karyotype AML",
+    "question": "Which cytogenetic pattern fulfils the definition of a monosomal karyotype?",
+    "options": [
+      "Two or more autosomal monosomies, or one autosomal monosomy plus at least one structural abnormality.",
+      "Any loss of chromosome Y.",
+      "Any trisomy.",
+      "Only del(5q).",
+      "Only t(15;17)."
+    ],
+    "correct_answer": "A. Two or more autosomal monosomies, or one autosomal monosomy plus at least one structural abnormality.",
+    "explanation": "Monosomal karyotype identifies a particularly high-risk subgroup of AML.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  }
+]

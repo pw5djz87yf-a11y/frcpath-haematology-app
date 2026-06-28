@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRCPath Haematology Revision Portal - Offline Standalone</title>
+    <!-- Tailwind CSS CDN -->
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=JLycCukU-B45u0NV36KYy3TX8xobqcdLneoR3ofEeGRNAw8N0_PSvV6Ki16PKTXhWXxlVA7dc7iYzvwQnx5usd-4XragpJ6SaC8Xwa-MJfjNpBGowKeHlMqm_WIlGgkGVXJ4XCafOIyCMQUR451_7Nik0V1pktNO5gwHPia6uc3eI9QDCg7Nmh9ppYQ6zTQi-mcdHbob8T1HjLo4LdsUrGClSKTW9spg8lwPfH7icg_oBbMnH0YPnUnDDq8IXpk6XYnzUovUjEgb5HyHhJSnkaydIksg7KquI67PNX-X3871nhWM2oKZ8kdKZkQ5c8o1J25Tozvr2ErWOpE5vOhRpD9Iey6XI3oC3GzT7_ln0OdGQb6K6HQReETx3dkb7ZCJ" charset="UTF-8"></script><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons for high-quality medical dashboard aesthetics -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clinical: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            200: '#bae0fd',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        medicalTeal: {
+                            500: '#0d9488',
+                            600: '#0f766e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth transitions for navigation and active states */
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Custom scrollbar for beautiful dashboard layouts */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col font-sans text-slate-800 antialiased">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-slate-900 text-white shadow-md shrink-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Identity -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('dashboard')">
+                    <div class="p-2 bg-blue-600 rounded-lg text-white">
+                        <i data-lucide="activity" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg tracking-tight block">FRCPath Haematology</span>
+                        <span class="text-xs text-blue-400 font-medium block -mt-1">Revision & Board Prep</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="hidden md:flex space-x-2">
+                    <button id="nav-dashboard" onclick="navigateTo('dashboard')" class="px-3 py-2 rounded-md text-sm font-medium bg-slate-800 text-white transition-all duration-150">
+                        <span class="flex items-center gap-1.5"><i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard</span>
+                    </button>
+                    <button id="nav-qbank" onclick="navigateTo('qbank')" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-all duration-150">
+                        <span class="flex items-center gap-1.5"><i data-lucide="book-open" class="w-4 h-4"></i> Question Bank</span>
+                    </button>
+                    <button id="nav-exam" onclick="startQuickQuiz()" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-all duration-150">
+                        <span class="flex items-center gap-1.5"><i data-lucide="graduation-cap" class="w-4 h-4"></i> Practice Exam</span>
+                    </button>
+                </nav>
+
+                <!-- In-Memory Session Score Badge -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 flex items-center space-x-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                        <span class="text-xs text-slate-300 font-semibold uppercase tracking-wider">Session Accuracy:</span>
+                        <span id="session-accuracy-badge" class="text-sm font-bold text-white">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Bottom Bar -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 z-50 py-2 px-6 flex justify-around items-center">
+        <button onclick="navigateTo('dashboard')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-blue-400 focus:text-blue-400 transition-colors">
+            <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+            <span class="text-[10px] font-medium">Dashboard</span>
+        </button>
+        <button onclick="navigateTo('qbank')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-blue-400 focus:text-blue-400 transition-colors">
+            <i data-lucide="book-open" class="w-5 h-5"></i>
+            <span class="text-[10px] font-medium">Q-Bank</span>
+        </button>
+        <button onclick="startQuickQuiz()" class="flex flex-col items-center gap-1 text-slate-400 hover:text-blue-400 focus:text-blue-400 transition-colors">
+            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+            <span class="text-[10px] font-medium">Exam</span>
+        </button>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow overflow-y-auto pb-20 md:pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+            <!-- Custom Notification Message Bar -->
+            <div id="notification-bar" class="hidden mb-6 p-4 rounded-xl border flex items-center justify-between shadow-sm fade-in">
+                <div class="flex items-center space-x-3">
+                    <div id="notification-icon-container" class="p-1.5 rounded-lg"></div>
+                    <span id="notification-text" class="text-sm font-medium"></span>
+                </div>
+                <button onclick="dismissNotification()" class="text-slate-400 hover:text-slate-600">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <!-- VIEW 1: DASHBOARD -->
+            <div id="view-dashboard" class="space-y-6 fade-in">
+                <!-- Welcome Banner -->
+                <div class="bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-950 rounded-2xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+                    <div class="relative z-10 max-w-2xl">
+                        <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">FRCPath Part I Prep</span>
+                        <h1 class="text-2xl sm:text-4xl font-extrabold mt-3 tracking-tight">Master Complex Clinical Haematology</h1>
+                        <p class="text-slate-300 text-sm sm:text-base mt-2">Simulate real board scenarios, evaluate diagnostic pathways, and sharpen your clinical decision-making with high-fidelity case studies.</p>
+                        <div class="mt-6 flex flex-wrap gap-3">
+                            <button onclick="openConfigModal()" class="bg-blue-600 hover:bg-blue-500 transition-all text-white font-semibold text-sm px-5 py-2.5 rounded-lg flex items-center gap-2 shadow-md hover:shadow-lg">
+                                <i data-lucide="play" class="w-4 h-4"></i> Custom Practice Exam
+                            </button>
+                            <button onclick="navigateTo('qbank')" class="bg-slate-800/80 hover:bg-slate-800 transition-all text-slate-200 border border-slate-700 font-semibold text-sm px-5 py-2.5 rounded-lg flex items-center gap-2">
+                                <i data-lucide="search" class="w-4 h-4"></i> Browse Question Bank
+                            </button>
+                        </div>
+                    </div>
+                    <div class="absolute right-0 bottom-0 top-0 opacity-10 hidden lg:block transform translate-x-12 translate-y-6">
+                        <i data-lucide="shield-alert" class="w-80 h-80 text-white"></i>
+                    </div>
+                </div>
+
+                <!-- Session Stats Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Stat Card 1 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 font-medium uppercase tracking-wider block">Questions Attempted</span>
+                            <span id="stat-total" class="text-3xl font-extrabold text-slate-900 block mt-1">0</span>
+                        </div>
+                        <div class="p-3 bg-blue-50 text-blue-600 rounded-xl">
+                            <i data-lucide="check-square" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <!-- Stat Card 2 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 font-medium uppercase tracking-wider block">Overall Accuracy</span>
+                            <span id="stat-accuracy" class="text-3xl font-extrabold text-slate-900 block mt-1">0%</span>
+                        </div>
+                        <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
+                            <i data-lucide="percent" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <!-- Stat Card 3 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 font-medium uppercase tracking-wider block">Current Streak</span>
+                            <span id="stat-streak" class="text-3xl font-extrabold text-slate-900 block mt-1">0</span>
+                        </div>
+                        <div class="p-3 bg-amber-50 text-amber-600 rounded-xl">
+                            <i data-lucide="flame" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                    <!-- Stat Card 4 -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-500 font-medium uppercase tracking-wider block">Completed Sessions</span>
+                            <span id="stat-completed" class="text-3xl font-extrabold text-slate-900 block mt-1">0</span>
+                        </div>
+                        <div class="p-3 bg-purple-50 text-purple-600 rounded-xl">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Dashboard Layout: Subject Performance & Quick launch -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Left: Performance Breakdown by Subject -->
+                    <div class="lg:col-span-2 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <i data-lucide="bar-chart-3" class="w-5 h-5 text-blue-600"></i> Performance by Specialty Domain
+                        </h3>
+                        <div class="space-y-4">
+                            <!-- Category 1: Coagulation & Thrombosis -->
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-semibold text-slate-700">Coagulation & Thrombosis</span>
+                                    <span id="cat-perf-coag" class="text-xs font-bold text-slate-500">0 / 0 (0%)</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                    <div id="cat-bar-coag" class="bg-blue-600 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <!-- Category 2: Malignant Haematology -->
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-semibold text-slate-700">Malignant Haematology</span>
+                                    <span id="cat-perf-malignant" class="text-xs font-bold text-slate-500">0 / 0 (0%)</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                    <div id="cat-bar-malignant" class="bg-purple-600 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <!-- Category 3: General & Red Cell -->
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-semibold text-slate-700">General Haematology & Red Cell</span>
+                                    <span id="cat-perf-redcell" class="text-xs font-bold text-slate-500">0 / 0 (0%)</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                    <div id="cat-bar-redcell" class="bg-emerald-600 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <!-- Category 4: Transfusion Medicine -->
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm font-semibold text-slate-700">Transfusion Medicine</span>
+                                    <span id="cat-perf-transfusion" class="text-xs font-bold text-slate-500">0 / 0 (0%)</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                    <div id="cat-bar-transfusion" class="bg-amber-500 h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Quick Settings & Action Cards -->
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between h-full">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
+                                    <i data-lucide="sliders" class="w-5 h-5 text-blue-600"></i> Practice Options
+                                </h3>
+                                <p class="text-sm text-slate-500 mb-4">Launch a study session dynamically built from our curated collection of high-fidelity clinical scenarios.</p>
+                            </div>
+                            <div class="space-y-3">
+                                <button onclick="startStandardQuiz(5, 'all', 'study')" class="w-full bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 transition-all text-sm font-semibold p-3.5 rounded-xl flex items-center justify-between">
+                                    <span>Quick Study (5 Questions)</span>
+                                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                </button>
+                                <button onclick="startStandardQuiz(10, 'all', 'exam')" class="w-full bg-indigo-50 text-indigo-700 border border-indigo-200 hover:bg-indigo-100 transition-all text-sm font-semibold p-3.5 rounded-xl flex items-center justify-between">
+                                    <span>Simulate Exam (Standard Session)</span>
+                                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                </button>
+                                <button onclick="resetStats()" class="w-full bg-slate-50 text-slate-600 hover:bg-slate-100 transition-all text-sm font-medium p-3.5 rounded-xl flex items-center justify-center gap-2">
+                                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Reset Progress
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 2: QUIZ / EXAM SESSION -->
+            <div id="view-quiz" class="hidden space-y-6 fade-in">
+                <!-- Session Header Details -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-2.5 bg-blue-100 text-blue-700 rounded-xl">
+                            <i id="session-icon" data-lucide="graduation-cap" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span id="session-title" class="text-sm font-bold text-slate-900">Study Session</span>
+                            <span id="session-subtitle" class="text-xs text-slate-500 block">Mixed Specialty Domains</span>
+                        </div>
+                    </div>
+
+                    <!-- Live Timer & Indicators -->
+                    <div class="flex items-center space-x-4 w-full sm:w-auto justify-between sm:justify-end">
+                        <div id="quiz-timer-container" class="flex items-center space-x-1.5 text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg text-sm font-bold">
+                            <i data-lucide="clock" class="w-4 h-4"></i>
+                            <span id="quiz-timer">00:00</span>
+                        </div>
+                        <div id="progress-container-lbl" class="text-sm font-semibold text-slate-600">
+                            Question <span id="progress-current" class="text-blue-600 font-bold">1</span> of <span id="progress-total" class="font-bold">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Session Overall Progress Bar -->
+                <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden -mt-2 shadow-inner">
+                    <div id="quiz-progress-bar" class="bg-gradient-to-r from-blue-600 to-indigo-600 h-2 rounded-full transition-all duration-300" style="width: 20%"></div>
+                </div>
+
+                <!-- Primary Question Panel -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Left/Middle: The Question, Options & Rationales -->
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                            <!-- Question Meta Banner -->
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-4 border-b border-slate-100 pb-4">
+                                <span id="question-category" class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Malignant</span>
+                                <span class="text-xs font-semibold text-slate-400 flex items-center gap-1">
+                                    <i data-lucide="shield" class="w-3.5 h-3.5"></i> Board Level
+                                </span>
+                            </div>
+
+                            <!-- Vignette/Scenario -->
+                            <div class="prose max-w-none text-slate-800">
+                                <p id="question-text" class="text-base sm:text-lg font-medium leading-relaxed mb-6 whitespace-pre-line"></p>
+                            </div>
+
+                            <!-- Options Container -->
+                            <div id="options-container" class="space-y-3 mt-6">
+                                <!-- Dynamic options loaded here -->
+                            </div>
+
+                            <!-- Submission & Action controls -->
+                            <div class="flex items-center justify-between mt-8 pt-6 border-t border-slate-100 gap-4">
+                                <button id="btn-abort" onclick="confirmAbortSession()" class="text-sm font-semibold text-slate-500 hover:text-rose-600 transition-colors py-2 px-4 flex items-center gap-1">
+                                    <i data-lucide="log-out" class="w-4 h-4"></i> Quit Session
+                                </button>
+                                <div class="flex gap-2">
+                                    <button id="btn-submit-answer" onclick="submitAnswer()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-md transition-all flex items-center gap-2">
+                                        <span>Submit Answer</span> <i data-lucide="check" class="w-4 h-4"></i>
+                                    </button>
+                                    <button id="btn-next-question" onclick="nextQuestion()" class="hidden bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-md transition-all flex items-center gap-2">
+                                        <span>Next Question</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FEEDBACK PANEL (STUDY MODE ONLY) -->
+                        <div id="study-feedback" class="hidden bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6 fade-in">
+                            <div id="feedback-alert-box" class="p-4 rounded-2xl flex items-start gap-3">
+                                <div id="feedback-icon-container" class="p-2 rounded-xl shrink-0"></div>
+                                <div>
+                                    <h4 id="feedback-heading" class="text-base font-bold">Correct</h4>
+                                    <p id="feedback-subtext" class="text-sm mt-1"></p>
+                                </div>
+                            </div>
+
+                            <!-- Explanation Details -->
+                            <div>
+                                <h4 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2 flex items-center gap-2">
+                                    <i data-lucide="book-open" class="w-4 h-4"></i> Comprehensive Clinical Explanation
+                                </h4>
+                                <div id="explanation-text" class="text-slate-700 text-sm sm:text-base leading-relaxed space-y-3 whitespace-pre-line">
+                                    <!-- Dynamic text -->
+                                </div>
+                            </div>
+
+                            <!-- Interactive Takeaways -->
+                            <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4">
+                                <h5 class="text-xs font-bold text-blue-800 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                    <i data-lucide="key" class="w-3.5 h-3.5"></i> FRCPath High-Yield Takeaway
+                                </h5>
+                                <p id="takeaway-text" class="text-sm text-blue-900 font-medium"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Patient Lab Results / Sidebar diagnostic aids -->
+                    <div class="space-y-4">
+                        <div class="bg-slate-900 text-white rounded-3xl p-6 shadow-md border border-slate-800">
+                            <h3 class="text-sm font-bold text-blue-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+                                <i data-lucide="clipboard-list" class="w-4 h-4"></i> Diagnostic Reference Values
+                            </h3>
+                            <div class="space-y-3 text-xs">
+                                <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                    <span class="text-slate-400">Hemoglobin (Male)</span>
+                                    <span class="font-semibold text-slate-200">135 - 175 g/L</span>
+                                </div>
+                                <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                    <span class="text-slate-400">Hemoglobin (Female)</span>
+                                    <span class="font-semibold text-slate-200">120 - 155 g/L</span>
+                                </div>
+                                <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                    <span class="text-slate-400">Platelets</span>
+                                    <span class="font-semibold text-slate-200">150 - 400 x 10^9/L</span>
+                                </div>
+                                <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                    <span class="text-slate-400">WBC</span>
+                                    <span class="font-semibold text-slate-200">4.0 - 11.0 x 10^9/L</span>
+                                </div>
+                                <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                    <span class="text-slate-400">Prothrombin Time (PT)</span>
+                                    <span class="font-semibold text-slate-200">11.0 - 13.5 s</span>
+                                </div>
+                                <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                    <span class="text-slate-400">APTT</span>
+                                    <span class="font-semibold text-slate-200">25.0 - 35.0 s</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Fibrinogen</span>
+                                    <span class="font-semibold text-slate-200">1.5 - 4.5 g/L</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Active Mode explanation note -->
+                        <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Active Mode Details</span>
+                            <div id="quiz-mode-description" class="space-y-2">
+                                <!-- Loaded dynamically based on active mode -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 3: SESSION RESULTS SUMMARY -->
+            <div id="view-results" class="hidden space-y-6 fade-in">
+                <!-- Session results details and statistics dashboard -->
+                <div class="max-w-3xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-lg text-center space-y-8">
+                    <!-- Medal/Trophy graphic -->
+                    <div class="inline-flex p-4 bg-blue-50 text-blue-600 rounded-full">
+                        <i data-lucide="trophy" class="w-14 h-14"></i>
+                    </div>
+
+                    <div>
+                        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Practice Session Completed!</h2>
+                        <p class="text-slate-500 mt-2 text-sm sm:text-base">Outstanding dedication towards your board level training. Here are your clinical results:</p>
+                    </div>
+
+                    <!-- Score Breakdown Grid -->
+                    <div class="grid grid-cols-3 gap-4 border-y border-slate-100 py-6">
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block">Questions</span>
+                            <span id="results-total" class="text-2xl font-black text-slate-900 mt-1 block">0</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block">Correct Score</span>
+                            <span id="results-score" class="text-2xl font-black text-emerald-600 mt-1 block">0</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-wider block">Total Accuracy</span>
+                            <span id="results-accuracy" class="text-2xl font-black text-blue-600 mt-1 block">0%</span>
+                        </div>
+                    </div>
+
+                    <!-- Category Review Section -->
+                    <div class="text-left space-y-4">
+                        <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider">Summary Performance by Domain</h3>
+                        <div id="results-category-performance-container" class="space-y-2">
+                            <!-- Dynamic category performance list -->
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center pt-4">
+                        <button onclick="navigateTo('dashboard')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-6 py-3 rounded-xl transition-all shadow-md">
+                            Go to Dashboard
+                        </button>
+                        <button onclick="navigateTo('qbank')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm px-6 py-3 rounded-xl transition-all">
+                            Review Question Bank
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 4: QUESTION BANK BROWSER -->
+            <div id="view-qbank" class="hidden space-y-6 fade-in">
+                <!-- Header Controls -->
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900">FRCPath Question Catalog</h2>
+                        <p class="text-sm text-slate-500 mt-1">Review all case studies, answers, and clinical explanations directly for interactive revision.</p>
+                    </div>
+
+                    <!-- Search and filters -->
+                    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                        <div class="relative flex-grow">
+                            <input id="qbank-search-input" oninput="filterQBank()" type="text" placeholder="Search key words..." class="w-full sm:w-64 pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+                        </div>
+                        <select id="qbank-category-select" onchange="filterQBank()" class="py-2.5 px-4 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="all">All Specialties</option>
+                            <option value="coagulation">Coagulation & Thrombosis</option>
+                            <option value="malignant">Malignant Haematology</option>
+                            <option value="redcell">General & Red Cell</option>
+                            <option value="transfusion">Transfusion Medicine</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- QBank Active Accordion Listing -->
+                <div id="qbank-questions-list" class="space-y-4">
+                    <!-- Dynamically populated searchable questions -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- CONFIG / CUSTOM SESSION MODAL -->
+    <div id="config-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl w-full max-w-lg p-6 sm:p-8 shadow-2xl relative space-y-6 fade-in">
+            <button onclick="closeConfigModal()" class="text-slate-400 hover:text-slate-600 absolute right-6 top-6">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div>
+                <h3 class="text-xl font-extrabold text-slate-900">Custom Practice Session</h3>
+                <p class="text-xs text-slate-500 mt-1">Configure your clinical evaluation settings according to your preference.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Subject Domain -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Specialty Subject Domain</label>
+                    <select id="config-category" class="w-full p-3 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <option value="all">All Specialties (Comprehensive)</option>
+                        <option value="coagulation">Coagulation & Thrombosis</option>
+                        <option value="malignant">Malignant Haematology</option>
+                        <option value="redcell">General & Red Cell Disorders</option>
+                        <option value="transfusion">Transfusion Medicine</option>
+                    </select>
+                </div>
+
+                <!-- Session Length -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Practice Session Size</label>
+                    <select id="config-size" class="w-full p-3 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <option value="3">3 Questions (Speed Run)</option>
+                        <option value="5" selected>5 Questions (Standard Practice)</option>
+                        <option value="10">10 Questions (Standard Mock Session)</option>
+                        <option value="20">20 Questions (Targeted AML Run)</option>
+                        <option value="50">50 Questions (Complete Board Level Marathon)</option>
+                        <option value="100">100 Questions (Ultimate Q-Bank Marathon)</option>
+                        <option value="125">125 Questions (Complete Question Bank Marathon)</option>
+                    </select>
+                </div>
+
+                <!-- Mode Options -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Revision Mode</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 border-blue-500 bg-blue-50/50" id="label-mode-study">
+                            <input type="radio" name="practice-mode" value="study" checked onchange="toggleModeLabelStyle()" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300">
+                            <div>
+                                <span class="text-xs font-bold text-slate-800 block">Study Mode</span>
+                                <span class="text-[10px] text-slate-500 block">Immediate solutions & tips</span>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 border-slate-200" id="label-mode-exam">
+                            <input type="radio" name="practice-mode" value="exam" onchange="toggleModeLabelStyle()" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300">
+                            <div>
+                                <span class="text-xs font-bold text-slate-800 block">Exam Mode</span>
+                                <span class="text-[10px] text-slate-500 block">Hides answers until end</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Launch Button -->
+            <button onclick="launchCustomQuiz()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-extrabold p-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2">
+                <i data-lucide="play" class="w-5 h-5"></i> Launch Practice Session
+            </button>
+        </div>
+    </div>
+
+    <!-- ABORT CONFIRMATION MODAL -->
+    <div id="abort-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl w-full max-sm:p-6 shadow-2xl relative space-y-4 fade-in text-center">
+            <div class="inline-flex p-3 bg-rose-50 text-rose-600 rounded-full">
+                <i data-lucide="alert-triangle" class="w-10 h-10"></i>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-slate-900">Abort Active Session?</h3>
+                <p class="text-xs text-slate-500 mt-1">Your current progress, selected answers, and session timers will be lost.</p>
+            </div>
+            <div class="flex gap-2 pt-2">
+                <button onclick="abortSession()" class="flex-1 bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm py-3 rounded-xl shadow-sm transition-all">
+                    Abort Session
+                </button>
+                <button onclick="closeAbortModal()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm py-3 rounded-xl transition-all">
+                    Keep Practising
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN JAVASCRIPT LOGIC -->
+    <script>
+        // Native Web Audio Synthesizer
+        function playCorrectSound() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const ctx = new AudioContext();
+                const notes = [523.25, 659.25, 783.99, 1046.50];
+                const startTime = ctx.currentTime;
+                
+                notes.forEach((freq, index) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, startTime + (index * 0.07));
+                    
+                    gain.gain.setValueAtTime(0.12, startTime + (index * 0.07));
+                    gain.gain.exponentialRampToValueAtTime(0.001, startTime + (index * 0.07) + 0.35);
+                    
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    
+                    osc.start(startTime + (index * 0.07));
+                    osc.stop(startTime + (index * 0.07) + 0.35);
+                });
+            } catch (e) {
+                console.warn("Audio initialization bypassed or unsupported: ", e);
+            }
+        }
+
+        function playWrongSound() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const ctx = new AudioContext();
+                const startTime = ctx.currentTime;
+                const frequencies = [130.81, 138.59];
+                
+                frequencies.forEach(freq => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(freq, startTime);
+                    osc.frequency.linearRampToValueAtTime(freq * 0.75, startTime + 0.4);
+                    
+                    gain.gain.setValueAtTime(0.18, startTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.4);
+                    
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    
+                    osc.start(startTime);
+                    osc.stop(startTime + 0.4);
+                });
+            } catch (e) {
+                console.warn("Audio initialization bypassed or unsupported: ", e);
+            }
+        }
+
+        // Complete robust fallback database containing high-quality questions for local standalone offline load
+        const fallbackDatabase = [
+            {
+                "id": 1,
+                "code": "Q1",
+                "category": "coagulation",
+                "title": "Giant Platelet Disorders",
+                "vignette": "A 28-year-old female presents with recurrent, severe epistaxis and heavy menstrual bleeding. Investigative profile: Hb 112 g/L, MCV 84 fL, Platelets 45 x 10^9/L (consistently normal previously). PT 12.0s, APTT 32s. Blood film shows occasional giant platelets but is otherwise unremarkable. Platelet aggregometry demonstrates completely absent aggregation to Ristocetin, which is not corrected by the addition of normal control plasma. Aggregation responses to ADP, Collagen, and Epinephrine are entirely normal.",
+                "options": [
+                    "von Willebrand Disease Type 2B",
+                    "Bernard-Soulier Syndrome",
+                    "Glanzmann's Thrombasthenia",
+                    "Immune Thrombocytopenia (ITP)",
+                    "Pseudo-von Willebrand Disease (Platelet-type)"
+                ],
+                "correct_answer": "B. Bernard-Soulier Syndrome",
+                "explanation": "The clinical and laboratory profile is characteristic of Bernard-Soulier Syndrome (BSS), which is caused by a congenital defect or deficiency of the Glycoprotein Ib/IX/V (GPIb/IX/V) receptor complex.",
+                "takeaway": "Bernard-Soulier Syndrome is characterized by thrombocytopenia, giant platelets, and failure of ristocetin aggregation that is NOT corrected by normal plasma due to deficient GPIb/IX/V."
+            },
+            {
+                "id": 2,
+                "code": "Q2",
+                "category": "malignant",
+                "title": "CML Molecular Milestones",
+                "vignette": "A 64-year-old male presents with severe fatigue, drenching night sweats, and massive splenomegaly extending 10 cm below the left costal margin. Laboratory profile reveals: Hb 105 g/L, WBC 185 x 10^9/L, Platelets 620 x 10^9/L. Neutrophil Alkaline Phosphatase (NAP/LAP) score is extremely low. Cytogenetic screening demonstrates the classical t(9;22)(q34.1;q11.2) translocation. The patient is commenced on first-line Imatinib. Six months post-initiation, quantitative PCR shows a BCR::ABL1 transcript level of 12% on the International Scale (IS).",
+                "options": [
+                    "Optimal response; continue Imatinib at the current dose.",
+                    "Warning response; schedule a repeat PCR test in 3 months.",
+                    "Failure of therapy; perform kinase domain mutational analysis and consider second-generation TKI.",
+                    "Complete molecular response; evaluate patient for treatment discontinuation protocols.",
+                    "Suboptimal response; elevate Imatinib dose to 800 mg daily immediately."
+                ],
+                "correct_answer": "C. Failure of therapy; perform kinase domain mutational analysis and consider second-generation TKI.",
+                "explanation": "According to the ELN (European LeukemiaNet) guidelines, at 6 months of first-line Tyrosine Kinase Inhibitor (TKI) therapy for CML, a BCR::ABL1 transcript level of >10% IS denotes treatment failure.",
+                "takeaway": "Under ELN Guidelines, BCR::ABL1 transcript levels >10% at 6 months indicates treatment failure, prompting mutational testing and a change in TKI."
+            },
+            {
+                "id": 3,
+                "code": "Q3",
+                "category": "transfusion",
+                "title": "Transfusion Reaction Differentiation",
+                "vignette": "A 72-year-old female with a background of severe ischemic heart disease and congestive cardiac failure is transfused 2 units of packed red blood cells for symptomatic anemia (Hb 68 g/L). Near the end of the second transfusion, she suddenly develops acute-onset dyspnea, orthopnea, and a dry cough. Her clinical signs show: Temp 37.2 degrees C, BP 168/98 mmHg, HR 115 bpm, and oxygen saturation 88% on room air. Chest examination reveals bilateral basal crepitations, an elevated jugular venous pressure, and clinical S3 gallop.",
+                "options": [
+                    "Transfusion-Related Acute Lung Injury (TRALI)",
+                    "Transfusion-Associated Circulatory Overload (TACO)",
+                    "Acute Hemolytic Transfusion Reaction (AHTR)",
+                    "Febrile Non-Hemolytic Transfusion Reaction (FNHTR)",
+                    "Anaphylactic Transfusion Reaction"
+                ],
+                "correct_answer": "B. Transfusion-Associated Circulatory Overload (TACO)",
+                "explanation": "The clinical presentation is a classic example of Transfusion-Associated Circulatory Overload (TACO).",
+                "takeaway": "Elevated BP, jugular venous distension, and basal crackles post-transfusion in an elderly patient point directly to TACO rather than TRALI."
+            },
+            {
+                "id": 4,
+                "code": "Q4",
+                "category": "redcell",
+                "title": "Red Cell Disorders & Thalassemia HPLC",
+                "vignette": "A 34-year-old Greek male is investigated for mild, lifelong microcytic anemia. Laboratory assessment reveals: Hb 115 g/L, MCV 62 fL, MCH 20 pg, RBC count 5.8 x 10^12/L (elevated relative to Hb), RDW 12.8% (normal). High-Performance Liquid Chromatography (HPLC) reveals: HbA 94.2%, HbA2 4.8%, HbF 1.0%. Ferritin level is normal.",
+                "options": [
+                    "Iron Deficiency Anemia",
+                    "Alpha-Thalassaemia Trait",
+                    "Beta-Thalassaemia Minor (Trait)",
+                    "Anemia of Chronic Disease",
+                    "Sideroblastic Anemia"
+                ],
+                "correct_answer": "C. Beta-Thalassaemia Minor (Trait)",
+                "explanation": "This patient exhibits classic Beta-Thalassaemia Minor (Trait).",
+                "takeaway": "Beta-thalassaemia trait is characterized by disproportionate microcytosis with high RBC, normal RDW, and diagnostic HbA2 >3.5%."
+            },
+            {
+                "id": 5,
+                "code": "Q5",
+                "category": "coagulation",
+                "title": "Coagulation Screening Interferences",
+                "vignette": "A 42-year-old male is admitted with an unprovoked extensive deep vein thrombosis (DVT). He is immediately started on therapeutic LMWH with a plan for a Warfarin bridge. On day 3 of active combined therapy, the laboratory thrombophilia panel reports: Functional Protein C Activity of 32% (Reference range: 70-130%). How should this thrombophilia screen result be interpreted?",
+                "options": [
+                    "Confirms congenital Protein C deficiency; lifelong anticoagulation is mandated.",
+                    "The low result is an artifact of LMWH; the test must be repeated once heparin is fully cleared.",
+                    "The result is transiently depressed due to acute consumption and initiation of Warfarin; repeat testing when stable and off Warfarin.",
+                    "Indicates a transient heterozygous deficiency; the patient must be switched to DOACs immediately.",
+                    "The functional assay is inaccurate in acute DVT; re-evaluate using Protein C antigenic assays."
+                ],
+                "correct_answer": "C. The result is transiently depressed due to acute consumption and initiation of Warfarin; repeat testing when stable and off Warfarin.",
+                "explanation": "The low Protein C activity is secondary to both acute consumption during a fresh thrombosis and initiation of Warfarin therapy.",
+                "takeaway": "Thrombophilia tests for Protein C/S or Antithrombin are unreliable during acute thrombosis or active anticoagulation, especially Warfarin bridge."
+            }
+        ];
+
+        // 25 Validated Questions to be cleanly integrated at runtime (Q101 to Q125)
+        const validatedQuestionsList = [
+            {
+                "id": 101,
+                "code": "Q101",
+                "category": "malignant",
+                "title": "Hyperleukocytosis with pulmonary and neurological leukostasis",
+                "vignette": "A 42-year-old man presents with 2 days of progressive dyspnoea, headache and confusion. He is pale, tachypnoeic and hypoxic despite supplemental oxygen. There is no focal consolidation on chest radiograph. A blood film is reviewed urgently by the haematology registrar.\n\nLaboratory data:\n• Hb: 78 g/L\n• WBC: 186 x 10^9/L\n• Platelets: 32 x 10^9/L\n• LDH: 2450 U/L\n• Uric acid: 610 micromol/L\n• Creatinine: 118 micromol/L\n• Coagulation: PT mildly prolonged, fibrinogen 2.4 g/L\n\nMorphology:\nPeripheral blood film shows numerous circulating myeloblasts with high nuclear-to-cytoplasmic ratio, fine chromatin, prominent nucleoli and occasional Auer rods.\n\nFlow Cytometry:\nBlasts express CD34, CD117, CD13, CD33, HLA-DR and cytoplasmic MPO. No B- or T-lineage defining marker expression.",
+                "options": [
+                    "Await cytogenetic and molecular confirmation before starting cytoreduction.",
+                    "Treat as leukostasis with urgent supportive care, tumour lysis prophylaxis and cytoreduction while completing diagnostic testing.",
+                    "Transfuse red cells rapidly to Hb above 100 g/L before cytoreduction.",
+                    "Start ATRA alone because all AML with hyperleukocytosis should be treated as APL until proven otherwise.",
+                    "Defer treatment because leukostasis cannot be diagnosed without CT evidence of vascular occlusion."
+                ],
+                "correct_answer": "B. Treat as leukostasis with urgent supportive care, tumour lysis prophylaxis and cytoreduction while completing diagnostic testing.",
+                "explanation": "This patient has hyperleukocytic AML with clinical leukostasis: respiratory compromise and neurological symptoms in the setting of a very high blast count. Leukostasis is a clinical diagnosis and treatment should not wait for the final cytogenetic or molecular report. Immediate priorities are senior haematology involvement, ICU-level supportive care when needed, aggressive tumour lysis prevention, infection assessment, and prompt cytoreduction with hydroxycarbamide and/or induction therapy depending on fitness and diagnostic confidence. Leukapheresis may be considered in selected centres, but it should not delay definitive anti-leukaemic therapy.\n\nWhy other options are wrong:\n• A: Waiting for cytogenetics risks clinical deterioration. Classification is important but emergency stabilisation comes first.\n• C: Unnecessary rapid red cell transfusion can increase blood viscosity and may worsen leukostasis. Transfusion decisions should be cautious and individualised.\n• D: ATRA should be started immediately when APL is suspected, but this phenotype is not typical APL and ATRA alone is not a general treatment for hyperleukocytic AML.\n• E: Leukostasis is diagnosed clinically; imaging may support complications but absence of a visible occlusion does not exclude it.\n\nExaminer Commentary:\nThe trap is to treat the WBC number rather than the patient. Hyperleukocytosis is a laboratory finding; leukostasis is a clinical emergency defined by end-organ symptoms.\n\nMemory Framework:\nLeukostasis = Lungs + brain + blasts. Do not wait for genetics before stabilising.",
+                "takeaway": "Neurological or respiratory symptoms in AML with very high blasts should be treated as leukostasis until proven otherwise."
+            },
+            {
+                "id": 102,
+                "code": "Q102",
+                "category": "coagulation",
+                "title": "Acute promyelocytic leukaemia with disseminated intravascular coagulation",
+                "vignette": "A 31-year-old woman presents with gum bleeding, extensive bruising and a severe headache. She has no previous haematological history. The blood film is urgently reviewed because the coagulation profile is markedly abnormal.\n\nLaboratory data:\n• Hb: 82 g/L\n• WBC: 4.8 x 10^9/L\n• Platelets: 14 x 10^9/L\n• PT: 24 seconds\n• APTT: 51 seconds\n• Fibrinogen: 0.7 g/L\n• D-dimer: markedly elevated\n\nMorphology:\nPeripheral blood and marrow aspirate show abnormal promyelocytes with heavy azurophilic granulation and bundles of Auer rods.\n\nFlow Cytometry:\nAbnormal promyelocytes are strongly MPO positive, CD33 bright, CD13 positive, CD117 positive, CD34 negative and HLA-DR negative.",
+                "options": [
+                    "Start all-trans retinoic acid immediately with aggressive correction of coagulopathy.",
+                    "Wait for PML::RARA confirmation before starting ATRA.",
+                    "Perform leukapheresis because the bleeding risk is driven by circulating promyelocytes.",
+                    "Start standard daunorubicin and cytarabine induction before ATRA.",
+                    "Give tranexamic acid alone and reassess once the fibrinogen is corrected."
+                ],
+                "correct_answer": "A. Start all-trans retinoic acid immediately with aggressive correction of coagulopathy.",
+                "explanation": "The morphology, flow phenotype and DIC are classic for APL. APL is a medical emergency because early mortality is driven mainly by catastrophic bleeding. ATRA should be started immediately on clinical or morphological suspicion, before cytogenetic confirmation. Supportive care includes frequent monitoring and aggressive platelet and fibrinogen replacement, commonly targeting platelets at least 30-50 x 10^9/L and fibrinogen at least 1.5 g/L, with local protocol variation.\n\nWhy other options are wrong:\n• B: Waiting for genetic confirmation is unsafe when APL is strongly suspected.\n• C: Leukapheresis is generally avoided in APL because it may worsen coagulopathy and bleeding risk.\n• D: Standard AML induction alone does not address the urgent differentiation therapy needed in APL.\n• E: Antifibrinolytics are not the primary treatment and do not replace ATRA plus blood product support.\n\nExaminer Commentary:\nThis is one of the most important FRCPath emergency questions. If APL is suspected, the answer is usually ATRA now, confirmation later.\n\nMemory Framework:\nAPL = ATRA Promptly, Life saved.",
+                "takeaway": "In suspected APL, treatment begins at morphology, not at the final molecular report."
+            },
+            {
+                "id": 103,
+                "code": "Q103",
+                "category": "malignant",
+                "title": "NPM1-mutated AML with fewer than 20 percent blasts",
+                "vignette": "A 53-year-old woman is investigated for new pancytopenia and bruising. She is fit for intensive therapy. The marrow blast percentage is below the traditional 20 percent threshold.\n\nLaboratory data:\n• Hb: 91 g/L\n• WBC: 3.4 x 10^9/L\n• Platelets: 42 x 10^9/L\n• LDH: 620 U/L\n• Coagulation: normal\n\nMorphology:\nBone marrow aspirate shows 14 percent blasts, many with cup-like nuclear invaginations. There is no convincing multilineage dysplasia.\n\nFlow Cytometry:\nBlasts are CD33 bright, CD13 positive, MPO positive, CD117 variable, CD34 negative and HLA-DR negative. They do not express cytoplasmic CD3 or strong B-lineage markers.",
+                "options": [
+                    "MDS with excess blasts because marrow blasts are below 20 percent.",
+                    "AML with mutated NPM1; favourable ELN risk if no FLT3-ITD or adverse-risk genetics are present.",
+                    "AML, myelodysplasia-related because the patient has cytopenias.",
+                    "APL because the blasts are CD34 negative and HLA-DR negative.",
+                    "Clonal cytopenia of undetermined significance because the blast count is below 20 percent."
+                ],
+                "correct_answer": "B. AML with mutated NPM1; favourable ELN risk if no FLT3-ITD or adverse-risk genetics are present.",
+                "explanation": "Under WHO 5th Edition, AML with mutated NPM1 is considered an AML-defining genetic entity and does not require the traditional 20 percent blast threshold. The typical phenotype is often CD34 negative and HLA-DR negative, but unlike APL it is defined by NPM1 mutation and lacks PML::RARA. Under ELN 2022, mutated NPM1 without FLT3-ITD and without adverse-risk genetic lesions is favourable risk. NPM1 mutation is also an excellent molecular MRD target by quantitative PCR.\n\nWhy other options are wrong:\n• A: This applies older blast-threshold thinking and ignores the AML-defining NPM1 mutation under WHO 5th Edition.\n• C: Cytopenias alone do not define AML-MR; AML-MR requires specific qualifying cytogenetic or molecular abnormalities or appropriate antecedent disease.\n• D: APL also often lacks CD34 and HLA-DR, but the morphology, genetics and NPM1 result point away from APL.\n• E: CCUS is not used when an AML-defining lesion with excess blasts is present.",
+                "takeaway": "NPM1-mutated myeloid neoplasms with increased blasts should trigger AML-type thinking even when blasts are below 20 percent."
+            },
+            {
+                "id": 104,
+                "code": "Q104",
+                "category": "malignant",
+                "title": "t(8;21) AML with aberrant B-lineage marker expression",
+                "vignette": "A 26-year-old man presents with fatigue and thrombocytopenia. Bone marrow aspirate shows increased blasts but fewer than 20 percent. Flow cytometry raises concern because the blasts express some B-cell antigens.\n\nLaboratory data:\n• Hb: 88 g/L\n• WBC: 12.6 x 10^9/L\n• Platelets: 38 x 10^9/L\n• LDH: 840 U/L\n• Coagulation: normal\n\nMorphology:\nBone marrow aspirate shows 13 percent blasts with salmon-pink granules and occasional slender Auer rods. Maturing neutrophils show dysplastic features.\n\nFlow Cytometry:\nBlasts express CD34, CD117, HLA-DR, CD13, CD33 and MPO. They aberrantly express CD19 and CD56. Cytoplasmic CD3 is negative and B-lineage criteria for MPAL are not fulfilled.",
+                "options": [
+                    "Mixed phenotype acute leukaemia, B/myeloid, because CD19 is expressed.",
+                    "MDS with excess blasts because blasts are below 20 percent.",
+                    "AML with RUNX1::RUNX1T1; aberrant CD19 expression is a recognised feature.",
+                    "B-lymphoblastic leukaemia with aberrant myeloid markers.",
+                    "AML, myelodysplasia-related because dysplasia is present."
+                ],
+                "correct_answer": "C. AML with RUNX1::RUNX1T1; aberrant CD19 expression is a recognised feature.",
+                "explanation": "The t(8;21) translocation resulting in RUNX1::RUNX1T1 defines a core-binding factor AML entity. WHO 5th Edition recognises this as AML even when blasts are below 20 percent. Aberrant expression of CD19 is characteristic and should not automatically lead to MPAL diagnosis. CD56 expression in t(8;21) AML is associated with higher relapse risk in some studies, and KIT mutations may further modify relapse risk. Gemtuzumab ozogamicin may be considered with induction in CD33-positive favourable-risk CBF AML depending on protocol and patient factors.\n\nWhy other options are wrong:\n• A: MPAL requires strict lineage-defining criteria. Aberrant CD19 alone in genetically defined t(8;21) AML does not make MPAL.\n• B: The defining RUNX1::RUNX1T1 fusion supersedes the blast percentage threshold.\n• D: MPO positivity and t(8;21) establish myeloid disease; this is not B-ALL.\n• E: Dysplasia may be seen in t(8;21), but the recurrent genetic AML entity takes precedence over AML-MR.\n\nExaminer Commentary:\nThe key trap is overcalling MPAL because of CD19. In t(8;21), aberrant B-marker expression is expected.\n\nMemory Framework:\nt(8;21) = RUNX1::RUNX1T1, CD19 can appear, still AML.",
+                "takeaway": "Always interpret flow cytometry in the context of cytogenetics; recurrent AML genetics can explain apparently confusing antigen patterns."
+            },
+            {
+                "id": 105,
+                "code": "Q105",
+                "category": "malignant",
+                "title": "inv(16) AML with abnormal eosinophils and low blast percentage",
+                "vignette": "A 39-year-old man presents with fatigue, mouth ulcers and mild gingival swelling. Bone marrow morphology shows a striking eosinophil abnormality.\n\nLaboratory data:\n• Hb: 96 g/L\n• WBC: 18.2 x 10^9/L\n• Platelets: 52 x 10^9/L\n• LDH: 910 U/L\n• Coagulation: normal\n\nMorphology:\nBone marrow aspirate shows 12 percent myeloblasts/monoblasts and abnormal eosinophil precursors with large purple-violet basophilic granules.\n\nFlow Cytometry:\nBlasts express CD34, CD117, CD13, CD33, HLA-DR and MPO with a monocytic component expressing CD64 and CD11c.",
+                "options": [
+                    "MDS with excess blasts because blasts are 12 percent.",
+                    "AML with CBFB::MYH11, a core-binding factor AML entity, usually favourable risk.",
+                    "Chronic eosinophilic leukaemia because eosinophils are increased and abnormal.",
+                    "Acute promyelocytic leukaemia, microgranular variant.",
+                    "AML-MR because monocytic differentiation is present."
+                ],
+                "correct_answer": "B. AML with CBFB::MYH11, a core-binding factor AML entity, usually favourable risk.",
+                "explanation": "AML with inv(16) or t(16;16), producing CBFB::MYH11, is a core-binding factor AML. The abnormal eosinophils with coarse purple-violet granules are a classic morphology clue. The diagnosis does not require 20 percent blasts in WHO 5th Edition when the defining recurrent genetic abnormality is present. Under ELN 2022, CBFB::MYH11 AML is generally favourable risk, although KIT mutation and MRD kinetics can influence relapse assessment and treatment decisions.\n\nWhy other options are wrong:\n• A: The defining CBFB::MYH11 abnormality overrides the conventional 20 percent blast threshold.\n• C: The eosinophils are part of the AML morphology; the CBFB::MYH11 fusion excludes chronic eosinophilic leukaemia NOS.\n• D: APL is associated with PML::RARA and a different flow/morphology pattern.\n• E: Monocytic differentiation does not define AML-MR.\n\nExaminer Commentary:\nThis question tests morphology-to-genetics integration. Abnormal eosinophils should immediately suggest inv(16)/CBFB::MYH11.\n\nMemory Framework:\ninv(16) = abnormal eosinophils + CBFB::MYH11 + favourable risk.",
+                "takeaway": "CBF AML is favourable risk but still requires MRD monitoring and relapse-risk refinement."
+            },
+            {
+                "id": 106,
+                "code": "Q106",
+                "category": "malignant",
+                "title": "Newly diagnosed FLT3-ITD AML in a fit younger adult",
+                "vignette": "A 48-year-old man with de novo AML is considered fit for intensive therapy. He has no major comorbidity and has an HLA typing sample sent at diagnosis.\n\nLaboratory data:\n• Hb: 84 g/L\n• WBC: 72 x 10^9/L\n• Platelets: 27 x 10^9/L\n• LDH: 1680 U/L\n• Creatinine: 86 micromol/L\n\nMorphology:\nBone marrow aspirate shows 68 percent myeloblasts with occasional Auer rods.\n\nFlow Cytometry:\nBlasts express CD34, CD117, CD13, CD33, HLA-DR and MPO.",
+                "options": [
+                    "Standard 7+3 alone because FLT3 status affects relapse therapy only.",
+                    "Intensive induction chemotherapy combined with an approved FLT3 inhibitor, followed by response-adapted consolidation and transplant consideration.",
+                    "Azacitidine and venetoclax is mandatory for all FLT3-mutated AML regardless of fitness.",
+                    "Gilteritinib monotherapy is the standard first-line treatment for all newly diagnosed FLT3-ITD AML.",
+                    "No FLT3 inhibitor is indicated unless FLT3-TKD is also present."
+                ],
+                "correct_answer": "B. Intensive induction chemotherapy combined with an approved FLT3 inhibitor, followed by response-adapted consolidation and transplant consideration.",
+                "explanation": "For a fit patient with newly diagnosed FLT3-mutated AML, standard intensive induction should be combined with an approved FLT3 inhibitor. Midostaurin added to intensive chemotherapy improved survival in the RATIFY trial for FLT3-mutated AML. Quizartinib is also used in many current protocols for FLT3-ITD AML, depending on regulatory approval and local availability. ELN 2022 classifies FLT3-ITD AML as intermediate risk unless adverse-risk genetics are present; allelic ratio is no longer used for ELN 2022 risk grouping. Transplant in first remission is commonly considered, especially with NPM1-wild type disease or MRD concerns.\n\nWhy other options are wrong:\n• A: FLT3 status affects upfront therapy, not only relapse therapy.\n• C: HMA-venetoclax is important for older/unfit AML, but this patient is fit for intensive therapy.\n• D: Gilteritinib is standard in relapsed/refractory FLT3-mutated AML; frontline monotherapy is not the standard for a fit newly diagnosed patient.\n• E: FLT3 inhibitors are indicated for FLT3-ITD and/or FLT3-TKD depending on the agent and setting.\n\nExaminer Commentary:\nThe common outdated mistake is to use FLT3 allelic ratio as the main ELN determinant. ELN 2022 simplified FLT3-ITD into intermediate risk unless adverse genetics are present.\n\nMemory Framework:\nFLT3 = Fast proliferating AML; add FLT3 inhibitor early and think transplant depending on risk/MRD.",
+                "takeaway": "In fit FLT3-mutated AML, think induction plus FLT3 inhibitor from cycle 1, not chemotherapy alone."
+            },
+            {
+                "id": 107,
+                "code": "Q107",
+                "category": "malignant",
+                "title": "TP53-mutated AML with complex monosomal karyotype",
+                "vignette": "A 72-year-old woman presents with progressive fatigue and bruising. She has controlled hypertension, mild renal impairment and ECOG performance status 2.\n\nLaboratory data:\n• Hb: 73 g/L\n• WBC: 2.1 x 10^9/L\n• Platelets: 18 x 10^9/L\n• LDH: 740 U/L\n• Creatinine: 132 micromol/L\n\nMorphology:\nBone marrow aspirate is hypercellular with 42 percent blasts and marked dysplasia in residual erythroid and megakaryocytic lineages.\n\nFlow Cytometry:\nBlasts express CD34, CD117, CD13, CD33, HLA-DR and MPO with aberrant CD7.\n\nCytogenetics:\nComplex karyotype with monosomy 5, monosomy 7 and additional structural abnormalities.",
+                "options": [
+                    "Favourable-risk AML because FLT3 is negative.",
+                    "Intermediate-risk AML; standard 7+3 is expected to produce durable remission in most patients.",
+                    "Adverse-risk AML; treatment should prioritise clinical trial or non-intensive therapy such as azacitidine plus venetoclax if intensive therapy is unsuitable.",
+                    "AML with mutated NPM1 because the karyotype is complex.",
+                    "APL because thrombocytopenia and bruising are present."
+                ],
+                "correct_answer": "C. Adverse-risk AML; treatment should prioritise clinical trial or non-intensive therapy such as azacitidine plus venetoclax if intensive therapy is unsuitable.",
+                "explanation": "TP53 mutation, especially with complex or monosomal karyotype, defines very adverse AML biology and is associated with poor response durability after standard chemotherapy. In an older patient with ECOG 2 and comorbidity, a clinical trial is highly appropriate where available; otherwise HMA-based therapy, commonly azacitidine plus venetoclax, is often used, with careful discussion of expectations and toxicity. FLT3 negativity does not make AML favourable.\n\nWhy other options are wrong:\n• A: FLT3-negative status alone does not define favourable risk; TP53 and complex karyotype are adverse.\n• B: Standard intensive chemotherapy has poor durable outcomes in TP53-mutated complex-karyotype AML and may be poorly tolerated in this patient.\n• D: No NPM1 mutation is present; complex karyotype does not imply NPM1 AML.\n• E: APL requires PML::RARA and characteristic promyelocyte morphology/phenotype.\n\nExaminer Commentary:\nThis case tests whether candidates understand that not all AML is simply treated with 7+3. TP53-mutated AML is a distinct adverse biological problem.\n\nMemory Framework:\nTP53 = Treatment Poor, complex karyotype common, trial preferred.",
+                "takeaway": "In TP53-mutated complex-karyotype AML, trial enrolment should be considered early whenever possible."
+            },
+            {
+                "id": 108,
+                "code": "Q108",
+                "category": "malignant",
+                "title": "AML, Myelodysplasia-Related defined by MDS-related mutations",
+                "vignette": "A 69-year-old man presents with 3 months of worsening anaemia and thrombocytopenia. There is no documented previous MDS diagnosis. Bone marrow confirms AML.\n\nLaboratory data:\n• Hb: 76 g/L\n• WBC: 4.6 x 10^9/L\n• Platelets: 39 x 10^9/L\n• MCV: 106 fL\n• LDH: 580 U/L\n\nMorphology:\nBone marrow aspirate shows 27 percent myeloblasts. Multilineage dysplasia is present but difficult to quantify confidently.\n\nFlow Cytometry:\nBlasts express CD34, CD117, CD13, CD33, HLA-DR and MPO with aberrant CD7.\n\nCytogenetics:\nNormal male karyotype.\n\nMolecular Genetics:\nNGS detects ASXL1 and SRSF2 mutations. NPM1, FLT3-ITD and CEBPA bZIP mutations are not detected.",
+                "options": [
+                    "AML, not otherwise specified, because the karyotype is normal.",
+                    "AML, myelodysplasia-related, because qualifying MDS-related mutations are present.",
+                    "MDS with excess blasts because multilineage dysplasia is present.",
+                    "Therapy-related AML because the patient is elderly.",
+                    "AML with mutated NPM1 because ASXL1 is commonly found with NPM1."
+                ],
+                "correct_answer": "B. AML, myelodysplasia-related, because qualifying MDS-related mutations are present.",
+                "explanation": "WHO 5th Edition no longer uses morphology-defined multilineage dysplasia alone as a defining criterion for AML-MR. AML-MR is defined by specific myelodysplasia-related cytogenetic abnormalities, specific MDS-related gene mutations, or appropriate antecedent myeloid disease. ASXL1 and SRSF2 are qualifying MDS-related mutations. Under ELN 2022, AML with MDS-related gene mutations is adverse risk unless superseded by favourable-risk genetics in specific contexts.\n\nWhy other options are wrong:\n• A: AML-NOS is not appropriate because qualifying MDS-related mutations are present.\n• C: The blast count is at least 20 percent, fulfilling AML rather than MDS-EB.\n• D: Therapy-related status requires prior cytotoxic therapy/radiotherapy exposure and is now generally used as a qualifier rather than the primary WHO genetic category.\n• E: NPM1 is not detected.\n\nExaminer Commentary:\nAML-MR is now genetics-driven, not simply morphology-driven.\n\nMemory Framework:\nAML-MR = MDS genetics matter more than dysplasia alone.",
+                "takeaway": "AML-MR is now genetics-driven, not simply morphology-driven."
+            },
+            {
+                "id": 109,
+                "code": "Q109",
+                "category": "malignant",
+                "title": "Azacitidine plus venetoclax in an older unfit patient",
+                "vignette": "An 81-year-old man is diagnosed with AML after presenting with transfusion-dependent anaemia and infections. He has severe ischaemic cardiomyopathy with LVEF 30 percent and ECOG performance status 2. He wishes to receive active treatment if toxicity is acceptable.\n\nLaboratory data:\n• Hb: 69 g/L\n• WBC: 8.2 x 10^9/L\n• Platelets: 24 x 10^9/L\n• neutrophils: 0.4 x 10^9/L\n• creatinine: 105 micromol/L\n\nMorphology:\nBone marrow aspirate shows 38 percent myeloblasts without APL morphology.\n\nFlow Cytometry:\nBlasts express CD34, CD117, CD13, CD33, HLA-DR and MPO.\n\nCytogenetics:\nNormal karyotype.\n\nMolecular Genetics:\nIDH2 mutation detected. FLT3-ITD not detected. TP53 not detected.",
+                "options": [
+                    "Standard daunorubicin and cytarabine induction despite severe cardiomyopathy.",
+                    "Azacitidine plus venetoclax with careful monitoring for cytopenias, infection and drug interactions.",
+                    "Observation only because all patients over 80 should receive supportive care alone.",
+                    "CPX-351 because all older AML is therapy-related until proven otherwise.",
+                    "Gilteritinib because IDH2 mutation predicts FLT3 inhibitor sensitivity."
+                ],
+                "correct_answer": "B. Azacitidine plus venetoclax with careful monitoring for cytopenias, infection and drug interactions.",
+                "explanation": "This patient is older and unsuitable for anthracycline-based intensive induction because of severe cardiomyopathy. Azacitidine plus venetoclax is a standard active non-intensive regimen for newly diagnosed AML in patients ineligible for intensive chemotherapy, supported by VIALE-A, which showed improved remission rates and overall survival compared with azacitidine alone. Management requires attention to tumour lysis risk, prolonged cytopenias, marrow assessment after cycle 1, antimicrobial prophylaxis, and venetoclax dose adjustments with strong CYP3A inhibitors such as posaconazole.\n\nWhy other options are wrong:\n• A: Severe cardiomyopathy makes anthracycline induction high risk.\n• C: Age alone should not mandate supportive care only; treatment depends on fitness, goals and disease biology.\n• D: CPX-351 is used for selected fit patients with therapy-related AML or AML-MR, not simply all older AML.\n• E: Gilteritinib targets FLT3, not IDH2. Enasidenib is an IDH2 inhibitor but is not the default frontline choice here if HMA-venetoclax is suitable.\n\nExaminer Commentary:\nThis tests fitness-based treatment selection, not just drug memorisation. The correct answer also requires awareness of venetoclax toxicity and interactions.\n\nMemory Framework:\nUnfit AML = HMA plus VEN, but watch TLS, azoles and marrow timing.",
+                "takeaway": "HMA-venetoclax is active but not gentle; prolonged cytopenias and infection risk must be actively managed."
+            },
+            {
+                "id": 110,
+                "code": "Q110",
+                "category": "malignant",
+                "title": "Persistent NPM1 MRD after induction remission",
+                "vignette": "A 45-year-old woman with NPM1-mutated, FLT3-ITD negative AML received standard intensive induction and achieved morphologic complete remission. The team is deciding post-remission strategy.\n\nLaboratory data:\n• post_induction_Hb: 102 g/L\n• post_induction_neutrophils: 1.3 x 10^9/L\n• post_induction_platelets: 112 x 10^9/L\n• marrow_blasts: 2 percent\n\nMorphology:\nPost-induction marrow is regenerating with fewer than 5 percent blasts and no Auer rods.\n\nFlow Cytometry:\nNo clear abnormal blast population is detected by standard multiparameter flow MRD assay.\n\nCytogenetics:\nNormal karyotype at diagnosis.\n\nMolecular Genetics:\nDiagnostic NPM1 mutation was quantifiable. Post-induction quantitative PCR remains positive with less than 1-log reduction from baseline.",
+                "options": [
+                    "She is fully cured because morphology shows complete remission.",
+                    "Persistent molecular MRD indicates higher relapse risk and should prompt treatment review, including transplant evaluation depending on kinetics, donor availability and local protocol.",
+                    "The NPM1 result is irrelevant because flow MRD is negative.",
+                    "All favourable-risk NPM1 AML patients must undergo allogeneic transplant in first remission.",
+                    "The PCR result proves refractory AML because blasts are above 20 percent."
+                ],
+                "correct_answer": "B. Persistent molecular MRD indicates higher relapse risk and should prompt treatment review, including transplant evaluation depending on kinetics, donor availability and local protocol.",
+                "explanation": "Morphologic complete remission does not necessarily equal molecular remission. NPM1 mutation is one of the best molecular MRD markers in AML. Persistent or poorly clearing NPM1 MRD after induction is associated with increased relapse risk and may influence post-remission therapy, including intensification, closer monitoring and consideration of allogeneic transplant in selected patients. MRD interpretation should consider timing, transcript kinetics, assay quality, treatment phase and local guideline pathways.\n\nWhy other options are wrong:\n• A: Morphologic remission is important but does not exclude residual molecular disease.\n• C: Flow and PCR assess different targets; a negative flow MRD result does not invalidate persistent NPM1 PCR positivity.\n• D: Favourable-risk NPM1 AML patients are not automatically transplanted in CR1; MRD status is one factor that can change the discussion.\n• E: Refractory AML is not defined by a positive PCR alone with marrow blasts below 5 percent.\n\nExaminer Commentary:\nThis question tests the modern shift from morphology-only remission to measurable residual disease-guided risk assessment.\n\nMemory Framework:\nCR is not always MRD-negative. NPM1 PCR can expose hidden relapse risk.",
+                "takeaway": "NPM1 MRD is often more clinically informative than morphology once remission has been achieved."
+            },
+            {
+                "id": 111,
+                "code": "Q111",
+                "category": "malignant",
+                "title": "AML with mutated NPM1 and 14 percent blasts",
+                "vignette": "A 52-year-old woman is referred with bruising and fatigue. She has no previous history of myeloid neoplasm or cytotoxic therapy.\n\nLaboratory data:\n• Hb: 84 g/L\n• WBC: 18.6 x 10^9/L\n• Platelets: 42 x 10^9/L\n• LDH: 620 U/L\n• Coagulation: PT and APTT normal; fibrinogen normal\n\nMorphology:\nPeripheral blood shows circulating blasts with occasional cup-like nuclear invaginations. Bone marrow aspirate is hypercellular with 14 percent blasts and no convincing multilineage dysplasia.\n\nFlow Cytometry:\nBlasts are CD33 bright, CD13 positive, MPO positive, CD117 positive, CD34 negative and HLA-DR negative to weak. There is no significant B- or T-lineage defining antigen expression.\n\nCytogenetics:\nConventional karyotype: 46,XX. No recurrent balanced translocation detected by FISH.\n\nMolecular Genetics:\nNGS detects an NPM1 exon 12 frameshift mutation with variant allele frequency 34 percent. FLT3-ITD and FLT3-TKD are not detected. No adverse-risk cytogenetic abnormality is present.",
+                "options": [
+                    "Myelodysplastic syndrome with increased blasts",
+                    "Acute myeloid leukaemia with mutated NPM1",
+                    "Acute myeloid leukaemia, defined by differentiation",
+                    "Clonal cytopenia of undetermined significance",
+                    "Mixed phenotype acute leukaemia, B/myeloid"
+                ],
+                "correct_answer": "B. Acute myeloid leukaemia with mutated NPM1",
+                "explanation": "WHO 5th Edition recognises AML with mutated NPM1 as an AML-defining genetic entity and does not require the traditional 20 percent blast threshold when the clinical and pathological context supports a myeloid neoplasm. The case is deliberately set at 14 percent blasts to test whether the candidate still applies the older 20 percent rule. The phenotype is also supportive: NPM1-mutated AML often shows strong CD33, absent or weak CD34, and absent or weak HLA-DR. The absence of FLT3-ITD and adverse-risk cytogenetics also matters for later ELN risk assignment, but the diagnostic answer here is the WHO entity AML with mutated NPM1. Under ICC 2022, a 10 percent blast threshold is retained for AML with recurrent genetic abnormalities including mutated NPM1, so this case would also qualify because the marrow blasts are 14 percent. This is an important modern FRCPath concept because the diagnosis changes patient counselling, treatment planning and MRD strategy. NPM1 is also a useful molecular MRD marker by quantitative PCR.\n\nWhy other options are wrong:\n• A: MDS with increased blasts is not the best diagnosis once an AML-defining NPM1 mutation is present in a compatible myeloid neoplasm.\n• C: AML defined by differentiation is used when no defining genetic abnormality is identified.\n• D: CCUS requires cytopenia with clonality but without diagnostic criteria for a myeloid neoplasm such as AML.\n• E: There is no lineage-defining B or T marker pattern; MPO positivity supports myeloid lineage.\n\nExaminer Commentary:\nThis question tests whether the candidate has moved beyond the older blast-threshold-only approach.\n\nMemory Framework:\nNPM1 equals no old 20 percent rule in WHO5, normal karyotype common, CD34 often negative, and PCR MRD useful.",
+                "takeaway": "Do not call a 14 percent blast NPM1-mutated case MDS simply because the blasts are below 20 percent."
+            },
+            {
+                "id": 112,
+                "code": "Q112",
+                "category": "malignant",
+                "title": "RUNX1::RUNX1T1 AML with low blast percentage",
+                "vignette": "A 26-year-old man presents with bone pain, fatigue and thrombocytopenia. There is no previous haematological disorder.\n\nLaboratory data:\n• Hb: 91 g/L\n• WBC: 11.2 x 10^9/L\n• Platelets: 38 x 10^9/L\n• LDH: 510 U/L\n• Coagulation: Normal\n\nMorphology:\nBlood film shows circulating blasts with occasional Auer rods and dysplastic neutrophils. Bone marrow aspirate shows 8 percent blasts with granulocytic maturation.\n\nFlow Cytometry:\nBlasts express CD34, CD117, HLA-DR, CD13, CD33 and MPO. There is aberrant CD19 expression and CD56 is positive.\n\nCytogenetics:\nKaryotype demonstrates t(8;21)(q22;q22.1). FISH confirms RUNX1::RUNX1T1 fusion.\n\nMolecular Genetics:\nFLT3-ITD is negative. KIT mutation testing is pending.",
+                "options": [
+                    "Acute myeloid leukaemia with RUNX1::RUNX1T1 fusion",
+                    "Myelodysplastic syndrome with low blasts",
+                    "B-lymphoblastic leukaemia with aberrant myeloid markers",
+                    "Mixed phenotype acute leukaemia, B/myeloid",
+                    "Reactive marrow regeneration after infection"
+                ],
+                "correct_answer": "A. Acute myeloid leukaemia with RUNX1::RUNX1T1 fusion",
+                "explanation": "RUNX1::RUNX1T1, produced by t(8;21), is a defining genetic abnormality in AML classification. WHO 5th Edition lists AML with RUNX1::RUNX1T1 among AML with defining genetic abnormalities. ICC 2022 also recognises AML with recurrent genetic abnormalities, with a required blast threshold of more than 10 percent for many such entities; however, in clinical practice an unequivocal t(8;21) with myeloid blasts and Auer rods is treated as core-binding factor AML, and the low blast count should prompt careful review and repeat marrow assessment rather than reclassification as a benign process. The question highlights the principle that genetic context can override a simplistic blast-count approach. The flow phenotype is classic: CD34 and HLA-DR positivity with myeloid markers and aberrant CD19, sometimes with CD56. CD19 expression in t(8;21) AML is a common trap and does not by itself make the disease B-ALL or MPAL.\n\nWhy other options are wrong:\n• B: The defining fusion and Auer rods argue strongly against MDS as the primary classification.\n• C: MPO positivity, Auer rods and RUNX1::RUNX1T1 support AML, not B-ALL.\n• D: Aberrant CD19 is common in t(8;21) AML and does not automatically establish MPAL.\n• E: A recurrent AML fusion is not a reactive finding.\n\nExaminer Commentary:\nExaminers use this pattern to test whether candidates overinterpret aberrant lymphoid markers.\n\nMemory Framework:\nt(8;21): Think CD34 positive, HLA-DR positive, MPO positive, aberrant CD19, core-binding factor AML.",
+                "takeaway": "In t(8;21), CD19 can be a clue to the diagnosis rather than evidence against it."
+            },
+            {
+                "id": 113,
+                "code": "Q113",
+                "category": "malignant",
+                "title": "CBFB::MYH11 AML with abnormal eosinophils",
+                "vignette": "A 43-year-old man presents with fatigue and gingival swelling. He has no previous history of MDS or exposure to chemotherapy.\n\nLaboratory data:\n• Hb: 76 g/L\n• WBC: 24.5 x 10^9/L\n• Platelets: 54 x 10^9/L\n• LDH: 780 U/L\n• Coagulation: Normal\n\nMorphology:\nBone marrow aspirate shows 13 percent blasts and monoblasts. There are increased abnormal eosinophilic precursors with large purple-violet basophilic granules.\n\nFlow Cytometry:\nBlasts express CD34, CD117, CD13, CD33, MPO and HLA-DR. A monocytic component expresses CD11c and CD64.\n\nCytogenetics:\nKaryotype shows inv(16)(p13.1q22). RT-PCR confirms CBFB::MYH11.\n\nMolecular Genetics:\nNGS shows no TP53 mutation. FLT3-ITD is negative.",
+                "options": [
+                    "Acute myelomonocytic leukaemia with CBFB::MYH11",
+                    "Chronic eosinophilic leukaemia, not otherwise specified",
+                    "Hypereosinophilic syndrome with reactive marrow blasts",
+                    "Myelodysplastic syndrome with increased blasts",
+                    "Acute promyelocytic leukaemia, microgranular variant"
+                ],
+                "correct_answer": "A. Acute myelomonocytic leukaemia with CBFB::MYH11",
+                "explanation": "inv(16) or t(16;16) creates CBFB::MYH11 and defines a core-binding factor AML entity. The morphology is highly characteristic: acute myelomonocytic features with abnormal eosinophils containing coarse basophilic granules. The blast percentage is intentionally below 20 percent to test whether the candidate recognises that a defining recurrent genetic abnormality can establish AML in the correct clinicopathological setting. This entity usually falls within favourable-risk AML by ELN 2022, although additional factors such as MRD response and some co-mutations may modify clinical decisions. It is not a primary eosinophilic disorder; the eosinophils are part of the AML morphology. The presence of gingival swelling can occur because of monocytic differentiation and should not distract from the cytogenetic diagnosis.\n\nWhy other options are wrong:\n• A: The combination of inv(16), CBFB::MYH11 and abnormal eosinophils is diagnostic.\n• B: Chronic eosinophilic leukaemia is excluded by CBFB::MYH11 AML-defining genetics and blast population.\n• C: The eosinophils are neoplastic-associated abnormal eosinophils, not a reactive hypereosinophilic syndrome.\n• D: A defining AML fusion supersedes an MDS-with-blasts interpretation.\n• E: APL is defined by PML::RARA or variant RARA rearrangement and has a different phenotype.\n\nExaminer Commentary:\nThis case tests recognition of a morphology-genetics pairing, not just memorisation of inv(16).\n\nMemory Framework:\ninv(16): Myelomonocytic AML plus abnormal eosinophils equals CBFB::MYH11.",
+                "takeaway": "Abnormal eosinophils with purple basophilic granules in AML should trigger CBFB::MYH11 testing."
+            },
+            {
+                "id": 114,
+                "code": "Q114",
+                "category": "malignant",
+                "title": "AML with in-frame bZIP CEBPA mutation",
+                "vignette": "A 38-year-old woman is diagnosed with de novo AML after presenting with fatigue and recurrent infections.\n\nLaboratory data:\n• Hb: 70 g/L\n• WBC: 32.0 x 10^9/L\n• Platelets: 29 x 10^9/L\n• LDH: 690 U/L\n• Coagulation: Normal\n\nMorphology:\nBone marrow aspirate shows 46 percent myeloblasts without features of APL. Dysplasia is not prominent.\n\nFlow Cytometry:\nBlasts express CD34, CD117, CD13, CD33, HLA-DR and MPO. No lineage-defining lymphoid marker expression is identified.\n\nCytogenetics:\nKaryotype is normal. FISH for RUNX1::RUNX1T1, CBFB::MYH11 and PML::RARA is negative.\n\nMolecular Genetics:\nNGS detects a single in-frame mutation affecting the basic leucine zipper domain of CEBPA. NPM1 and FLT3-ITD are negative. No adverse-risk cytogenetic abnormality is present.",
+                "options": [
+                    "This is favourable-risk AML with CEBPA bZIP mutation",
+                    "This is adverse-risk AML because only biallelic CEBPA mutation is favourable",
+                    "This is AML myelodysplasia-related because CEBPA is an MR gene",
+                    "This is AML with mutated NPM1 because CEBPA and NPM1 are equivalent entities",
+                    "This should be classified as MDS/AML because the karyotype is normal"
+                ],
+                "correct_answer": "A. This is favourable-risk AML with CEBPA bZIP mutation",
+                "explanation": "Modern classification and risk systems place emphasis on the location and type of CEBPA mutation. Earlier teaching focused on biallelic CEBPA mutations. Current WHO and ICC frameworks recognise in-frame mutations in the CEBPA basic leucine zipper domain as defining a biologically favourable AML group. ELN 2022 also treats in-frame bZIP CEBPA-mutated AML as favourable risk when adverse-risk features are absent. This question is designed to catch candidates who learned the older rule that only biallelic CEBPA mutation is favourable. CEBPA is a transcription factor important in myeloid differentiation. The normal karyotype and absence of NPM1 or FLT3-ITD do not undermine the diagnosis. The case is de novo AML with 46 percent blasts, so blast threshold issues are not the main trap; the main issue is correct molecular interpretation.\n\nWhy other options are wrong:\n• A: A single in-frame bZIP CEBPA mutation is now recognised as a favourable AML-defining/risk feature in the appropriate setting.\n• B: This reflects older teaching; bZIP location is now central.\n• C: CEBPA is not one of the defining myelodysplasia-related gene mutations used to classify AML-MR.\n• D: NPM1 and CEBPA are distinct molecular entities with different MRD and biological implications.\n• E: Normal karyotype does not imply MDS/AML when AML blast criteria and defining molecular features are present.\n\nExaminer Commentary:\nFRCPath questions increasingly test whether candidates know the updated CEBPA rule.\n\nMemory Framework:\nCEBPA favourable now means in-frame bZIP, not simply 'any CEBPA' and not only the old biallelic rule.",
+                "takeaway": "Always specify whether CEBPA mutation involves the bZIP domain; not all CEBPA reports carry the same implication."
+            },
+            {
+                "id": 115,
+                "code": "Q115",
+                "category": "malignant",
+                "title": "Therapy-related AML after breast cancer",
+                "vignette": "A 61-year-old woman presents with pancytopenia. She received adjuvant chemotherapy and radiotherapy for breast cancer six years earlier.\n\nLaboratory data:\n• Hb: 68 g/L\n• WBC: 3.4 x 10^9/L\n• Platelets: 22 x 10^9/L\n• LDH: 430 U/L\n• Coagulation: Normal\n\nMorphology:\nBone marrow is hypercellular with 34 percent blasts and marked background dysplasia.\n\nFlow Cytometry:\nBlasts express CD34, CD117, CD13, CD33, HLA-DR and MPO. There is no APL phenotype.\n\nCytogenetics:\nKaryotype shows a complex karyotype including monosomy 7 and deletion 5q. No recurrent balanced translocation is detected.\n\nMolar Genetics:\nNGS detects TP53 mutation with variant allele frequency 48 percent. NPM1, FLT3 and CEBPA bZIP mutations are not detected.",
+                "options": [
+                    "Therapy-related AML as a standalone primary disease category",
+                    "AML with myelodysplasia-related features, with therapy-relatedness recorded as a qualifier",
+                    "Acute promyelocytic leukaemia because of previous chemotherapy exposure",
+                    "MDS with increased blasts because the patient has pancytopenia and dysplasia",
+                    "AML with mutated NPM1 because therapy-related AML is usually NPM1-mutated"
+                ],
+                "correct_answer": "B. AML with myelodysplasia-related features, with therapy-relatedness recorded as a qualifier",
+                "explanation": "WHO 5th Edition changed the way prior cytotoxic exposure is handled. Therapy-relatedness is no longer used as a standalone primary disease category in the same way as older classifications. Instead, AML is classified according to its defining genetic and biological features, while therapy-relatedness is recorded as a diagnostic qualifier. This case has AML by blast percentage and has myelodysplasia-related cytogenetic abnormalities, including abnormalities of chromosomes 5 and 7, together with a complex karyotype and TP53 mutation. Therefore, the best WHO-style classification is AML with myelodysplasia-related features or genetics, with a therapy-related qualifier. The prior breast cancer treatment remains clinically important because it influences prognosis, patient counselling and transplant planning, but it should not override the genetic classification. This is a common examiner trap because many candidates still use the older term therapy-related AML as the main diagnostic label.\n\nWhy other options are wrong:\n• A: Therapy-relatedness is now best recorded as a qualifier rather than the primary WHO5 disease category.\n• B: The disease is classified by its AML-MR genetic/cytogenetic features, with therapy-relatedness added as a qualifier.\n• C: APL requires PML::RARA or variant RARA rearrangement and typical morphology or phenotype.\n• D: The marrow has 34 percent blasts, meeting AML criteria.\n• E: NPM1 mutation is absent and therapy-related AML is often enriched for adverse cytogenetics and TP53 alteration rather than NPM1.\n\nExaminer Commentary:\nThis case tests whether the candidate uses the newer WHO logic rather than older classification labels.\n\nMemory Framework:\nTherapy-related is now a qualifier: classify the AML first, then add the exposure history.",
+                "takeaway": "Prior chemotherapy is clinically important, but current classification prioritises genetic disease biology."
+            },
+            {
+                "id": 116,
+                "code": "AML021",
+                "category": "malignant",
+                "title": "Recognition of Myeloblasts in Suspected Acute Leukaemia",
+                "vignette": "A 46-year-old man presents with two weeks of fatigue, bruising and low-grade fever. There is no lymphadenopathy or mediastinal mass. Full blood count shows Hb 78 g/L, WBC 34.5 x 10^9/L and platelets 24 x 10^9/L. The peripheral blood film shows numerous medium-to-large blasts with high nuclear-to-cytoplasmic ratio, fine chromatin, 2 to 4 nucleoli and moderate basophilic cytoplasm. Occasional cells contain delicate azurophilic granules. No definitive Auer rods are seen.\n\nLaboratory data:\n• Hb: 78 g/L\n• WBC: 34.5 x 10^9/L\n• Platelets: 24 x 10^9/L\n• LDH: 780 U/L\n• Coagulation: PT and APTT normal, fibrinogen normal\n\nMorphology:\n• Peripheral blood: Medium-to-large blasts with fine chromatin, prominent nucleoli and occasional azurophilic granules.\n• Bone marrow: Hypercellular marrow with 62% blasts. Background trilineage haematopoiesis is markedly reduced.\n\nFlow Cytometry:\nBlasts express CD34, CD117, CD13, CD33, HLA-DR and cytoplasmic MPO. They are negative for CD3 (cytoplasmic/surface), CD19, CD10, CD79a and CD41.",
+                "options": [
+                    "Expression of CD34 and HLA-DR",
+                    "Fine chromatin with prominent nucleoli",
+                    "Cytoplasmic myeloperoxidase positivity",
+                    "Thrombocytopenia with circulating blasts",
+                    "Absence of lymphadenopathy and mediastinal mass"
+                ],
+                "correct_answer": "C. Cytoplasmic myeloperoxidase positivity",
+                "explanation": "The strongest evidence for myeloid lineage is cytoplasmic myeloperoxidase (MPO) positivity. Morphology can suggest AML, especially when blasts show azurophilic granules or Auer rods, but lineage assignment in modern practice should be integrated with cytochemistry or flow cytometry. MPO positivity identifies granulocytic myeloid differentiation and is a key discriminator between AML and lymphoblastic leukaemia. CD13, CD33 and CD117 support myeloid differentiation, but MPO is more lineage-defining than these myeloid-associated markers alone. In an FRCPath-style question, the safest answer is the feature that directly proves lineage rather than features that merely suggest immaturity or acute leukaemia.\n\nWhy other options are wrong:\n• A: CD34 and HLA-DR indicate immaturity and are common in AML, but they are not lineage-specific. They can also be expressed in lymphoblastic leukaemia and other immature neoplasms.\n• B: Fine chromatin and nucleoli are typical of blasts but do not reliably distinguish myeloblasts from lymphoblasts or other immature cells.\n• D: Thrombocytopenia with circulating blasts supports acute leukaemia, but it does not establish myeloid lineage.\n• E: The absence of lymphadenopathy or mediastinal mass may make T-ALL less likely clinically, but it is not a lineage-defining laboratory feature.\n\nExaminer Commentary:\nThis case tests whether the candidate can distinguish morphology suggesting acute leukaemia from laboratory evidence that assigns lineage. FRCPath candidates should avoid over-reliance on the appearance of blasts alone when flow cytometry is available.",
+                "takeaway": "In acute leukaemia, first prove lineage; then classify using morphology, flow cytometry, cytogenetics and molecular genetics."
+            },
+            {
+                "id": 117,
+                "code": "AML022",
+                "category": "malignant",
+                "title": "Auer Rods and Myeloid Lineage",
+                "vignette": "A 58-year-old woman is investigated for pancytopenia. Her blood film shows 38% circulating blasts. Several blasts contain single slender red-purple needle-like cytoplasmic inclusions. Bone marrow aspirate confirms 54% blasts. Cytochemistry shows strong myeloperoxidase positivity. Flow cytometry shows CD34, CD117, CD13, CD33 and HLA-DR expression.\n\nLaboratory data:\n• Hb: 82 g/L\n• WBC: 18.2 x 10^9/L\n• Platelets: 31 x 10^9/L\n• LDH: 620 U/L\n• Coagulation: Normal PT, APTT and fibrinogen\n\nMorphology:\n• Peripheral blood: Blasts with occasional single Auer rods.\n• Bone marrow: Increased myeloblasts with maturation. No abnormal promyelocytic predominance.\n\nFlow Cytometry:\nCD34 positive, CD117 positive, CD13 positive, CD33 positive, HLA-DR positive, MPO positive. CD19 is weakly aberrant in a subset.",
+                "options": [
+                    "They confirm lymphoid lineage and favour B-ALL",
+                    "They support myeloid lineage and make AML the most likely diagnostic category",
+                    "They are specific for acute promyelocytic leukaemia",
+                    "They prove therapy-related AML",
+                    "They indicate chronic myeloid leukaemia in blast crisis"
+                ],
+                "correct_answer": "B. They support myeloid lineage and make AML the most likely diagnostic category",
+                "explanation": "Auer rods are abnormal azurophilic cytoplasmic inclusions derived from fused primary granules and are a strong morphological clue to myeloid differentiation. In a patient with excess blasts, their presence supports AML rather than ALL. They are not specific for APL; APL classically shows abnormal promyelocytes with heavy granulation and often bundles of Auer rods, whereas this case describes single Auer rods in myeloblasts with an HLA-DR-positive CD34-positive phenotype, making typical APL unlikely. Auer rods must still be interpreted in the full diagnostic context, because modern AML classification depends on integrated morphology, flow cytometry, cytogenetics and molecular genetics.\n\nWhy other options are wrong:\n• A: Lymphoblasts do not characteristically contain Auer rods. B-ALL is supported by B-lineage markers such as CD19, CD10 and cytoplasmic CD79a, not Auer rods.\n• C: Bundles of Auer rods in abnormal promyelocytes are highly suggestive of APL, but single Auer rods are seen in other AML subtypes, including AML with maturation and core-binding factor AML.\n• D: Therapy-related disease is a clinical qualifier based on prior cytotoxic therapy or radiation, not the presence of Auer rods.\n• E: CML blast crisis requires evidence of BCR::ABL1-positive CML or a prior chronic phase. Auer rods alone do not establish this.\n\nExaminer Commentary:\nThe trap is to equate any Auer rod with APL. The examiner expects candidates to recognise that Auer rods prove myeloid differentiation but do not by themselves define a specific WHO entity.",
+                "takeaway": "Auer rods strongly support AML, but PML::RARA testing is required when APL is suspected clinically or morphologically."
+            },
+            {
+                "id": 118,
+                "code": "AML023",
+                "category": "coagulation",
+                "title": "Faggot Cells and Microgranular APL",
+                "vignette": "A 34-year-old woman presents with gum bleeding, extensive bruising and headache. FBC shows Hb 71 g/L, WBC 72 x 10^9/L and platelets 11 x 10^9/L. PT and APTT are prolonged, fibrinogen is 0.6 g/L and D-dimer is markedly elevated. The blood film shows many abnormal cells with folded or bilobed nuclei. Some cells are hypogranular, but occasional cells contain bundles of Auer rods.\n\nLaboratory data:\n• Hb: 71 g/L\n• WBC: 72 x 10^9/L\n• Platelets: 11 x 10^9/L\n• Fibrinogen: 0.6 g/L\n• D-dimer: Markedly elevated\n\nMorphology:\n• Peripheral blood: Abnormal promyelocytes, many with folded or bilobed nuclei; occasional cells show bundles of Auer rods.\n• Bone marrow: Packed with abnormal promyelocytes. Microgranular variant suspected.\n\nFlow Cytometry:\nAbnormal cells are strongly MPO positive, CD33 bright, CD13 positive, CD117 positive, HLA-DR negative and CD34 negative to dim. Monocytic markers CD14 and CD64 are not convincingly expressed.",
+                "options": [
+                    "Acute monocytic leukaemia is most likely; wait for full cytogenetics before starting disease-specific therapy",
+                    "Microgranular acute promyelocytic leukaemia is likely; start ATRA immediately with aggressive correction of coagulopathy",
+                    "T-lymphoblastic leukaemia is likely; start steroid pre-phase and defer transfusion support",
+                    "AML with inv(16) is likely; proceed with standard 7+3 induction without ATRA",
+                    "Sepsis-associated DIC is most likely; treat infection first and repeat marrow after coagulopathy improves"
+                ],
+                "correct_answer": "B. Microgranular acute promyelocytic leukaemia is likely; start ATRA immediately with aggressive correction of coagulopathy",
+                "explanation": "This is a classic emergency presentation of acute promyelocytic leukaemia, most likely the microgranular variant. Microgranular APL can mimic acute monocytic leukaemia because the abnormal promyelocytes often have folded, bilobed or reniform nuclei and may appear deceptively hypogranular on light microscopy. However, the combination of severe consumptive coagulopathy, strong MPO positivity, CD33-bright expression, HLA-DR negativity, CD34 negativity or dim expression, and occasional cells with bundles of Auer rods should immediately trigger treatment as APL. ATRA should be started at clinical or morphological suspicion, before genetic confirmation, because early mortality is driven by haemorrhage. Platelets, cryoprecipitate or fibrinogen concentrate, and plasma support should be used aggressively according to local protocol.\n\nWhy other options are wrong:\n• A: Acute monocytic leukaemia can have folded nuclei, but the severe APL-type coagulopathy, HLA-DR-negative CD34-negative phenotype and bundles of Auer rods favour APL. Waiting for cytogenetics may be dangerous.\n• C: T-ALL is not supported by the morphology, MPO positivity or immunophenotype. Steroid pre-phase is not the priority.\n• D: AML with inv(16) is associated with abnormal eosinophils, not classic APL coagulopathy with abnormal promyelocytes and faggot cells.\n• E: Sepsis can cause DIC, but the blood film and immunophenotype point to APL. Treating presumed sepsis while delaying ATRA risks fatal haemorrhage.\n\nExaminer Commentary:\nThis question tests whether candidates recognise microgranular APL, one of the most dangerous morphology traps in haematology. The correct response is not simply naming the disease; it is acting before confirmatory genetics return.",
+                "takeaway": "Suspected APL is a treatment emergency: start ATRA first, confirm PML::RARA in parallel."
+            },
+            {
+                "id": 119,
+                "code": "AML024",
+                "category": "malignant",
+                "title": "Abnormal Eosinophils in inv(16) AML",
+                "vignette": "A 42-year-old man presents with fatigue and gingival swelling. FBC shows Hb 86 g/L, WBC 24 x 10^9/L and platelets 42 x 10^9/L. Bone marrow aspirate shows increased blasts and immature monocytic cells. Eosinophilic precursors are increased and contain large abnormal purple-violet basophilic granules. The blast count is 14%.\n\nLaboratory data:\n• Hb: 86 g/L\n• WBC: 24 x 10^9/L\n• Platelets: 42 x 10^9/L\n• LDH: 890 U/L\n• Coagulation: No DIC\n\nMorphology:\n• Peripheral blood: Circulating blasts and monocytic cells. No APL-type abnormal promyelocytes.\n• Bone marrow: Myelomonocytic proliferation with abnormal eosinophilic precursors containing large purple-violet basophilic granules.\n\nFlow Cytometry:\nBlasts express CD34, CD117, CD13, CD33, MPO and HLA-DR. Monocytic component expresses CD64 and CD11c.\n\nCytogenetics:\nKaryotype shows inv(16)(p13.1q22).\n\nMolecular Genetics:\nRT-PCR detects CBFB::MYH11 fusion.",
+                "options": [
+                    "Myelodysplastic syndrome with increased blasts because marrow blasts are below 20%",
+                    "Acute myeloid leukaemia with CBFB::MYH11 fusion",
+                    "Chronic eosinophilic leukaemia, NOS",
+                    "Acute promyelocytic leukaemia with PML::RARA",
+                    "Reactive eosinophilia associated with infection"
+                ],
+                "correct_answer": "B. Acute myeloid leukaemia with CBFB::MYH11 fusion",
+                "explanation": "The diagnosis is acute myeloid leukaemia with CBFB::MYH11 fusion, classically associated with inv(16) or t(16;16). The morphological clue is the presence of abnormal eosinophilic precursors with large purple-violet basophilic granules in a myelomonocytic marrow. In WHO 5th edition, CBFB::MYH11 is an AML-defining genetic abnormality; therefore AML can be diagnosed even when the blast percentage is below the traditional 20% threshold. This entity is part of core-binding factor AML and usually falls within a favourable-risk biological group, although final risk and management still depend on additional molecular findings and treatment response.\n\nWhy other options are wrong:\n• A: A blast count below 20% does not exclude AML when an AML-defining recurrent genetic abnormality such as CBFB::MYH11 is present.\n• C: Chronic eosinophilic leukaemia is not the correct diagnosis when CBFB::MYH11 and an AML-type blast population are present.\n• D: APL is defined by PML::RARA and abnormal promyelocytes, often with severe DIC. The morphology and genetics here are different.\n• E: The eosinophils are abnormal neoplastic eosinophilic precursors, not a reactive eosinophilia.\n\nExaminer Commentary:\nThis case tests integration of morphology and genetics. The examiner expects the candidate to recognise that abnormal marrow eosinophils are not just a descriptive finding; they are a clue to CBFB::MYH11 AML.",
+                "takeaway": "In AML, abnormal eosinophils with purple-violet granules should immediately prompt testing for inv(16) or CBFB::MYH11."
+            },
+            {
+                "id": 120,
+                "code": "AML025",
+                "category": "malignant",
+                "title": "Acute Monoblastic versus Acute Monocytic AML",
+                "vignette": "A 39-year-old woman presents with fever, gum hypertrophy and tender violaceous skin nodules. FBC shows Hb 74 g/L, WBC 86 x 10^9/L and platelets 28 x 10^9/L. Bone marrow aspirate shows that 82% of the monocytic-lineage cells are large monoblasts with abundant basophilic cytoplasm, round nuclei, delicate chromatin and prominent nucleoli. Promonocytes and more mature monocytes form a minor component.\n\nLaboratory data:\n• Hb: 74 g/L\n• WBC: 86 x 10^9/L\n• Platelets: 28 x 10^9/L\n• LDH: 1300 U/L\n• Coagulation: Mildly prolonged PT, fibrinogen 1.8 g/L\n\nMorphology:\n• Peripheral blood: Numerous monoblasts with occasional promonocytes. No abnormal promyelocyte predominance.\n• Bone marrow: Predominantly monoblasts, comprising more than 80% of monocytic-lineage cells.\n\nFlow Cytometry:\nBlasts express CD33, CD64, CD11c, CD14 partial, CD4, CD36 and HLA-DR. MPO is negative to weak. Cytochemistry shows strong non-specific esterase positivity inhibited by sodium fluoride.\n\nCytogenetics:\nNo PML::RARA, RUNX1::RUNX1T1 or CBFB::MYH11 detected on rapid FISH panel.",
+                "options": [
+                    "Acute monoblastic leukaemia",
+                    "Acute monocytic leukaemia",
+                    "Acute promyelocytic leukaemia, microgranular variant",
+                    "Acute myeloid leukaemia with minimal differentiation",
+                    "Chronic myelomonocytic leukaemia"
+                ],
+                "correct_answer": "A. Acute monoblastic leukaemia",
+                "explanation": "This case is most precisely classified morphologically as acute monoblastic leukaemia. The key point is the predominance of monoblasts: when most monocytic-lineage leukaemic cells are monoblasts, the term monoblastic is used; when there is a greater mixture of monoblasts, promonocytes and monocytes, acute monocytic leukaemia is more appropriate. The clinical findings of gingival hypertrophy and skin nodules are classic for AML with monocytic differentiation because monocytic blasts have a tendency for tissue infiltration. The immunophenotype supports monocytic differentiation, particularly CD64, CD11c, CD36 and partial CD14, and the cytochemical finding of non-specific esterase inhibited by sodium fluoride is a traditional but important clue. Modern classification should still incorporate cytogenetic and molecular results, but the question asks for the most precise morphological diagnosis.\n\nWhy other options are wrong:\n• B: Acute monocytic leukaemia is closely related, but it is less precise here because more than 80% of monocytic-lineage cells are monoblasts rather than a mixture with promonocytes and monocytes.\n• C: Microgranular APL can mimic monocytic AML morphologically, but APL usually shows strong MPO, CD33 bright, HLA-DR negativity and PML::RARA. The monocytic markers and NSE pattern favour monoblastic AML.\n• D: AML with minimal differentiation lacks convincing lineage maturation and usually requires immunophenotypic evidence of myeloid lineage without clear morphological differentiation. This case shows clear monocytic differentiation.\n• E: CMML requires persistent monocytosis with fewer than 20% blasts or blast equivalents. This is an acute leukaemia with extensive marrow replacement by monoblasts.\n\nExaminer Commentary:\nThe examiner is testing whether candidates know that monoblasts and promonocytes are not interchangeable descriptions. The distinction is morphological, but it correlates with clinical behaviour and immunophenotype.",
+                "takeaway": "Gum hypertrophy, skin infiltration and high WBC should make you look carefully for monocytic differentiation and consider CNS risk assessment according to local practice."
+            },
+            {
+                "id": 126,
+                "code": "AML026",
+                "category": "malignant",
+                "title": "AML with multilineage dysplasia but no AML-defining genetics",
+                "vignette": "A 72-year-old man presents with progressive fatigue, recurrent chest infections and easy bruising. He has no prior chemotherapy or radiotherapy exposure and no known previous diagnosis of MDS. Examination shows pallor and scattered ecchymoses without splenomegaly.\n\nLaboratory data:\n• Hb: 76 g/L\n• WBC: 2.1 x 10^9/L\n• ANC: 0.6 x 10^9/L\n• platelets: 42 x 10^9/L\n• MCV: 106 fL\n• LDH: Mildly elevated\n• coagulation: PT and APTT normal\n\nMorphology:\n• Peripheral blood: Macrocytosis, hypogranular neutrophils and occasional pseudo-Pelger-Huet neutrophils. Rare circulating blasts.\n• Bone marrow: Hypercellular marrow with erythroid and megakaryocytic dysplasia. Myeloblasts comprise 24 percent of nucleated marrow cells.\n\nFlow Cytometry:\nExpanded CD34-positive, CD117-positive, CD13-positive, CD33-positive myeloid blast population with aberrant CD7 expression. MPO is positive.\n\nCytogenetics:\n46,XY[20]. No recurrent AML-defining rearrangement detected by FISH panel.\n\nMolecular Genetics:\nNGS shows SRSF2 p.P95H VAF 38 percent and ASXL1 frameshift VAF 35 percent. NPM1, FLT3-ITD, CEBPA bZIP and TP53 are negative.",
+                "options": [
+                    "Acute myeloid leukaemia, myelodysplasia-related",
+                    "Myelodysplastic syndrome with increased blasts",
+                    "Acute myeloid leukaemia, not otherwise specified because morphology alone defines AML-MR",
+                    "Therapy-related myeloid neoplasm",
+                    "Aplastic anaemia with clonal haematopoiesis"
+                ],
+                "correct_answer": "A. Acute myeloid leukaemia, myelodysplasia-related",
+                "explanation": "This patient has AML because the marrow blast count is at least 20 percent. The diagnosis is best classified as acute myeloid leukaemia, myelodysplasia-related because there are qualifying myelodysplasia-related mutations, specifically ASXL1 and SRSF2, in a case with AML-level blasts. The important examiner point is that dysplastic morphology supports a history of disordered myelopoiesis but, in WHO 5th edition, morphology alone is not the defining criterion for AML-MR. The diagnosis requires either defined myelodysplasia-related cytogenetic abnormalities or defined myelodysplasia-related gene mutations, or a documented antecedent MDS or MDS/MPN depending on the classification framework used. Here, the ASXL1 and SRSF2 mutations make the case AML-MR even though the karyotype is normal.\n\nWhy other options are wrong:\n• B: The marrow blast count is 24 percent, exceeding the usual AML threshold when no special borderline category is being applied.\n• C: AML-NOS would be considered only when defining genetic and myelodysplasia-related criteria are absent. Also, morphology alone is not the modern WHO5 basis for AML-MR.\n• D: There is no previous cytotoxic therapy or radiotherapy exposure. Therapy-related is a clinical qualifier rather than the best primary diagnosis here.\n• E: The marrow is hypercellular with 24 percent blasts, not hypocellular without increased blasts.\n\nExaminer Commentary:\nThis case tests whether the candidate has updated from older AML-MRC terminology. The trap is to either over-rely on dysplasia alone or ignore myelodysplasia-related mutations.",
+                "takeaway": "In modern AML classification, multilineage dysplasia is descriptive; defined genetics and clinical history drive the AML-MR category."
+            },
+            {
+                "id": 127,
+                "code": "AML027",
+                "category": "malignant",
+                "title": "Pseudo-Pelger-Huet change in myeloid neoplasia",
+                "vignette": "A 68-year-old woman is investigated for pancytopenia. She has no fever and no recent exposure to mycophenolate, ganciclovir or other drugs known to cause Pelgeroid changes. A previous blood count 3 years ago was normal.\n\nLaboratory data:\n• Hb: 88 g/L\n• WBC: 1.9 x 10^9/L\n• ANC: 0.7 x 10^9/L\n• platelets: 64 x 10^9/L\n• MCV: 101 fL\n• LDH: Normal\n\nMorphology:\n• Peripheral blood: Many neutrophils are bilobed or unilobed with coarse clumped chromatin. Granulation is reduced. No Auer rods are seen.\n• Bone marrow: Hypercellular marrow with trilineage dysplasia and 12 percent myeloblasts.\n\nFlow Cytometry:\nCD34-positive blasts comprise 11 to 13 percent of marrow events. Granulocytic maturation shows reduced side scatter and asynchronous CD13/CD16 expression.\n\nCytogenetics:\nNo AML-defining recurrent abnormality detected. Karyotype shows del(7q).\n\nMolecular Genetics:\nNGS shows U2AF1 mutation. NPM1 and FLT3 are negative.",
+                "options": [
+                    "Inherited Pelger-Huet anomaly, requiring no further marrow assessment",
+                    "Acquired pseudo-Pelger-Huet change supporting dysgranulopoiesis in a myeloid neoplasm",
+                    "Pathognomonic evidence of acute promyelocytic leukaemia",
+                    "Reactive toxic change due to bacterial sepsis",
+                    "Diagnostic of chronic myeloid leukaemia blast phase"
+                ],
+                "correct_answer": "B. Acquired pseudo-Pelger-Huet change supporting dysgranulopoiesis in a myeloid neoplasm",
+                "explanation": "The bilobed or unilobed neutrophils with coarse chromatin and hypogranularity represent acquired pseudo-Pelger-Huet change, a classic morphological feature of dysgranulopoiesis. In this clinical setting of new cytopenias, marrow dysplasia, increased blasts and clonal abnormalities, it supports an underlying myeloid neoplasm. It does not by itself diagnose AML. With 12 percent marrow blasts and no AML-defining genetic abnormality, this would fit an MDS with increased blasts category under WHO-style terminology, while ICC may use MDS/AML for 10 to 19 percent blasts. The key lesson is that morphology must be integrated with blast count, cytogenetics and molecular data.\n\nWhy other options are wrong:\n• A: Inherited Pelger-Huet anomaly is lifelong, usually benign and typically affects neutrophil nuclear segmentation without the broader cytopenic and dysplastic context seen here.\n• C: APL is suggested by abnormal promyelocytes, faggot cells, DIC and PML::RARA, not pseudo-Pelger-Huet neutrophils alone.\n• D: Toxic change usually shows toxic granulation, vacuolation and Dohle bodies rather than hypogranular Pelgeroid dysplasia.\n• E: CML blast phase requires BCR::ABL1-positive CML with blast-phase criteria.\n\nExaminer Commentary:\nFRCPath candidates must avoid equating one dysplastic feature with AML. The examiner is testing whether you can describe the morphology and then place it into the correct diagnostic framework.",
+                "takeaway": "Pseudo-Pelger-Huet cells are a clue to dysgranulopoiesis, not an AML-defining feature."
+            },
+            {
+                "id": 128,
+                "code": "AML028",
+                "category": "malignant",
+                "title": "Dry tap in suspected AML",
+                "vignette": "A 19-month-old child presents with pallor, petechiae and hepatosplenomegaly. Two attempts at bone marrow aspiration yield a dry tap. A trephine biopsy is performed.\n\nLaboratory data:\n• Hb: 69 g/L\n• WBC: 5.8 x 10^9/L\n• platelets: 18 x 10^9/L\n• LDH: Elevated\n• coagulation: Normal PT and APTT\n\nMorphology:\n• Peripheral blood: Leukoerythroblastic features with occasional blasts showing cytoplasmic blebs.\n• Bone marrow: Trephine biopsy shows diffuse infiltration by blasts and marked reticulin fibrosis.\n\nFlow Cytometry:\nLimited material from trephine suspension shows blasts expressing CD34, CD117, CD41 and CD61. MPO, CD3 and CD19 are negative.",
+                "options": [
+                    "Acute megakaryoblastic leukaemia",
+                    "Acute promyelocytic leukaemia",
+                    "B-lymphoblastic leukaemia",
+                    "Severe aplastic anaemia",
+                    "Reactive marrow fibrosis secondary to iron deficiency"
+                ],
+                "correct_answer": "A. Acute megakaryoblastic leukaemia",
+                "explanation": "The combination of dry tap, trephine fibrosis, blasts with cytoplasmic blebbing and expression of megakaryocytic markers CD41 and CD61 is highly suggestive of acute megakaryoblastic leukaemia. Megakaryoblastic leukaemia often causes significant marrow fibrosis, which makes aspirates difficult or impossible. In a child, this diagnosis should also prompt assessment for Down syndrome-associated myeloid leukaemia if clinically relevant, and for appropriate cytogenetic and molecular studies. The diagnostic principle is that a dry tap is not a failed diagnosis; it is a diagnostic clue. Trephine biopsy, immunohistochemistry and flow cytometry from trephine or peripheral blood become crucial.\n\nWhy other options are wrong:\n• B: APL usually presents with abnormal promyelocytes, coagulopathy and PML::RARA; CD41/CD61 positivity is not the defining phenotype.\n• C: B-ALL would express B-lineage markers such as CD19, CD10, TdT and cytoplasmic CD79a rather than megakaryocytic markers.\n• D: Aplastic anaemia is hypocellular without sheets of blasts and does not explain CD41/CD61-positive blast infiltration.\n• E: Iron deficiency does not cause diffuse blast infiltration with megakaryoblast phenotype.\n\nExaminer Commentary:\nThe examiner is testing whether the candidate understands that morphology and sample quality are part of interpretation. A dry tap in acute leukaemia should make you think of fibrosis, packed marrow or metastatic infiltration.",
+                "takeaway": "Dry tap plus blasts with cytoplasmic blebs should trigger CD41, CD61 and CD42b assessment."
+            },
+            {
+                "id": 129,
+                "code": "AML029",
+                "category": "malignant",
+                "title": "Hypocellular AML versus aplastic anaemia and hypocellular MDS",
+                "vignette": "A 79-year-old man presents with severe pancytopenia and recurrent infections. There is no splenomegaly. The aspirate is aparticulate and haemodilute. The trephine biopsy is markedly hypocellular for age.\n\nLaboratory data:\n• Hb: 71 g/L\n• WBC: 0.9 x 10^9/L\n• ANC: 0.2 x 10^9/L\n• platelets: 14 x 10^9/L\n• reticulocytes: Low\n• LDH: Myldly elevated\n\nMorphology:\n• Peripheral blood: Pancytopenia with rare circulating blasts. No significant monocytosis.\n• Bone marrow: Trephine cellularity is approximately 15 percent. Within cellular foci, CD34-positive blasts form clusters and account for 28 percent of nucleated marrow cells. Reticulin fibrosis is not increased.\n\nFlow Cytometry:\nLow cellularity specimen shows abnormal CD34-positive, CD117-positive, HLA-DR-positive, CD13-positive, CD33-positive blasts with aberrant CD7. MPO is positive.\n\nCytogenetics:\nNo metaphases obtained. FISH negative for PML::RARA, RUNX1::RUNX1T1 and CBFB::MYH11.\n\nMolecular Genetics:\nNGS shows RUNX1 and ASXL1 mutations. NPM1 and CEBPA bZIP mutations are not detected.",
+                "options": [
+                    "Severe aplastic anaemia",
+                    "Hypocellular myelodysplastic syndrome",
+                    "Hypocellular acute myeloid leukaemia",
+                    "Pure red cell aplasia",
+                    "Paroxysmal nocturnal haemoglobinuria without marrow neoplasia"
+                ],
+                "correct_answer": "C. Hypocellular acute myeloid leukaemia",
+                "explanation": "This is hypocellular AML. The marrow is hypocellular, but the blast percentage within the nucleated marrow cell population is at AML level. CD34 immunohistochemistry demonstrates abnormal blast clusters, and flow cytometry confirms an aberrant myeloid blast population. Hypocellular AML is a classic diagnostic pitfall because the low cellularity can mimic aplastic anaemia or hypocellular MDS. The distinction depends on careful trephine assessment, blast quantification, immunohistochemistry and integrated flow and molecular findings. The presence of RUNX1 and ASXL1 mutations also supports a clonal myeloid neoplasm, although the decisive point for AML is the increased myeloid blasts.\n\nWhy other options are wrong:\n• A: Aplastic anaemia is hypocellular but lacks increased blasts and abnormal CD34-positive blast clusters.\n• B: Hypocellular MDS may show dysplasia and increased blasts below AML threshold, but here blasts are 28 percent.\n• D: Pure red cell aplasia causes isolated red cell aplasia, not pancytopenia with myeloid blasts.\n• E: PNH may coexist with marrow failure but does not explain 28 percent abnormal myeloid blasts.\n\nExaminer Commentary:\nThis is an examiner-level morphology and trephine interpretation question. The trap is to label any hypocellular pancytopenic marrow as aplastic anaemia.",
+                "takeaway": "In a hypocellular marrow, CD34 immunostaining is often decisive for detecting abnormal blast clusters."
+            },
+            {
+                "id": 125,
+                "code": "AML030",
+                "category": "malignant",
+                "title": "Trephine biopsy in suspected AML with inadequate aspirate",
+                "vignette": "A 61-year-old woman is referred with pancytopenia and 6 percent circulating blasts. Bone marrow aspiration is haemodilute and non-diagnostic. A trephine biopsy is obtained.\n\nLaboratory data:\n• Hb: 82 g/L\n• WBC: 1.6 x 10^9/L\n• ANC: 0.4 x 10^9/L\n• platelets: 31 x 10^9/L\n• LDH: Moderately elevated\n• coagulation: Normal\n\nMorphology:\n• Peripheral blood: Circulating blasts are medium-sized with fine chromatin and occasional azurophilic granules. No Auer rods seen.\n• Bone marrow: Trephine shows a hypercellular marrow replaced by sheets and clusters of immature cells. Residual trilineage haematopoiesis is markedly reduced.\n\nFlow Cytometry:\nPeripheral blood flow shows a small abnormal myeloid blast population expressing CD34, CD117, CD13, CD33 and MPO.\n\nCytogenetics:\nFISH and karyotype pending.\n\nMolecular Genetics:\nRapid PCR for PML::RARA is negative.",
+                "options": [
+                    "CD34, CD117, MPO, CD61, glycophorin A and reticulin stain",
+                    "CD20, CD3, cyclin D1 and EBV-encoded RNA only",
+                    "Cytokeratin, S100 and desmin only",
+                    "Iron stain only, because flow cytometry is already diagnostic",
+                    "No further stains; trephine morphology alone is sufficient for complete AML classification"
+                ],
+                "correct_answer": "A. CD34, CD117, MPO, CD61, glycophorin A and reticulin stain",
+                "explanation": "The appropriate approach is an immunohistochemical panel that confirms immaturity, myeloid lineage and key alternative lineages, while assessing fibrosis and marrow architecture. CD34 and CD117 help highlight blasts and their distribution. MPO supports myeloid differentiation. CD61 is useful if megakaryoblastic differentiation is a possibility, and glycophorin A helps assess erythroid differentiation or exclude erythroid-predominant processes. Reticulin staining assesses fibrosis, which can explain poor aspirate quality and has diagnostic relevance. Trephine morphology is powerful, but AML diagnosis and classification require integration with flow cytometry, cytogenetics and molecular findings.\n\nWhy other options are wrong:\n• A: Correct. This panel addresses blast burden, lineage, alternative differentiation and fibrosis.\n• B: This is mainly a lymphoid lymphoma panel and does not adequately assess suspected AML.\n• C: This panel would be used to investigate metastatic carcinoma, melanoma or sarcoma, not first-line suspected AML.\n• D: Iron stain is useful in MDS work-up but cannot confirm AML lineage or blast distribution by itself.\n• E: Trephine morphology alone is insufficient for modern AML classification.\n\nExaminer Commentary:\nThis case tests practical laboratory haematology: knowing what to do when the aspirate fails. FRCPath candidates are expected to understand the diagnostic pathway, not just final disease labels.",
+                "takeaway": "In AML, the trephine is not a backup specimen; it provides architecture, cellularity, fibrosis and immunophenotypic localisation."
+            }
+        ];
+
+        // Active State Variables
+        let questionsDatabase = [];
+        let stats = {
+            totalAttempted: 0,
+            totalCorrect: 0,
+            streak: 0,
+            completedSessions: 0,
+            categoryStats: {
+                coagulation: { attempted: 0, correct: 0 },
+                malignant: { attempted: 0, correct: 0 },
+                redcell: { attempted: 0, correct: 0 },
+                transfusion: { attempted: 0, correct: 0 }
+            }
+        };
+
+        let activeQuizQuestions = [];
+        let currentQuestionIndex = 0;
+        let selectedOptionIndex = null;
+        let isCurrentQuestionAnswered = false;
+        let quizTimerInterval = null;
+        let quizStartTime = null;
+        let currentSessionCorrect = 0;
+        let currentSessionMode = 'study'; // 'study' or 'exam'
+        let sessionCategoryStats = {
+            coagulation: { attempted: 0, correct: 0 },
+            malignant: { attempted: 0, correct: 0 },
+            redcell: { attempted: 0, correct: 0 },
+            transfusion: { attempted: 0, correct: 0 }
+        };
+
+        // Programmatic tag mapping for clean database handling
+        function assignProgrammaticCategories() {
+            questionsDatabase.forEach(q => {
+                // If category is already set in the object, keep it!
+                if (q.category) {
+                    return;
+                }
+                // Otherwise, assign programmatically based on ID
+                if (q.id === 1 || q.id === 5) {
+                    q.category = "coagulation";
+                } else if (q.id === 3) {
+                    q.category = "transfusion";
+                } else if (q.id === 4 || q.id === 8) {
+                    q.category = "redcell";
+                } else {
+                    q.category = "malignant";
+                }
+            });
+        }
+
+        // Statistics Persistence Manager
+        function loadPersistentStats() {
+            try {
+                const storedStats = localStorage.getItem('frcpath_stats');
+                if (storedStats) {
+                    stats = JSON.parse(storedStats);
+                }
+            } catch (e) {
+                console.error("Unable to load persistent stats:", e);
+            }
+        }
+
+        function savePersistentStats() {
+            try {
+                localStorage.setItem('frcpath_stats', JSON.stringify(stats));
+            } catch (e) {
+                console.error("Unable to save persistent stats:", e);
+            }
+        }
+
+        function resetStats() {
+            if (confirm("Are you sure you want to clear your entire revision history and progress metrics? This action cannot be undone.")) {
+                stats = {
+                    totalAttempted: 0,
+                    totalCorrect: 0,
+                    streak: 0,
+                    completedSessions: 0,
+                    categoryStats: {
+                        coagulation: { attempted: 0, correct: 0 },
+                        malignant: { attempted: 0, correct: 0 },
+                        redcell: { attempted: 0, correct: 0 },
+                        transfusion: { attempted: 0, correct: 0 }
+                    }
+                };
+                savePersistentStats();
+                renderDashboardStats();
+                showNotification("All revision statistics have been successfully reset.", "success");
+            }
+        }
+
+        // View Router & Tab Switcher
+        function navigateTo(viewId) {
+            // Hide all main view panels
+            document.getElementById('view-dashboard').classList.add('hidden');
+            document.getElementById('view-quiz').classList.add('hidden');
+            document.getElementById('view-results').classList.add('hidden');
+            document.getElementById('view-qbank').classList.add('hidden');
+
+            // Show active view panel
+            document.getElementById(`view-${viewId}`).classList.remove('hidden');
+
+            // Update Navigation Buttons Visuals (Desktop)
+            const desktopNavs = ['dashboard', 'qbank'];
+            desktopNavs.forEach(navName => {
+                const navBtn = document.getElementById(`nav-${navName}`);
+                if (navBtn) {
+                    if (navName === viewId) {
+                        navBtn.className = "px-3 py-2 rounded-md text-sm font-medium bg-slate-800 text-white transition-all duration-150";
+                    } else {
+                        navBtn.className = "px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-all duration-150";
+                    }
+                }
+            });
+
+            // Specific initialization routines on enter view
+            if (viewId === 'dashboard') {
+                renderDashboardStats();
+            } else if (viewId === 'qbank') {
+                filterQBank();
+            }
+
+            // Ensure smooth layout recalculation and icon rendering
+            lucide.createIcons();
+        }
+
+        // Dashboard Statistics Drawing
+        function renderDashboardStats() {
+            const accuracy = stats.totalAttempted > 0 ? Math.round((stats.totalCorrect / stats.totalAttempted) * 100) : 0;
+            
+            // Text values updates
+            document.getElementById('stat-total').innerText = stats.totalAttempted;
+            document.getElementById('stat-accuracy').innerHTML = `<code>${accuracy}%</code>`;
+            document.getElementById('stat-streak').innerText = stats.streak;
+            document.getElementById('stat-completed').innerText = stats.completedSessions;
+            document.getElementById('session-accuracy-badge').innerText = `${accuracy}%`;
+
+            // Specialty categories loops
+            const categories = ['coagulation', 'malignant', 'redcell', 'transfusion'];
+            categories.forEach(catName => {
+                const catData = stats.categoryStats[catName] || { attempted: 0, correct: 0 };
+                const catAccuracy = catData.attempted > 0 ? Math.round((catData.correct / catData.attempted) * 100) : 0;
+                
+                // Update specific category labels & status bars
+                const textElem = document.getElementById(`cat-perf-${catName}`);
+                const barElem = document.getElementById(`cat-bar-${catName}`);
+                if (textElem) {
+                    textElem.innerHTML = `${catData.correct} / ${catData.attempted} (<code>${catAccuracy}%</code>)`;
+                }
+                if (barElem) {
+                    barElem.style.width = `${catAccuracy}%`;
+                }
+            });
+        }
+
+        // Notification Message Controller
+        let notificationTimeout = null;
+        function showNotification(message, type = 'info') {
+            const bar = document.getElementById('notification-bar');
+            const text = document.getElementById('notification-text');
+            const iconContainer = document.getElementById('notification-icon-container');
+
+            clearTimeout(notificationTimeout);
+            bar.classList.remove('hidden');
+
+            // Style variations based on notification level
+            if (type === 'success') {
+                bar.className = "mb-6 p-4 rounded-xl border border-emerald-100 bg-emerald-50 text-emerald-800 flex items-center justify-between shadow-sm fade-in";
+                iconContainer.className = "p-1.5 rounded-lg bg-emerald-100 text-emerald-800";
+                iconContainer.innerHTML = `<i data-lucide="check-circle" class="w-5 h-5"></i>`;
+            } else if (type === 'error') {
+                bar.className = "mb-6 p-4 rounded-xl border border-rose-100 bg-rose-50 text-rose-800 flex items-center justify-between shadow-sm fade-in";
+                iconContainer.className = "p-1.5 rounded-lg bg-rose-100 text-rose-800";
+                iconContainer.innerHTML = `<i data-lucide="alert-circle" class="w-5 h-5"></i>`;
+            } else {
+                bar.className = "mb-6 p-4 rounded-xl border border-blue-100 bg-blue-50 text-blue-800 flex items-center justify-between shadow-sm fade-in";
+                iconContainer.className = "p-1.5 rounded-lg bg-blue-100 text-blue-800";
+                iconContainer.innerHTML = `<i data-lucide="info" class="w-5 h-5"></i>`;
+            }
+
+            text.innerText = message;
+            lucide.createIcons();
+
+            // Auto dismiss notification
+            notificationTimeout = setTimeout(dismissNotification, 5000);
+        }
+
+        function dismissNotification() {
+            const bar = document.getElementById('notification-bar');
+            if (bar) bar.classList.add('hidden');
+        }
+
+        // MODAL HANDLERS
+        function openConfigModal() {
+            document.getElementById('config-modal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeConfigModal() {
+            document.getElementById('config-modal').classList.add('hidden');
+        }
+
+        function toggleModeLabelStyle() {
+            const studyRadio = document.querySelector('input[name="practice-mode"][value="study"]');
+            const labelStudy = document.getElementById('label-mode-study');
+            const labelExam = document.getElementById('label-mode-exam');
+
+            if (studyRadio && studyRadio.checked) {
+                labelStudy.className = "flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 border-blue-500 bg-blue-50/50";
+                labelExam.className = "flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 border-slate-200";
+            } else if (labelStudy && labelExam) {
+                labelStudy.className = "flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 border-slate-200";
+                labelExam.className = "flex items-center gap-3 p-3.5 border rounded-xl cursor-pointer hover:bg-slate-50 border-blue-500 bg-blue-50/50";
+            }
+        }
+
+        // QUIZ INITIALIZATION & ENGINE CONTROL
+        function startQuickQuiz() {
+            startStandardQuiz(5, 'all', 'study');
+        }
+
+        function startStandardQuiz(size, category, mode) {
+            activeQuizQuestions = generateSelectedQuestions(size, category);
+            if (activeQuizQuestions.length === 0) {
+                showNotification("No questions match the selected filter combination.", "error");
+                return;
+            }
+            launchQuizSession(mode);
+        }
+
+        function launchCustomQuiz() {
+            const category = document.getElementById('config-category').value;
+            const size = parseInt(document.getElementById('config-size').value, 10);
+            const mode = document.querySelector('input[name="practice-mode"]:checked').value;
+
+            activeQuizQuestions = generateSelectedQuestions(size, category);
+            if (activeQuizQuestions.length === 0) {
+                showNotification("No questions found matching your category selections. Please try another domain.", "error");
+                return;
+            }
+
+            closeConfigModal();
+            launchQuizSession(mode);
+        }
+
+        function generateSelectedQuestions(size, category) {
+            let filtered = [...questionsDatabase];
+            if (category !== 'all') {
+                filtered = filtered.filter(q => q.category === category);
+            }
+            
+            // Randomly shuffle using Fisher-Yates and slice
+            for (let i = filtered.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
+            }
+            
+            return filtered.slice(0, size);
+        }
+
+        function launchQuizSession(mode) {
+            currentQuestionIndex = 0;
+            currentSessionCorrect = 0;
+            currentSessionMode = mode;
+            isCurrentQuestionAnswered = false;
+            selectedOptionIndex = null;
+
+            // Reset category stats for this session
+            sessionCategoryStats = {
+                coagulation: { attempted: 0, correct: 0 },
+                malignant: { attempted: 0, correct: 0 },
+                redcell: { attempted: 0, correct: 0 },
+                transfusion: { attempted: 0, correct: 0 }
+            };
+
+            // Timer Initialization
+            quizStartTime = Date.now();
+            clearInterval(quizTimerInterval);
+            updateTimerDisplay();
+            quizTimerInterval = setInterval(updateTimerDisplay, 1000);
+
+            // Update UI Sidebar descriptors
+            const activeModeDesc = document.getElementById('quiz-mode-description');
+            if (mode === 'study') {
+                document.getElementById('session-title').innerText = "Study & Revision Session";
+                activeModeDesc.innerHTML = `
+                    <div class="flex gap-2 text-xs font-semibold text-emerald-800 bg-emerald-50 p-2.5 rounded-lg border border-emerald-100">
+                        <i data-lucide="info" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span>Immediate feedback, answers, and comprehensive rationales are shown after every question.</span>
+                    </div>
+                `;
+            } else {
+                document.getElementById('session-title').innerText = "Simulated Practice Examination";
+                activeModeDesc.innerHTML = `
+                    <div class="flex gap-2 text-xs font-semibold text-amber-800 bg-amber-50 p-2.5 rounded-lg border border-amber-100">
+                        <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span>Real exam criteria. Answers and explanations are concealed until the complete mock assessment is submitted.</span>
+                    </div>
+                `;
+            }
+
+            navigateTo('quiz');
+            loadQuizQuestion(0);
+        }
+
+        function updateTimerDisplay() {
+            const delta = Date.now() - quizStartTime;
+            const totalSec = Math.floor(delta / 1000);
+            const minutes = Math.floor(totalSec / 60).toString().padStart(2, '0');
+            const seconds = (totalSec % 60).toString().padStart(2, '0');
+            document.getElementById('quiz-timer').innerText = `${minutes}:${seconds}`;
+        }
+
+        // QUESTION LOADING & RENDERING
+        function loadQuizQuestion(index) {
+            isCurrentQuestionAnswered = false;
+            selectedOptionIndex = null;
+            
+            // Manage dynamic headers and counts
+            document.getElementById('progress-current').innerText = index + 1;
+            document.getElementById('progress-total').innerText = activeQuizQuestions.length;
+
+            const progressPct = ((index + 1) / activeQuizQuestions.length) * 100;
+            document.getElementById('quiz-progress-bar').style.width = `${progressPct}%`;
+
+            const currentQ = activeQuizQuestions[index];
+
+            // Render Vignette
+            document.getElementById('question-text').innerText = `${currentQ.code}: ${currentQ.vignette}`;
+
+            // Category badge styling
+            const catBadge = document.getElementById('question-category');
+            catBadge.innerText = currentQ.category.toUpperCase();
+            if (currentQ.category === 'malignant') {
+                catBadge.className = "bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider";
+            } else if (currentQ.category === 'coagulation') {
+                catBadge.className = "bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider";
+            } else if (currentQ.category === 'redcell') {
+                catBadge.className = "bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider";
+            } else {
+                catBadge.className = "bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider";
+            }
+
+            // Options Setup
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            currentQ.options.forEach((optText, optIdx) => {
+                const optLetter = String.fromCharCode(65 + optIdx);
+                const itemLabel = document.createElement('label');
+                itemLabel.id = `opt-label-${optIdx}`;
+                itemLabel.className = "flex items-start gap-3 p-4 rounded-2xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-all";
+                itemLabel.onclick = () => selectOption(optIdx);
+
+                itemLabel.innerHTML = `
+                    <input type="radio" name="quiz-options" id="radio-opt-${optIdx}" value="${optIdx}" class="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-slate-300" ${isCurrentQuestionAnswered ? 'disabled' : ''}>
+                    <div class="text-sm font-semibold text-slate-700">
+                        <span class="text-blue-600 font-bold mr-1.5">${optLetter}.</span> ${optText}
+                    </div>
+                `;
+                optionsContainer.appendChild(itemLabel);
+            });
+
+            // Clean up old feedback sheets
+            document.getElementById('study-feedback').classList.add('hidden');
+
+            // Toggle Primary Action control buttons
+            document.getElementById('btn-submit-answer').classList.remove('hidden');
+            document.getElementById('btn-next-question').classList.add('hidden');
+
+            lucide.createIcons();
+        }
+
+        function selectOption(index) {
+            if (isCurrentQuestionAnswered) return;
+
+            selectedOptionIndex = index;
+            const radioInput = document.getElementById(`radio-opt-${index}`);
+            if (radioInput) radioInput.checked = true;
+
+            // Update border visual state on selections
+            const optionsCount = activeQuizQuestions[currentQuestionIndex].options.length;
+            for (let i = 0; i < optionsCount; i++) {
+                const optLbl = document.getElementById(`opt-label-${i}`);
+                if (optLbl) {
+                    if (i === index) {
+                        optLbl.className = "flex items-start gap-3 p-4 rounded-2xl border border-clinical-600 bg-clinical-50/50 ring-2 ring-clinical-600/20 cursor-pointer transition-all";
+                    } else {
+                        optLbl.className = "flex items-start gap-3 p-4 rounded-2xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition-all";
+                    }
+                }
+            }
+        }
+
+        // SUBMISSION & ACCURACY SCORING INTERPRETER
+        function submitAnswer() {
+            if (selectedOptionIndex === null) {
+                showNotification("Please select an option before submitting.", "error");
+                return;
+            }
+
+            isCurrentQuestionAnswered = true;
+            const currentQ = activeQuizQuestions[currentQuestionIndex];
+
+            // Resolve actual correct answer letter
+            const correctLetter = currentQ.correct_answer.charAt(0).toUpperCase();
+            const correctOptionIndex = correctLetter.charCodeAt(0) - 65;
+
+            const isCorrect = selectedOptionIndex === correctOptionIndex;
+
+            // Adjust overall historical analytics statistics
+            stats.totalAttempted++;
+            sessionCategoryStats[currentQ.category].attempted++;
+            if (stats.categoryStats[currentQ.category]) {
+                stats.categoryStats[currentQ.category].attempted++;
+            }
+
+            if (isCorrect) {
+                playCorrectSound();
+                stats.totalCorrect++;
+                stats.streak++;
+                currentSessionCorrect++;
+                sessionCategoryStats[currentQ.category].correct++;
+                if (stats.categoryStats[currentQ.category]) {
+                    stats.categoryStats[currentQ.category].correct++;
+                }
+            } else {
+                playWrongSound();
+                stats.streak = 0;
+            }
+
+            savePersistentStats();
+
+            // Handle UI behavior differences based on chosen revision mode
+            if (currentSessionMode === 'study') {
+                revealStudyFeedback(isCorrect, correctOptionIndex);
+            } else {
+                // In Exam mode, immediately advance or display simple unrevealed transition
+                nextQuestion();
+            }
+        }
+
+        function revealStudyFeedback(isCorrect, correctIdx) {
+            const currentQ = activeQuizQuestions[currentQuestionIndex];
+            
+            // Adjust options lists visual indicators immediately
+            currentQ.options.forEach((_, idx) => {
+                const labelElem = document.getElementById(`opt-label-${idx}`);
+                const radioElem = document.getElementById(`radio-opt-${idx}`);
+                
+                if (radioElem) radioElem.disabled = true;
+
+                if (idx === correctIdx) {
+                    labelElem.className = "flex items-start gap-3 p-4 rounded-2xl border border-emerald-500 bg-emerald-50 text-emerald-900 transition-all font-semibold";
+                } else if (idx === selectedOptionIndex && !isCorrect) {
+                    labelElem.className = "flex items-start gap-3 p-4 rounded-2xl border border-rose-500 bg-rose-50 text-rose-900 transition-all";
+                } else {
+                    labelElem.className = "flex items-start gap-3 p-4 rounded-2xl border border-slate-200 opacity-50 grayscale-[15%] transition-all";
+                }
+            });
+
+            // Draw Feedback Details Cards
+            const feedbackAlertBox = document.getElementById('feedback-alert-box');
+            const feedbackIconContainer = document.getElementById('feedback-icon-container');
+            const feedbackHeading = document.getElementById('feedback-heading');
+            const feedbackSubtext = document.getElementById('feedback-subtext');
+
+            if (isCorrect) {
+                feedbackAlertBox.className = "p-4 rounded-2xl flex items-start gap-3 border border-emerald-100 bg-emerald-50 text-emerald-800";
+                feedbackIconContainer.className = "p-2 rounded-xl shrink-0 bg-emerald-200 text-emerald-800";
+                feedbackIconContainer.innerHTML = `<i data-lucide="check-circle" class="w-5 h-5"></i>`;
+                feedbackHeading.innerText = "Excellent Diagnosis!";
+                feedbackHeading.className = "text-base font-bold text-emerald-900";
+                feedbackSubtext.innerText = "Your diagnostic logic is completely sound.";
+            } else {
+                feedbackAlertBox.className = "p-4 rounded-2xl flex items-start gap-3 border border-rose-100 bg-rose-50 text-rose-800";
+                feedbackIconContainer.className = "p-2 rounded-xl shrink-0 bg-rose-200 text-rose-800";
+                feedbackIconContainer.innerHTML = `<i data-lucide="alert-triangle" class="w-5 h-5"></i>`;
+                feedbackHeading.innerText = "Incorrect Option Selected";
+                feedbackHeading.className = "text-base font-bold text-rose-900";
+                feedbackSubtext.innerHTML = `The correct answer is: <span class="font-extrabold text-emerald-900">${currentQ.correct_answer}</span>`;
+            }
+
+            document.getElementById('explanation-text').innerText = currentQ.explanation;
+            document.getElementById('takeaway-text').innerText = currentQ.takeaway;
+
+            // Make the feedback panel visible
+            document.getElementById('study-feedback').classList.remove('hidden');
+
+            // Swap controls
+            document.getElementById('btn-submit-answer').classList.add('hidden');
+            document.getElementById('btn-next-question').classList.remove('hidden');
+
+            lucide.createIcons();
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < activeQuizQuestions.length - 1) {
+                currentQuestionIndex++;
+                loadQuizQuestion(currentQuestionIndex);
+            } else {
+                endQuizSession();
+            }
+        }
+
+        function endQuizSession() {
+            clearInterval(quizTimerInterval);
+            stats.completedSessions++;
+            savePersistentStats();
+
+            // Calculate current session results
+            const sessionAcc = activeQuizQuestions.length > 0 ? Math.round((currentSessionCorrect / activeQuizQuestions.length) * 100) : 0;
+
+            // Populate view results elements
+            document.getElementById('results-total').innerText = activeQuizQuestions.length;
+            document.getElementById('results-score').innerText = currentSessionCorrect;
+            document.getElementById('results-accuracy').innerHTML = `<code>${sessionAcc}%</code>`;
+
+            // Draw category summary list
+            const resultsContainer = document.getElementById('results-category-performance-container');
+            resultsContainer.innerHTML = '';
+
+            const categories = {
+                coagulation: 'Coagulation & Thrombosis',
+                malignant: 'Malignant Haematology',
+                redcell: 'General & Red Cell',
+                transfusion: 'Transfusion Medicine'
+            };
+
+            for (const [catKey, catName] of Object.entries(categories)) {
+                const sessionData = sessionCategoryStats[catKey];
+                if (sessionData && sessionData.attempted > 0) {
+                    const catAcc = Math.round((sessionData.correct / sessionData.attempted) * 100);
+                    const row = document.createElement('div');
+                    row.className = "flex items-center justify-between p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-sm";
+                    row.innerHTML = `
+                        <span class="font-semibold text-slate-700">${catName}</span>
+                        <span class="font-bold text-slate-900">${sessionData.correct} / ${sessionData.attempted} (<code>${catAcc}%</code>)</span>
+                    `;
+                    resultsContainer.appendChild(row);
+                }
+            }
+
+            navigateTo('results');
+        }
+
+        // ABORT MECHANISMS
+        function confirmAbortSession() {
+            document.getElementById('abort-modal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeAbortModal() {
+            document.getElementById('abort-modal').classList.add('hidden');
+        }
+
+        function abortSession() {
+            clearInterval(quizTimerInterval);
+            closeAbortModal();
+            stats.streak = 0;
+            savePersistentStats();
+            navigateTo('dashboard');
+            showNotification("The current practice run was aborted. Streak reset.", "info");
+        }
+
+        // Q-BANK ACCORDION SEARCH AND RENDER
+        function initializeQBank() {
+            filterQBank();
+        }
+
+        function filterQBank() {
+            const searchInput = document.getElementById('qbank-search-input').value.toLowerCase();
+            const categorySelect = document.getElementById('qbank-category-select').value;
+            const listContainer = document.getElementById('qbank-questions-list');
+            if (!listContainer) return;
+            listContainer.innerHTML = '';
+
+            const filtered = questionsDatabase.filter(q => {
+                const matchesCategory = categorySelect === 'all' || q.category === categorySelect;
+                const matchesSearch = q.title.toLowerCase().includes(searchInput) ||
+                                      q.vignette.toLowerCase().includes(searchInput) ||
+                                      q.explanation.toLowerCase().includes(searchInput);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="p-8 text-center bg-white rounded-2xl border border-slate-200">
+                        <p class="text-slate-500 text-sm">No catalog items found matching your filter criteria.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(q => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm";
+                
+                // Title display mapping helper
+                const categoryNames = {
+                    coagulation: 'Coagulation & Thrombosis',
+                    malignant: 'Malignant Haematology',
+                    redcell: 'General & Red Cell',
+                    transfusion: 'Transfusion Medicine'
+                };
+
+                card.innerHTML = `
+                    <div onclick="toggleQBankAccordion(${q.id})" class="p-5 flex items-center justify-between cursor-pointer hover:bg-slate-50 transition-colors">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-slate-100 text-slate-700 text-xs font-bold px-2.5 py-1 rounded-lg">${q.code}</span>
+                            <span class="font-bold text-slate-900 text-sm sm:text-base">${q.title}</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-[10px] sm:text-xs font-semibold text-slate-500 capitalize bg-slate-100 px-2 py-0.5 rounded-full">${categoryNames[q.category] || 'Malignant Haematology'}</span>
+                            <i data-lucide="chevron-down" id="qbank-arrow-${q.id}" class="w-5 h-5 text-slate-400 transition-transform duration-200"></i>
+                        </div>
+                    </div>
+                    <div id="qbank-body-${q.id}" class="hidden border-t border-slate-100 p-6 bg-slate-50 space-y-4">
+                        <div class="text-sm text-slate-800 leading-relaxed font-medium">
+                            <strong>Clinical Vignette:</strong>
+                            <p class="mt-1.5 whitespace-pre-line text-slate-700">${q.vignette}</p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                            ${q.options.map((opt, oIdx) => {
+                                const optLetter = String.fromCharCode(65 + oIdx);
+                                const isCorrect = q.correct_answer.startsWith(optLetter);
+                                return `
+                                    <div class="p-3 rounded-xl border ${isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-800 font-semibold' : 'bg-white border-slate-200'}">
+                                        <span class="font-bold text-slate-500">${optLetter}.</span> ${opt}
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                        <div class="p-4 bg-blue-50 border border-blue-100 rounded-xl text-xs space-y-2">
+                            <div class="text-blue-900 font-bold">Explanation & High-Yield Key Takeaway:</div>
+                            <p class="text-blue-800 leading-relaxed whitespace-pre-line">${q.explanation}</p>
+                            <p class="text-blue-900 font-semibold">Key Takeaway: <span class="italic font-normal">${q.takeaway}</span></p>
+                        </div>
+                    </div>
+                `;
+                listContainer.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function toggleQBankAccordion(id) {
+            const body = document.getElementById(`qbank-body-${id}`);
+            const arrow = document.getElementById(`qbank-arrow-${id}`);
+            if (body && arrow) {
+                if (body.classList.contains('hidden')) {
+                    body.classList.remove('hidden');
+                    arrow.classList.add('rotate-180');
+                } else {
+                    body.classList.add('hidden');
+                    arrow.classList.remove('rotate-180');
+                }
+            }
+        }
+
+
+
+        // Batch 5 AML026–AML030 questions embedded for offline use
+        const aml026030Questions = [
+            {
+                        "id": 26,
+                        "code": "AML026",
+                        "category": "malignant",
+                        "title": "AML with multilineage dysplasia but no AML-defining genetics",
+                        "vignette": "A 72-year-old man presents with progressive fatigue, recurrent chest infections and easy bruising. He has no prior chemotherapy or radiotherapy exposure and no known previous diagnosis of MDS. Examination shows pallor and scattered ecchymoses without splenomegaly.\n\nLaboratory data:\n• Hb: 76 g/L\n• WBC: 2.1 x 10^9/L\n• ANC: 0.6 x 10^9/L\n• platelets: 42 x 10^9/L\n• MCV: 106 fL\n• LDH: Mildly elevated\n• coagulation: PT and APTT normal\n\nMorphology:\n• peripheral blood: Macrocytosis, hypogranular neutrophils and occasional pseudo-Pelger-Huet neutrophils. Rare circulating blasts.\n• bone marrow: Hypercellular marrow with erythroid and megakaryocytic dysplasia. Myeloblasts comprise 24 percent of nucleated marrow cells.\n\nFlow cytometry:\nExpanded CD34-positive, CD117-positive, CD13-positive, CD33-positive myeloid blast population with aberrant CD7 expression. MPO is positive.\n\nCytogenetics:\n46,XY[20]. No recurrent AML-defining rearrangement detected by FISH panel.\n\nMolecular genetics:\nNGS shows SRSF2 p.P95H VAF 38 percent and ASXL1 frameshift VAF 35 percent. NPM1, FLT3-ITD, CEBPA bZIP and TP53 are negative.\n\nWhat is the most appropriate diagnostic classification?",
+                        "options": [
+                                    "A. Acute myeloid leukaemia, myelodysplasia-related",
+                                    "B. Myelodysplastic syndrome with increased blasts",
+                                    "C. Acute myeloid leukaemia, not otherwise specified because morphology alone defines AML-MR",
+                                    "D. Therapy-related myeloid neoplasm",
+                                    "E. Aplastic anaemia with clonal haematopoiesis"
+                        ],
+                        "correct_answer": "A. Acute myeloid leukaemia, myelodysplasia-related",
+                        "explanation": "This patient has AML because the marrow blast count is at least 20 percent. The diagnosis is best classified as acute myeloid leukaemia, myelodysplasia-related because there are qualifying myelodysplasia-related mutations, specifically ASXL1 and SRSF2, in a case with AML-level blasts. The important examiner point is that dysplastic morphology supports a history of disordered myelopoiesis but, in WHO 5th edition, morphology alone is not the defining criterion for AML-MR. The diagnosis requires either defined myelodysplasia-related cytogenetic abnormalities or defined myelodysplasia-related gene mutations, or a documented antecedent MDS or MDS/MPN depending on the classification framework used. Here, the ASXL1 and SRSF2 mutations make the case AML-MR even though the karyotype is normal.\n\nWhy other options are wrong:\n• A: Correct. AML-level blasts plus ASXL1 and SRSF2 mutations support AML myelodysplasia-related.\n• B: Incorrect. The marrow blast count is 24 percent, exceeding the usual AML threshold when no special borderline category is being applied.\n• C: Incorrect. AML-NOS would be considered only when defining genetic and myelodysplasia-related criteria are absent. Also, morphology alone is not the modern WHO5 basis for AML-MR.\n• D: Incorrect. There is no previous cytotoxic therapy or radiotherapy exposure. Therapy-related is a clinical qualifier rather than the best primary diagnosis here.\n• E: Incorrect. The marrow is hypercellular with 24 percent blasts, not hypocellular without increased blasts.",
+                        "takeaway": "In modern AML classification, multilineage dysplasia is descriptive; defined genetics and clinical history drive the AML-MR category."
+            },
+            {
+                        "id": 27,
+                        "code": "AML027",
+                        "category": "malignant",
+                        "title": "Pseudo-Pelger-Huet change in myeloid neoplasia",
+                        "vignette": "A 68-year-old woman is investigated for pancytopenia. She has no fever and no recent exposure to mycophenolate, ganciclovir or other drugs known to cause Pelgeroid changes. A previous blood count 3 years ago was normal.\n\nLaboratory data:\n• Hb: 88 g/L\n• WBC: 1.9 x 10^9/L\n• ANC: 0.7 x 10^9/L\n• platelets: 64 x 10^9/L\n• MCV: 101 fL\n• LDH: Normal\n\nMorphology:\n• peripheral blood: Many neutrophils are bilobed or unilobed with coarse clumped chromatin. Granulation is reduced. No Auer rods are seen.\n• bone marrow: Hypercellular marrow with trilineage dysplasia and 12 percent myeloblasts.\n\nFlow cytometry:\nCD34-positive blasts comprise 11 to 13 percent of marrow events. Granulocytic maturation shows reduced side scatter and asynchronous CD13/CD16 expression.\n\nCytogenetics:\nNo AML-defining recurrent abnormality detected. Karyotype shows del(7q).\n\nMolecular genetics:\nNGS shows U2AF1 mutation. NPM1 and FLT3 are negative.\n\nWhich interpretation of the blood film finding is most appropriate?",
+                        "options": [
+                                    "A. Inherited Pelger-Huet anomaly, requiring no further marrow assessment",
+                                    "B. Acquired pseudo-Pelger-Huet change supporting dysgranulopoiesis in a myeloid neoplasm",
+                                    "C. Pathognomonic evidence of acute promyelocytic leukaemia",
+                                    "D. Reactive toxic change due to bacterial sepsis",
+                                    "E. Diagnostic of chronic myeloid leukaemia blast phase"
+                        ],
+                        "correct_answer": "B. Acquired pseudo-Pelger-Huet change supporting dysgranulopoiesis in a myeloid neoplasm",
+                        "explanation": "The bilobed or unilobed neutrophils with coarse chromatin and hypogranularity represent acquired pseudo-Pelger-Huet change, a classic morphological feature of dysgranulopoiesis. In this clinical setting of new cytopenias, marrow dysplasia, increased blasts and clonal abnormalities, it supports an underlying myeloid neoplasm. It does not by itself diagnose AML. With 12 percent marrow blasts and no AML-defining genetic abnormality, this would fit an MDS with increased blasts category under WHO-style terminology, while ICC may use MDS/AML for 10 to 19 percent blasts. The key lesson is that morphology must be integrated with blast count, cytogenetics and molecular data.\n\nWhy other options are wrong:\n• A: Incorrect. Inherited Pelger-Huet anomaly is lifelong, usually benign and typically affects neutrophil nuclear segmentation without the broader cytopenic and dysplastic context seen here.\n• B: Correct. This is acquired Pelgeroid dysgranulopoiesis in a clonal myeloid disorder.\n• C: Incorrect. APL is suggested by abnormal promyelocytes, faggot cells, DIC and PML::RARA, not pseudo-Pelger-Huet neutrophils alone.\n• D: Incorrect. Toxic change usually shows toxic granulation, vacuolation and Dohle bodies rather than hypogranular Pelgeroid dysplasia.\n• E: Incorrect. CML blast phase requires BCR::ABL1-positive CML with blast-phase criteria.",
+                        "takeaway": "Pseudo-Pelger-Huet cells are a clue to dysgranulopoiesis, not an AML-defining feature."
+            },
+            {
+                        "id": 28,
+                        "code": "AML028",
+                        "category": "malignant",
+                        "title": "Dry tap in suspected AML",
+                        "vignette": "A 19-month-old child presents with pallor, petechiae and hepatosplenomegaly. Two attempts at bone marrow aspiration yield a dry tap. A trephine biopsy is performed.\n\nLaboratory data:\n• Hb: 69 g/L\n• WBC: 5.8 x 10^9/L\n• platelets: 18 x 10^9/L\n• LDH: Elevated\n• coagulation: Normal PT and APTT\n\nMorphology:\n• peripheral blood: Leukoerythroblastic features with occasional blasts showing cytoplasmic blebs.\n• bone marrow: Trephine biopsy shows diffuse infiltration by blasts and marked reticulin fibrosis.\n\nFlow cytometry:\nLimited material from trephine suspension shows blasts expressing CD34, CD117, CD41 and CD61. MPO, CD3 and CD19 are negative.\n\nCytogenetics:\nKaryotype pending. FISH for KMT2A is negative.\n\nMolecular genetics:\nNo result available at the time of diagnosis.\n\nWhat is the most likely diagnosis explaining the dry tap?",
+                        "options": [
+                                    "A. Acute megakaryoblastic leukaemia",
+                                    "B. Acute promyelocytic leukaemia",
+                                    "C. B-lymphoblastic leukaemia",
+                                    "D. Severe aplastic anaemia",
+                                    "E. Reactive marrow fibrosis secondary to iron deficiency"
+                        ],
+                        "correct_answer": "A. Acute megakaryoblastic leukaemia",
+                        "explanation": "The combination of dry tap, trephine fibrosis, blasts with cytoplasmic blebbing and expression of megakaryocytic markers CD41 and CD61 is highly suggestive of acute megakaryoblastic leukaemia. Megakaryoblastic leukaemia often causes significant marrow fibrosis, which makes aspirates difficult or impossible. In a child, this diagnosis should also prompt assessment for Down syndrome-associated myeloid leukaemia if clinically relevant, and for appropriate cytogenetic and molecular studies. The diagnostic principle is that a dry tap is not a failed diagnosis; it is a diagnostic clue. Trephine biopsy, immunohistochemistry and flow cytometry from trephine or peripheral blood become crucial.\n\nWhy other options are wrong:\n• A: Correct. Fibrosis plus CD41/CD61-positive blasts is the classic integrated pattern.\n• B: Incorrect. APL usually presents with abnormal promyelocytes, coagulopathy and PML::RARA; CD41/CD61 positivity is not the defining phenotype.\n• C: Incorrect. B-ALL would express B-lineage markers such as CD19, CD10, TdT and cytoplasmic CD79a rather than megakaryocytic markers.\n• D: Incorrect. Aplastic anaemia is hypocellular without sheets of blasts and does not explain CD41/CD61-positive blast infiltration.\n• E: Incorrect. Iron deficiency does not cause diffuse blast infiltration with megakaryoblast phenotype.",
+                        "takeaway": "Dry tap plus blasts with cytoplasmic blebs should trigger CD41, CD61 and CD42b assessment."
+            },
+            {
+                        "id": 29,
+                        "code": "AML029",
+                        "category": "malignant",
+                        "title": "Hypocellular AML versus aplastic anaemia and hypocellular MDS",
+                        "vignette": "A 79-year-old man presents with severe pancytopenia and recurrent infections. There is no splenomegaly. The aspirate is aparticulate and haemodilute. The trephine biopsy is markedly hypocellular for age.\n\nLaboratory data:\n• Hb: 71 g/L\n• WBC: 0.9 x 10^9/L\n• ANC: 0.2 x 10^9/L\n• platelets: 14 x 10^9/L\n• reticulocytes: Low\n• LDH: Mildly elevated\n\nMorphology:\n• peripheral blood: Pancytopenia with rare circulating blasts. No significant monocytosis.\n• bone marrow: Trephine cellularity is approximately 15 percent. Within cellular foci, CD34-positive blasts form clusters and account for 28 percent of nucleated marrow cells. Reticulin fibrosis is not increased.\n\nFlow cytometry:\nLow cellularity specimen shows abnormal CD34-positive, CD117-positive, HLA-DR-positive, CD13-positive, CD33-positive blasts with aberrant CD7. MPO is positive.\n\nCytogenetics:\nNo metaphases obtained. FISH negative for PML::RARA, RUNX1::RUNX1T1 and CBFB::MYH11.\n\nMolecular genetics:\nNGS shows RUNX1 and ASXL1 mutations. NPM1 and CEBPA bZIP mutations are not detected.\n\nWhich diagnosis is most appropriate?",
+                        "options": [
+                                    "A. Severe aplastic anaemia",
+                                    "B. Hypocellular myelodysplastic syndrome",
+                                    "C. Hypocellular acute myeloid leukaemia",
+                                    "D. Pure red cell aplasia",
+                                    "E. Paroxysmal nocturnal haemoglobinuria without marrow neoplasia"
+                        ],
+                        "correct_answer": "C. Hypocellular acute myeloid leukaemia",
+                        "explanation": "This is hypocellular AML. The marrow is hypocellular, but the blast percentage within the nucleated marrow cell population is at AML level. CD34 immunohistochemistry demonstrates abnormal blast clusters, and flow cytometry confirms an aberrant myeloid blast population. Hypocellular AML is a classic diagnostic pitfall because the low cellularity can mimic aplastic anaemia or hypocellular MDS. The distinction depends on careful trephine assessment, blast quantification, immunohistochemistry and integrated flow and molecular findings. The presence of RUNX1 and ASXL1 mutations also supports a clonal myeloid neoplasm, although the decisive point for AML is the increased myeloid blasts.\n\nWhy other options are wrong:\n• A: Incorrect. Aplastic anaemia is hypocellular but lacks increased blasts and abnormal CD34-positive blast clusters.\n• B: Incorrect. Hypocellular MDS may show dysplasia and increased blasts below AML threshold, but here blasts are 28 percent.\n• C: Correct. Hypocellularity does not prevent AML diagnosis when blasts are at AML level.\n• D: Incorrect. Pure red cell aplasia causes isolated red cell aplasia, not pancytopenia with myeloid blasts.\n• E: Incorrect. PNH may coexist with marrow failure but does not explain 28 percent abnormal myeloid blasts.",
+                        "takeaway": "In a hypocellular marrow, CD34 immunostaining is often decisive for detecting abnormal blast clusters."
+            },
+            {
+                        "id": 30,
+                        "code": "AML030",
+                        "category": "malignant",
+                        "title": "Trephine biopsy in suspected AML with inadequate aspirate",
+                        "vignette": "A 61-year-old woman is referred with pancytopenia and 6 percent circulating blasts. Bone marrow aspiration is haemodilute and non-diagnostic. A trephine biopsy is obtained.\n\nLaboratory data:\n• Hb: 82 g/L\n• WBC: 1.6 x 10^9/L\n• ANC: 0.4 x 10^9/L\n• platelets: 31 x 10^9/L\n• LDH: Moderately elevated\n• coagulation: Normal\n\nMorphology:\n• peripheral blood: Circulating blasts are medium-sized with fine chromatin and occasional azurophilic granules. No Auer rods seen.\n• bone marrow: Trephine shows a hypercellular marrow replaced by sheets and clusters of immature cells. Residual trilineage haematopoiesis is markedly reduced.\n\nFlow cytometry:\nPeripheral blood flow shows a small abnormal myeloid blast population expressing CD34, CD117, CD13, CD33 and MPO.\n\nCytogenetics:\nFISH and karyotype pending.\n\nMolecular genetics:\nRapid PCR for PML::RARA is negative.\n\nWhich trephine immunohistochemistry panel is most appropriate to confirm and characterise the suspected AML?",
+                        "options": [
+                                    "A. CD34, CD117, MPO, CD61, glycophorin A and reticulin stain",
+                                    "B. CD20, CD3, cyclin D1 and EBV-encoded RNA only",
+                                    "C. Cytokeratin, S100 and desmin only",
+                                    "D. Iron stain only, because flow cytometry is already diagnostic",
+                                    "E. No further stains; trephine morphology alone is sufficient for complete AML classification"
+                        ],
+                        "correct_answer": "A. CD34, CD117, MPO, CD61, glycophorin A and reticulin stain",
+                        "explanation": "The appropriate approach is an immunohistochemical panel that confirms immaturity, myeloid lineage and key alternative lineages, while assessing fibrosis and marrow architecture. CD34 and CD117 help highlight blasts and their distribution. MPO supports myeloid differentiation. CD61 is useful if megakaryoblastic differentiation is a possibility, and glycophorin A helps assess erythroid differentiation or exclude erythroid-predominant processes. Reticulin staining assesses fibrosis, which can explain poor aspirate quality and has diagnostic relevance. Trephine morphology is powerful, but AML diagnosis and classification require integration with flow cytometry, cytogenetics and molecular findings.\n\nWhy other options are wrong:\n• A: Correct. This panel addresses blast burden, lineage, alternative differentiation and fibrosis.\n• B: Incorrect. This is mainly a lymphoid lymphoma panel and does not adequately assess suspected AML.\n• C: Incorrect. This panel would be used to investigate metastatic carcinoma, melanoma or sarcoma, not first-line suspected AML.\n• D: Incorrect. Iron stain is useful in MDS work-up but cannot confirm AML lineage or blast distribution by itself.\n• E: Incorrect. Trephine morphology alone is insufficient for modern AML classification.",
+                        "takeaway": "In AML, the trephine is not a backup specimen; it provides architecture, cellularity, fibrosis and immunophenotypic localisation."
+            }
+];
+        // Load the full question database dynamically and inject the 25 validated questions
+        function loadQuestions() {
+            // Standalone offline mode: no external JSON fetch required.
+            // Current embedded database = 5 original fallback questions + 25 validated questions + AML026–AML030.
+            questionsDatabase = fallbackDatabase.concat(validatedQuestionsList, aml026030Questions);
+            assignProgrammaticCategories();
+            renderDashboardStats();
+            initializeQBank();
+            console.log(`Standalone FRCPath app loaded ${questionsDatabase.length} embedded questions.`);
+        }
+
+        // On Document Load Event
+        window.addEventListener('DOMContentLoaded', () => {
+            loadQuestions();
+            loadPersistentStats();
+            lucide.createIcons();
+        });
+
+        // Expose functions to global window context to ensure inline HTML onclick handlers run correctly
+        window.navigateTo = navigateTo;
+        window.startQuickQuiz = startQuickQuiz;
+        window.openConfigModal = openConfigModal;
+        window.closeConfigModal = closeConfigModal;
+        window.resetStats = resetStats;
+        window.startStandardQuiz = startStandardQuiz;
+        window.launchCustomQuiz = launchCustomQuiz;
+        window.toggleModeLabelStyle = toggleModeLabelStyle;
+        window.dismissNotification = dismissNotification;
+        window.confirmAbortSession = confirmAbortSession;
+        window.closeAbortModal = closeAbortModal;
+        window.abortSession = abortSession;
+        window.toggleQBankAccordion = toggleQBankAccordion;
+        window.filterQBank = filterQBank;
+        window.selectOption = selectOption;
+        window.submitAnswer = submitAnswer;
+        window.nextQuestion = nextQuestion;
+    </script>
+</body>
+</html>

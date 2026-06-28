@@ -1,0 +1,1010 @@
+[
+  {
+    "id": 1,
+    "code": "Q1",
+    "title": "Giant Platelet Disorders",
+    "vignette": "A 28-year-old female presents with recurrent, severe epistaxis and heavy menstrual bleeding. Investigative profile: Hb 112 g/L, MCV 84 fL, Platelets 45 x 109/L (consistently normal previously). PT 12.0s, APTT 32s. Blood film shows occasional giant platelets but is otherwise unremarkable. Platelet aggregometry demonstrates completely absent aggregation to Ristocetin, which is not corrected by the addition of normal control plasma. Aggregation responses to ADP, Collagen, and Epinephrine are entirely normal.",
+    "options": [
+      "von Willebrand Disease Type 2B",
+      "Bernard-Soulier Syndrome",
+      "Glanzmann's Thrombasthenia",
+      "Immune Thrombocytopenia (ITP)",
+      "Pseudo-von Willebrand Disease (Platelet-type)"
+    ],
+    "correct_answer": "B. Bernard-Soulier Syndrome",
+    "explanation": "The clinical and laboratory profile is characteristic of Bernard-Soulier Syndrome (BSS), which is caused by a congenital defect or deficiency of the Glycoprotein Ib/IX/V (GPIb/IX/V) receptor complex.\n\n• Key diagnostic indicators: Giant platelets, thrombocytopenia, and absent platelet aggregation specifically in response to Ristocetin.\n• Why other answers are incorrect:\n  • In von Willebrand Disease (vWD), the defect lies in plasma von Willebrand factor, meaning aggregation in response to ristocetin is corrected by the addition of normal control plasma. Bernard-Soulier does not correct because the defect is structural on the platelet surface itself.\n  • Glanzmann's Thrombasthenia exhibits the opposite aggregometry profile: normal aggregation to Ristocetin, but absent/defective responses to ADP, epinephrine, and collagen due to GPIIb/IIIa deficiency.\n  • vWD Type 2B shows hyper-responsiveness to low concentrations of ristocetin, rather than absent aggregation.",
+    "takeaway": "Bernard-Soulier Syndrome is characterized by thrombocytopenia, giant platelets, and failure of ristocetin aggregation that is NOT corrected by normal plasma due to deficient GPIb/IX/V."
+  },
+  {
+    "id": 2,
+    "code": "Q2",
+    "title": "CML Molecular Milestones",
+    "vignette": "A 64-year-old male presents with severe fatigue, drenching night sweats, and massive splenomegaly extending 10 cm below the left costal margin. Laboratory profile reveals: Hb 105 g/L, WBC 185 x 109/L, Platelets 620 x 109/L. Neutrophil Alkaline Phosphatase (NAP/LAP) score is extremely low. Cytogenetic screening demonstrates the classical t(9;22)(q34.1;q11.2) translocation. The patient is commenced on first-line Imatinib. Six months post-initiation, quantitative PCR shows a BCR::ABL1 transcript level of <code>12%</code> on the International Scale (IS).",
+    "options": [
+      "Optimal response; continue Imatinib at the current dose.",
+      "Warning response; schedule a repeat PCR test in 3 months.",
+      "Failure of therapy; perform kinase domain mutational analysis and consider second-generation TKI.",
+      "Complete molecular response; evaluate patient for treatment discontinuation protocols.",
+      "Suboptimal response; elevate Imatinib dose to 800 mg daily immediately."
+    ],
+    "correct_answer": "C. Failure of therapy; perform kinase domain mutational analysis and consider second-generation TKI.",
+    "explanation": "According to the ELN (European LeukemiaNet) guidelines, at 6 months of first-line Tyrosine Kinase Inhibitor (TKI) therapy for CML, a BCR::ABL1 transcript level of ><code>10%</code> IS denotes treatment failure.\n\n• Key milestones: Optimal response at 3 months is BCR::ABL1 <= <code>10%</code>; at 6 months is < <code>1%</code>; and at 12 months is <= <code>0.1%</code> (MMR).\n• Treatment failure requires immediate therapeutic adjustment, including a compliance check, drug interaction review, BCR::ABL1 kinase domain mutational assessment, and a shift to a second-generation TKI (such as Dasatinib, Nilotinib, or Bosutinib). Simply increasing the dose of Imatinib is typically insufficient to overcome resistance.",
+    "takeaway": "Under ELN Guidelines, BCR::ABL1 transcript levels >10% (specifically <code>10%</code>) at 6 months indicates treatment failure, prompting mutational testing and a change in TKI."
+  },
+  {
+    "id": 3,
+    "code": "Q3",
+    "title": "Transfusion Reaction Differentiation",
+    "vignette": "A 72-year-old female with a background of severe ischemic heart disease and congestive cardiac failure is transfused 2 units of packed red blood cells for symptomatic anemia (Hb 68 g/L). Near the end of the second transfusion, she suddenly develops acute-onset dyspnea, orthopnea, and a dry cough. Her clinical signs show: Temp 37.2 degrees C, BP 168/98 mmHg, HR 115 bpm, and oxygen saturation <code>88%</code> on room air. Chest examination reveals bilateral basal crepitations, an elevated jugular venous pressure, and clinical S3 gallop.",
+    "options": [
+      "Transfusion-Related Acute Lung Injury (TRALI)",
+      "Transfusion-Associated Circulatory Overload (TACO)",
+      "Acute Hemolytic Transfusion Reaction (AHTR)",
+      "Febrile Non-Hemolytic Transfusion Reaction (FNHTR)",
+      "Anaphylactic Transfusion Reaction"
+    ],
+    "correct_answer": "B. Transfusion-Associated Circulatory Overload (TACO)",
+    "explanation": "The clinical presentation is a classic example of Transfusion-Associated Circulatory Overload (TACO).\n\n• Differentiating TACO from TRALI:\n  • TACO presents with hypertensive urgency (BP 168/98 mmHg), elevated JVP, basal crepitations, cardiomegaly, and occurs in pre-disposed individuals (elderly, heart failure). It is responsive to diuretic therapy (Furosemide).\n  • TRALI presents with non-cardiogenic pulmonary edema, typically accompanied by acute hypotension, fever, and lacks signs of circulatory overload/fluid retention (normal JVP, normal BNP, unresponsive to diuretics).",
+    "takeaway": "Elevated BP, jugular venous distension, and basal crackles post-transfusion in an elderly patient point directly to TACO rather than TRALI."
+  },
+  {
+    "id": 4,
+    "code": "Q4",
+    "title": "Red Cell Disorders & Thalassemia HPLC",
+    "vignette": "A 34-year-old Greek male is investigated for mild, lifelong microcytic anemia. Laboratory assessment reveals: Hb 115 g/L, MCV 62 fL, MCH 20 pg, RBC count 5.8 x 1012/L (elevated relative to Hb), RDW <code>12.8%</code> (normal). High-Performance Liquid Chromatography (HPLC) reveals: HbA <code>94.2%</code>, HbA2 <code>4.8%</code>, HbF <code>1.0%</code>. Ferritin level is normal.",
+    "options": [
+      "Iron Deficiency Anemia",
+      "Alpha-Thalassaemia Trait",
+      "Beta-Thalassaemia Minor (Trait)",
+      "Anemia of Chronic Disease",
+      "Sideroblastic Anemia"
+    ],
+    "correct_answer": "C. Beta-Thalassaemia Minor (Trait)",
+    "explanation": "This patient exhibits classic Beta-Thalassaemia Minor (Trait).\n\n• Key features: Lifelong microcytic anemia, highly elevated red cell count (Mentzer Index: MCV/RBC < 13 is highly suggestive of thalassaemia), normal RDW (iron deficiency typically displays an elevated RDW), and most diagnostic, an elevated HbA2 level (>3.5% (specifically <code>3.5%</code>), here <code>4.8%</code>) on HPLC.\n• Why other answers are incorrect:\n  • Iron Deficiency presents with low Ferritin, elevated RDW, and normal or decreased HbA2 levels.\n  • Alpha-Thalassaemia Trait generally has a completely normal HbA2 level on HPLC because both alpha chains are affected, not beta.",
+    "takeaway": "Beta-thalassaemia trait is characterized by disproportionate microcytosis with high RBC, normal RDW, and diagnostic HbA2 >3.5% (specifically <code>3.5%</code>)."
+  },
+  {
+    "id": 5,
+    "code": "Q5",
+    "title": "Coagulation Screening Interferences",
+    "vignette": "A 42-year-old male is admitted with an unprovoked extensive deep vein thrombosis (DVT). He is immediately started on therapeutic LMWH with a plan for a Warfarin bridge. On day 3 of active combined therapy, the laboratory thrombophilia panel reports: Functional Protein C Activity of <code>32%</code> (Reference range: <code>70-130%</code>). How should this thrombophilia screen result be interpreted?",
+    "options": [
+      "Confirms congenital Protein C deficiency; lifelong anticoagulation is mandated.",
+      "The low result is an artifact of LMWH; the test must be repeated once heparin is fully cleared.",
+      "The result is transiently depressed due to acute consumption and initiation of Warfarin; repeat testing when stable and off Warfarin.",
+      "Indicates a transient heterozygous deficiency; the patient must be switched to DOACs immediately.",
+      "The functional assay is inaccurate in acute DVT; re-evaluate using Protein C antigenic assays."
+    ],
+    "correct_answer": "C. The result is transiently depressed due to acute consumption and initiation of Warfarin; repeat testing when stable and off Warfarin.",
+    "explanation": "The low Protein C activity is secondary to both acute consumption during a fresh thrombosis and initiation of Warfarin therapy.\n\n• Protein C is a vitamin K-dependent physiological anticoagulant. Since it has a very short half-life (about 6 hours), it is the first factor to drop rapidly upon starting Warfarin.\n• Performing thrombophilia screening in the acute phase of a thrombotic event or while the patient is on active anticoagulants (particularly Warfarin or DOACs) yields false positives and is highly discouraged. Testing should be repeated at least 2 to 4 weeks after the cessation of therapeutic anticoagulation.",
+    "takeaway": "Thrombophilia tests for Protein C/S or Antithrombin are unreliable during acute thrombosis or active anticoagulation, especially Warfarin bridge."
+  },
+  {
+    "id": 6,
+    "code": "Q6",
+    "title": "Acute Promyelocytic Leukaemia Emergency",
+    "vignette": "A 45-year-old female presents with gum bleeding, spontaneous ecchymoses, and severe fatigue. Diagnostic lab results show: Hb 82 g/L, Platelets 18 x 10<sup>9</sup>/L, WBC 3.2 x 10<sup>9</sup>/L. Coagulation screen: PT 24s (prolonged), APTT 52s (prolonged), Fibrinogen 0.8 g/L (depleted), D-Dimer >20,000 ng/mL. A bone marrow aspirate film shows numerous atypical promyelocytes containing dense bundles of Auer rods (faggot cells). What is the single most critical, life-saving immediate action?",
+    "options": [
+      "Await cytogenetic/FISH confirmation of t(15;17) before initiating targeted therapies.",
+      "Initiate immediate therapy with All-Trans Retinoic Acid (ATRA) and aggressive blood product transfusion.",
+      "Commence standard 7+3 daunorubicin and cytarabine induction chemotherapy.",
+      "Perform urgent leukapheresis to prevent leukostasis and coagulopathy progression.",
+      "Administer high-dose intravenous methylprednisolone and schedule a repeat marrow biopsy."
+    ],
+    "correct_answer": "B. Initiate immediate therapy with All-Trans Retinoic Acid (ATRA) and aggressive blood product transfusion.",
+    "explanation": "This scenario is diagnostic of Acute Promyelocytic Leukemia (APL / AML M3), presenting with severe, life-threatening disseminated intravascular coagulation (DIC).\n\n• APL is a clinical and hematological emergency. The principal cause of early mortality is catastrophic hemorrhagic death (e.g., intracranial hemorrhage).\n• Standard of care demands the immediate administration of ATRA upon clinical or morphological suspicion—before waiting for cytogenetic or FISH confirmation of t(15;17). Aggressive support with Platelets and Cryoprecipitate (targeting fibrinogen >1.5 g/L) must be maintained.\n• Leukapheresis is strictly contraindicated in APL because it triggers tumor lysis, exacerbates coagulopathy, and increases the risk of fatal bleeding.",
+    "takeaway": "In suspected Acute Promyelocytic Leukemia (APL), start ATRA immediately without waiting for cytogenetic confirmation to avoid fatal coagulopathic bleeding."
+  },
+  {
+    "id": 7,
+    "code": "Q7",
+    "title": "Myelodysplastic Syndrome with del(5q)",
+    "vignette": "A 58-year-old female presents with fatigue and progressive macrocytic anemia. Full blood count: Hb 74 g/L, MCV 108 fL, WBC 2.4 x 10<sup>9</sup>/L, Absolute Neutrophil Count 0.8 x 10<sup>9</sup>/L, Platelets 85 x 10<sup>9</sup>/L. Bone marrow aspirate reveals hypercellularity, dysplastic changes in erythroid and myeloid series, and <code>4%</code> myeloblasts. Cytogenetic screening demonstrates an isolated deletion of the long arm of chromosome 5 [del(5q)]. What is the first-line targeted pharmacotherapy of choice?",
+    "options": [
+      "Azacitidine",
+      "Lenalidomide",
+      "Erythropoietin-stimulating agents (ESAs) combined with G-CSF",
+      "Allogeneic stem cell transplantation",
+      "Cyclosporine and Antithymocyte Globulin (ATG)"
+    ],
+    "correct_answer": "B. Lenalidomide",
+    "explanation": "For patients with low-to-intermediate-1 risk Myelodysplastic Syndrome (MDS) associated with an isolated del(5q) cytogenetic abnormality, Lenalidomide is the first-line targeted therapy of choice.\n\n• Lenalidomide targets the clone containing the del(5q) abnormality, resulting in transfusion independence in over <code>60%</code> of patients and frequently inducing complete cytogenetic remission.\n• Azacitidine is reserved for high-risk MDS. ESAs are less effective when del(5q) is present. Immunosuppressive therapy with ATG is indicated for hypocellular MDS in younger patients without high-risk cytogenetics.",
+    "takeaway": "Lenalidomide is highly effective and considered first-line for low-risk Myelodysplastic Syndrome presenting with an isolated del(5q) deletion."
+  },
+  {
+    "id": 8,
+    "code": "Q8",
+    "title": "Red Cell G6PD Deficiency Testing",
+    "vignette": "A 24-year-old female presents to the emergency department with dark urine, scleral icterus, and profound fatigue three days after commencing Nitrofurantoin for a urinary tract infection. Her blood tests demonstrate: Hb 68 g/L (baseline 125 g/L), Reticulocyte count <code>12%</code> (elevated), LDH 1200 U/L, Bilirubin 68 micromol/L (predominantly unconjugated), Haptoglobin <0.1 g/L. A peripheral blood film demonstrates numerous 'bite' cells, 'blister' cells, and marked polychromasia. What is the most definitive test to confirm the diagnosis once the acute episode has fully resolved?",
+    "options": [
+      "Direct Antiglobulin Test (DAT)",
+      "Ham's acidified serum test",
+      "Quantitative G6PD enzyme assay (spectrophotometric)",
+      "Flow cytometry for CD55 and CD59 expression",
+      "Hemoglobin electrophoresis"
+    ],
+    "correct_answer": "C. Quantitative G6PD enzyme assay (spectrophotometric)",
+    "explanation": "The clinical presentation (abrupt intravascular hemolysis, oxidative stress trigger, and 'bite' and 'blister' cells on blood film) points directly to Glucose-6-Phosphate Dehydrogenase (G6PD) deficiency.\n\n• The gold standard for confirmation is a quantitative G6PD enzyme assay (spectrophotometric).\n• Crucial timing rule: Testing must be performed *only* after the acute hemolytic event has completely resolved (usually 8 to 12 weeks). During an acute crisis, the most severely G6PD-deficient red cells are destroyed first, leaving behind a younger, reticulocyte-rich population with relatively higher enzyme activity, which can yield a false-normal result.",
+    "takeaway": "Definitive quantitative G6PD assay must be delayed for 2 to 3 months after an acute hemolytic crisis to avoid false-normal results from reticulocytosis."
+  },
+  {
+    "id": 9,
+    "code": "Q9",
+    "title": "RUNX1::RUNX1T1 / t(8;21) AML",
+    "vignette": "A 24-year-old male presents with fatigue and bone pain. Complete blood count shows: Hb 92 g/L, WBC 15 x 10<sup>9</sup>/L, Platelets 48 x 10<sup>9</sup>/L. Bone marrow aspirate reveals <code>12%</code> myeloblasts. Flow cytometry of the blasts shows positive expression of CD34, HLA-DR, CD13, CD33, along with aberrant lineage co-expression of CD19 and CD56. Cytogenetic analysis reveals t(8;21)(q22;q22.1). What is the most appropriate diagnosis according to the 2022 WHO classification?",
+    "options": [
+      "Acute Myeloid Leukaemia with t(8;21)(q22;q22.1); RUNX1::RUNX1T1",
+      "Mixed Phenotype Acute Leukemia (MPAL), B/Myeloid",
+      "Myelodysplastic Syndrome with Excess Blasts-1 (MDS-EB-1)",
+      "Acute Myeloid Leukemia, Not Otherwise Specified (NOS)",
+      "B-Lymphoblastic Leukemia with aberrant myeloid markers"
+    ],
+    "correct_answer": "A. Acute Myeloid Leukaemia with t(8;21)(q22;q22.1); RUNX1::RUNX1T1",
+    "explanation": "This case represents Acute Myeloid Leukaemia with t(8;21)(q22;q22.1); RUNX1::RUNX1T1. Under both the WHO 5th Edition and ICC classifications, the diagnosis of AML with t(8;21), inv(16), or t(15;17) is established **regardless of the blast percentage** (eliminating the traditional 20 percent blast threshold requirement).\n\n• **Flow Cytometry Signature**: Blasts in t(8;21) AML characteristically show aberrant expression of B-lymphoid markers (especially CD19, and occasionally cytoplasmic CD79a) and neural cell adhesion molecule (CD56).\n• **Why other options are incorrect**:\n  • *Mixed Phenotype Acute Leukemia (MPAL)* is incorrect because the presence of t(8;21) defines this primarily as AML with recurrent genetic abnormalities, overriding the lineage assignment of MPAL.\n  • *MDS-EB-1* is incorrect because recurrent cytogenetic drivers supersede simple blast percentages to confirm AML.\n  • *AML NOS* is only used when no defining genetic driver translocations or mutations are detected.\n  • *B-ALL* is incorrect because myeloperoxidase (MPO) and myeloid markers (CD13, CD33) with t(8;21) confirm myeloid lineage.",
+    "takeaway": "AML with t(8;21)(q22;q22.1) is diagnosed regardless of blast percentage and characteristically co-expresses CD19 and CD56 on flow cytometry."
+  },
+  {
+    "id": 10,
+    "code": "Q10",
+    "title": "NPM1 Mutated AML Diagnosis",
+    "vignette": "A 52-year-old female presents with bruising. Bone marrow biopsy reveals <code>14%</code> blasts. Morphology shows blasts with characteristic 'cup-like' nuclear invaginations. Immunophenotyping shows CD34-negative, HLA-DR-negative, CD33-positive, CD13-positive, and MPO-positive. Molecular testing detects a frameshift mutation in NPM1 (exon 12 insertion). What is the correct classification of this disease under the WHO 5th Edition?",
+    "options": [
+      "Myelodysplastic Syndrome with Excess Blasts-1 (MDS-EB-1)",
+      "Acute Myeloid Leukaemia with mutated NPM1",
+      "Myelodysplastic/Myeloproliferative Neoplasm, Unclassifiable",
+      "Acute Myeloid Leukemia, Minimally Differentiated",
+      "Clonal Cytopenia of Undetermined Significance (CCUS)"
+    ],
+    "correct_answer": "B. Acute Myeloid Leukaemia with mutated NPM1",
+    "explanation": "Under the WHO 5th Edition (2022) classification, Acute Myeloid Leukaemia with mutated NPM1 is defined as AML **regardless of the bone marrow blast percentage** (note: the ICC retains a <code>10%</code> blast threshold for this diagnosis). This represents a major shift from previous classifications where a strict 20 percent blast threshold was required.\n\n• **Phenotypic profile**: *NPM1*-mutated AML typically exhibits a CD34-negative and HLA-DR-negative immunophenotype on flow cytometry and classically shows 'cup-like' nuclear invaginations on the blood film.\n• **Why other options are incorrect**:\n  • *MDS-EB-1* is incorrect because the presence of the *NPM1* mutation in a myeloid neoplasm automatically upgrades the diagnosis to AML under current WHO guidelines.\n  • *AML, Minimally Differentiated* is incorrect as those blasts are typically CD34-positive and CD117-positive, and lack MPO expression or NPM1 mutations.\n  • *CCUS* is a diagnostic label for cytopenias with somatic mutations but without excess blasts or AML-defining genetic drivers.",
+    "takeaway": "WHO 5th Edition classifies NPM1-mutated myeloid neoplasms as AML regardless of the blast percentage, often presenting with CD34-negative/HLA-DR-negative blasts."
+  },
+  {
+    "id": 11,
+    "code": "Q11",
+    "title": "Pure Erythroid Leukemia (PEL)",
+    "vignette": "A 71-year-old male with severe pancytopenia is investigated. His bone marrow is hypercellular, containing <code>85%</code> erythroid precursors, of which <code>40%</code> are giant, bizarre, multinucleated proerythroblasts with vacuoles. Remaining cells show minimal myeloid or megakaryocytic differentiation. Immunophenotyping of these primitive cells shows: CD71-positive, Glycophorin A-positive, E-cadherin-positive, CD34-negative, MPO-negative, CD13-negative. What is the correct diagnosis?",
+    "options": [
+      "AML with myelodysplasia-related changes",
+      "Acute Megakaryoblastic Leukemia",
+      "Pure Erythroid Leukemia (PEL)",
+      "Myelodysplastic Syndrome with Excess Blasts-2",
+      "Erythroid/Myeloid Leukemia"
+    ],
+    "correct_answer": "C. Pure Erythroid Leukemia (PEL)",
+    "explanation": "The clinical, morphological, and phenotypic findings match Pure Erythroid Leukemia (PEL). PEL is a rare and highly aggressive form of AML, defined by WHO as a neoplastic proliferation of erythroid precursors comprising **>80%** (specifically <code>80%</code>) of bone marrow cellularity, with **>=30%** (specifically <code>30%</code>) proerythroblasts (the most immature erythroid elements), and without a significant myeloid blast component.\n\n• **Immunophenotype**: Blasts in PEL express early erythroid markers like **E-cadherin** and **CD71** (transferrin receptor). More mature markers like Glycophorin A may be weakly positive or negative in the most primitive cells. Myeloid-associated markers like MPO, CD34, and HLA-DR are characteristically negative.\n• **Why other options are incorrect**:\n  • *AML with myelodysplasia-related changes* requires >=<code>20%</code> myeloblasts (non-erythroid) which is not present here.\n  • *Acute Megakaryoblastic Leukemia* is defined by CD41/CD61 expression.\n  • *MDS-EB-2* is excluded because the massive neoplastic erythroid shift and high proerythroblast percentage fulfills the criteria for PEL.",
+    "takeaway": "Pure Erythroid Leukemia (PEL) requires >80% (specifically <code>80%</code>) erythroid precursors with >=30% (specifically <code>30%</code>) proerythroblasts, and is typically CD34-negative and E-cadherin positive."
+  },
+  {
+    "id": 12,
+    "code": "Q12",
+    "title": "Microgranular APL",
+    "vignette": "A 31-year-old female presents with bruising and gums bleeding. Complete blood count shows: WBC 82 x 10<sup>9</sup>/L, Hb 74 g/L, Platelets 12 x 10<sup>9</sup>/L. The blood film shows atypical cells with bilobed, folded-over nuclei, and pale cytoplasm with few or no visible granules. Immunophenotyping of these cells shows: HLA-DR-negative, CD34-negative, CD117-positive, and strongly MPO-positive. Cytogenetics confirm a t(15;17)(q24.1;q21.2) translocation. What is the diagnosis?",
+    "options": [
+      "Acute Monocytic Leukemia (AML-M5)",
+      "Acute Promyelocytic Leukemia, Microgranular Variant",
+      "Mixed Phenotype Acute Leukemia (MPAL)",
+      "Chronic Myelomonocytic Leukemia (CMML)",
+      "Acute Myeloid Leukemia, Minimally Differentiated"
+    ],
+    "correct_answer": "B. Acute Promyelocytic Leukemia, Microgranular Variant",
+    "explanation": "The patient has Acute Promyelocytic Leukemia (APL), Microgranular Variant (APL-v). This variant differs from classical hypergranular APL because its promyelocytes contain submicroscopic granules that are not visible on light microscopy, often leading to a misdiagnosis of monocytic leukemia due to the folded, bilobed nuclei resembling monocytes.\n\n• **Flow Cytometry Clues**: Classic microgranular APL is characteristically **CD34-negative and HLA-DR-negative**, while expressing CD117 and being intensely positive for intracellular Myeloperoxidase (MPO). Unlike classical monocytic leukemias, it lacks CD14, CD64, and CD11b.\n• **Why other options are incorrect**:\n  • *Acute Monocytic Leukemia* is HLA-DR positive, CD34 positive/negative, CD14 positive, and lacks t(15;17).\n  • *CMML* is a chronic myelodysplastic/myeloproliferative neoplasm with persistent monocytosis and no t(15;17).\n  • *MPAL* and *AML NOS* are excluded by the presence of t(15;17) PML::RARA.",
+    "takeaway": "Microgranular APL promyelocytes have folded nuclei mimicking monocytes, but are distinguished by being HLA-DR-negative, CD34-negative, and strongly MPO-positive with t(15;17)."
+  },
+  {
+    "id": 13,
+    "code": "Q13",
+    "title": "AML with inv(16) / t(16;16)",
+    "vignette": "A 45-year-old male presenting with gingival swelling has a bone marrow aspirate showing <code>12%</code> myeloblasts and monoblasts. A prominent feature is the presence of abnormal, immature eosinophils comprising <code>15%</code> of marrow cells; these eosinophils contain large, dark purple-violet basophilic granules that obscure the nuclei. Cytogenetics show inv(16)(p13.1q22). What is the correct diagnostic classification?",
+    "options": [
+      "Acute Myeloid Leukemia with inv(16)(p13.1q22) or t(16;16)(p13.1;q22); CBFB::MYH11",
+      "Acute Myeloid Leukemia, NOS",
+      "Chronic Eosinophilic Leukemia, NOS",
+      "Myelodysplastic Syndrome with Excess Blasts-1",
+      "Hypereosinophilic Syndrome (HES)"
+    ],
+    "correct_answer": "A. Acute Myeloid Leukemia with inv(16)(p13.1q22) or t(16;16)(p13.1;q22); CBFB::MYH11",
+    "explanation": "The correct diagnosis is AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22); CBFB::MYH11.\n\n• **Morphology clue**: The presence of abnormal eosinophilic precursors with large, purplish-black basophilic granules in the bone marrow is highly pathognomonic for this CBF-AML variant.\n• **Diagnostic thresholds**: This is a recurrent genetic abnormality, meaning that under WHO and ICC, the diagnosis of AML is established **regardless of the blast percentage** (even though blasts are only <code>12%</code> in this case).\n• **Why other options are incorrect**:\n  • *AML NOS* is not applicable because a defining recurrent genetic translocation is present.\n  • *MDS-EB-1* is incorrect because the genetic translocation establishes an AML diagnosis directly, ignoring the lower blast count.\n  • *Chronic Eosinophilic Leukemia* and *HES* are excluded by the molecular detection of CBFB::MYH11 and the blast population.",
+    "takeaway": "The presence of inv(16) or t(16;16) defines AML regardless of blast count, characteristically showing abnormal eosinophils with purple-basophilic granules."
+  },
+  {
+    "id": 14,
+    "code": "Q14",
+    "title": "Acute Megakaryoblastic Leukemia",
+    "vignette": "An 18-month-old infant presents with hepatosplenomegaly and pancytopenia. Bone marrow aspirate results in a 'dry tap'. Trephine biopsy shows dense reticulin fibrosis with sheets of medium-to-large blasts showing cytoplasmic blebbing. Flow cytometry of the cell suspension demonstrates expression of CD34, CD117, CD41, and CD61, while MPO, CD3, and CD19 are completely negative. What is the most likely diagnosis?",
+    "options": [
+      "Acute Erythroid Leukemia",
+      "Acute Megakaryoblastic Leukemia (AML-M7)",
+      "Acute Myelomonocytic Leukemia",
+      "Primary Myelofibrosis",
+      "Transient Abnormal Myelopoiesis (TAM)"
+    ],
+    "correct_answer": "B. Acute Megakaryoblastic Leukemia (AML-M7)",
+    "explanation": "The clinical profile represents Acute Megakaryoblastic Leukemia (AML-M7).\n\n• **Morphological & Immunophenotypic signs**: M7 is characterized by a neoplastic proliferation of megakaryoblasts. Due to PDGF and TGF-beta release from neoplastic megakaryocytes, bone marrow fibrosis is highly common, resulting in a 'dry tap'. Blasts frequently show cytoplasmic blebbing (representing platelet budding). On flow cytometry, megakaryoblasts express platelet glycoproteins **CD41 (GPIIb)** and **CD61 (GPIIIa)**, as well as **CD42b (GPIb)**, and lack myeloid markers like MPO.\n• **Why other options are incorrect**:\n  • *Acute Erythroid Leukemia* is CD71/E-cadherin positive and negative for platelet glycoproteins.\n  • *Primary Myelofibrosis* is extremely rare in infants and does not present with sheets of megakaryoblasts (>20 percent blasts).\n  • *TAM* is restricted to newborns with Down Syndrome and resolves spontaneously.",
+    "takeaway": "Acute Megakaryoblastic Leukemia typically presents with bone marrow fibrosis (dry tap) and blasts expressing megakaryocytic markers CD41 and CD61."
+  },
+  {
+    "id": 15,
+    "code": "Q15",
+    "title": "AML, Myelodysplasia-Related",
+    "vignette": "A 74-year-old male presents with transfusion-dependent cytopenias. Bone marrow aspirate shows <code>25%</code> blasts with significant multilineage dysplasia. Cytogenetic analysis reveals a normal karyotype. Molecular profiling identifies somatic mutations in SRSF2 and ASXL1, and no mutations in NPM1, FLT3, or CEBPA. What is the correct diagnostic classification under the WHO 5th Edition?",
+    "options": [
+      "Acute Myeloid Leukemia, Not Otherwise Specified (NOS)",
+      "Acute Myeloid Leukemia, Myelodysplasia-Related (AML-MR)",
+      "Myelodysplastic Syndrome with Excess Blasts-2 (MDS-EB-2)",
+      "AML with mutated RUNX1",
+      "Therapy-related Myeloid Neoplasm"
+    ],
+    "correct_answer": "B. Acute Myeloid Leukemia, Myelodysplasia-Related (AML-MR)",
+    "explanation": "This patient is diagnosed with Acute Myeloid Leukemia, Myelodysplasia-Related (AML-MR) (formerly AML-MRC).\n\n• **WHO 5th Edition Updates**: The WHO 5th Edition has removed *morphological multilineage dysplasia alone* as a defining criterion for AML-MR, recognizing it is highly subjective. Instead, the diagnosis of AML-MR now relies strictly on **specific cytogenetic abnormalities** or a defined set of **myelodysplasia-associated somatic mutations** (including *ASXL1, BCOR, EZH2, RUNX1, SF3B1, SRSF2, STAG2, U2AF1, ZRSR2*). The presence of *ASXL1* and *SRSF2* mutations with >=<code>20%</code> blasts qualifies this case as AML-MR.\n• **Why other options are incorrect**:\n  • *AML NOS* is incorrect because the presence of myelodysplasia-associated mutations defines AML-MR.\n  • *MDS-EB-2* is incorrect because the blast percentage is >=<code>20%</code>, which fulfills the blast threshold for AML.\n  • *AML with mutated RUNX1* is no longer a separate diagnostic entity in the WHO 5th Edition (it has been consolidated into AML-MR).",
+    "takeaway": "Under WHO 5th Edition, AML-MR diagnosis is defined by specific cytogenetic abnormalities or somatic mutations (e.g. ASXL1, SRSF2) rather than morphology alone."
+  },
+  {
+    "id": 16,
+    "code": "Q16",
+    "title": "Acute Monoblastic Leukemia",
+    "vignette": "A 38-year-old female presents with hyperleukocytosis (WBC 112 x 10<sup>9</sup>/L), gingival hypertrophy, and cutaneous skin nodules. Bone marrow aspirate reveals that <code>85%</code> of non-erythroid nucleated marrow cells are monoblasts (large cells with abundant grey-blue cytoplasm, pseudopods, round central nuclei with lacy chromatin and prominent nucleoli). Only <code>10%</code> are promonocytes or monocytes. Cytochemical staining shows strong positivity for alpha-naphthyl acetate esterase, which is completely inhibited by sodium fluoride. What is the most precise diagnosis?",
+    "options": [
+      "Acute Monocytic Leukemia",
+      "Acute Monoblastic Leukemia",
+      "Acute Myelomonocytic Leukemia (AMoL)",
+      "Chronic Myelomonocytic Leukemia (CMML)",
+      "Acute Promyelocytic Leukemia, Microgranular Variant"
+    ],
+    "correct_answer": "B. Acute Monoblastic Leukemia",
+    "explanation": "The correct diagnosis is Acute Monoblastic Leukemia.\n\n• **Monoblastic vs Monocytic classification**: Under both WHO and ICC, monocytic lineage leukemias with >=<code>20%</code> blasts are split into:\n  1. *Acute Monoblastic Leukemia*: Where **>=80%** (specifically <code>80%</code>) of the monocytic cells are monoblasts.\n  2. *Acute Monocytic Leukemia*: Where **<80%** (specifically <code>80%</code>) of the monocytic cells are monoblasts (the remainder being promonocytes, which are considered 'blast equivalents', or monocytes).\n• Since <code>85%</code> of the monocytic lineage cells in this case are monoblasts, it is classified as acute *monoblastic* leukemia. These cells are characteristically non-specific esterase (NSE) positive, which is inhibited by sodium fluoride.\n• **Why other options are incorrect**:\n  • *Acute Myelomonocytic Leukemia* requires both significant granulocytic and monocytic differentiation (each comprising >=<code>20%</code> of the bone marrow cells).\n  • *CMML* is a MDS/MPN overlap disease without acute leukemia blast counts.",
+    "takeaway": "Acute Monoblastic Leukemia is diagnosed when monoblasts comprise >=80% (specifically <code>80%</code>) of the neoplastic monocytic cells in the bone marrow."
+  },
+  {
+    "id": 17,
+    "code": "Q17",
+    "title": "AML with t(6;9)",
+    "vignette": "A 29-year-old male presenting with pancytopenia has a bone marrow aspirate revealing <code>35%</code> myeloblasts and marked multilineage dysplasia. A peripheral blood film demonstrates persistent basophilia (<code>3.5%</code> basophils). Cytogenetics show t(6;9)(p23.3;q34.3). What is the correct diagnostic classification?",
+    "options": [
+      "Acute Myeloid Leukemia with t(6;9)(p23.3;q34.3); DEK::NUP214",
+      "Chronic Myeloid Leukemia in blast crisis",
+      "Acute Basophilic Leukemia",
+      "Acute Myeloid Leukemia, Myelodysplasia-Related",
+      "AML with t(9;22)(q34.1;q11.2); BCR::ABL1"
+    ],
+    "correct_answer": "A. Acute Myeloid Leukemia with t(6;9)(p23.3;q34.3); DEK::NUP214",
+    "explanation": "This case is classified as AML with t(6;9)(p23.3;q34.3); DEK::NUP214.\n\n• **Clinical associations**: This is a distinct, rare AML subcategory that is highly associated with **basophilia** and **multilineage dysplasia**, often mimicking MDS. It carries an extremely poor prognosis.\n• **Why other options are incorrect**:\n  • *Chronic Myeloid Leukemia in blast crisis* would require a history of CML or proof of the t(9;22) translocation / BCR::ABL1 fusion gene, which is absent here.\n  • *Acute Basophilic Leukemia* is a diagnosis of exclusion that does not have t(6;9).\n  • *Acute Myeloid Leukemia, Myelodysplasia-Related* is excluded because the recurrent genetic driver t(6;9) overrides the AML-MR classification.",
+    "takeaway": "AML with t(6;9)(p23.3;q34.3) is characteristically associated with basophilia, multilineage dysplasia, and an adverse prognosis."
+  },
+  {
+    "id": 18,
+    "code": "Q18",
+    "title": "Acute Basophilic Leukemia",
+    "vignette": "A 41-year-old female with progressive pancytopenia has a bone marrow showing <code>45%</code> blasts containing coarse, variable-sized, dark-purple granules that display metachromasia with Toluidine blue staining. Cytochemical Myeloperoxidase (MPO) and Sudan Black B are completely negative. Flow cytometry of the blasts reveals CD13-positive, CD33-positive, CD123-positive, CD203c-positive, and CD11b-positive. Genetic testing for recurrent translocations is negative. What is the most appropriate diagnosis?",
+    "options": [
+      "Mast Cell Leukemia",
+      "Acute Basophilic Leukemia",
+      "AML with t(6;9)(p23.3;q34.3)",
+      "Acute Myeloid Leukemia with minimally differentiated characteristics",
+      "Hypergranular Acute Promyelocytic Leukemia"
+    ],
+    "correct_answer": "B. Acute Basophilic Leukemia",
+    "explanation": "This patient is diagnosed with Acute Basophilic Leukemia.\n\n• **Diagnostic indicators**: This is a very rare form of AML (comprising <1% (specifically <code>1%</code>) of cases) characterized by blasts showing primary basophilic differentiation. The granules show metachromasia with Toluidine blue. Cytochemical MPO is negative. Flow cytometry of basophilic blasts characteristically shows expression of myeloid markers (CD13, CD33) alongside basophil-associated activation markers **CD123, CD203c**, and **CD11b**.\n• **Why other options are incorrect**:\n  • *Mast Cell Leukemia* blasts express CD117 and CD25, and are typically positive for tryptase; CD203c is expressed but Toluidine blue showing metachromasia alone without mast cell phenotype excludes it.\n  • *AML with t(6;9)* is excluded by negative cytogenetic testing.\n  • *Hypergranular APL* is strongly MPO-positive and CD11b-negative.",
+    "takeaway": "Acute Basophilic Leukemia is characterized by MPO-negative blasts showing metochromatic granules with Toluidine blue and expressing CD123 and CD203c."
+  },
+  {
+    "id": 19,
+    "code": "Q19",
+    "title": "AML with inv(3) / t(3;3) MECOM Rearrangement",
+    "vignette": "A 55-year-old female presents with fatigue and a platelet count of 650 x 10<sup>9</sup>/L. Bone marrow aspirate displays <code>22%</code> myeloblasts and highly characteristic small, hypolobated/unilobed megakaryocytes ('dwarf' megakaryocytes) scattered in clusters. Cytogenetics demonstrate inv(3)(q21.3q26.2). What is the correct classification?",
+    "options": [
+      "Essential Thrombocythemia (ET) in blast crisis",
+      "Acute Myeloid Leukemia with t(3;3)(q21.3;q26.2) or inv(3)(q21.3q26.2); GATA2, MECOM",
+      "Primary Myelofibrosis, accelerated phase",
+      "Acute Myeloid Leukemia with t(9;22); BCR::ABL1",
+      "Acute Myeloid Leukemia, Myelodysplasia-Related"
+    ],
+    "correct_answer": "B. Acute Myeloid Leukemia with t(3;3)(q21.3;q26.2) or inv(3)(q21.3q26.2); GATA2, MECOM",
+    "explanation": "This case is diagnostic of AML with t(3;3)(q21.3;q26.2) or inv(3)(q21.3q26.2); GATA2, MECOM.\n\n• **Key clinical features**: Classically presents with anemia, a normal or **significantly elevated platelet count (thrombocytosis)**, and bone marrow findings demonstrating an increased number of atypical, small, hypolobated or unilobed megakaryocytes (dwarf megakaryocytes). This is driven by aberrant MECOM (EVI1) gene expression. It carries a highly unfavorable prognosis.\n• **Why other answers are incorrect**:\n  • *ET in blast crisis* would require a established long-term history of ET; however, the presence of inv(3) immediately classifies this as AML with t(3;3)/inv(3).\n  • *AML, Myelodysplasia-Related* is incorrect because the recurrent genetic driver inv(3) overrides the general AML-MR diagnostic category.",
+    "takeaway": "AML with MECOM rearrangement (inv(3) or t(3;3)) is associated with thrombocytosis, dwarf megakaryocytes, and a poor prognosis."
+  },
+  {
+    "id": 20,
+    "code": "Q20",
+    "title": "CEBPA Mutation Prognosis",
+    "vignette": "A 35-year-old male is diagnosed with AML. Molecular genetic screening shows a single in-frame mutation within the basic leucine zipper (bZIP) domain of the CEBPA gene. There are no other somatic mutations detected. What is the prognostic significance of this CEBPA finding under the WHO 5th Edition?",
+    "options": [
+      "Unfavorable prognosis, indicating urgent allogeneic stem cell transplant.",
+      "Favorable prognosis, equivalent to the former biallelic CEBPA mutated category.",
+      "Indeterminate risk, requiring FLT3 status to risk-stratify.",
+      "Normal variant; has no clinical impact on AML management.",
+      "Adverse risk, indicating resistance to standard cytarabine-based therapies."
+    ],
+    "correct_answer": "B. Favorable prognosis, equivalent to the former biallelic CEBPA mutated category.",
+    "explanation": "Under the WHO 5th Edition and ICC (2022) guidelines, the diagnostic category of AML with mutated CEBPA has been redefined. Previously, only biallelic *CEBPA* mutations were considered favorable. However, recent evidence demonstrated that **single mutations localized to the basic leucine zipper (bZIP) domain** of *CEBPA* carry the same highly **favorable prognosis** as biallelic mutations.\n\n• **Clinical impact**: Patients with *CEBPA* bZIP mutations have excellent response rates to standard 7+3 (seven-plus-three) induction and consolidation cytarabine, and do not typically require allogeneic stem cell transplant in first complete remission.\n• **Why other options are incorrect**:\n  • All other options fail to reflect this major update, which aligns single bZIP mutations with favorable risk stratification.",
+    "takeaway": "WHO 5th Edition recognizes single in-frame mutations in the CEBPA bZIP domain as carrying a highly favorable prognosis, equivalent to biallelic CEBPA mutations."
+  },
+  {
+    "id": 21,
+    "code": "Q21",
+    "title": "Myeloid Sarcoma",
+    "vignette": "A 19-year-old male presents with a rapidly growing, painful subcutaneous mass on his chest wall. Biopsy shows infiltration by atypical mononuclear cells. Immunohistochemistry is positive for Myeloperoxidase (MPO), CD117, Lysozyme, and CD43. A concurrent peripheral blood and bone marrow examination show completely normal blood counts and no evidence of leukaemia. What is the diagnosis?",
+    "options": [
+      "Diffuse Large B-Cell Lymphoma",
+      "Myeloid Sarcoma",
+      "Extramedullary Hematopoiesis",
+      "Acute Lymphoblastic Lymphoma",
+      "Anaplastic Large Cell Lymphoma"
+    ],
+    "correct_answer": "B. Myeloid Sarcoma",
+    "explanation": "The biopsy findings and immunophenotype are characteristic of Myeloid Sarcoma (also known as granulocytic sarcoma or chloroma).\n\n• **Clinical Definition**: Myeloid sarcoma is a tumor mass consisting of myeloid blasts occurring at an extramedullary site. It can precede, occur concurrently with, or represent a relapse of AML. Even in the absence of bone marrow involvement (as in this case), the detection of a myeloid sarcoma is diagnostic of acute myeloid leukemia.\n• **Marker Profile**: Key immunohistochemical markers include **Myeloperoxidase (MPO)**, **CD117**, lysozyme, and CD68/CD43.\n• **Why other options are incorrect**:\n  • *Lymphomas* (DLBCL, T-lymphoblastic) are excluded by strong positivity for myeloid lineage markers like MPO and CD117.\n  • *Extramedullary Hematopoiesis* contains mature granulocytic, erythroid, and megakaryocytic elements rather than monomorphic sheets of immature blasts.",
+    "takeaway": "Myeloid Sarcoma is an extramedullary mass of myeloid blasts expressing CD117 and MPO, and is diagnostic of AML even without marrow involvement."
+  },
+  {
+    "id": 22,
+    "code": "Q22",
+    "title": "Myeloid Leukemia of Down Syndrome",
+    "vignette": "A 2-year-old boy with trisomy 21 presents with pallor and petechiae. Complete blood count shows pancytopenia with <code>25%</code> circulating blasts. Bone marrow is fibrotic with numerous CD41-positive and CD61-positive megakaryocytic blasts. Sequencing reveals a somatic mutation in exon 2 of the GATA1 gene. What is the correct classification?",
+    "options": [
+      "Acute Megakaryoblastic Leukemia (non-Down syndrome type)",
+      "Myeloid Leukemia associated with Down Syndrome",
+      "Transient Abnormal Myelopoiesis (TAM) of Down Syndrome",
+      "Juvenile Myelomonocytic Leukemia (JMML)",
+      "Acute Erythroid Leukemia of Down Syndrome"
+    ],
+    "correct_answer": "B. Myeloid Leukemia associated with Down Syndrome",
+    "explanation": "The correct diagnosis is Myeloid Leukemia associated with Down Syndrome (under both WHO and ICC classifications).\n\n• **Clinical characteristics**: Children with Down syndrome have a markedly increased risk of myeloid neoplasms. In children under 5 years of age, it characteristically presents as an acute megakaryoblastic leukemia, driven by somatic mutations in the GATA1 gene (typically exon 2 mutations). These cases are highly sensitive to low-dose chemotherapy (Cytarabine) and have an excellent prognosis compared to non-Down syndrome pediatric AML.\n• **Why other options are incorrect**:\n  • *Non-Down syndrome type* is excluded due to the constitutional trisomy 21 and typical GATA1 driver.\n  • *TAM* is a transient condition presenting in the neonatal period (first days of life) that typically resolves spontaneously.\n  • *JMML* is a clonal MPN presenting in early childhood, typically associated with Noonan syndrome, NF1, or CBL mutations, not GATA1.",
+    "takeaway": "Myeloid Leukemia associated with Down Syndrome occurs in children under 5 years, is megakaryoblastic, harbors GATA1 mutations, and has a highly favorable prognosis."
+  },
+  {
+    "id": 23,
+    "code": "Q23",
+    "title": "Therapy-Related AML Classification",
+    "vignette": "A 58-year-old female treated for breast cancer 4 years ago with anthracyclines now presents with <code>35%</code> bone marrow blasts. Cytogenetics reveal t(15;17)(q24.1;q21.2) PML::RARA. Under the WHO 5th Edition, how should this myeloid neoplasm be primarily classified?",
+    "options": [
+      "Therapy-related Myeloid Neoplasm (t-MN)",
+      "Acute Myeloid Leukemia with PML::RARA",
+      "Therapy-related Acute Promyelocytic Leukemia",
+      "Acute Myeloid Leukemia, Not Otherwise Specified (NOS)",
+      "Treatment-induced Myelodysplastic Syndrome"
+    ],
+    "correct_answer": "B. Acute Myeloid Leukemia with PML::RARA",
+    "explanation": "Under the WHO 5th Edition (2022) classification, therapy-related myeloid neoplasms are no longer classified as a distinct separate disease entity (like the former 't-AML' or 't-MDS' categories). Instead, neoplasms are classified according to their biologic and genetic drivers, with the prior exposure to chemotherapy or radiation added as a diagnostic qualifier.\n\n• Therefore, this patient is diagnosed with Acute Myeloid Leukemia with PML::RARA, with a qualifier of 'therapy-related' added to the diagnosis.\n• **Why other options are incorrect**:\n  • *Therapy-related Myeloid Neoplasm (t-MN)* was the former WHO 4th edition category but has been restructured to prioritize biological drivers under the WHO 5th Edition.",
+    "takeaway": "WHO 5th Edition classifies therapy-related myeloid neoplasms by their specific genetic driver, using 'therapy-related' as a secondary qualifier rather than a primary diagnosis."
+  },
+  {
+    "id": 24,
+    "code": "Q24",
+    "title": "APL Differentiation Syndrome",
+    "vignette": "A 33-year-old female diagnosed with high-risk APL is on day 5 of induction therapy with ATRA and Arsenic Trioxide (ATO). She develops unexplained fever (38.5 degrees C), a weight gain of 4 kg, dyspnea, and bilateral pleural effusions with bibasilar pulmonary infiltrates on chest X-ray. WBC is 18 x 109/L. What is the single most urgent management step?",
+    "options": [
+      "Stop ATRA and ATO immediately and start broad-spectrum intravenous antibiotics.",
+      "Administer immediate intravenous Dexamethasone 10 mg twice daily and continue ATRA/ATO unless severe.",
+      "Perform urgent bronchoscopy with bronchoalveolar lavage to rule out Pneumocystis jirovecii pneumonia.",
+      "Transfuse 2 units of packed red blood cells and administer Furosemide 40 mg IV for TACO.",
+      "Initiate urgent leukapheresis to prevent pulmonary leukostasis."
+    ],
+    "correct_answer": "B. Administer immediate intravenous Dexamethasone 10 mg twice daily and continue ATRA/ATO unless severe.",
+    "explanation": "The clinical picture is diagnostic of APL Differentiation Syndrome (formerly known as ATRA syndrome), which is a life-threatening complication of ATRA and ATO therapy in patients with APL.\n\n• **Pathophysiology**: Induced by cytokine release from differentiating promyelocytic blasts, leading to capillary leak, pulmonary infiltrates, pleural/pericardial effusions, fever, and weight gain.\n• **Urgent Intervention**: The single most critical step is the immediate administration of high-dose intravenous corticosteroids (Dexamethasone 10 mg twice daily). Do not wait for diagnostic tests, and do not stop ATRA/ATO unless the symptoms are extremely severe (e.g., intensive care admission or respiratory failure required).\n• **Why other options are incorrect**:\n  • Stopping ATRA/ATO instantly for mild-to-moderate symptoms is unnecessary and delays leukemia control.\n  • Leukapheresis is strictly contraindicated in APL because it triggers tumor lysis, exacerbates coagulopathy, and increases the risk of fatal bleeding.",
+    "takeaway": "APL Differentiation Syndrome is treated immediately with high-dose intravenous Dexamethasone 10 mg twice daily; do not delay treatment for diagnostic workup."
+  },
+  {
+    "id": 25,
+    "code": "Q25",
+    "title": "t(8;21) Aberrant CD56 Expression",
+    "vignette": "A 22-year-old male is diagnosed with t(8;21)(q22;q22.1); RUNX1::RUNX1T1 AML. Flow cytometry of the myeloblasts shows CD34, CD117, HLA-DR, CD13, and CD33 expression, along with aberrant lineage expression of CD19 and CD56. What is the clinical significance of the CD56 expression in this patient?",
+    "options": [
+      "Indicates concurrent NK-cell leukemia and a mandate for T-cell directed therapies.",
+      "It is a benign finding with no prognostic significance in core-binding factor AML.",
+      "It is associated with a significantly higher risk of relapse and worse overall survival.",
+      "Predicts exceptional sensitivity to standard Gemtuzumab Ozogamicin.",
+      "Classifies the disease as Mixed Phenotype Acute Leukemia (MPAL)."
+    ],
+    "correct_answer": "C. It is associated with a significantly higher risk of relapse and worse overall survival.",
+    "explanation": "In patients with t(8;21) core-binding factor AML, the aberrant expression of CD56 (neural cell adhesion molecule) is a well-documented adverse prognostic marker.\n\n• **Clinical impact**: Patients with t(8;21) AML who are CD56-positive have a significantly higher risk of relapse and shorter overall survival compared to CD56-negative t(8;21) counterparts, which may prompt clinicians to consider allogeneic stem cell transplantation in first remission for high-risk presentations.\n• **Why other options are incorrect**:\n  • It does not indicate NK-cell leukemia or MPAL (which is excluded by the primary t(8;21) AML driver).\n  • Gemtuzumab Ozogamicin is a CD33-targeted monoclonal antibody conjugate and is not linked specifically to CD56 expression status.",
+    "takeaway": "Aberrant CD56 expression in t(8;21) core-binding factor AML is associated with a significantly increased risk of disease relapse and worse overall survival."
+  },
+  {
+    "id": 26,
+    "code": "Q26",
+    "title": "Mixed Phenotype Acute Leukemia (MPAL)",
+    "vignette": "A 17-year-old female presents with acute leukemia. Flow cytometry of the bone marrow blasts reveals: CD34+, HLA-DR+, CD19-strong, cytoplasmic CD22-strong, cytoplasmic MPO-strong (present in >10% (specifically <code>10%</code>) of blasts), CD3-negative, CD7-negative. Cytogenetics and molecular studies are normal. What is the correct diagnostic classification?",
+    "options": [
+      "B-Lymphoblastic Leukemia with aberrant myeloid marker expression",
+      "Acute Myeloid Leukemia with aberrant B-cell marker expression",
+      "Mixed Phenotype Acute Leukemia (MPAL), B/Myeloid, NOS",
+      "Early T-Cell Precursor Lymphoblastic Leukemia (ETP-ALL)",
+      "Bilineal Acute Leukemia"
+    ],
+    "correct_answer": "C. Mixed Phenotype Acute Leukemia (MPAL), B/Myeloid, NOS",
+    "explanation": "This case fulfills the strict criteria for Mixed Phenotype Acute Leukemia (MPAL), B/Myeloid, NOS under both WHO and ICC guidelines.\n\n• **Lineage assignment criteria**:\n  • **Myeloid lineage**: Fulfilling MPO positivity (either by flow cytometry with a threshold of >10% (specifically <code>10%</code>) positive blasts, or cytochemistry).\n  • **B-lineage**: Requires strong CD19 expression along with at least one other strong B-cell marker (such as cytoplasmic CD22, CD79a, or CD10), or weak CD19 with at least two.\n• Here, the blasts show strong cytoplasmic MPO (>10% (specifically <code>10%</code>)) and strong B-cell markers (CD19 and cytoplasmic CD22), establishing dual B and myeloid lineage on a single blast population.\n• **Why other options are incorrect**:\n  • *B-ALL with aberrant myeloid markers* is incorrect because strong cytoplasmic MPO expression (>10% (specifically <code>10%</code>) by flow) is a strict myeloid lineage indicator that forces an MPAL classification.\n  • *Bilineal Leukemia* is incorrect because it refers to two distinct blast populations (one myeloid, one lymphoid) rather than a single biphenotypic population.",
+    "takeaway": "Mixed Phenotype Acute Leukemia (MPAL) B/Myeloid requires both strong B-lineage indicators (CD19 + CD22/CD79a/CD10) and myeloid lineage confirmation (MPO >10% (specifically <code>10%</code>) on flow)."
+  },
+  {
+    "id": 27,
+    "code": "Q27",
+    "title": "Hypocellular AML",
+    "vignette": "A 78-year-old male presenting with progressive pancytopenia undergoes a bone marrow biopsy. The marrow is markedly hypocellular, showing a cellularity of approximately <code>15%</code> for his age. In the sparse cellular areas, there are clustered aggregates of myeloblasts comprising <code>25%</code> of all nucleated marrow cells. Immunostaining is positive for CD34, CD117, and Myeloperoxidase (MPO). What is the correct diagnostic classification?",
+    "options": [
+      "Severe Aplastic Anemia",
+      "Hypocellular Myelodysplastic Syndrome (MDS)",
+      "Hypocellular Acute Myeloid Leukemia (hAML)",
+      "Primary Myelofibrosis",
+      "Large Granular Lymphocytic (LGL) Leukemia"
+    ],
+    "correct_answer": "C. Hypocellular Acute Myeloid Leukemia (hAML)",
+    "explanation": "This patient is classified as having Hypocellular Acute Myeloid Leukemia (hAML).\n\n• **Diagnostic criteria**: Hypocellular AML is a distinct clinical variant of AML, defined by a **bone marrow cellularity of <20%** (specifically <code>20%</code>) **accompanied by >=20%** (specifically <code>20%</code>) **myeloblasts** in the marrow. It typically occurs in older individuals, is highly associated with preceding myelodysplasia, and must be distinguished from severe aplastic anemia and hypocellular MDS.\n• **Why other options are incorrect**:\n  • *Severe Aplastic Anemia* has <25% (specifically <code>25%</code>) cellularity but no increase in blasts (<5% (specifically <code>5%</code>) blasts).\n  • *Hypocellular MDS* is excluded because the blast percentage is >=<code>20%</code>, which reaches the diagnostic threshold for AML.\n  • *Primary Myelofibrosis* is defined by megakaryocytic proliferation and dense reticulin/collagen fibrosis.",
+    "takeaway": "Hypocellular AML is defined by bone marrow cellularity <20% (specifically <code>20%</code>) with >=20% (specifically <code>20%</code>) myeloblasts, distinguishing it from hypocellular MDS and aplastic anemia."
+  },
+  {
+    "id": 28,
+    "code": "Q28",
+    "title": "FLT3-TKD Mutation Clinical Management",
+    "vignette": "A 45-year-old female diagnosed with AML is shown to have a normal karyotype, wild-type NPM1, but harbors a point mutation at codon D835 within the activation loop of the tyrosine kinase domain (TKD) of the FLT3 gene. She is negative for the FLT3 internal tandem duplication (ITD). What is the prognostic and therapeutic significance of this FLT3-TKD mutation?",
+    "options": [
+      "Confers an extremely poor prognosis, worse than FLT3-ITD, and mandates immediate salvage therapy.",
+      "It represents a benign polymorphism and has no impact on treatment decisions.",
+      "It has a neutral-to-favorable prognostic impact compared to FLT3-ITD, but still indicates the addition of FLT3 inhibitor Midostaurin to standard induction chemotherapy.",
+      "Indicates that the leukemia is completely resistant to all tyrosine kinase inhibitors.",
+      "Excludes the diagnosis of AML under the new ICC guidelines."
+    ],
+    "correct_answer": "C. It has a neutral-to-favorable prognostic impact compared to FLT3-ITD, but still indicates the addition of FLT3 inhibitor Midostaurin to standard induction chemotherapy.",
+    "explanation": "FLT3-TKD mutations represent point mutations or deletions within the tyrosine kinase domain (usually at codon D835) and comprise about 5-10% (specifically <code>5-10%</code>) of AML cases.\n\n• **Prognosis & Therapy**: Unlike FLT3-ITD mutations (which confer a highly adverse prognosis due to high blast proliferative capacity and high relapse rates), FLT3-TKD mutations have a **neutral-to-favorable prognostic impact**. However, clinical trials (RATIFY study) demonstrated that adding the multi-targeted FLT3 inhibitor **Midostaurin** to standard 7+3 (seven-plus-three) induction and consolidation therapy significantly improves overall survival for both FLT3-ITD and FLT3-TKD mutated patients.\n• **Why other options are incorrect**:\n  • It is not a benign polymorphism, as it constitutively activates the kinase.\n  • It does not confer an adverse prognosis worse than FLT3-ITD.",
+    "takeaway": "FLT3-TKD mutations have a neutral-to-favorable prognostic impact compared to FLT3-ITD, but still benefit from adding Midostaurin to induction chemotherapy."
+  },
+  {
+    "id": 29,
+    "code": "Q29",
+    "title": "AML-001 (Original Study Set)",
+    "vignette": "A 62-year-old man presents with fatigue and bruising. Full blood count shows:<br>• Hb 7.2 g/dL<br>• WBC 38 x 10<sup>9</sup>/L<br>• Platelets 22 x 10<sup>9</sup>/L<br><br>Peripheral blood film shows <code>45%</code> blasts with Auer rods. Which is the most likely diagnosis?",
+    "options": [
+      "Acute lymphoblastic leukaemia",
+      "Acute promyelocytic leukaemia",
+      "Acute myeloid leukaemia, not otherwise specified",
+      "Chronic myelomonocytic leukaemia",
+      "Myelodysplastic syndrome with excess blasts"
+    ],
+    "correct_answer": "C. Acute myeloid leukaemia, not otherwise specified",
+    "explanation": "The presence of >=20% (specifically <code>20%</code>) myeloid blasts with Auer rods confirms a diagnosis of Acute Myeloid Leukaemia (AML). Without a defining recurrent genetic abnormality or classical promyelocytic morphology, this fits **Acute myeloid leukaemia, not otherwise specified (NOS)** (or AML defined by differentiation under WHO 5th Edition/ICC 2022).<br><br>• **Why other options are incorrect:**<br>  • **A**: Lymphoblasts do not show Auer rods.<br>  • **B**: Acute promyelocytic leukaemia (APL) usually shows characteristic abnormal promyelocytes, heavy granulation, and bundles of Auer rods (Faggot cells).<br>  • **D**: CMML presents with persistent monocytosis (>1 x 10<sup>9</sup>/L) and <20% (specifically <code>20%</code>) blasts in blood and bone marrow.<br>  • **E**: Myelodysplastic syndrome with excess blasts (MDS-EB) displays <20% (specifically <code>20%</code>) blasts in both peripheral blood and bone marrow.",
+    "takeaway": "The presence of Auer rods dictates myeloid lineage until proven otherwise, and a blast threshold of >=20% (specifically <code>20%</code>) confirms AML in the absence of defining recurrent genetic abnormalities."
+  },
+  {
+    "id": 30,
+    "code": "Q30",
+    "title": "AML-002 (Original Study Set)",
+    "vignette": "A 45-year-old woman presents with gingival hypertrophy and bleeding. Blood film examination shows numerous monoblasts and promonocytes. Which AML subtype is most likely?",
+    "options": [
+      "AML with t(15;17)",
+      "AML with t(8;21)",
+      "Acute monocytic/monoblastic leukaemia",
+      "Acute lymphoblastic leukaemia",
+      "Chronic myeloid leukaemia blast crisis"
+    ],
+    "correct_answer": "C. Acute monocytic/monoblastic leukaemia",
+    "explanation": "The combination of prominent clinical **gingival hypertrophy** (due to tissue infiltration) and a monocytic lineage blast population (monoblasts and promonocytes) strongly suggests **Acute monocytic/monoblastic leukaemia** (historically FAB M5).<br><br>• **Why other options are incorrect:**<br>  • **A**: APL is highly associated with severe disseminated intravascular coagulopathy (DIC) rather than tissue infiltration like gingival hypertrophy.<br>  • **B**: AML with t(8;21) typically exhibits granulocytic maturation and classical single Auer rods, without monocytic features.<br>  • **D**: Lymphoblastic leukaemia (ALL) does not present with monoblast morphology or non-specific esterase positivity.<br>  • **E**: CML blast crisis would require a known history of underlying chronic myeloid leukaemia or proof of t(9;22) BCR::ABL1.",
+    "takeaway": "Monocytic AML variants (acute monocytic and monoblastic leukaemia) have a high propensity for extramedullary tissue infiltration, classically presenting with gingival hypertrophy, skin involvement, and CNS migration."
+  },
+  {
+    "id": 31,
+    "code": "Q31",
+    "title": "AML-003 (Original Study Set)",
+    "vignette": "A bone marrow aspirate is performed on a patient suspected of having acute leukaemia. Flow cytometry and cytochemical results are requested to determine lineage. Which immunophenotype is most consistent with AML?",
+    "options": [
+      "CD3+, CD7+",
+      "CD19+, CD10+",
+      "CD13+, CD33+, MPO+",
+      "CD20+, CD5+",
+      "CD138+, kappa restricted"
+    ],
+    "correct_answer": "C. CD13+, CD33+, MPO+",
+    "explanation": "Myeloid blasts in Acute Myeloid Leukaemia (AML) characteristically express myeloid-associated surface antigens **CD13+ and CD33+**, alongside cytochemical or intracellular **MPO+ (Myeloperoxidase)**.<br><br>• **Why other options are incorrect:**<br>  • **A**: Expression of CD3+ and CD7+ is characteristic of T-lymphoblastic leukaemia or T-cell lymphoma.<br>  • **B**: Expression of CD19+ and CD10+ is characteristic of B-lymphoblastic leukaemia.<br>  • **D**: Co-expression of CD20+ and CD5+ is typical of Chronic Lymphocytic Leukaemia / Small Lymphocytic Lymphoma (CLL/SLL) or Mantle Cell Lymphoma.<br>  • **E**: CD138+ with light chain kappa restriction is diagnostic of plasma cell myeloma or monoclonal plasma cell disorders.",
+    "takeaway": "Myeloperoxidase (MPO) positivity, either by cytochemistry or flow cytometry, remains the absolute gold standard for confirming myeloid lineage commitment."
+  },
+  {
+    "id": 32,
+    "code": "Q32",
+    "title": "AML-004 (Original Study Set)",
+    "vignette": "A 70-year-old patient presents with severe pancytopenia. Bone marrow evaluation reveals <code>18%</code> blasts with prominent dysplastic changes identified in all three hematopoietic lineages. What is the most appropriate diagnosis?",
+    "options": [
+      "Acute Myeloid Leukemia",
+      "Myelodysplastic syndrome with excess blasts-2",
+      "Aplastic anaemia",
+      "Chronic myelomonocytic leukaemia",
+      "Acute promyelocytic leukaemia"
+    ],
+    "correct_answer": "B. Myelodysplastic syndrome with excess blasts-2",
+    "explanation": "The diagnosis is **Myelodysplastic syndrome with excess blasts-2 (MDS-EB-2)**. MDS-EB-2 is defined under classification guidelines by having 10-19% (specifically <code>10-19%</code>) blasts in the bone marrow or 5-19% (specifically <code>5-19%</code>) in the peripheral blood, along with cytopenias and multilineage dysplasia.<br><br>• **Why other options are incorrect:**<br>  • **A**: Standard AML diagnosis requires a blast threshold of >=20% (specifically <code>20%</code>) in the blood or bone marrow, unless defining AML-recurrent cytogenetics (such as core-binding factors or NPM1) are detected.<br>  • **C**: Aplastic anaemia displays a hypocellular bone marrow without an increase in blasts (<5% (specifically <code>5%</code>) blasts).<br>  • **D**: CMML diagnosis requires a persistent absolute peripheral blood monocytosis of >=1 x 10<sup>9</sup>/L and <20% (specifically <code>20%</code>) blasts.<br>  • **E**: APL is defined by the recurrent pathognomonic PML::RARA fusion gene, t(15;17), and abnormal promyelocyte morphology.",
+    "takeaway": "The blast threshold of 20% (specifically <code>20%</code>) represents a crucial boundary in haematopathology. Myeloid neoplasms with 10-19% (specifically <code>10-19%</code>) blasts are classified as MDS-EB-2 in the absence of defining recurrent genetic translocations."
+  },
+  {
+    "id": 33,
+    "code": "Q33",
+    "title": "AML-005 (Original Study Set)",
+    "vignette": "A patient suspected of having a hematological malignancy presents with a severe bleeding diathesis. A peripheral blood film is immediately evaluated. Which morphological feature is most characteristic of acute promyelocytic leukaemia (APL)?",
+    "options": [
+      "Small lymphoblasts with scant cytoplasm and condensed chromatin",
+      "Promyelocytes with heavy, coarse granulation and Auer rods in bundles",
+      "Monoblasts with folded, lobulated nuclei and pale cytoplasm",
+      "Mature neutrophils with prominent toxic granulation and Dohle bodies",
+      "Plasma cells with eccentric nuclei and a prominent perinuclear halo"
+    ],
+    "correct_answer": "B. Promyelocytes with heavy, coarse granulation and Auer rods in bundles",
+    "explanation": "The presence of atypical, large **promyelocytes with heavy, coarse azurophilic granulation and bundles of Auer rods** ('Faggot cells') is highly pathognomonic of **Acute Promyelocytic Leukaemia (APL)**. This morphological identification is a haematological emergency due to the risk of catastrophic intracranial or pulmonary hemorrhage.<br><br>• **Why other options are incorrect:**<br>  • **A**: This describes lymphoblasts, characteristic of Acute Lymphoblastic Leukaemia (ALL).<br>  • **B**: This describes monoblasts, characteristic of Acute Monocytic/Monoblastic Leukaemia (AML-M5).<br>  • **C**: This describes reactive/toxic granulocytic changes seen in severe bacterial sepsis or leukemoid reactions.<br>  • **D**: This describes plasma cells, seen in Multiple Myeloma or reactive plasmacytosis.",
+    "takeaway": "The morphological presence of 'Faggot cells' (bundles of Auer rods) indicates Acute Promyelocytic Leukaemia (APL), mandating the immediate initiation of ATRA to avert fatal coagulopathic hemorrhage."
+  },
+  {
+    "id": 34,
+    "code": "Q34",
+    "title": "Fitness-Based Induction Selection",
+    "vignette": "A 73-year-old male with a history of ischemic heart disease and moderate chronic obstructive pulmonary disease presents with a new diagnosis of Acute Myeloid Leukemia (AML). His bone marrow shows 35 percent blasts, and mutational analysis shows NPM1 mutation without FLT3 mutations. Cytogenetics show a normal karyotype. His ECOG performance status is 2. The medical team is evaluating his fitness for treatment.",
+    "options": [
+      "Standard intensive chemotherapy with daunorubicin and cytarabine (7+3)",
+      "Low-dose cytarabine monotherapy",
+      "Azacitidine combined with Venetoclax",
+      "Best supportive care with hydroxycarbamide alone",
+      "Immediate allogeneic stem cell transplantation in CR1"
+    ],
+    "correct_answer": "C. Azacitidine combined with Venetoclax",
+    "explanation": "The combination of a hypomethylating agent (such as Azacitidine) and the BCL2 inhibitor Venetoclax is the current standard of care for patients with newly diagnosed AML who are older (aged 75 years or older) or who have comorbidities that preclude intensive induction chemotherapy (7+3). Clinical trial data (VIALE-A) demonstrated significant improvements in both complete remission rates and overall survival compared to azacitidine monotherapy in this population. Standard intensive therapy (Option A) has high treatment-related mortality in patients over 70 with significant cardiopulmonary comorbidities. Low-dose cytarabine (Option B) is less effective. Best supportive care (Option D) is reserved for patients unfit for any active therapy. Immediate allogeneic transplant (Option E) is not an induction strategy.",
+    "takeaway": "For older or medically unfit patients with newly diagnosed AML, Azacitidine combined with Venetoclax provides superior survival and remission rates compared to standard non-intensive monotherapies."
+  },
+  {
+    "id": 35,
+    "code": "Q35",
+    "title": "Targeted Therapy Upfront Addition",
+    "vignette": "A 48-year-old de novo AML patient presents with a high white blood cell count of 65 x 10<sup>9</sup>/L. Molecular profiling reveals a FLT3 internal tandem duplication (FLT3-ITD) mutation with a high allelic ratio (greater than 0.5), as well as wild-type NPM1. He is assessed as fit for intensive therapy.",
+    "options": [
+      "Induction with standard 7+3 (daunorubicin and cytarabine) alone",
+      "Induction with CPX-351 (liposomal daunorubicin and cytarabine)",
+      "Induction with standard 7+3 combined with Midostaurin, followed by consolidation and allogeneic stem cell transplant in CR1",
+      "Induction with Azacitidine and Venetoclax",
+      "Induction with Gilteritinib monotherapy"
+    ],
+    "correct_answer": "C. Induction with standard 7+3 combined with Midostaurin, followed by consolidation and allogeneic stem cell transplant in CR1",
+    "explanation": "For patients with newly diagnosed FLT3-mutated AML (either ITD or TKD) who are fit for intensive chemotherapy, the standard of care is standard 7+3 induction combined with Midostaurin (a multi-kinase FLT3 inhibitor), based on the phase 3 RATIFY trial which showed a significant overall survival benefit. Because a high allelic ratio FLT3-ITD mutation without NPM1 mutation represents adverse-risk AML under ELN guidelines, allogeneic stem cell transplantation in first complete remission (CR1) is strongly indicated. CPX-351 (Option B) is indicated for therapy-related AML or AML with myelodysplasia-related changes, not de de novo FLT3-mutated AML. Azacitidine and Venetoclax (Option D) is for unfit patients. Gilteritinib (Option E) is currently approved as monotherapy in the relapsed/refractory setting, not first-line fit patients.",
+    "takeaway": "First-line treatment for fit patients with FLT3-mutated AML should include standard intensive induction chemotherapy supplemented with Midostaurin, followed by consolidation and consideration of allogeneic stem cell transplant in CR1."
+  },
+  {
+    "id": 36,
+    "code": "Q36",
+    "title": "High-Risk APL Cytoreduction",
+    "vignette": "A 32-year-old female presents with high-risk Acute Promyelocytic Leukemia (APL), defined by a white blood cell count of 15 x 10<sup>9</sup>/L and moderate coagulopathy. Fluorescence in situ hybridization (FISH) confirms PML-RARA. The patient immediately starts therapy.",
+    "options": [
+      "All-Trans Retinoic Acid (ATRA) and Arsenic Trioxide (ATO) combined with Gemtuzumab Ozogamicin or Anthracycline-based chemotherapy",
+      "All-Trans Retinoic Acid (ATRA) and Arsenic Trioxide (ATO) without any chemotherapy",
+      "Standard 7+3 daunorubicin and cytarabine induction",
+      "Single-agent Gemtuzumab Ozogamicin",
+      "High-dose Cytarabine consolidation alone"
+    ],
+    "correct_answer": "A. All-Trans Retinoic Acid (ATRA) and Arsenic Trioxide (ATO) combined with Gemtuzumab Ozogamicin or Anthracycline-based chemotherapy",
+    "explanation": "For low-to-intermediate-risk APL (WBC <= 10 x 10<sup>9</sup>/L), chemotherapy-free induction with ATRA and ATO is the gold standard (APL0406 trial). However, for high-risk APL (WBC > 10 x 10<sup>9</sup>/L), standard guidelines recommend adding a cytoreductive agent—typically Gemtuzumab Ozogamicin or an anthracycline (like Daunorubicin)—to ATRA and ATO to prevent early death from central nervous system hemorrhage or pulmonary leukostasis and to manage the high risk of differentiation syndrome. ATRA and ATO alone (Option B) is insufficient to control rapid leucocytosis in high-risk de novo disease. Standard 7+3 (Option C) is less effective and carries higher toxicity compared to ATRA/ATO backbones. Single-agent Gemtuzumab Ozogamicin (Option D) is not a standard first-line regimen alone.",
+    "takeaway": "High-risk APL (WBC > 10 x 10<sup>9</sup>/L) requires the addition of chemotherapy (such as anthracyclines) or Gemtuzumab Ozogamicin to the ATRA and ATO backbone to reduce early mortality."
+  },
+  {
+    "id": 37,
+    "code": "Q37",
+    "title": "Therapy-Related AML (t-AML) Liposomal Formulation",
+    "vignette": "A 68-year-old female presents with therapy-related Acute Myeloid Leukemia (t-AML) five years after receiving adjuvant chemotherapy (cyclophosphamide and docetaxel) for breast cancer. Her cytogenetics show a complex karyotype including monosomy 5 and deletion of 7q. She has an ECOG performance status of 1 and normal cardiac function.",
+    "options": [
+      "Standard 7+3 daunorubicin and cytarabine",
+      "CPX-351 (liposomal cytarabine and daunorubicin)",
+      "Azacitidine monotherapy",
+      "Intensive consolidation with High-Dose Cytarabine (HiDAC) alone",
+      "G-CSF primed low-dose cytarabine"
+    ],
+    "correct_answer": "B. CPX-351 (liposomal cytarabine and daunorubicin)",
+    "explanation": "CPX-351 is a dual-drug liposomal formulation delivering cytarabine and daunorubicin at a fixed 5:1 molar ratio. In a phase 3 trial of older adults (aged 60-75) with newly diagnosed therapy-related AML (t-AML), AML with a history of MDS, or AML with myelodysplasia-related changes, CPX-351 demonstrated significantly prolonged overall survival and higher rate of successful bridge to allogeneic stem cell transplant compared to standard 7+3 intensive chemotherapy. Standard 7+3 (Option A) has very poor efficacy in t-AML with adverse cytogenetics. Azacitidine (Option C) is an option but intensive treatment with CPX-351 is preferred in fit patients with t-AML as it offers a better chance of remission and subsequent transplantation.",
+    "takeaway": "CPX-351 is preferred over standard 7+3 for patients with newly diagnosed therapy-related AML (t-AML) or AML with myelodysplasia-related changes who are candidates for intensive therapy."
+  },
+  {
+    "id": 38,
+    "code": "Q38",
+    "title": "Favorable-Risk Post-Remission Strategy",
+    "vignette": "A 41-year-old de novo AML patient achieves complete remission (CR) after one cycle of 7+3 induction. Her cytogenetics show a normal karyotype, and molecular analysis is positive for NPM1 mutation but negative for FLT3-ITD. Under ELN guidelines, she is classified in the favorable-risk category.",
+    "options": [
+      "Referral for immediate allogeneic stem cell transplant (allo-SCT) in first complete remission (CR1)",
+      "Consolidation with 3 to 4 cycles of Intermediate-to-High-Dose Cytarabine (HIDAC) and monitoring of NPM1 minimal residual disease (MRD)",
+      "Oral Azacitidine maintenance for 1 year",
+      "Consolidation with autologous stem cell transplant",
+      "Standard dose cytarabine maintenance with G-CSF support"
+    ],
+    "correct_answer": "B. Consolidation with 3 to 4 cycles of Intermediate-to-High-Dose Cytarabine (HIDAC) and monitoring of NPM1 minimal residual disease (MRD)",
+    "explanation": "Patients in the favorable-risk category (such as de novo NPM1-mutated, FLT3-wild-type AML with normal cytogenetics) do not benefit from allogeneic stem cell transplant (allo-SCT) in CR1 due to the risk of transplant-related mortality outweighing the benefit (relapse risk is relatively low). The standard recommendation is consolidation with 3-4 cycles of Intermediate-to-High-Dose Cytarabine (1.5 to 3.0 g/m<sup>2</sup>) and regular molecular monitoring of NPM1 transcript levels in peripheral blood or bone marrow by qPCR to detect early relapse. Allo-SCT (Option A) is reserved for intermediate or adverse-risk categories in CR1. Oral Azacitidine maintenance (Option C) is used for patients who are not candidates for consolidative transplant or intensive therapy. Autologous transplant (Option D) is generally not preferred over high-dose cytarabine in favorable risk de novo AML.",
+    "takeaway": "Favorable-risk AML patients in CR1 should receive intermediate-to-high-dose cytarabine consolidation rather than upfront allogeneic stem cell transplant, alongside close molecular MRD monitoring."
+  },
+  {
+    "id": 39,
+    "code": "Q39",
+    "title": "Relapsed IDH2 Mutation Salvage",
+    "vignette": "A 66-year-old male with relapsed Acute Myeloid Leukemia (AML) is found to have an IDH2 (isocitrate dehydrogenase 2) mutation. He is not a candidate for intensive salvage chemotherapy due to age and reduced performance status. What is the most appropriate targeted therapy?",
+    "options": [
+      "Ivosidenib",
+      "Enasidenib",
+      "Gilteritinib",
+      "Midostaurin",
+      "Venetoclax monotherapy"
+    ],
+    "correct_answer": "B. Enasidenib",
+    "explanation": "Enasidenib is an oral, small-molecule inhibitor of the mutated IDH2 enzyme. It is specifically approved for patients with relapsed or refractory AML harboring an IDH2 mutation. Ivosidenib (Option A) is a targeted inhibitor of mutated IDH1, not IDH2. Gilteritinib (Option C) is a FLT3 inhibitor and is used for FLT3-mutated relapsed/refractory AML. Midostaurin (Option D) is approved for de novo FLT3-mutated AML in combination with chemotherapy, not as single-agent salvage for IDH2. Venetoclax monotherapy (Option E) has limited activity as a single agent in the relapsed/refractory setting.",
+    "takeaway": "Relapsed or refractory AML with an IDH2 mutation can be treated with the targeted IDH2 inhibitor Enasidenib."
+  },
+  {
+    "id": 40,
+    "code": "Q40",
+    "title": "Relapsed FLT3-ITD Positive Salvage",
+    "vignette": "A 55-year-old female experiences a relapse of her Acute Myeloid Leukemia (AML) 9 months after achieving CR1. Molecular screening at relapse is positive for a FLT3-ITD mutation. She has an ECOG performance status of 1. Which therapy has demonstrated superior overall survival compared to salvage chemotherapy in this setting?",
+    "options": [
+      "Gilteritinib",
+      "Midostaurin",
+      "Sorafenib",
+      "CPX-351",
+      "Azacitidine combined with Venetoclax"
+    ],
+    "correct_answer": "A. Gilteritinib",
+    "explanation": "In the phase 3 ADMIRAL trial, Gilteritinib (a highly potent, selective, oral FLT3 inhibitor with activity against both FLT3-ITD and FLT3-TKD mutations) demonstrated significantly longer overall survival and higher rates of complete remission compared to investigator-choice salvage chemotherapy in patients with relapsed or refractory FLT3-mutated AML. Midostaurin (Option B) is approved for de novo AML but is not indicated as monotherapy in the relapsed/refractory setting. Sorafenib (Option C) is a first-generation multikinase inhibitor with off-label FLT3 activity but lacks the robust survival data of gilteritinib. CPX-351 (Option D) is for de novo therapy-related AML or AML-MRC, not relapsed FLT3 AML. Azacitidine and Venetoclax (Option E) is a non-intensive option but gilteritinib is the preferred targeted agent for relapsed/refractory FLT3-mutated AML.",
+    "takeaway": "Gilteritinib is the standard of care for relapsed/refractory FLT3-mutated AML, demonstrating superior survival over salvage chemotherapy."
+  },
+  {
+    "id": 41,
+    "code": "Q41",
+    "title": "APL Coagulopathy Management",
+    "vignette": "A 28-year-old male with newly diagnosed Acute Promyelocytic Leukemia (APL) is started on All-Trans Retinoic Acid (ATRA). His initial coagulation profile shows: PT 22s, APTT 48s, Fibrinogen 0.9 g/L, and Platelets 22 x 10<sup>9</sup>/L. What is the standard supportive care target in APL to minimize early hemorrhagic death?",
+    "options": [
+      "Maintain fibrinogen above 1.5 g/L and platelet count above 50 x 10<sup>9</sup>/L with aggressive platelet and cryoprecipitate transfusions.",
+      "Initiate immediate therapeutic anticoagulation with therapeutic unfractionated heparin.",
+      "Administer Tranexamic Acid (antifibrinolytic) continuously until coagulopathy resolves.",
+      "Maintain fibrinogen above 1.0 g/L and platelet count above 20 x 10<sup>9</sup>/L, standard for non-APL AML.",
+      "Recombinant activated Factor VII (rFVIIa) should be administered as first-line supportive therapy."
+    ],
+    "correct_answer": "A. Maintain fibrinogen above 1.5 g/L and platelet count above 50 x 10<sup>9</sup>/L with aggressive platelet and cryoprecipitate transfusions.",
+    "explanation": "The primary cause of early death in APL is severe coagulopathy leading to catastrophic hemorrhage (typically intracranial or pulmonary). To prevent this, supportive care guidelines are highly aggressive, mandating transfusion support to maintain a platelet count above 50 x 10<sup>9</sup>/L and fibrinogen above 1.5 g/L (using cryoprecipitate or fibrinogen concentrate) until coagulopathy is fully corrected, with daily monitoring. Standard non-APL targets (Option D) are insufficient in APL. Heparin (Option B) does not prevent early hemorrhagic death and may worsen bleeding. Antifibrinolytics like Tranexamic Acid (Option C) are generally avoided due to the theoretical risk of thromboembolic complications unless bleeding is uncontrollable. Activated Factor VII (Option E) is not recommended first-line due to thrombotic risks.",
+    "takeaway": "Preventing fatal bleeding in APL requires maintaining platelet counts above 50 x 10<sup>9</sup>/L and fibrinogen above 1.5 g/L through aggressive, pro-active transfusions."
+  },
+  {
+    "id": 42,
+    "code": "Q42",
+    "title": "Tumor Lysis Syndrome (TLS) Prophylaxis",
+    "vignette": "A 45-year-old male is admitted with a new diagnosis of Acute Myeloid Leukemia (AML). His white blood cell count is 145 x 10<sup>9</sup>/L, LDH is 2800 U/L, uric acid is 680 micromol/L, and creatinine is 110 micromol/L. He is assessed as being at high risk for Tumor Lysis Syndrome (TLS) prior to starting cytoreductive therapy. What is the most appropriate prophylactic agent to prevent uric acid crystallization?",
+    "options": [
+      "Allopurinol 300 mg daily with standard oral hydration",
+      "Rasburicase (recombinant urate oxidase) alongside aggressive intravenous hydration",
+      "Hydroxycarbamide alone without hydration",
+      "Low-dose cytarabine",
+      "Sodium bicarbonate infusion to alkalinize the urine"
+    ],
+    "correct_answer": "B. Rasburicase (recombinant urate oxidase) alongside aggressive intravenous hydration",
+    "explanation": "In patients with a high tumor burden (such as AML with hyperleukocytosis, defined as WBC > 100 x 10<sup>9</sup>/L, and highly elevated LDH), there is an extremely high risk of spontaneous or chemotherapy-induced Tumor Lysis Syndrome (TLS). Rasburicase (a recombinant urate oxidase) is indicated for patients at high risk of TLS as it rapidly converts existing uric acid into allantoin, which is highly water-soluble and easily excreted by the kidneys. Allopurinol (Option A) only prevents the formation of new uric acid by inhibiting xanthine oxidase, but does not degrade existing uric acid, making it insufficient for immediate prophylaxis in high-risk hyperleukocytic presentations. Sodium bicarbonate urinary alkalinization (Option E) is no longer recommended because it can promote calcium phosphate precipitation in renal tubules.",
+    "takeaway": "High-risk TLS in hyperleukocytic AML requires Rasburicase prophylaxis alongside aggressive intravenous hydration to rapidly degrade circulating uric acid."
+  },
+  {
+    "id": 43,
+    "code": "Q43",
+    "title": "Neutropenic Fever & G-CSF in AML Induction",
+    "vignette": "A 39-year-old female undergoing induction chemotherapy (7+3) for AML develops severe neutropenic fever on day 12 of treatment. She is started on broad-spectrum IV antibiotics. Her ANC is 0.1 x 10<sup>9</sup>/L. The registrar asks whether Granulocyte Colony-Stimulating Factor (G-CSF) should be routinely administered to accelerate neutrophil recovery.",
+    "options": [
+      "Yes, G-CSF should be started immediately in all patients with ANC < 0.5 x 10<sup>9</sup>/L during AML induction.",
+      "No, routine use of G-CSF during induction chemotherapy for AML is not recommended as it does not improve overall survival or CR rates.",
+      "Yes, G-CSF should be given to prevent leukemic blast proliferation.",
+      "Yes, G-CSF combined with subcutaneous cytarabine is standard supportive care.",
+      "No, G-CSF is contraindicated in AML because it causes permanent stem cell exhaustion."
+    ],
+    "correct_answer": "B. No, routine use of G-CSF during induction chemotherapy for AML is not recommended as it does not improve overall survival or CR rates.",
+    "explanation": "Although G-CSF can shorten the duration of neutropenia and reduce hospitalization by a few days during AML induction, large clinical trials have demonstrated that its routine use does not improve complete remission (CR) rates, relapse-free survival, or overall survival. Therefore, standard guidelines do not recommend the routine prophylactic use of G-CSF during AML induction. It can be considered in specific life-threatening infectious complications or in the consolidation phase. G-CSF does not cause permanent stem cell exhaustion (Option E), nor is it used to proliferate blasts as a standard treatment strategy outside of specific priming protocols (Option C).",
+    "takeaway": "Routine G-CSF administration during AML induction is not recommended because it fails to translate into improved remission rates or overall survival."
+  },
+  {
+    "id": 44,
+    "code": "Q44",
+    "title": "TP53 Mutation Induction Strategy",
+    "vignette": "A 72-year-old female presents with de novo Acute Myeloid Leukemia (AML). Cytogenetic and molecular screening shows a TP53 mutation associated with a monosomal karyotype. She has an ECOG performance status of 2. What is the most appropriate treatment strategy?",
+    "options": [
+      "Intensive induction with 7+3 (daunorubicin and cytarabine) followed by myeloablative transplant",
+      "Azacitidine combined with Venetoclax or enrollment in a clinical trial",
+      "High-Dose Cytarabine (HiDAC) consolidation monotherapy",
+      "Best supportive care with hydroxycarbamide alone, avoiding any hypomethylating agents",
+      "Gemtuzumab Ozogamicin monotherapy"
+    ],
+    "correct_answer": "B. Azacitidine combined with Venetoclax or enrollment in a clinical trial",
+    "explanation": "AML with mutated TP53 or complex/monosomal karyotypes is associated with an extremely poor prognosis and a high rate of resistance to standard intensive chemotherapy (less than 20% complete remission rates and median survival of under 6 months). For an older patient (age 72) with an ECOG of 2, intensive chemotherapy (Option A) is associated with high treatment-related mortality and virtually no long-term survival benefit. Treatment with a hypomethylating agent (such as Azacitidine) combined with Venetoclax, or enrollment in clinical trials investigating novel therapies (like magrolimab or APR-246), is the preferred and most realistic management strategy, balancing quality of life with disease control. Gemtuzumab Ozogamicin (Option E) is not effective in TP53-mutated AML as these cases typically lack CD33 expression and have active drug-efflux pumps.",
+    "takeaway": "TP53-mutated AML represents an adverse-risk category with extreme resistance to intensive chemotherapy; non-intensive therapy with Azacitidine and Venetoclax or clinical trial participation is preferred."
+  },
+  {
+    "id": 45,
+    "code": "Q45",
+    "title": "CD33 Targeted Induction Addition",
+    "vignette": "A 42-year-old female presents with newly diagnosed de novo AML. Her cytogenetics reveal t(8;21)(q22;q22.1). Flow cytometry shows that 95% of her leukemic myeloblasts express CD33. What is the most appropriate addition to her induction chemotherapy?",
+    "options": [
+      "Midostaurin",
+      "Gemtuzumab Ozogamicin",
+      "Ivosidenib",
+      "Sorafenib",
+      "Venetoclax"
+    ],
+    "correct_answer": "B. Gemtuzumab Ozogamicin",
+    "explanation": "Gemtuzumab Ozogamicin (GO) is an antibody-drug conjugate targeting CD33. Meta-analyses of clinical trials (such as the ALFA-0701 trial) have shown that the addition of GO to standard 7+3 induction chemotherapy provides a significant relapse-free and overall survival benefit specifically in patients with favorable-risk (such as core-binding factor AML, including t(8;21) or inv(16)) and intermediate-risk cytogenetics. Midostaurin (Option A) is for FLT3-mutated AML, not de novo core-binding factor AML. Ivosidenib (Option C) is for IDH1-mutated AML. Sorafenib (Option D) is not approved in this setting. Venetoclax (Option E) is not standardly added to intensive induction for favorable-risk core-binding factor AML in first-line settings.",
+    "takeaway": "Adding Gemtuzumab Ozogamicin to standard induction chemotherapy significantly improves survival outcomes in patients with favorable and intermediate-risk cytogenetics (including core-binding factor AML)."
+  },
+  {
+    "id": 46,
+    "code": "Q46",
+    "title": "Unfit Elderly with Cardiac Comorbidities",
+    "vignette": "An 82-year-old male with a new diagnosis of Acute Myeloid Leukemia (AML) presents with pancytopenia and 30 percent blasts in the bone marrow. He has severe congestive heart failure and a left ventricular ejection fraction of 30%. Which treatment strategy has been shown to improve overall survival compared to azacitidine alone for this patient?",
+    "options": [
+      "Reduced-dose 7+3 chemotherapy",
+      "Azacitidine combined with Venetoclax",
+      "Low-dose cytarabine monotherapy",
+      "Single-agent Daunorubicin with dexrazoxane protection",
+      "Best supportive care with transfusions and hydroxycarbamide"
+    ],
+    "correct_answer": "B. Azacitidine combined with Venetoclax",
+    "explanation": "The VIALE-A phase 3 clinical trial demonstrated that the combination of Azacitidine and Venetoclax significantly improved the rate of complete remission (66.4% vs 28.3%) and prolonged median overall survival (14.7 months vs 9.6 months) compared to Azacitidine monotherapy in patients with newly diagnosed AML who were ineligible for intensive chemotherapy due to age or comorbidities (such as severe cardiac dysfunction). Standard anthracycline-based induction (Option A or D) is contraindicated due to his severe congestive heart failure and LVEF (standard anthracycline threshold is LVEF > 50%). Low-dose cytarabine (Option C) is less effective.",
+    "takeaway": "Azacitidine combined with Venetoclax is the first-line standard of care for older or unfit AML patients, showing significant survival advantages over monotherapy."
+  },
+  {
+    "id": 47,
+    "code": "Q47",
+    "title": "CNS Surveillance & Prophylaxis",
+    "vignette": "A 43-year-old male presenting with de novo Acute Monoblastic Leukemia (AML-M5) has an initial white blood cell count of 120 x 109/L. After successful induction with standard 7+3, he achieves complete remission. Given his high risk of central nervous system (CNS) involvement, what is the recommended approach for CNS surveillance and prophylaxis?",
+    "options": [
+      "Routine brain MRI every 3 months",
+      "Lumbar puncture for cerebrospinal fluid (CSF) analysis at the time of remission, followed by intrathecal chemotherapy (methotrexate or cytarabine) prophylaxis",
+      "Prophylactic whole-brain radiation therapy",
+      "High-dose oral dexamethasone throughout consolidation",
+      "Standard system-wide High-Dose Cytarabine (HiDAC) consolidation is sufficient; lumbar puncture is contraindicated"
+    ],
+    "correct_answer": "B. Lumbar puncture for cerebrospinal fluid (CSF) analysis at the time of remission, followed by intrathecal chemotherapy (methotrexate or cytarabine) prophylaxis",
+    "explanation": "Patients with monocytic/monoblastic AML (AML-M5) and those presenting with high white blood cell counts (hyperleukocytosis) are at a significantly increased risk of developing extramedullary disease, particularly central nervous system (CNS) leukemia. Standard management guidelines recommend performing a screening lumbar puncture to analyze the CSF once complete remission is achieved, followed by prophylactic intrathecal chemotherapy (such as cytarabine, methotrexate, or triple intrathecal therapy) to prevent CNS relapse. Whole-brain radiation (Option C) is highly toxic and not used as standard prophylaxis. Systemic HiDAC (Option E) penetrates the blood-brain barrier but does not fully eliminate the need for direct intrathecal evaluation and prophylaxis in high-risk monocytic cases.",
+    "takeaway": "High-risk AML variants (especially monocytic subtypes with hyperleukocytosis) require lumbar puncture screening at remission and proactive intrathecal chemoprophylaxis to prevent CNS relapse."
+  },
+  {
+    "id": 48,
+    "code": "Q48",
+    "title": "Post-Transplant Relapse Immunotherapy",
+    "vignette": "A 44-year-old female relapses with Acute Myeloid Leukemia (AML) 6 months after receiving an allogeneic stem cell transplant (allo-SCT) from her HLA-matched sibling donor. She has stable graft-versus-host disease (GVHD). Chimerism analysis shows 40% donor cells (mixed chimerism). What is the first-line therapeutic approach to induce a graft-versus-leukemia effect?",
+    "options": [
+      "Immediate second myeloablative allogeneic stem cell transplant",
+      "T-cell depleted donor lymphocyte infusion (DLI) or targeted salvage therapy followed by DLI",
+      "High-dose systemic intensive chemotherapy alone",
+      "Discontinuation of all immunosuppression to trigger acute GVHD",
+      "Localized radiation to the bone marrow"
+    ],
+    "correct_answer": "B. T-cell depleted donor lymphocyte infusion (DLI) or targeted salvage therapy followed by DLI",
+    "explanation": "For patients relapsing post-allogeneic stem cell transplant with mixed chimerism and no active, uncontrolled GVHD, the goal is to re-establish donor chimerism and trigger a graft-versus-leukemia (GVL) effect using Donor Lymphocyte Infusion (DLI), often preceded by cytoreductive targeted salvage or low-dose chemotherapy (such as Azacitidine) to lower the tumor burden. Discontinuing immunosuppression alone (Option D) is dangerous if not done systematically and is rarely sufficient as a single measure for frank leukemic relapse. A second transplant (Option A) has high treatment-related mortality and is reserved for select cases that fail DLI. High-dose chemotherapy alone (Option C) has very poor long-term efficacy post-transplant relapse without immunological intervention.",
+    "takeaway": "Management of post-transplant AML relapse utilizes donor lymphocyte infusions (DLI), often combined with hypomethylating agents, to exploit the immunotherapeutic graft-versus-leukemia effect."
+  },
+  {
+    "id": 49,
+    "code": "Q49",
+    "title": "Post-Remission Oral Maintenance",
+    "vignette": "A 67-year-old male achieved complete remission (CR) with standard induction and 2 cycles of intermediate-dose cytarabine consolidation for de novo AML. He is not considered a candidate for allogeneic stem cell transplant due to age and patient preference. Which maintenance therapy has demonstrated a significant overall survival benefit in this population?",
+    "options": [
+      "Subcutaneous low-dose cytarabine maintenance",
+      "Oral Azacitidine (CC-486)",
+      "Intravenous Decitabine every 4 weeks indefinitely",
+      "Oral Hydroxycarbamide",
+      "Maintenance therapy is not indicated; observation is the standard of care."
+    ],
+    "correct_answer": "B. Oral Azacitidine (CC-486)",
+    "explanation": "The phase 3 QUAZAR AML-001 trial showed that oral Azacitidine (CC-486) as maintenance therapy significantly prolonged overall survival (24.7 months vs 14.8 months) and relapse-free survival compared to placebo in patients aged 55 years or older with AML in first complete remission (CR) or complete remission with incomplete blood count recovery (CRi) after intensive chemotherapy, who were not candidates for or chose not to undergo allogeneic stem cell transplant. CC-486 has a distinct pharmacokinetic profile and is not interchangeable with injectable Azacitidine (Option C or other formulations). Observation (Option E) was the former standard, but oral Azacitidine maintenance is now recommended.",
+    "takeaway": "Oral Azacitidine (CC-486) is the first maintenance therapy to show a significant overall survival benefit for older AML patients in complete remission who are not candidates for consolidative stem cell transplant."
+  },
+  {
+    "id": 50,
+    "code": "Q50",
+    "title": "Pharmacokinetic Drug Interactions (Venetoclax / Posaconazole)",
+    "vignette": "A 71-year-old male with newly diagnosed AML is treated with Azacitidine and Venetoclax. On day 5 of therapy, he is diagnosed with a severe invasive Aspergillus pulmonary infection and is started on therapeutic oral Posaconazole (a strong CYP3A4 inhibitor). What dosage adjustment is mandatory for Venetoclax to prevent severe, prolonged myelosuppression?",
+    "options": [
+      "No adjustment is required; Venetoclax is not metabolized by the liver",
+      "Reduce the Venetoclax dose by approximately 75 percent (specifically 75%, e.g., from 400 mg to 100 mg daily)",
+      "Increase the Venetoclax dose to overcome competitive enzyme inhibition",
+      "Discontinue Azacitidine immediately but keep Venetoclax at full dose",
+      "Double the dose of Posaconazole to clear Venetoclax faster"
+    ],
+    "correct_answer": "B. Reduce the Venetoclax dose by approximately 75 percent (specifically 75%, e.g., from 400 mg to 100 mg daily)",
+    "explanation": "Venetoclax is primarily metabolized by the cytochrome P450 enzyme CYP3A4. Concomitant administration of strong CYP3A4 inhibitors (such as Posaconazole, Voriconazole, Ketoconazole, or Clarithromycin) dramatically increases Venetoclax plasma concentration (up to 4-fold), posing an extreme risk of life-threatening tumor lysis syndrome, severe neutropenia, and thrombocytopenia. Product guidelines mandate a 75 percent (specifically 75%) dose reduction of Venetoclax (reducing a standard 400 mg dose to 100 mg daily, or a 100 mg dose to 50 mg/20 mg depending on the clinical target) when co-administered with a strong CYP3A4 inhibitor.",
+    "takeaway": "Co-administration of Venetoclax with strong CYP3A4 inhibitors (like Posaconazole) requires a mandatory 75 percent (specifically 75%) dose reduction of Venetoclax to avoid severe, toxic myelosuppression."
+  },
+  {
+    "id": 51,
+    "code": "Q51",
+    "title": "Relapsed APL Salvage",
+    "vignette": "A 34-year-old male presents with relapsed Acute Promyelocytic Leukemia (APL) 18 months after completing first-line therapy with All-Trans Retinoic Acid (ATRA) and Anthracycline-based chemotherapy (LPA99 protocol). Molecular testing confirms PML-RARA positivity. What is the preferred salvage induction therapy?",
+    "options": [
+      "Re-induction with ATRA and Anthracycline-based chemotherapy (Idarubicin)",
+      "Arsenic Trioxide (ATO) with or without ATRA",
+      "Standard de novo AML 7+3 chemotherapy",
+      "Allogeneic stem cell transplant immediately without inducing second remission",
+      "High-dose oral Dexamethasone monotherapy"
+    ],
+    "correct_answer": "B. Arsenic Trioxide (ATO) with or without ATRA",
+    "explanation": "For patients relapsing after first-line APL therapy who have not previously received Arsenic Trioxide (ATO), salvage therapy with Arsenic Trioxide (ATO), with or without ATRA, is highly effective, inducing complete molecular remission in over 85 percent (specifically 85%) of cases. Once a second molecular remission is achieved, consolidation can be followed by autologous stem cell transplant (or allogeneic transplant in patients with early relapse or persistent molecular positivity). Standard de novo chemotherapy (Option C) is less effective and carries unnecessary cardiotoxic risks. Immediate allogeneic transplant (Option E) should not be performed in active, uncontrolled relapse.",
+    "takeaway": "Arsenic Trioxide (ATO) is the salvage therapy of choice for patients with relapsed APL who have not previously been exposed to ATO."
+  },
+  {
+    "id": 52,
+    "code": "Q52",
+    "title": "TP53 mutated secondary MDS Transformation",
+    "vignette": "A 69-year-old male with a history of Myelodysplastic Syndrome (MDS) presents with transformation to Acute Myeloid Leukemia (AML) with 32 percent blasts in the bone marrow. Mutational testing reveals a TP53 mutation and cytogenetics reveal a complex monosomal karyotype. He is not a candidate for allogeneic stem cell transplantation. What is the standard non-intensive regimen associated with the best balance of tolerability and efficacy in this molecular subtype?",
+    "options": [
+      "Single-agent High-Dose Cytarabine",
+      "CPX-351 liposomal chemotherapy",
+      "Decitabine (10-day regimen) or Azacitidine combined with Venetoclax",
+      "Gemtuzumab Ozogamicin combined with low-dose cytarabine",
+      "Hydroxycarbamide monotherapy indefinitely"
+    ],
+    "correct_answer": "C. Decitabine (10-day regimen) or Azacitidine combined with Venetoclax",
+    "explanation": "For older patients with secondary AML (arising from MDS) or TP53-mutated AML who are unfit for intensive options like transplantation or CPX-351 (which is only beneficial if a transplant is planned), non-intensive hypomethylating agent-based therapies are preferred. Decitabine (often given as a 10-day regimen) or Azacitidine combined with Venetoclax provides a reasonable balance of tolerability and response, though TP53-mutated disease remains highly resistant. CPX-351 (Option B) is intensive and associated with prolonged cytopenias; it is not recommended if the patient is not a candidate for a subsequent consolidative allogeneic stem cell transplant.",
+    "takeaway": "For unfit patients with TP53-mutated secondary AML, non-intensive hypomethylating agent-based therapy (such as Azacitidine and Venetoclax) remains the standard treatment."
+  },
+  {
+    "id": 53,
+    "code": "Q53",
+    "title": "Anthracycline-Induced LVEF Drops",
+    "vignette": "A 48-year-old de novo AML patient completes induction chemotherapy with 7+3 (daunorubicin at 60 mg/m2 daily for 3 days). He is scheduled for 3 cycles of consolidation therapy using Intermediate-Dose Cytarabine. During his pre-consolidation assessment, his baseline echocardiogram shows a left ventricular ejection fraction (LVEF) of 42% (baseline was 55% before induction). He is completely asymptomatic.",
+    "options": [
+      "Proceed with consolidative cytarabine as planned; cytarabine has no significant cardiotoxicity",
+      "Administer consolidative cytarabine but switch daunorubicin to idarubicin for consolidation",
+      "Halt all therapy and start high-dose beta-blockers immediately",
+      "Proceed with consolidation, but add Gemtuzumab Ozogamicin to protect the heart",
+      "Repeat induction chemotherapy with standard dose daunorubicin"
+    ],
+    "correct_answer": "A. Proceed with consolidative cytarabine as planned; cytarabine has no significant cardiotoxicity",
+    "explanation": "Intermediate-to-high-dose Cytarabine (the standard consolidation agent in AML) does not carry significant myocardial toxicity or risk of exacerbating anthracycline-induced left ventricular dysfunction. Therefore, consolidative cytarabine can be safely administered as planned despite the drop in LVEF. Further anthracyclines (such as daunorubicin or idarubicin) must be avoided, as cumulative anthracycline exposure is the primary driver of myocardial damage (Option B is incorrect). Switch to supportive cardiac care (Option C) is not required to halt cytarabine-based consolidation.",
+    "takeaway": "Cytarabine consolidation does not cause myocardial damage and can be safely administered even in patients experiencing anthracycline-induced drops in left ventricular ejection fraction."
+  },
+  {
+    "id": 54,
+    "code": "Q54",
+    "title": "AML-001 (Board Review Set 1)",
+    "vignette": "A 42-year-old woman presents with bruising and gum bleeding. FBC shows Hb 82 g/L, WBC 28 x 109/L, platelets 18 x 109/L. Blood film shows abnormal promyelocytes with heavy granulation and bundles of Auer rods. Coagulation screen shows prolonged PT, prolonged APTT, low fibrinogen and high D-dimer. What is the most important immediate treatment?",
+    "options": [
+      "Daunorubicin and cytarabine",
+      "All-trans retinoic acid",
+      "Imatinib",
+      "Rituximab",
+      "Hydroxycarbamide only"
+    ],
+    "correct_answer": "B. All-trans retinoic acid",
+    "explanation": "This is acute promyelocytic leukaemia. ATRA should be started immediately because early death is commonly due to DIC-related bleeding.",
+    "takeaway": "Suspected APL = start ATRA first, confirm genetics after."
+  },
+  {
+    "id": 55,
+    "code": "Q55",
+    "title": "AML-002 (Board Review Set 1)",
+    "vignette": "A 55-year-old man has AML. Cytogenetics shows t(8;21)(q22;q22). Which fusion gene is expected?",
+    "options": [
+      "PML::RARA",
+      "RUNX1::RUNX1T1",
+      "CBFB::MYH11",
+      "BCR::ABL1",
+      "KMT2A::AFF1"
+    ],
+    "correct_answer": "B. RUNX1::RUNX1T1",
+    "explanation": "t(8;21) produces RUNX1::RUNX1T1 and is a core-binding factor AML.",
+    "takeaway": "t(8;21) and inv(16) are classic favourable-risk AML groups."
+  },
+  {
+    "id": 56,
+    "code": "Q56",
+    "title": "AML-003 (Board Review Set 1)",
+    "vignette": "A marrow aspirate shows 16% blasts with multilineage dysplasia. There is no AML-defining genetic abnormality. What is the best diagnosis?",
+    "options": [
+      "AML",
+      "MDS with excess blasts",
+      "Aplastic anaemia",
+      "CML blast crisis",
+      "ALL"
+    ],
+    "correct_answer": "B. MDS with excess blasts",
+    "explanation": "Without AML-defining genetics, AML generally requires >=20% blasts. Sixteen percent blasts with dysplasia fits MDS with excess blasts.",
+    "takeaway": "Always check the blast percentage before calling AML."
+  },
+  {
+    "id": 57,
+    "code": "Q57",
+    "title": "AML-004 (Board Review Set 1)",
+    "vignette": "A patient with AML has NPM1 mutation and no FLT3-ITD. What is the usual ELN risk group?",
+    "options": [
+      "Favourable",
+      "Intermediate",
+      "Adverse",
+      "Therapy-related",
+      "Not classifiable"
+    ],
+    "correct_answer": "A. Favourable",
+    "explanation": "NPM1-mutated AML without FLT3-ITD is generally favourable risk.",
+    "takeaway": "NPM1 must be interpreted together with FLT3 status."
+  },
+  {
+    "id": 58,
+    "code": "Q58",
+    "title": "AML-005 (Board Review Set 1)",
+    "vignette": "Which flow cytometry pattern best supports AML?",
+    "options": [
+      "CD19+, CD10+, TdT+",
+      "CD3+, CD7+, cytoplasmic CD3+",
+      "CD13+, CD33+, MPO+",
+      "CD5+, CD23+, CD200+",
+      "CD138+, CD38 bright, kappa restricted"
+    ],
+    "correct_answer": "C. CD13+, CD33+, MPO+",
+    "explanation": "CD13, CD33 and MPO support myeloid lineage.",
+    "takeaway": "MPO positivity is a strong marker of myeloid differentiation."
+  },
+  {
+    "id": 59,
+    "code": "Q59",
+    "title": "AML-006 (Board Review Set 1)",
+    "vignette": "A patient with AML has inv(16)(p13q22). Which feature is most associated with this subtype?",
+    "options": [
+      "Faggot cells",
+      "Abnormal eosinophils",
+      "Basophilia",
+      "Smudge cells",
+      "Rouleaux formation"
+    ],
+    "correct_answer": "B. Abnormal eosinophils",
+    "explanation": "inv(16) produces CBFB::MYH11 and is associated with abnormal eosinophils.",
+    "takeaway": "AML with eosinophilia should make you think of inv(16)."
+  },
+  {
+    "id": 60,
+    "code": "Q60",
+    "title": "AML-007 (Board Review Set 1)",
+    "vignette": "A 68-year-old patient is newly diagnosed with AML but is unfit for intensive chemotherapy. Which is the most appropriate treatment approach?",
+    "options": [
+      "R-CHOP",
+      "Azacitidine plus venetoclax",
+      "Imatinib",
+      "Observation only",
+      "High-dose methotrexate"
+    ],
+    "correct_answer": "B. Azacitidine plus venetoclax",
+    "explanation": "Older or unfit patients are commonly treated with hypomethylating agent plus venetoclax.",
+    "takeaway": "AML treatment starts with fitness assessment."
+  },
+  {
+    "id": 61,
+    "code": "Q61",
+    "title": "AML-008 (Board Review Set 1)",
+    "vignette": "Which genetic abnormality is strongly associated with adverse-risk AML?",
+    "options": [
+      "NPM1 mutation without FLT3-ITD",
+      "t(8;21)",
+      "inv(16)",
+      "TP53 mutation",
+      "Biallelic CEBPA mutation"
+    ],
+    "correct_answer": "D. TP53 mutation",
+    "explanation": "TP53-mutated AML is associated with poor response, complex karyotype and adverse prognosis.",
+    "takeaway": "TP53 AML behaves badly even when morphology looks ordinary."
+  },
+  {
+    "id": 62,
+    "code": "Q62",
+    "title": "AML-009 (Board Review Set 1)",
+    "vignette": "A patient has AML with WBC 180 x 109/L, headache, confusion and hypoxia. What complication is most likely?",
+    "options": [
+      "Autoimmune haemolysis",
+      "Leukostasis",
+      "Cold agglutinin disease",
+      "Iron deficiency",
+      "Pure red cell aplasia"
+    ],
+    "correct_answer": "B. Leukostasis",
+    "explanation": "Hyperleukocytosis with respiratory or neurological symptoms suggests leukostasis.",
+    "takeaway": "Leukostasis is a clinical emergency, not just a high WBC number."
+  },
+  {
+    "id": 63,
+    "code": "Q63",
+    "title": "AML-010 (Board Review Set 1)",
+    "vignette": "A blood film shows neutrophilia, toxic granulation and Döhle bodies, but no blasts. What is the most likely diagnosis?",
+    "options": [
+      "AML",
+      "Reactive neutrophilia",
+      "APL",
+      "MDS-EB",
+      "ALL"
+    ],
+    "correct_answer": "B. Reactive neutrophilia",
+    "explanation": "Toxic granulation and Döhle bodies are reactive changes, commonly seen in infection.",
+    "takeaway": "Do not diagnose AML without blasts or supportive marrow/flow evidence."
+  }
+]

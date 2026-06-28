@@ -1,0 +1,41 @@
+[
+  {
+    "id": 75,
+    "code": "AML075",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Molecular Genetics",
+    "subsection": "RAS pathway mutations",
+    "title": "PTPN11 and RAS pathway mutations in AML",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 360,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Interpret molecular findings in AML",
+      "Distinguish diagnostic, prognostic and clonal markers",
+      "Apply integrated consultant-level reporting principles"
+    ],
+    "clinical_vignette": "A 55-year-old man has AML with NPM1 mutation. NGS also detects PTPN11 mutation and NRAS mutation. FLT3-ITD is negative.",
+    "question": "How should PTPN11/NRAS mutations be interpreted?",
+    "options": [
+      "A. They are cooperating signalling pathway mutations and should be integrated with the main AML-defining lesion.",
+      "B. They define acute promyelocytic leukaemia.",
+      "C. They prove MPAL.",
+      "D. They exclude NPM1-mutated AML.",
+      "E. They replace cytogenetic analysis."
+    ],
+    "correct_answer": "A. They are cooperating signalling pathway mutations and should be integrated with the main AML-defining lesion.",
+    "explanation": "PTPN11 and RAS pathway mutations are recurrent cooperating lesions in AML. They may affect biology and prognosis but usually do not define the diagnostic AML entity alone.",
+    "why_other_options_are_wrong": {},
+    "frcpath_pearl": "Classify the AML first, then interpret cooperating signalling mutations.",
+    "take_home_message": "Molecular findings in AML must be interpreted in diagnostic hierarchy and clinical context.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "European LeukemiaNet Recommendations"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": 58,
+    "code": "AML058",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Cytogenetics",
+    "difficulty": "Consultant",
+    "question_type": "Single best answer",
+    "title": "Complex karyotype AML",
+    "question": "Which statement best describes complex karyotype AML?",
+    "options": [
+      "Defined by \u22653 unrelated chromosomal abnormalities in the absence of another defining recurrent genetic abnormality.",
+      "Defined by any TP53 mutation.",
+      "Defined by inv(16).",
+      "Defined by isolated trisomy 8.",
+      "Defined by t(8;21)."
+    ],
+    "correct_answer": "A. Defined by \u22653 unrelated chromosomal abnormalities in the absence of another defining recurrent genetic abnormality.",
+    "explanation": "Complex karyotype AML is characterised by multiple unrelated cytogenetic abnormalities and is associated with adverse biology.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  }
+]
