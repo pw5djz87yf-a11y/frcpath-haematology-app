@@ -1,0 +1,385 @@
+[
+  {
+    "id": 36,
+    "code": "AML036",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "subsection": "Minimal differentiation and lineage assignment",
+    "title": "AML with minimal differentiation versus acute lymphoblastic leukaemia",
+    "difficulty": "Examiner",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 180,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Apply immunophenotypic criteria for assigning myeloid lineage in acute leukaemia",
+      "Distinguish AML with minimal differentiation from B-ALL and T-ALL",
+      "Recognise the limitations of surface myeloid antigen expression without MPO or monocytic differentiation"
+    ],
+    "tags": [
+      "AML",
+      "immunophenotyping",
+      "minimal differentiation",
+      "MPO",
+      "lineage assignment",
+      "WHO5",
+      "ICC2022"
+    ],
+    "clinical_vignette": "A 46-year-old man presents with bruising and severe fatigue. There is no mediastinal mass, lymphadenopathy or organomegaly. The blood film shows circulating blasts without Auer rods. Bone marrow aspirate is packed with undifferentiated blasts with scant agranular cytoplasm.",
+    "laboratory_data": {
+      "Hb": "72 g/L",
+      "WBC": "38 x 10^9/L",
+      "ANC": "0.3 x 10^9/L",
+      "platelets": "19 x 10^9/L",
+      "LDH": "980 U/L",
+      "coagulation": "PT and APTT normal; fibrinogen 3.1 g/L"
+    },
+    "morphology": {
+      "peripheral_blood": "Numerous medium-sized blasts with high nuclear-to-cytoplasmic ratio, fine chromatin and inconspicuous granulation. No Auer rods.",
+      "bone_marrow": "Hypercellular marrow with 86 percent blasts. Cytochemistry for MPO is negative by light microscopy."
+    },
+    "flow_cytometry": "Blasts express CD34 bright, CD117, HLA-DR, CD13, CD33, CD38 and CD123. Cytoplasmic MPO is positive in a small but reproducible abnormal blast subset above validated laboratory threshold. CD19, cytoplasmic CD79a, cytoplasmic CD3, surface CD3, CD10 and TdT are negative. CD7 is aberrantly expressed.",
+    "cytogenetics": "46,XY[20]. FISH negative for BCR::ABL1, KMT2A rearrangement, RUNX1::RUNX1T1 and CBFB::MYH11.",
+    "molecular_genetics": "NGS shows RUNX1 and DNMT3A variants. NPM1, FLT3-ITD and CEBPA bZIP are not detected.",
+    "question": "What is the most appropriate diagnostic interpretation of the immunophenotype?",
+    "options": {
+      "A": "Acute myeloid leukaemia with minimal differentiation",
+      "B": "B-lymphoblastic leukaemia with aberrant CD13 and CD33",
+      "C": "T-lymphoblastic leukaemia because CD7 is present",
+      "D": "Mixed phenotype acute leukaemia, B/myeloid",
+      "E": "Acute undifferentiated leukaemia because cytochemical MPO is negative"
+    },
+    "correct_answer": "A",
+    "explanation": "This is best interpreted as acute myeloid leukaemia with minimal differentiation. The blasts are morphologically undifferentiated and cytochemical MPO is negative, but flow cytometry detects cytoplasmic MPO in the abnormal blast population, which is sufficient to support myeloid lineage when the laboratory threshold and staining pattern are valid. CD13 and CD33 alone are not lineage-defining because they can be aberrantly expressed in lymphoblastic leukaemia. CD7 is a common aberrant antigen in AML and does not establish T-lineage without cytoplasmic or surface CD3. There is no B-lineage-defining pattern because CD19 and strong supporting B markers are absent. Therefore the case is not B-ALL, T-ALL, MPAL or acute undifferentiated leukaemia.",
+    "incorrect_option_explanations": {
+      "A": "Correct. Undifferentiated morphology with flow-cytometric cytoplasmic MPO supports AML with minimal differentiation.",
+      "B": "Incorrect. B-ALL requires convincing B-lineage assignment, usually CD19 with appropriate supporting markers; these are absent.",
+      "C": "Incorrect. CD7 alone is not T-lineage defining. Cytoplasmic or surface CD3 is required for T-lineage assignment.",
+      "D": "Incorrect. MPAL B/myeloid requires criteria for both myeloid and B lineages. B-lineage criteria are not met here.",
+      "E": "Incorrect. Acute undifferentiated leukaemia is considered when no lineage-defining evidence is present. Flow cytometric cytoplasmic MPO provides myeloid assignment."
+    },
+    "examiner_commentary": "The examiner is testing the difference between lineage-associated and lineage-defining markers. CD13, CD33 and CD7 are useful clues but cannot replace MPO, monocytic differentiation, cytoplasmic CD3 or a qualifying B-lineage pattern.",
+    "clinical_pearl": "In acute leukaemia, aberrant antigen expression is common; lineage assignment depends on lineage-defining markers, not a shopping list of associated antigens.",
+    "memory_framework": "Myeloid lineage = MPO or clear monocytic differentiation; T lineage = cytoplasmic/surface CD3; B lineage = CD19 plus strong supporting B markers.",
+    "why_this_matters": "Misclassifying minimally differentiated AML as ALL or acute undifferentiated leukaemia can lead to inappropriate treatment and incorrect genetic work-up.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on acute myeloid leukaemia and laboratory diagnosis of haematological neoplasms",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022",
+      "ELN recommendations for diagnosis and management of AML in adults, 2022"
+    ],
+    "related_cases": [
+      "AML031",
+      "AML035",
+      "AML040"
+    ]
+  },
+  {
+    "id": 37,
+    "code": "AML037",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "subsection": "NPM1-mutated AML phenotype",
+    "title": "Recognising an immunophenotypic pattern suggestive of NPM1-mutated AML",
+    "difficulty": "Hard",
+    "difficulty_stars": 4,
+    "estimated_time_seconds": 150,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Recognise flow-cytometric patterns that suggest NPM1-mutated AML",
+      "Understand why immunophenotype can guide but not replace molecular confirmation",
+      "Identify the relationship between NPM1 mutation, CD34 negativity and monocytic differentiation"
+    ],
+    "tags": [
+      "AML",
+      "NPM1",
+      "CD34 negative AML",
+      "monocytic differentiation",
+      "immunophenotyping",
+      "ELN2022"
+    ],
+    "clinical_vignette": "A 55-year-old woman presents with fever, gum swelling and bruising. The blood film shows many blasts and abnormal monocytoid cells. The haematology registrar asks whether the immunophenotype suggests a particular molecular subtype while urgent NGS is pending.",
+    "laboratory_data": {
+      "Hb": "81 g/L",
+      "WBC": "72 x 10^9/L",
+      "absolute_monocytes": "18 x 10^9/L",
+      "platelets": "24 x 10^9/L",
+      "LDH": "1450 U/L",
+      "coagulation": "PT mildly prolonged; fibrinogen 2.0 g/L"
+    },
+    "morphology": {
+      "peripheral_blood": "Blasts and abnormal immature monocytoid cells are present. No convincing abnormal promyelocyte predominance or Auer-rod bundles.",
+      "bone_marrow": "Hypercellular marrow with 78 percent blasts and monocytic differentiation."
+    },
+    "flow_cytometry": "The abnormal population is CD45 moderate to bright with increased side scatter. It expresses CD33 bright, CD13 variable, CD64, CD11c, CD36, CD38 and HLA-DR. CD34 is absent and CD117 is weak/partial. MPO is variable. CD14 is partial. CD7, CD19, cytoplasmic CD3 and cytoplasmic CD79a are negative.",
+    "cytogenetics": "Normal female karyotype. Rapid FISH panel for PML::RARA, RUNX1::RUNX1T1, CBFB::MYH11 and KMT2A rearrangement is negative.",
+    "molecular_genetics": "Urgent molecular testing later detects NPM1 mutation and FLT3-ITD is absent.",
+    "question": "Which interpretation is the single best answer?",
+    "options": {
+      "A": "The phenotype is suggestive of NPM1-mutated AML, but molecular testing is required for diagnosis and risk assignment",
+      "B": "The phenotype is diagnostic of acute promyelocytic leukaemia because CD34 is absent",
+      "C": "The phenotype excludes AML because CD34 is negative",
+      "D": "The phenotype fulfils T/myeloid mixed phenotype acute leukaemia because CD7 is not required if monocytic markers are present",
+      "E": "The phenotype is diagnostic of chronic myelomonocytic leukaemia transformation without need for blast enumeration"
+    },
+    "correct_answer": "A",
+    "explanation": "NPM1-mutated AML often shows absent or low CD34, absent or weak CD117, bright CD33 and frequent monocytic or myelomonocytic differentiation. This immunophenotype should prompt rapid NPM1 and FLT3 testing, but it is not itself diagnostic of NPM1-mutated AML. Molecular confirmation is required because immunophenotypic patterns overlap with other AML subtypes. CD34 negativity does not exclude AML; many genetically defined AML entities, including NPM1-mutated AML and APL, may be CD34 negative. The absence of APL morphology, severe APL-type immunophenotype and PML::RARA argues against APL.",
+    "incorrect_option_explanations": {
+      "A": "Correct. The pattern is a strong clue to NPM1-mutated AML but requires molecular confirmation.",
+      "B": "Incorrect. CD34 negativity alone is not diagnostic of APL. APL typically has a characteristic promyelocytic morphology, strong MPO, CD33 bright, HLA-DR negativity and PML::RARA.",
+      "C": "Incorrect. CD34-negative AML is well recognised, particularly in NPM1-mutated AML and APL.",
+      "D": "Incorrect. T-lineage requires cytoplasmic or surface CD3; CD7 is not even present here and monocytic markers support myeloid lineage, not T lineage.",
+      "E": "Incorrect. CMML transformation requires appropriate clinical and monocytic context, but this presentation has AML-level blasts and must be classified using AML criteria and genetics."
+    },
+    "examiner_commentary": "This is a pattern-recognition question with a trap: the candidate must not overclaim. Immunophenotype can suggest NPM1-mutated AML and guide urgent testing, but the diagnosis is genetic.",
+    "clinical_pearl": "CD34-negative, CD117-weak, CD33-bright AML with monocytic differentiation should make you think of NPM1 mutation and urgently check FLT3 status.",
+    "memory_framework": "NPM1 clue: normal karyotype, CD34 low/negative, CD33 bright, monocytic skew, then confirm by molecular testing.",
+    "why_this_matters": "NPM1 and FLT3 results influence ELN risk assessment, MRD strategy and treatment planning.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on acute myeloid leukaemia and laboratory diagnosis of haematological neoplasms",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022",
+      "ELN recommendations for diagnosis and management of AML in adults, 2022"
+    ],
+    "related_cases": [
+      "AML033",
+      "AML036",
+      "AML060"
+    ]
+  },
+  {
+    "id": 38,
+    "code": "AML038",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "subsection": "Megakaryoblastic differentiation and platelet adherence",
+    "title": "Megakaryoblastic differentiation: CD41/CD61 interpretation pitfalls",
+    "difficulty": "Examiner",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 180,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Identify immunophenotypic evidence of megakaryoblastic differentiation",
+      "Recognise platelet adherence as a pitfall in interpreting CD41 and CD61",
+      "Select confirmatory approaches when megakaryocytic markers are suspected"
+    ],
+    "tags": [
+      "AML",
+      "acute megakaryoblastic leukaemia",
+      "CD41",
+      "CD61",
+      "CD42b",
+      "platelet adherence",
+      "flow cytometry"
+    ],
+    "clinical_vignette": "A 32-year-old man presents with pancytopenia. Bone marrow aspiration is difficult and yields a particulate but haemodilute sample. The film shows blasts, some with cytoplasmic blebs. Flow cytometry reports apparent CD41 and CD61 positivity on blasts, and the team asks whether this is enough to diagnose acute megakaryoblastic leukaemia.",
+    "laboratory_data": {
+      "Hb": "69 g/L",
+      "WBC": "4.2 x 10^9/L",
+      "ANC": "0.5 x 10^9/L",
+      "platelets": "12 x 10^9/L",
+      "LDH": "760 U/L",
+      "coagulation": "Normal PT and APTT"
+    },
+    "morphology": {
+      "peripheral_blood": "Rare circulating blasts with cytoplasmic blebbing. Marked thrombocytopenia.",
+      "bone_marrow": "Trephine biopsy is hypercellular with blast infiltration and increased reticulin fibrosis. Aspirate smears are partially haemodilute."
+    },
+    "flow_cytometry": "Blasts express CD34, CD117, CD33 dim and HLA-DR. MPO is negative. Surface staining appears positive for CD41 and CD61, but the signal is granular and partly non-uniform. CD42b is equivocal. Repeat analysis after platelet-reducing sample preparation and cytoplasmic staining shows true blast CD61 expression with CD42b positivity. CD3, CD19 and CD14 are negative.",
+    "cytogenetics": "Karyotype pending. FISH negative for PML::RARA and KMT2A rearrangement.",
+    "molecular_genetics": "Myeloid NGS pending.",
+    "question": "Which statement best describes the diagnostic approach?",
+    "options": {
+      "A": "CD41 and CD61 positivity should be accepted at face value because platelet adherence never affects blast gates",
+      "B": "Megakaryoblastic differentiation is supported only after excluding platelet adherence and confirming true blast expression of platelet-associated markers",
+      "C": "Any CD61-positive acute leukaemia should be reclassified as B-lymphoblastic leukaemia",
+      "D": "MPO negativity excludes AML even if megakaryocytic markers are confirmed",
+      "E": "CD42b is a non-specific lymphoid marker and should not be used in this setting"
+    },
+    "correct_answer": "B",
+    "explanation": "Megakaryoblastic differentiation is supported by true expression of platelet/megakaryocytic markers such as CD41, CD61 and/or CD42b on blasts, especially in a case with cytoplasmic blebbing and marrow fibrosis. However, CD41 and CD61 can be falsely positive because platelets adhere to blasts or other cells during sample processing. Therefore the flow cytometry pattern must be assessed carefully, ideally using platelet-reducing preparation, cytoplasmic staining, correlation with CD42b, imaging/plot review and trephine immunohistochemistry. MPO negativity does not exclude acute megakaryoblastic leukaemia because megakaryoblasts are usually MPO negative.",
+    "incorrect_option_explanations": {
+      "A": "Incorrect. Platelet adherence is a well-known pitfall and may produce false CD41/CD61 positivity.",
+      "B": "Correct. True blast expression must be confirmed before diagnosing megakaryoblastic differentiation.",
+      "C": "Incorrect. CD61 is a megakaryocytic/platelet-associated marker, not a B-lineage marker.",
+      "D": "Incorrect. AML with megakaryoblastic differentiation is often MPO negative; lineage is supported by megakaryocytic markers.",
+      "E": "Incorrect. CD42b is a useful megakaryocytic marker, although it must also be interpreted with technical awareness."
+    },
+    "examiner_commentary": "This is a practical flow cytometry quality-control question. The correct answer is not simply knowing that CD41/CD61 are megakaryocytic, but knowing when they are unreliable.",
+    "clinical_pearl": "Apparent platelet-marker positivity on blasts is not enough; always ask whether you are seeing the blast or the platelets stuck to it.",
+    "memory_framework": "Megakaryoblasts: blebs + fibrosis + CD41/CD61/CD42b, but beware platelet carry-over and adherence.",
+    "why_this_matters": "False megakaryoblastic assignment can misclassify AML and misdirect subsequent genetic and clinical interpretation.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on acute myeloid leukaemia and laboratory diagnosis of haematological neoplasms",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022",
+      "ELN recommendations for diagnosis and management of AML in adults, 2022"
+    ],
+    "related_cases": [
+      "AML028",
+      "AML030",
+      "AML049"
+    ]
+  },
+  {
+    "id": 39,
+    "code": "AML039",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "subsection": "ETP-ALL versus AML with aberrant T markers",
+    "title": "Early T-precursor ALL versus AML with aberrant T-antigen expression",
+    "difficulty": "Examiner",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 180,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Differentiate ETP-ALL from AML with aberrant T-cell antigen expression",
+      "Apply cytoplasmic CD3 as the defining marker of T-lineage",
+      "Recognise overlapping stem-cell and myeloid antigen expression in immature acute leukaemias"
+    ],
+    "tags": [
+      "AML",
+      "ETP-ALL",
+      "cytoplasmic CD3",
+      "CD7",
+      "CD13",
+      "CD33",
+      "MPAL",
+      "immunophenotyping"
+    ],
+    "clinical_vignette": "A 17-year-old boy presents with fever, bruising and a mild anterior mediastinal widening on chest radiograph. Bone marrow is replaced by blasts. The morphology is immature and non-specific. The initial flow cytometry panel shows stem-cell markers and several myeloid antigens, raising concern for AML.",
+    "laboratory_data": {
+      "Hb": "84 g/L",
+      "WBC": "56 x 10^9/L",
+      "ANC": "0.4 x 10^9/L",
+      "platelets": "31 x 10^9/L",
+      "LDH": "1600 U/L",
+      "coagulation": "Normal"
+    },
+    "morphology": {
+      "peripheral_blood": "Circulating blasts with high nuclear-to-cytoplasmic ratio and no Auer rods.",
+      "bone_marrow": "Hypercellular marrow with 92 percent blasts. No convincing monocytic differentiation."
+    },
+    "flow_cytometry": "Blasts express cytoplasmic CD3, CD7 bright, CD2 weak, CD5 negative to dim, CD1a negative, CD8 negative, CD34, CD117, HLA-DR, CD13 and CD33. CD11b is partial. MPO is negative by flow cytometry and cytochemistry. CD19, CD10 and cytoplasmic CD79a are negative.",
+    "cytogenetics": "Karyotype pending. BCR::ABL1 and KMT2A rearrangement not detected on rapid screen.",
+    "molecular_genetics": "Targeted panel pending.",
+    "question": "What is the best interpretation of this immunophenotype?",
+    "options": {
+      "A": "Early T-precursor acute lymphoblastic leukaemia is favoured because cytoplasmic CD3 defines T-lineage despite stem-cell and myeloid antigen expression",
+      "B": "AML with aberrant CD7 is favoured because CD13 and CD33 are present",
+      "C": "Mixed phenotype acute leukaemia, T/myeloid, is mandatory because CD13 and CD33 are myeloid-lineage defining",
+      "D": "B-lymphoblastic leukaemia is favoured because CD34 is bright",
+      "E": "Acute promyelocytic leukaemia is favoured because MPO is negative"
+    },
+    "correct_answer": "A",
+    "explanation": "The key lineage-defining marker is cytoplasmic CD3, which establishes T-lineage. The immunophenotype is typical for an early immature T-lymphoblastic leukaemia pattern, especially ETP-ALL: CD1a negative, CD8 negative, CD5 weak/negative, expression of stem-cell markers and expression of myeloid-associated antigens. CD13 and CD33 are not sufficient to define myeloid lineage by themselves, and MPO is negative with no monocytic differentiation. Therefore AML is not favoured solely because myeloid antigens are present. MPAL T/myeloid would require T-lineage plus myeloid lineage-defining evidence such as MPO or monocytic differentiation; that is absent here.",
+    "incorrect_option_explanations": {
+      "A": "Correct. Cytoplasmic CD3 defines T-lineage and the remaining pattern supports ETP-ALL.",
+      "B": "Incorrect. CD13 and CD33 are myeloid-associated but not lineage-defining. AML with aberrant T markers would lack cytoplasmic/surface CD3 and show myeloid-defining evidence.",
+      "C": "Incorrect. MPAL T/myeloid requires myeloid lineage-defining evidence, not merely CD13 and CD33.",
+      "D": "Incorrect. CD34 is an immaturity marker, not a B-lineage marker.",
+      "E": "Incorrect. APL is typically strongly MPO positive and has characteristic promyelocytic morphology and PML::RARA."
+    },
+    "examiner_commentary": "The trap is to diagnose AML whenever CD13 and CD33 appear. FRCPath-level interpretation requires knowing which markers are lineage-defining and which are lineage-associated.",
+    "clinical_pearl": "ETP-ALL often looks immunophenotypically myeloid, but cytoplasmic CD3 is decisive for T-lineage.",
+    "memory_framework": "ETP-ALL: cyCD3 positive, CD1a negative, CD8 negative, CD5 weak, stem/myeloid markers common, MPO absent.",
+    "why_this_matters": "ETP-ALL and AML require different treatment protocols, risk discussions and MRD strategies.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on acute myeloid leukaemia and laboratory diagnosis of haematological neoplasms",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022",
+      "ELN recommendations for diagnosis and management of AML in adults, 2022"
+    ],
+    "related_cases": [
+      "AML036",
+      "AML040",
+      "AML057"
+    ]
+  },
+  {
+    "id": 40,
+    "code": "AML040",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "subsection": "Mixed phenotype acute leukaemia B/myeloid",
+    "title": "B/myeloid mixed phenotype acute leukaemia: applying WHO5 and ICC lineage criteria",
+    "difficulty": "Examiner",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 210,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Apply lineage-defining criteria for B/myeloid mixed phenotype acute leukaemia",
+      "Distinguish MPAL from AML with aberrant B-lineage antigen expression",
+      "Understand why genetic subgroups such as BCR::ABL1 and KMT2A must be sought in MPAL"
+    ],
+    "tags": [
+      "AML",
+      "MPAL",
+      "B/myeloid",
+      "CD19",
+      "MPO",
+      "cyCD79a",
+      "WHO5",
+      "ICC2022",
+      "BCR::ABL1",
+      "KMT2A"
+    ],
+    "clinical_vignette": "A 34-year-old woman presents with pancytopenia and circulating blasts. The morphology is ambiguous, with some blasts showing scant granulation but no Auer rods. Flow cytometry identifies a single abnormal blast population rather than two clearly separate blast populations.",
+    "laboratory_data": {
+      "Hb": "75 g/L",
+      "WBC": "22 x 10^9/L",
+      "ANC": "0.6 x 10^9/L",
+      "platelets": "27 x 10^9/L",
+      "LDH": "1150 U/L",
+      "coagulation": "Normal PT, APTT and fibrinogen"
+    },
+    "morphology": {
+      "peripheral_blood": "Numerous blasts with fine chromatin and occasional cytoplasmic granules. No abnormal promyelocyte predominance.",
+      "bone_marrow": "Hypercellular marrow with 84 percent blasts. Morphology alone cannot assign lineage confidently."
+    },
+    "flow_cytometry": "A single blast population expresses CD34, CD117, HLA-DR, CD13, CD33 and cytoplasmic MPO. The same population also expresses strong CD19, strong cytoplasmic CD79a, CD22 and TdT. CD10 is partial. Cytoplasmic CD3 and surface CD3 are negative. Monocytic markers CD14, CD64 and CD11c are negative.",
+    "cytogenetics": "Urgent testing is requested for BCR::ABL1 and KMT2A rearrangement. PML::RARA is negative.",
+    "molecular_genetics": "Myeloid and lymphoid acute leukaemia panels pending.",
+    "question": "Which diagnosis is best supported by the flow cytometry findings?",
+    "options": {
+      "A": "Mixed phenotype acute leukaemia, B/myeloid, pending genetic subclassification",
+      "B": "AML with aberrant CD19 expression only",
+      "C": "B-lymphoblastic leukaemia with aberrant CD13 and CD33 only",
+      "D": "T/myeloid mixed phenotype acute leukaemia",
+      "E": "Acute undifferentiated leukaemia"
+    },
+    "correct_answer": "A",
+    "explanation": "This case fulfils B/myeloid mixed phenotype acute leukaemia criteria because the same blast population shows myeloid lineage-defining cytoplasmic MPO and convincing B-lineage assignment with strong CD19 plus strong supporting B markers including cytoplasmic CD79a and CD22. AML with aberrant B markers is a key differential, particularly because CD19 can be seen in some AML subtypes, but the strength and combination of B-lineage markers here fulfil B-lineage criteria. B-ALL with aberrant myeloid antigens is also excluded because MPO provides true myeloid lineage. Once MPAL is suspected, urgent genetic testing should include BCR::ABL1 and KMT2A rearrangements because these define important MPAL genetic subgroups and influence treatment strategy.",
+    "incorrect_option_explanations": {
+      "A": "Correct. The same blast population meets both myeloid and B-lineage-defining criteria.",
+      "B": "Incorrect. This is more than isolated aberrant CD19; strong CD19 with cytoplasmic CD79a and CD22 supports true B-lineage assignment.",
+      "C": "Incorrect. B-ALL with aberrant myeloid antigens would not have lineage-defining MPO in the blast population.",
+      "D": "Incorrect. T-lineage is not present because cytoplasmic and surface CD3 are negative.",
+      "E": "Incorrect. Acute undifferentiated leukaemia lacks lineage-defining markers; this case has both B and myeloid lineage evidence."
+    },
+    "examiner_commentary": "This is a classic FRCPath trap built from real diagnostic ambiguity. The distinction between AML with aberrant lymphoid antigens and MPAL requires formal lineage criteria, not intuition.",
+    "clinical_pearl": "MPAL diagnosis should trigger a genetics checklist: BCR::ABL1, KMT2A rearrangement and an integrated acute leukaemia molecular work-up.",
+    "memory_framework": "B/myeloid MPAL = MPO or monocytic myeloid lineage plus strong CD19 with strong B support, or weaker CD19 with multiple strong B markers depending on classification rules.",
+    "why_this_matters": "MPAL has therapeutic and prognostic implications and is often managed differently from conventional AML or ALL.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on acute myeloid leukaemia and laboratory diagnosis of haematological neoplasms",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022",
+      "ELN recommendations for diagnosis and management of AML in adults, 2022"
+    ],
+    "related_cases": [
+      "AML036",
+      "AML039",
+      "AML075"
+    ]
+  }
+]

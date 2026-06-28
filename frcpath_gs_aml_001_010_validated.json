@@ -1,0 +1,656 @@
+{
+  "schema_version": "FRCPath-GS-AML-v1.0",
+  "created_date": "2026-06-28",
+  "module": "AML",
+  "question_count": 10,
+  "cases": [
+    {
+      "id": 1,
+      "code": "AML001",
+      "module": "AML",
+      "section": "Initial Presentation & Emergency Haematology",
+      "difficulty": 5,
+      "estimated_time_seconds": 150,
+      "learning_objectives": [
+        "Recognise leukostasis as a clinical emergency",
+        "Distinguish hyperleukocytosis from leukostasis",
+        "Select immediate stabilisation and cytoreduction strategy",
+        "Avoid delay while awaiting full genetic classification"
+      ],
+      "tags": [
+        "AML",
+        "hyperleukocytosis",
+        "leukostasis",
+        "cytoreduction",
+        "emergency"
+      ],
+      "title": "Hyperleukocytosis with pulmonary and neurological leukostasis",
+      "clinical_vignette": "A 42-year-old man presents with 2 days of progressive dyspnoea, headache and confusion. He is pale, tachypnoeic and hypoxic despite supplemental oxygen. There is no focal consolidation on chest radiograph. A blood film is reviewed urgently by the haematology registrar.",
+      "laboratory_data": {
+        "Hb": "78 g/L",
+        "WBC": "186 x 10^9/L",
+        "platelets": "32 x 10^9/L",
+        "LDH": "2450 U/L",
+        "uric_acid": "610 micromol/L",
+        "creatinine": "118 micromol/L",
+        "coagulation": "PT mildly prolonged, fibrinogen 2.4 g/L"
+      },
+      "morphology": "Peripheral blood film shows numerous circulating myeloblasts with high nuclear-to-cytoplasmic ratio, fine chromatin, prominent nucleoli and occasional Auer rods.",
+      "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, HLA-DR and cytoplasmic MPO. No B- or T-lineage defining marker expression.",
+      "cytogenetics": "Pending at time of emergency decision.",
+      "molecular_genetics": "Rapid FLT3, NPM1 and PML::RARA testing pending.",
+      "question": "What is the most appropriate immediate management priority?",
+      "options": [
+        "Await cytogenetic and molecular confirmation before starting cytoreduction.",
+        "Treat as leukostasis with urgent supportive care, tumour lysis prophylaxis and cytoreduction while completing diagnostic testing.",
+        "Transfuse red cells rapidly to Hb above 100 g/L before cytoreduction.",
+        "Start ATRA alone because all AML with hyperleukocytosis should be treated as APL until proven otherwise.",
+        "Defer treatment because leukostasis cannot be diagnosed without CT evidence of vascular occlusion."
+      ],
+      "correct_answer": "B. Treat as leukostasis with urgent supportive care, tumour lysis prophylaxis and cytoreduction while completing diagnostic testing.",
+      "explanation": "This patient has hyperleukocytic AML with clinical leukostasis: respiratory compromise and neurological symptoms in the setting of a very high blast count. Leukostasis is a clinical diagnosis and treatment should not wait for the final cytogenetic or molecular report. Immediate priorities are senior haematology involvement, ICU-level supportive care when needed, aggressive tumour lysis prevention, infection assessment, and prompt cytoreduction with hydroxycarbamide and/or induction therapy depending on fitness and diagnostic confidence. Leukapheresis may be considered in selected centres, but it should not delay definitive anti-leukaemic therapy.",
+      "why_other_options_are_wrong": {
+        "A": "Waiting for cytogenetics risks clinical deterioration. Classification is important but emergency stabilisation comes first.",
+        "C": "Unnecessary rapid red cell transfusion can increase blood viscosity and may worsen leukostasis. Transfusion decisions should be cautious and individualised.",
+        "D": "ATRA should be started immediately when APL is suspected, but this phenotype is not typical APL and ATRA alone is not a general treatment for hyperleukocytic AML.",
+        "E": "Leukostasis is diagnosed clinically; imaging may support complications but absence of a visible occlusion does not exclude it."
+      },
+      "examiner_commentary": "The trap is to treat the WBC number rather than the patient. Hyperleukocytosis is a laboratory finding; leukostasis is a clinical emergency defined by end-organ symptoms.",
+      "clinical_pearl": "Neurological or respiratory symptoms in AML with very high blasts should be treated as leukostasis until proven otherwise.",
+      "memory_framework": "Leukostasis = Lungs + brain + blasts. Do not wait for genetics before stabilising.",
+      "references": [
+        "ELN 2022 AML recommendations",
+        "BSH guidance on AML supportive care",
+        "NCCN AML Guidelines"
+      ],
+      "quality_scores": {
+        "scientific_accuracy": 5,
+        "educational_value": 5,
+        "examiner_authenticity": 5,
+        "clinical_relevance": 5
+      }
+    },
+    {
+      "id": 2,
+      "code": "AML002",
+      "module": "AML",
+      "section": "Initial Presentation & Emergency Haematology",
+      "difficulty": 5,
+      "estimated_time_seconds": 150,
+      "learning_objectives": [
+        "Recognise APL as a haematological emergency",
+        "Start ATRA before genetic confirmation when APL is suspected",
+        "Apply aggressive blood product support targets in APL-associated coagulopathy",
+        "Avoid leukapheresis in suspected APL"
+      ],
+      "tags": [
+        "APL",
+        "PML::RARA",
+        "DIC",
+        "ATRA",
+        "coagulopathy"
+      ],
+      "title": "Acute promyelocytic leukaemia with disseminated intravascular coagulation",
+      "clinical_vignette": "A 31-year-old woman presents with gum bleeding, extensive bruising and a severe headache. She has no previous haematological history. The blood film is urgently reviewed because the coagulation profile is markedly abnormal.",
+      "laboratory_data": {
+        "Hb": "82 g/L",
+        "WBC": "4.8 x 10^9/L",
+        "platelets": "14 x 10^9/L",
+        "PT": "24 seconds",
+        "APTT": "51 seconds",
+        "fibrinogen": "0.7 g/L",
+        "D_dimer": "markedly elevated"
+      },
+      "morphology": "Peripheral blood and marrow aspirate show abnormal promyelocytes with heavy azurophilic granulation and bundles of Auer rods.",
+      "flow_cytometry": "Abnormal promyelocytes are strongly MPO positive, CD33 bright, CD13 positive, CD117 positive, CD34 negative and HLA-DR negative.",
+      "cytogenetics": "FISH for PML::RARA requested urgently.",
+      "molecular_genetics": "PML::RARA RT-PCR pending.",
+      "question": "What is the single most important immediate disease-directed intervention?",
+      "options": [
+        "Start all-trans retinoic acid immediately with aggressive correction of coagulopathy.",
+        "Wait for PML::RARA confirmation before starting ATRA.",
+        "Perform leukapheresis because the bleeding risk is driven by circulating promyelocytes.",
+        "Start standard daunorubicin and cytarabine induction before ATRA.",
+        "Give tranexamic acid alone and reassess once the fibrinogen is corrected."
+      ],
+      "correct_answer": "A. Start all-trans retinoic acid immediately with aggressive correction of coagulopathy.",
+      "explanation": "The morphology, flow phenotype and DIC are classic for APL. APL is a medical emergency because early mortality is driven mainly by catastrophic bleeding. ATRA should be started immediately on clinical or morphological suspicion, before cytogenetic confirmation. Supportive care includes frequent monitoring and aggressive platelet and fibrinogen replacement, commonly targeting platelets at least 30-50 x 10^9/L and fibrinogen at least 1.5 g/L, with local protocol variation.",
+      "why_other_options_are_wrong": {
+        "B": "Waiting for genetic confirmation is unsafe when APL is strongly suspected.",
+        "C": "Leukapheresis is generally avoided in APL because it may worsen coagulopathy and bleeding risk.",
+        "D": "Standard AML induction alone does not address the urgent differentiation therapy needed in APL.",
+        "E": "Antifibrinolytics are not the primary treatment and do not replace ATRA plus blood product support."
+      },
+      "examiner_commentary": "This is one of the most important FRCPath emergency questions. If APL is suspected, the answer is usually ATRA now, confirmation later.",
+      "clinical_pearl": "In suspected APL, treatment begins at morphology, not at the final molecular report.",
+      "memory_framework": "APL = ATRA Promptly, Life saved.",
+      "references": [
+        "ELN 2022 AML recommendations",
+        "WHO 5th Edition haematolymphoid tumours",
+        "NCCN AML Guidelines"
+      ],
+      "quality_scores": {
+        "scientific_accuracy": 5,
+        "educational_value": 5,
+        "examiner_authenticity": 5,
+        "clinical_relevance": 5
+      }
+    },
+    {
+      "id": 3,
+      "code": "AML003",
+      "module": "AML",
+      "section": "WHO/ICC Classification and Molecular Genetics",
+      "difficulty": 5,
+      "estimated_time_seconds": 180,
+      "learning_objectives": [
+        "Apply WHO 5th Edition criteria for NPM1-mutated AML",
+        "Recognise the characteristic NPM1 immunophenotype",
+        "Integrate NPM1 and FLT3 status into ELN risk assessment",
+        "Select MRD strategy for NPM1-mutated AML"
+      ],
+      "tags": [
+        "AML",
+        "NPM1",
+        "WHO5",
+        "ELN2022",
+        "MRD"
+      ],
+      "title": "NPM1-mutated AML with fewer than 20 percent blasts",
+      "clinical_vignette": "A 53-year-old woman is investigated for new pancytopenia and bruising. She is fit for intensive therapy. The marrow blast percentage is below the traditional 20 percent threshold.",
+      "laboratory_data": {
+        "Hb": "91 g/L",
+        "WBC": "3.4 x 10^9/L",
+        "platelets": "42 x 10^9/L",
+        "LDH": "620 U/L",
+        "coagulation": "normal"
+      },
+      "morphology": "Bone marrow aspirate shows 14 percent blasts, many with cup-like nuclear invaginations. There is no convincing multilineage dysplasia.",
+      "flow_cytometry": "Blasts are CD33 bright, CD13 positive, MPO positive, CD117 variable, CD34 negative and HLA-DR negative. They do not express cytoplasmic CD3 or strong B-lineage markers.",
+      "cytogenetics": "Normal female karyotype.",
+      "molecular_genetics": "NPM1 type A mutation detected. FLT3-ITD and FLT3-TKD are not detected. No adverse-risk cytogenetic abnormality or myelodysplasia-related mutation is identified.",
+      "question": "What is the best integrated interpretation?",
+      "options": [
+        "MDS with excess blasts because marrow blasts are below 20 percent.",
+        "AML with mutated NPM1; favourable ELN risk if no FLT3-ITD or adverse-risk genetics are present.",
+        "AML, myelodysplasia-related because the patient has cytopenias.",
+        "APL because the blasts are CD34 negative and HLA-DR negative.",
+        "Clonal cytopenia of undetermined significance because the blast count is below 20 percent."
+      ],
+      "correct_answer": "B. AML with mutated NPM1; favourable ELN risk if no FLT3-ITD or adverse-risk genetics are present.",
+      "explanation": "Under WHO 5th Edition, AML with mutated NPM1 is considered an AML-defining genetic entity and does not require the traditional 20 percent blast threshold. The typical phenotype is often CD34 negative and HLA-DR negative, but unlike APL it is defined by NPM1 mutation and lacks PML::RARA. Under ELN 2022, mutated NPM1 without FLT3-ITD and without adverse-risk genetic lesions is favourable risk. NPM1 mutation is also an excellent molecular MRD target by quantitative PCR.",
+      "why_other_options_are_wrong": {
+        "A": "This applies older blast-threshold thinking and ignores the AML-defining NPM1 mutation under WHO 5th Edition.",
+        "C": "Cytopenias alone do not define AML-MR; AML-MR requires specific qualifying cytogenetic or molecular abnormalities or appropriate antecedent disease.",
+        "D": "APL also often lacks CD34 and HLA-DR, but the morphology, genetics and NPM1 result point away from APL.",
+        "E": "CCUS is not used when an AML-defining lesion with excess blasts is present."
+      },
+      "examiner_commentary": "This case tests whether the candidate has moved beyond the old 20 percent rule. Many FRCPath candidates still incorrectly classify this as MDS-EB.",
+      "clinical_pearl": "NPM1-mutated myeloid neoplasms with increased blasts should trigger AML-type thinking even when blasts are below 20 percent.",
+      "memory_framework": "NPM1 = No old 20 percent rule in WHO, Normal karyotype common, Negative CD34 common, NPM1 PCR for MRD.",
+      "references": [
+        "WHO 5th Edition haematolymphoid tumours",
+        "ICC 2022 myeloid neoplasms classification",
+        "ELN 2022 AML recommendations"
+      ],
+      "quality_scores": {
+        "scientific_accuracy": 5,
+        "educational_value": 5,
+        "examiner_authenticity": 5,
+        "clinical_relevance": 5
+      }
+    },
+    {
+      "id": 4,
+      "code": "AML004",
+      "module": "AML",
+      "section": "Cytogenetics and Core-binding Factor AML",
+      "difficulty": 4,
+      "estimated_time_seconds": 150,
+      "learning_objectives": [
+        "Diagnose RUNX1::RUNX1T1 AML despite low blast count",
+        "Recognise aberrant B-marker expression in t(8;21) AML",
+        "Understand the prognostic significance of CD56",
+        "Identify the role of gemtuzumab ozogamicin in favourable-risk CBF AML"
+      ],
+      "tags": [
+        "AML",
+        "t(8;21)",
+        "RUNX1::RUNX1T1",
+        "CD19",
+        "CD56",
+        "CBF AML"
+      ],
+      "title": "t(8;21) AML with aberrant B-lineage marker expression",
+      "clinical_vignette": "A 26-year-old man presents with fatigue and thrombocytopenia. Bone marrow aspirate shows increased blasts but fewer than 20 percent. Flow cytometry raises concern because the blasts express some B-cell antigens.",
+      "laboratory_data": {
+        "Hb": "88 g/L",
+        "WBC": "12.6 x 10^9/L",
+        "platelets": "38 x 10^9/L",
+        "LDH": "840 U/L",
+        "coagulation": "normal"
+      },
+      "morphology": "Bone marrow aspirate shows 13 percent blasts with salmon-pink granules and occasional slender Auer rods. Maturing neutrophils show dysplastic features.",
+      "flow_cytometry": "Blasts express CD34, CD117, HLA-DR, CD13, CD33 and MPO. They aberrantly express CD19 and CD56. Cytoplasmic CD3 is negative and B-lineage criteria for MPAL are not fulfilled.",
+      "cytogenetics": "t(8;21)(q22;q22.1) detected.",
+      "molecular_genetics": "RUNX1::RUNX1T1 fusion confirmed. KIT mutation testing pending.",
+      "question": "What is the most appropriate diagnosis?",
+      "options": [
+        "Mixed phenotype acute leukaemia, B/myeloid, because CD19 is expressed.",
+        "MDS with excess blasts because blasts are below 20 percent.",
+        "AML with RUNX1::RUNX1T1; aberrant CD19 expression is a recognised feature.",
+        "B-lymphoblastic leukaemia with aberrant myeloid markers.",
+        "AML, myelodysplasia-related because dysplasia is present."
+      ],
+      "correct_answer": "C. AML with RUNX1::RUNX1T1; aberrant CD19 expression is a recognised feature.",
+      "explanation": "The t(8;21) translocation resulting in RUNX1::RUNX1T1 defines a core-binding factor AML entity. WHO 5th Edition recognises this as AML even when blasts are below 20 percent. Aberrant expression of CD19 is characteristic and should not automatically lead to MPAL diagnosis. CD56 expression in t(8;21) AML is associated with higher relapse risk in some studies, and KIT mutations may further modify relapse risk. Gemtuzumab ozogamicin may be considered with induction in CD33-positive favourable-risk CBF AML depending on protocol and patient factors.",
+      "why_other_options_are_wrong": {
+        "A": "MPAL requires strict lineage-defining criteria. Aberrant CD19 alone in genetically defined t(8;21) AML does not make MPAL.",
+        "B": "The defining RUNX1::RUNX1T1 fusion supersedes the blast percentage threshold.",
+        "D": "MPO positivity and t(8;21) establish myeloid disease; this is not B-ALL.",
+        "E": "Dysplasia may be seen in t(8;21), but the recurrent genetic AML entity takes precedence over AML-MR."
+      },
+      "examiner_commentary": "The key trap is overcalling MPAL because of CD19. In t(8;21), aberrant B-marker expression is expected.",
+      "clinical_pearl": "Always interpret flow cytometry in the context of cytogenetics; recurrent AML genetics can explain apparently confusing antigen patterns.",
+      "memory_framework": "t(8;21) = RUNX1::RUNX1T1, CD19 can appear, still AML.",
+      "references": [
+        "WHO 5th Edition haematolymphoid tumours",
+        "ELN 2022 AML recommendations",
+        "ALFA-0701 gemtuzumab ozogamicin studies"
+      ],
+      "quality_scores": {
+        "scientific_accuracy": 5,
+        "educational_value": 5,
+        "examiner_authenticity": 5,
+        "clinical_relevance": 5
+      }
+    },
+    {
+      "id": 5,
+      "code": "AML005",
+      "module": "AML",
+      "section": "Morphology and Cytogenetics",
+      "difficulty": 4,
+      "estimated_time_seconds": 150,
+      "learning_objectives": [
+        "Recognise AML with CBFB::MYH11",
+        "Identify abnormal eosinophils as a morphology clue",
+        "Apply blast threshold exceptions for core-binding factor AML",
+        "Assign favourable-risk ELN category in typical CBF AML"
+      ],
+      "tags": [
+        "AML",
+        "inv(16)",
+        "CBFB::MYH11",
+        "abnormal eosinophils",
+        "CBF AML"
+      ],
+      "title": "inv(16) AML with abnormal eosinophils and low blast percentage",
+      "clinical_vignette": "A 39-year-old man presents with fatigue, mouth ulcers and mild gingival swelling. Bone marrow morphology shows a striking eosinophil abnormality.",
+      "laboratory_data": {
+        "Hb": "96 g/L",
+        "WBC": "18.2 x 10^9/L",
+        "platelets": "52 x 10^9/L",
+        "LDH": "910 U/L",
+        "coagulation": "normal"
+      },
+      "morphology": "Bone marrow aspirate shows 12 percent myeloblasts/monoblasts and abnormal eosinophil precursors with large purple-violet basophilic granules.",
+      "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, HLA-DR and MPO with a monocytic component expressing CD64 and CD11c.",
+      "cytogenetics": "inv(16)(p13.1q22) detected.",
+      "molecular_genetics": "CBFB::MYH11 transcript detected by RT-PCR. FLT3-ITD not detected.",
+      "question": "Which interpretation is most accurate?",
+      "options": [
+        "MDS with excess blasts because blasts are 12 percent.",
+        "AML with CBFB::MYH11, a core-binding factor AML entity, usually favourable risk.",
+        "Chronic eosinophilic leukaemia because eosinophils are increased and abnormal.",
+        "Acute promyelocytic leukaemia, microgranular variant.",
+        "AML-MR because monocytic differentiation is present."
+      ],
+      "correct_answer": "B. AML with CBFB::MYH11, a core-binding factor AML entity, usually favourable risk.",
+      "explanation": "AML with inv(16) or t(16;16), producing CBFB::MYH11, is a core-binding factor AML. The abnormal eosinophils with coarse purple-violet granules are a classic morphology clue. The diagnosis does not require 20 percent blasts in WHO 5th Edition when the defining recurrent genetic abnormality is present. Under ELN 2022, CBFB::MYH11 AML is generally favourable risk, although KIT mutation and MRD kinetics can influence relapse assessment and treatment decisions.",
+      "why_other_options_are_wrong": {
+        "A": "The defining CBFB::MYH11 abnormality overrides the conventional 20 percent blast threshold.",
+        "C": "The eosinophils are part of the AML morphology; the CBFB::MYH11 fusion excludes chronic eosinophilic leukaemia NOS.",
+        "D": "APL is associated with PML::RARA and a different flow/morphology pattern.",
+        "E": "Monocytic differentiation does not define AML-MR."
+      },
+      "examiner_commentary": "This question tests morphology-to-genetics integration. Abnormal eosinophils should immediately suggest inv(16)/CBFB::MYH11.",
+      "clinical_pearl": "CBF AML is favourable risk but still requires MRD monitoring and relapse-risk refinement.",
+      "memory_framework": "inv(16) = abnormal eosinophils + CBFB::MYH11 + favourable risk.",
+      "references": [
+        "WHO 5th Edition haematolymphoid tumours",
+        "ELN 2022 AML recommendations",
+        "ICC 2022 myeloid neoplasms classification"
+      ],
+      "quality_scores": {
+        "scientific_accuracy": 5,
+        "educational_value": 5,
+        "examiner_authenticity": 5,
+        "clinical_relevance": 5
+      }
+    },
+    {
+      "id": 6,
+      "code": "AML006",
+      "module": "AML",
+      "section": "Targeted Therapy and ELN Risk",
+      "difficulty": 5,
+      "estimated_time_seconds": 180,
+      "learning_objectives": [
+        "Interpret FLT3-ITD in ELN 2022 risk stratification",
+        "Select FLT3 inhibitor with intensive induction",
+        "Recognise interaction between FLT3, NPM1 and transplant decisions",
+        "Understand that ELN 2022 no longer uses FLT3 allelic ratio for risk category assignment"
+      ],
+      "tags": [
+        "AML",
+        "FLT3-ITD",
+        "midostaurin",
+        "quizartinib",
+        "ELN2022",
+        "transplant"
+      ],
+      "title": "Newly diagnosed FLT3-ITD AML in a fit younger adult",
+      "clinical_vignette": "A 48-year-old man with de novo AML is considered fit for intensive therapy. He has no major comorbidity and has an HLA typing sample sent at diagnosis.",
+      "laboratory_data": {
+        "Hb": "84 g/L",
+        "WBC": "72 x 10^9/L",
+        "platelets": "27 x 10^9/L",
+        "LDH": "1680 U/L",
+        "creatinine": "86 micromol/L"
+      },
+      "morphology": "Bone marrow aspirate shows 68 percent myeloblasts with occasional Auer rods.",
+      "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, HLA-DR and MPO.",
+      "cytogenetics": "Normal male karyotype.",
+      "molecular_genetics": "FLT3-ITD detected. NPM1 wild type. CEBPA bZIP mutation not detected. No adverse-risk cytogenetic lesion detected.",
+      "question": "What is the most appropriate first-line treatment principle?",
+      "options": [
+        "Standard 7+3 alone because FLT3 status affects relapse therapy only.",
+        "Intensive induction chemotherapy combined with an approved FLT3 inhibitor, followed by response-adapted consolidation and transplant consideration.",
+        "Azacitidine and venetoclax is mandatory for all FLT3-mutated AML regardless of fitness.",
+        "Gilteritinib monotherapy is the standard first-line treatment for all newly diagnosed FLT3-ITD AML.",
+        "No FLT3 inhibitor is indicated unless FLT3-TKD is also present."
+      ],
+      "correct_answer": "B. Intensive induction chemotherapy combined with an approved FLT3 inhibitor, followed by response-adapted consolidation and transplant consideration.",
+      "explanation": "For a fit patient with newly diagnosed FLT3-mutated AML, standard intensive induction should be combined with an approved FLT3 inhibitor. Midostaurin added to intensive chemotherapy improved survival in the RATIFY trial for FLT3-mutated AML. Quizartinib is also used in many current protocols for FLT3-ITD AML, depending on regulatory approval and local availability. ELN 2022 classifies FLT3-ITD AML as intermediate risk unless adverse-risk genetics are present; allelic ratio is no longer used for ELN 2022 risk grouping. Transplant in first remission is commonly considered, especially with NPM1-wild type disease or MRD concerns.",
+      "why_other_options_are_wrong": {
+        "A": "FLT3 status affects upfront therapy, not only relapse therapy.",
+        "C": "HMA-venetoclax is important for older/unfit AML, but this patient is fit for intensive therapy.",
+        "D": "Gilteritinib is standard in relapsed/refractory FLT3-mutated AML; frontline monotherapy is not the standard for a fit newly diagnosed patient.",
+        "E": "FLT3 inhibitors are indicated for FLT3-ITD and/or FLT3-TKD depending on the agent and setting."
+      },
+      "examiner_commentary": "The common outdated mistake is to use FLT3 allelic ratio as the main ELN determinant. ELN 2022 simplified FLT3-ITD into intermediate risk unless adverse genetics are present.",
+      "clinical_pearl": "In fit FLT3-mutated AML, think induction plus FLT3 inhibitor from cycle 1, not chemotherapy alone.",
+      "memory_framework": "FLT3 = Fast proliferating AML; add FLT3 inhibitor early and think transplant depending on risk/MRD.",
+      "references": [
+        "ELN 2022 AML recommendations",
+        "RATIFY trial: midostaurin plus chemotherapy",
+        "NCCN AML Guidelines"
+      ],
+      "quality_scores": {
+        "scientific_accuracy": 5,
+        "educational_value": 5,
+        "examiner_authenticity": 5,
+        "clinical_relevance": 5
+      }
+    },
+    {
+      "id": 7,
+      "code": "AML007",
+      "module": "AML",
+      "section": "Molecular Genetics and Adverse Risk",
+      "difficulty": 5,
+      "estimated_time_seconds": 180,
+      "learning_objectives": [
+        "Recognise TP53-mutated AML as adverse biology",
+        "Integrate complex/monosomal karyotype with mutation data",
+        "Choose realistic therapy for older patients with adverse-risk AML",
+        "Understand limitations of intensive chemotherapy in TP53-mutated AML"
+      ],
+      "tags": [
+        "AML",
+        "TP53",
+        "complex karyotype",
+        "adverse risk",
+        "azacitidine venetoclax",
+        "clinical trial"
+      ],
+      "title": "TP53-mutated AML with complex monosomal karyotype",
+      "clinical_vignette": "A 72-year-old woman presents with progressive fatigue and bruising. She has controlled hypertension, mild renal impairment and ECOG performance status 2.",
+      "laboratory_data": {
+        "Hb": "73 g/L",
+        "WBC": "2.1 x 10^9/L",
+        "platelets": "18 x 10^9/L",
+        "LDH": "740 U/L",
+        "creatinine": "132 micromol/L"
+      },
+      "morphology": "Bone marrow aspirate is hypercellular with 42 percent blasts and marked dysplasia in residual erythroid and megakaryocytic lineages.",
+      "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, HLA-DR and MPO with aberrant CD7.",
+      "cytogenetics": "Complex karyotype with monosomy 5, monosomy 7 and additional structural abnormalities.",
+      "molecular_genetics": "TP53 mutation detected with high variant allele frequency. No NPM1 or CEBPA bZIP mutation. FLT3 not detected.",
+      "question": "What is the best risk and treatment interpretation?",
+      "options": [
+        "Favourable-risk AML because FLT3 is negative.",
+        "Intermediate-risk AML; standard 7+3 is expected to produce durable remission in most patients.",
+        "Adverse-risk AML; treatment should prioritise clinical trial or non-intensive therapy such as azacitidine plus venetoclax if intensive therapy is unsuitable.",
+        "AML with mutated NPM1 because the karyotype is complex.",
+        "APL because thrombocytopenia and bruising are present."
+      ],
+      "correct_answer": "C. Adverse-risk AML; treatment should prioritise clinical trial or non-intensive therapy such as azacitidine plus venetoclax if intensive therapy is unsuitable.",
+      "explanation": "TP53 mutation, especially with complex or monosomal karyotype, defines very adverse AML biology and is associated with poor response durability after standard chemotherapy. In an older patient with ECOG 2 and comorbidity, a clinical trial is highly appropriate where available; otherwise HMA-based therapy, commonly azacitidine plus venetoclax, is often used, with careful discussion of expectations and toxicity. FLT3 negativity does not make AML favourable.",
+      "why_other_options_are_wrong": {
+        "A": "FLT3-negative status alone does not define favourable risk; TP53 and complex karyotype are adverse.",
+        "B": "Standard intensive chemotherapy has poor durable outcomes in TP53-mutated complex-karyotype AML and may be poorly tolerated in this patient.",
+        "D": "No NPM1 mutation is present; complex karyotype does not imply NPM1 AML.",
+        "E": "APL requires PML::RARA and characteristic promyelocyte morphology/phenotype."
+      },
+      "examiner_commentary": "This case tests whether candidates understand that not all AML is simply treated with 7+3. TP53-mutated AML is a distinct adverse biological problem.",
+      "clinical_pearl": "In TP53-mutated complex-karyotype AML, trial enrolment should be considered early whenever possible.",
+      "memory_framework": "TP53 = Treatment Poor, complex karyotype common, trial preferred.",
+      "references": [
+        "ELN 2022 AML recommendations",
+        "WHO 5th Edition haematolymphoid tumours",
+        "VIALE-A azacitidine venetoclax trial"
+      ],
+      "quality_scores": {
+        "scientific_accuracy": 5,
+        "educational_value": 5,
+        "examiner_authenticity": 5,
+        "clinical_relevance": 5
+      }
+    },
+    {
+      "id": 8,
+      "code": "AML008",
+      "module": "AML",
+      "section": "WHO/ICC Classification and AML-MR",
+      "difficulty": 6,
+      "estimated_time_seconds": 210,
+      "learning_objectives": [
+        "Diagnose AML myelodysplasia-related using molecular criteria",
+        "Avoid relying on morphology alone for AML-MR in WHO 5th Edition",
+        "Distinguish AML-MR from AML-NOS",
+        "Understand adverse-risk implication of MDS-related mutations"
+      ],
+      "tags": [
+        "AML-MR",
+        "ASXL1",
+        "SRSF2",
+        "WHO5",
+        "ICC2022",
+        "ELN2022"
+      ],
+      "title": "AML, myelodysplasia-related defined by MDS-related mutations",
+      "clinical_vignette": "A 69-year-old man presents with 3 months of worsening anaemia and thrombocytopenia. There is no documented previous MDS diagnosis. Bone marrow confirms AML.",
+      "laboratory_data": {
+        "Hb": "76 g/L",
+        "WBC": "4.6 x 10^9/L",
+        "platelets": "39 x 10^9/L",
+        "MCV": "106 fL",
+        "LDH": "580 U/L"
+      },
+      "morphology": "Bone marrow aspirate shows 27 percent myeloblasts. Multilineage dysplasia is present but difficult to quantify confidently.",
+      "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, HLA-DR and MPO with aberrant CD7.",
+      "cytogenetics": "Normal male karyotype.",
+      "molecular_genetics": "NGS detects ASXL1 and SRSF2 mutations. NPM1, FLT3-ITD and CEBPA bZIP mutations are not detected.",
+      "question": "Which classification is most appropriate under WHO 5th Edition?",
+      "options": [
+        "AML, not otherwise specified, because the karyotype is normal.",
+        "AML, myelodysplasia-related, because qualifying MDS-related mutations are present.",
+        "MDS with excess blasts because multilineage dysplasia is present.",
+        "Therapy-related AML because the patient is elderly.",
+        "AML with mutated NPM1 because ASXL1 is commonly found with NPM1."
+      ],
+      "correct_answer": "B. AML, myelodysplasia-related, because qualifying MDS-related mutations are present.",
+      "explanation": "WHO 5th Edition no longer uses morphology-defined multilineage dysplasia alone as a defining criterion for AML-MR. AML-MR is defined by specific myelodysplasia-related cytogenetic abnormalities, specific MDS-related gene mutations, or appropriate antecedent myeloid disease. ASXL1 and SRSF2 are qualifying MDS-related mutations. Under ELN 2022, AML with MDS-related gene mutations is adverse risk unless superseded by favourable-risk genetics in specific contexts.",
+      "why_other_options_are_wrong": {
+        "A": "AML-NOS is not appropriate because qualifying MDS-related mutations are present.",
+        "C": "The blast count is at least 20 percent, fulfilling AML rather than MDS-EB.",
+        "D": "Therapy-related status requires prior cytotoxic therapy/radiotherapy exposure and is now generally used as a qualifier rather than the primary WHO genetic category.",
+        "E": "NPM1 is not detected."
+      },
+      "examiner_commentary": "This is a modern classification question. The trap is using older AML-MRC rules based mainly on dysplasia.",
+      "clinical_pearl": "For AML-MR, ask: qualifying cytogenetics, qualifying mutations, or antecedent MDS/MDS-MPN?",
+      "memory_framework": "AML-MR = MDS genetics matter more than dysplasia alone.",
+      "references": [
+        "WHO 5th Edition haematolymphoid tumours",
+        "ICC 2022 myeloid neoplasms classification",
+        "ELN 2022 AML recommendations"
+      ],
+      "quality_scores": {
+        "scientific_accuracy": 5,
+        "educational_value": 5,
+        "examiner_authenticity": 5,
+        "clinical_relevance": 5
+      }
+    },
+    {
+      "id": 9,
+      "code": "AML009",
+      "module": "AML",
+      "section": "Treatment of Older or Unfit AML",
+      "difficulty": 4,
+      "estimated_time_seconds": 150,
+      "learning_objectives": [
+        "Select standard non-intensive therapy for older/unfit AML",
+        "Understand VIALE-A evidence for azacitidine plus venetoclax",
+        "Recognise need for venetoclax dose modification with azole antifungals",
+        "Anticipate myelosuppression and marrow assessment timing"
+      ],
+      "tags": [
+        "AML",
+        "azacitidine",
+        "venetoclax",
+        "older AML",
+        "unfit AML",
+        "VIALE-A"
+      ],
+      "title": "Azacitidine plus venetoclax in an older unfit patient",
+      "clinical_vignette": "An 81-year-old man is diagnosed with AML after presenting with transfusion-dependent anaemia and infections. He has severe ischaemic cardiomyopathy with LVEF 30 percent and ECOG performance status 2. He wishes to receive active treatment if toxicity is acceptable.",
+      "laboratory_data": {
+        "Hb": "69 g/L",
+        "WBC": "8.2 x 10^9/L",
+        "platelets": "24 x 10^9/L",
+        "neutrophils": "0.4 x 10^9/L",
+        "creatinine": "105 micromol/L"
+      },
+      "morphology": "Bone marrow aspirate shows 38 percent myeloblasts without APL morphology.",
+      "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, HLA-DR and MPO.",
+      "cytogenetics": "Normal karyotype.",
+      "molecular_genetics": "IDH2 mutation detected. FLT3-ITD not detected. TP53 not detected.",
+      "question": "Which initial treatment approach is most appropriate?",
+      "options": [
+        "Standard daunorubicin and cytarabine induction despite severe cardiomyopathy.",
+        "Azacitidine plus venetoclax with careful monitoring for cytopenias, infection and drug interactions.",
+        "Observation only because all patients over 80 should receive supportive care alone.",
+        "CPX-351 because all older AML is therapy-related until proven otherwise.",
+        "Gilteritinib because IDH2 mutation predicts FLT3 inhibitor sensitivity."
+      ],
+      "correct_answer": "B. Azacitidine plus venetoclax with careful monitoring for cytopenias, infection and drug interactions.",
+      "explanation": "This patient is older and unsuitable for anthracycline-based intensive induction because of severe cardiomyopathy. Azacitidine plus venetoclax is a standard active non-intensive regimen for newly diagnosed AML in patients ineligible for intensive chemotherapy, supported by VIALE-A, which showed improved remission rates and overall survival compared with azacitidine alone. Management requires attention to tumour lysis risk, prolonged cytopenias, marrow assessment after cycle 1, antimicrobial prophylaxis, and venetoclax dose adjustments with strong CYP3A inhibitors such as posaconazole.",
+      "why_other_options_are_wrong": {
+        "A": "Severe cardiomyopathy makes anthracycline induction high risk.",
+        "C": "Age alone should not mandate supportive care only; treatment depends on fitness, goals and disease biology.",
+        "D": "CPX-351 is used for selected fit patients with therapy-related AML or AML-MR, not simply all older AML.",
+        "E": "Gilteritinib targets FLT3, not IDH2. Enasidenib is an IDH2 inhibitor but is not the default frontline choice here if HMA-venetoclax is suitable."
+      },
+      "examiner_commentary": "This tests fitness-based treatment selection, not just drug memorisation. The correct answer also requires awareness of venetoclax toxicity and interactions.",
+      "clinical_pearl": "HMA-venetoclax is active but not gentle; prolonged cytopenias and infection risk must be actively managed.",
+      "memory_framework": "Unfit AML = HMA plus VEN, but watch TLS, azoles and marrow timing.",
+      "references": [
+        "VIALE-A azacitidine venetoclax trial",
+        "ELN 2022 AML recommendations",
+        "NCCN AML Guidelines"
+      ],
+      "quality_scores": {
+        "scientific_accuracy": 5,
+        "educational_value": 5,
+        "examiner_authenticity": 5,
+        "clinical_relevance": 5
+      }
+    },
+    {
+      "id": 10,
+      "code": "AML010",
+      "module": "AML",
+      "section": "MRD and Post-remission Decision Making",
+      "difficulty": 6,
+      "estimated_time_seconds": 210,
+      "learning_objectives": [
+        "Interpret NPM1 MRD after induction",
+        "Use MRD to refine relapse risk",
+        "Understand transplant decision-making in molecularly persistent AML",
+        "Distinguish morphologic remission from molecular remission"
+      ],
+      "tags": [
+        "AML",
+        "MRD",
+        "NPM1",
+        "transplant",
+        "post-remission"
+      ],
+      "title": "Persistent NPM1 MRD after induction remission",
+      "clinical_vignette": "A 45-year-old woman with NPM1-mutated, FLT3-ITD negative AML received standard intensive induction and achieved morphologic complete remission. The team is deciding post-remission strategy.",
+      "laboratory_data": {
+        "post_induction_Hb": "102 g/L",
+        "post_induction_neutrophils": "1.3 x 10^9/L",
+        "post_induction_platelets": "112 x 10^9/L",
+        "marrow_blasts": "2 percent"
+      },
+      "morphology": "Post-induction marrow is regenerating with fewer than 5 percent blasts and no Auer rods.",
+      "flow_cytometry": "No clear abnormal blast population is detected by standard multiparameter flow MRD assay.",
+      "cytogenetics": "Normal karyotype at diagnosis.",
+      "molecular_genetics": "Diagnostic NPM1 mutation was quantifiable. Post-induction quantitative PCR remains positive with less than 1-log reduction from baseline.",
+      "question": "What is the best interpretation?",
+      "options": [
+        "She is fully cured because morphology shows complete remission.",
+        "Persistent molecular MRD indicates higher relapse risk and should prompt treatment intensification discussion, including transplant evaluation depending on kinetics, donor availability and local protocol.",
+        "The NPM1 result is irrelevant because flow MRD is negative.",
+        "All favourable-risk NPM1 AML patients must undergo allogeneic transplant in first remission.",
+        "The PCR result proves refractory AML because blasts are above 20 percent."
+      ],
+      "correct_answer": "B. Persistent molecular MRD indicates higher relapse risk and should prompt treatment intensification discussion, including transplant evaluation depending on kinetics, donor availability and local protocol.",
+      "explanation": "Morphologic complete remission does not necessarily equal molecular remission. NPM1 mutation is one of the best molecular MRD markers in AML. Persistent or poorly clearing NPM1 MRD after induction is associated with increased relapse risk and may influence post-remission therapy, including intensification, closer monitoring and consideration of allogeneic transplant in selected patients. MRD interpretation should consider timing, transcript kinetics, assay quality, treatment phase and local guideline pathways.",
+      "why_other_options_are_wrong": {
+        "A": "Morphologic remission is important but does not exclude residual molecular disease.",
+        "C": "Flow and PCR assess different targets; a negative flow MRD result does not invalidate persistent NPM1 PCR positivity.",
+        "D": "Favourable-risk NPM1 AML patients are not automatically transplanted in CR1; MRD status is one factor that can change the discussion.",
+        "E": "Refractory AML is not defined by a positive PCR alone with marrow blasts below 5 percent."
+      },
+      "examiner_commentary": "This question tests the modern shift from morphology-only remission to measurable residual disease-guided risk assessment.",
+      "clinical_pearl": "NPM1 MRD is often more clinically informative than morphology once remission has been achieved.",
+      "memory_framework": "CR is not always MRD-negative. NPM1 PCR can expose hidden relapse risk.",
+      "references": [
+        "ELN 2022 AML recommendations",
+        "ELN MRD recommendations",
+        "WHO 5th Edition haematolymphoid tumours"
+      ],
+      "quality_scores": {
+        "scientific_accuracy": 5,
+        "educational_value": 5,
+        "examiner_authenticity": 5,
+        "clinical_relevance": 5
+      }
+    }
+  ]
+}

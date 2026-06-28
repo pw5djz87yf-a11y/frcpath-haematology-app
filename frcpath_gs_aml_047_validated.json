@@ -1,0 +1,115 @@
+[
+  {
+    "id": 47,
+    "code": "AML047",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "subsection": "Acute panmyelosis with myelofibrosis",
+    "title": "Acute panmyelosis with myelofibrosis: distinguishing multilineage acute myeloid proliferation from AMKL",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 270,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Recognise the diagnostic pattern of acute panmyelosis with myelofibrosis",
+      "Distinguish acute panmyelosis with myelofibrosis from acute megakaryoblastic leukaemia",
+      "Understand why trephine biopsy and immunohistochemistry are central when the aspirate is a dry tap"
+    ],
+    "tags": [
+      "AML",
+      "acute panmyelosis with myelofibrosis",
+      "marrow fibrosis",
+      "dry tap",
+      "CD34",
+      "CD117",
+      "MPO",
+      "megakaryocytes",
+      "trephine biopsy",
+      "immunophenotyping"
+    ],
+    "clinical_vignette": "A 63-year-old man presents with rapidly progressive fatigue, fever and bruising. There is no previous history of myeloproliferative neoplasm, myelodysplastic neoplasm, chemotherapy or radiotherapy. Examination shows pallor and purpura without massive splenomegaly. Bone marrow aspiration repeatedly results in a dry tap.",
+    "laboratory_data": {
+      "Hb": "72 g/L",
+      "WBC": "3.2 x 10^9/L",
+      "ANC": "0.5 x 10^9/L",
+      "platelets": "24 x 10^9/L",
+      "MCV": "96 fL",
+      "LDH": "960 U/L",
+      "uric_acid": "430 micromol/L",
+      "coagulation": "PT and APTT normal; fibrinogen normal"
+    },
+    "morphology": {
+      "peripheral_blood": "Leucoerythroblastic features are mild. Occasional circulating blasts are present. Neutrophils show dysgranulopoietic features. Platelets are markedly reduced.",
+      "bone_marrow": "Aspirate is unobtainable. Trephine biopsy is hypercellular with marked reticulin fibrosis. There is panmyeloid proliferation involving granulocytic, erythroid and megakaryocytic lineages, with increased immature cells. Megakaryocytes are increased and atypical but do not form a pure sheet of megakaryoblasts."
+    },
+    "flow_cytometry": {
+      "specimen": "Peripheral blood and limited haemodilute marrow material",
+      "blast_gate": "Expanded CD45-dim immature myeloid population",
+      "positive_markers": [
+        "CD34 positive",
+        "CD117 positive",
+        "CD13 positive",
+        "CD33 positive",
+        "HLA-DR positive",
+        "MPO positive in a subset"
+      ],
+      "additional_findings": [
+        "No convincing discrete blast population with strong CD41/CD61/CD42b co-expression",
+        "No B-lineage defining marker expression",
+        "No cytoplasmic CD3 expression"
+      ],
+      "interpretation": "Findings support an acute myeloid process with multilineage involvement. Flow cytometry alone is insufficient; trephine morphology is decisive."
+    },
+    "trephine_immunohistochemistry": {
+      "positive": [
+        "CD34 highlights increased blasts in interstitial and clustered distribution",
+        "CD117 highlights increased immature myeloid cells",
+        "MPO positive myeloid precursors are increased",
+        "E-cadherin highlights erythroid precursors",
+        "CD61 highlights increased atypical megakaryocytes"
+      ],
+      "fibrosis": "Marked reticulin fibrosis",
+      "interpretation": "Multilineage acute myeloid proliferation with fibrosis rather than a pure megakaryoblastic blast population."
+    },
+    "cytogenetics": "No BCR::ABL1 detected. No recurrent AML-defining rearrangement identified on rapid FISH panel. Conventional karyotype pending.",
+    "molecular_genetics": "JAK2 V617F, CALR and MPL mutation testing pending to exclude an underlying myeloproliferative neoplasm in accelerated or blast phase.",
+    "integrated_laboratory_diagnosis": "Acute myeloid leukaemia with extensive marrow fibrosis and panmyeloid proliferation, in keeping with acute panmyelosis with myelofibrosis after exclusion of blast phase of an underlying myeloid neoplasm.",
+    "question": "Which feature most strongly favours acute panmyelosis with myelofibrosis over acute megakaryoblastic leukaemia in this case?",
+    "options": [
+      "Dry tap with marked reticulin fibrosis",
+      "MPO negativity in the blast population",
+      "Panmyeloid proliferation involving granulocytic, erythroid and megakaryocytic lineages on trephine biopsy",
+      "CD34 expression by immature cells",
+      "Severe thrombocytopenia at presentation"
+    ],
+    "correct_answer": "C. Panmyeloid proliferation involving granulocytic, erythroid and megakaryocytic lineages on trephine biopsy",
+    "explanation": "Acute panmyelosis with myelofibrosis is characterised by acute pancytopenic presentation, dry tap, marked marrow fibrosis and panmyeloid proliferation involving granulocytic, erythroid and megakaryocytic lineages. This contrasts with acute megakaryoblastic leukaemia, where the dominant abnormal population shows megakaryoblastic differentiation supported by multiple megakaryocytic markers. In this case, the trephine demonstrates multilineage acute myeloid proliferation rather than sheets of megakaryoblasts, and flow cytometry does not show convincing CD41/CD61/CD42b co-expression on blasts.",
+    "why_other_options_are_wrong": {
+      "A": "A dry tap with fibrosis occurs in both acute panmyelosis with myelofibrosis and acute megakaryoblastic leukaemia, so it is not discriminatory by itself.",
+      "B": "MPO negativity would support AMKL or minimally differentiated AML, but this case shows MPO positivity in a subset and multilineage proliferation.",
+      "D": "CD34 expression is common in many AML subtypes and is not specific.",
+      "E": "Severe thrombocytopenia is common in acute leukaemia generally and does not distinguish these entities."
+    },
+    "frcpath_pearl": "When the marrow aspirate is a dry tap, the trephine is not secondary information—it may be the diagnostic specimen. In fibrotic acute myeloid presentations, ask whether the trephine shows a dominant megakaryoblastic blast population or true panmyeloid proliferation.",
+    "common_pitfalls": [
+      "Calling every fibrotic AML with dry tap AMKL",
+      "Ignoring erythroid and granulocytic proliferation on trephine biopsy",
+      "Failing to exclude blast phase of a previous or occult myeloproliferative neoplasm",
+      "Over-interpreting haemodilute flow cytometry when trephine morphology is more representative"
+    ],
+    "take_home_message": "Acute panmyelosis with myelofibrosis is a trephine-based integrated diagnosis. The key distinction from AMKL is panmyeloid proliferation rather than a dominant megakaryoblastic blast population.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, 2025",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022",
+      "European LeukemiaNet recommendations for diagnosis and management of AML"
+    ],
+    "related_cases": [
+      "AML030",
+      "AML046",
+      "AML048"
+    ]
+  }
+]

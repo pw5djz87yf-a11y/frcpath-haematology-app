@@ -1,0 +1,386 @@
+{
+  "schema_version": "FRCPath-GS-AML-v1.0",
+  "created_date": "2026-06-28",
+  "module": "AML",
+  "batch": "AML031-AML035",
+  "question_count": 5,
+  "cases": [
+    {
+      "id": 31,
+      "code": "AML031",
+      "version": "1.0",
+      "status": "validated",
+      "module": "AML",
+      "section": "Immunophenotyping I",
+      "subsection": "MPO and myeloid lineage assignment",
+      "title": "Cytoplasmic MPO as a lineage-defining marker in acute leukaemia",
+      "difficulty": "Hard",
+      "difficulty_stars": 4,
+      "estimated_time_seconds": 150,
+      "question_type": "Single best answer",
+      "learning_objectives": [
+        "Identify cytoplasmic myeloperoxidase as strong evidence of myeloid lineage",
+        "Distinguish lineage-defining markers from immaturity markers",
+        "Avoid overcalling MPAL when lymphoid-associated antigens are aberrantly expressed"
+      ],
+      "tags": [
+        "AML",
+        "flow cytometry",
+        "MPO",
+        "lineage assignment",
+        "MPAL",
+        "immunophenotyping"
+      ],
+      "clinical_vignette": "A 37-year-old man presents with fever, bruising and pancytopenia. Peripheral blood film shows circulating blasts without definitive Auer rods. There is no mediastinal mass or lymphadenopathy.",
+      "laboratory_data": {
+        "Hb": "78 g/L",
+        "WBC": "28.4 x 10^9/L",
+        "ANC": "0.5 x 10^9/L",
+        "platelets": "21 x 10^9/L",
+        "LDH": "920 U/L",
+        "coagulation": "PT and APTT normal, fibrinogen normal"
+      },
+      "morphology": {
+        "peripheral_blood": "Numerous medium-sized blasts with fine chromatin, prominent nucleoli and scant-to-moderate basophilic cytoplasm. No definite Auer rods.",
+        "bone_marrow": "Hypercellular marrow with 72 percent blasts. Residual trilineage haematopoiesis is markedly reduced."
+      },
+      "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, HLA-DR and strong cytoplasmic MPO. CD7 is aberrantly expressed. CD19 is dim in a small subset, but cytoplasmic CD79a, CD10, cytoplasmic CD3 and surface CD3 are negative.",
+      "cytogenetics": "Conventional karyotype pending. FISH for PML::RARA, RUNX1::RUNX1T1 and CBFB::MYH11 is negative.",
+      "molecular_genetics": "Rapid PCR for NPM1 and FLT3 is pending.",
+      "question": "Which flow cytometry feature most strongly establishes myeloid lineage in this case?",
+      "options": {
+        "A": "CD34 positivity",
+        "B": "HLA-DR positivity",
+        "C": "Strong cytoplasmic MPO positivity",
+        "D": "Aberrant CD7 expression",
+        "E": "Dim CD19 expression in a subset"
+      },
+      "correct_answer": "C",
+      "explanation": "Strong cytoplasmic myeloperoxidase positivity is the most lineage-defining feature for myeloid differentiation in this case. CD34 and HLA-DR indicate immaturity but are not myeloid-specific. CD13 and CD33 support myeloid differentiation but are less definitive than MPO because they may occur aberrantly in other acute leukaemias. Aberrant CD7 and dim CD19 expression are common traps in AML immunophenotyping; they do not establish T- or B-lineage by themselves. The absence of cytoplasmic CD3 and absence of strong B-lineage-defining evidence mean that the findings support AML rather than mixed phenotype acute leukaemia.",
+      "incorrect_option_explanations": {
+        "A": "Incorrect. CD34 is an immaturity marker and may be expressed in AML, ALL and other immature neoplasms.",
+        "B": "Incorrect. HLA-DR is common in AML but is not lineage-defining.",
+        "C": "Correct. Strong cytoplasmic MPO is direct evidence of granulocytic myeloid lineage.",
+        "D": "Incorrect. CD7 is a common aberrant lymphoid-associated antigen in AML and does not define T-lineage.",
+        "E": "Incorrect. Dim partial CD19 can be aberrant in AML and does not establish B-lineage without the required B-lineage marker pattern."
+      },
+      "examiner_commentary": "This is a classic FRCPath flow cytometry question. The examiner is testing whether the candidate can separate lineage-defining markers from aberrant antigen expression.",
+      "clinical_pearl": "In acute leukaemia, MPO positivity is one of the strongest ways to prove myeloid lineage.",
+      "memory_framework": "MPO = Myeloid Proven Objectively.",
+      "why_this_matters": "Correct lineage assignment determines the diagnostic pathway, genetic testing priorities and initial treatment strategy.",
+      "references": [
+        "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on laboratory diagnosis of haematological neoplasms and acute myeloid leukaemia",
+        "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+        "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022"
+      ],
+      "related_cases": [
+        "AML021",
+        "AML034",
+        "AML035"
+      ]
+    },
+    {
+      "id": 32,
+      "code": "AML032",
+      "version": "1.0",
+      "status": "validated",
+      "module": "AML",
+      "section": "Immunophenotyping I",
+      "subsection": "CD34-negative AML",
+      "title": "CD34-negative AML and the danger of using one marker as a diagnostic shortcut",
+      "difficulty": "Hard",
+      "difficulty_stars": 4,
+      "estimated_time_seconds": 150,
+      "question_type": "Single best answer",
+      "learning_objectives": [
+        "Recognise that AML may be CD34-negative",
+        "Identify immunophenotypic patterns associated with NPM1-mutated AML",
+        "Avoid diagnosing APL based only on CD34 and HLA-DR negativity"
+      ],
+      "tags": [
+        "AML",
+        "CD34-negative",
+        "NPM1",
+        "HLA-DR",
+        "APL mimic",
+        "flow cytometry"
+      ],
+      "clinical_vignette": "A 55-year-old woman presents with fatigue, bruising and gum bleeding. Blood film shows circulating blasts, some with cup-like nuclear invaginations. No heavy abnormal promyelocyte population is seen.",
+      "laboratory_data": {
+        "Hb": "82 g/L",
+        "WBC": "34.0 x 10^9/L",
+        "ANC": "0.8 x 10^9/L",
+        "platelets": "36 x 10^9/L",
+        "LDH": "760 U/L",
+        "coagulation": "PT and APTT normal, fibrinogen 2.8 g/L"
+      },
+      "morphology": {
+        "peripheral_blood": "Blasts with moderate cytoplasm and occasional cup-like nuclear forms. No bundles of Auer rods.",
+        "bone_marrow": "Hypercellular marrow with 58 percent blasts. No convincing multilineage dysplasia."
+      },
+      "flow_cytometry": "Blasts are CD33 bright, CD13 positive, CD117 variable, MPO positive, CD34 negative and HLA-DR negative to weak. CD64 is partial. Cytoplasmic CD3 and B-lineage-defining markers are negative.",
+      "cytogenetics": "46,XX[20]. FISH for PML::RARA is negative.",
+      "molecular_genetics": "NPM1 exon 12 mutation detected. FLT3-ITD not detected. CEBPA bZIP and TP53 mutations not detected.",
+      "question": "Which interpretation is most appropriate?",
+      "options": {
+        "A": "The absence of CD34 excludes AML",
+        "B": "The phenotype is compatible with NPM1-mutated AML and should not be mistaken for APL solely because CD34 and HLA-DR are negative",
+        "C": "The case is diagnostic of acute promyelocytic leukaemia even though PML::RARA is negative",
+        "D": "The case is mixed phenotype acute leukaemia because CD117 is variable",
+        "E": "The case is aplastic anaemia with regenerating myeloid precursors"
+      },
+      "correct_answer": "B",
+      "explanation": "AML can be CD34-negative. NPM1-mutated AML often shows CD33-bright expression, variable CD117, absent or weak CD34 and absent or weak HLA-DR. This can mimic APL immunophenotypically, but the morphology, normal fibrinogen and negative PML::RARA argue against APL. The presence of MPO-positive blasts and an NPM1 mutation supports AML with mutated NPM1. A single marker such as CD34 should never be used to exclude AML.",
+      "incorrect_option_explanations": {
+        "A": "Incorrect. Many AML subtypes, especially NPM1-mutated AML and APL, may be CD34-negative.",
+        "B": "Correct. This is a typical diagnostic trap: CD34-negative and HLA-DR-negative does not automatically mean APL.",
+        "C": "Incorrect. APL requires PML::RARA or a variant RARA rearrangement in the appropriate setting.",
+        "D": "Incorrect. Variable CD117 does not define mixed phenotype acute leukaemia.",
+        "E": "Incorrect. The marrow contains 58 percent clonal MPO-positive blasts, not benign regeneration."
+      },
+      "examiner_commentary": "The examiner is testing whether the candidate can avoid marker shortcuts. CD34-negative AML is very real, and NPM1-mutated AML is a high-yield example.",
+      "clinical_pearl": "CD34-negative plus HLA-DR-negative AML is not automatically APL; always integrate morphology, coagulation and PML::RARA testing.",
+      "memory_framework": "NPM1 often = Normal karyotype, No CD34, No strong HLA-DR, NPM1 PCR MRD.",
+      "why_this_matters": "Misclassifying NPM1-mutated AML as APL or excluding AML can delay correct induction strategy and MRD planning.",
+      "references": [
+        "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on acute myeloid leukaemia and laboratory diagnosis of haematological neoplasms",
+        "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+        "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022",
+        "ELN recommendations for diagnosis and management of AML in adults, 2022"
+      ],
+      "related_cases": [
+        "AML003",
+        "AML011",
+        "AML033"
+      ]
+    },
+    {
+      "id": 33,
+      "code": "AML033",
+      "version": "1.0",
+      "status": "validated",
+      "module": "AML",
+      "section": "Immunophenotyping I",
+      "subsection": "HLA-DR-negative AML beyond APL",
+      "title": "HLA-DR-negative AML is not synonymous with APL",
+      "difficulty": "Examiner",
+      "difficulty_stars": 5,
+      "estimated_time_seconds": 180,
+      "question_type": "Single best answer",
+      "learning_objectives": [
+        "Recognise causes of HLA-DR-negative AML other than APL",
+        "Integrate coagulation, morphology and genetics when APL is suspected",
+        "Understand why urgent ATRA is appropriate when APL remains possible"
+      ],
+      "tags": [
+        "AML",
+        "HLA-DR negative",
+        "APL",
+        "NPM1",
+        "flow cytometry",
+        "examiner trap"
+      ],
+      "clinical_vignette": "A 49-year-old man presents with fatigue and spontaneous bruising. The laboratory phones urgently because the blasts are HLA-DR negative. The clinician is concerned about APL.",
+      "laboratory_data": {
+        "Hb": "79 g/L",
+        "WBC": "22.6 x 10^9/L",
+        "ANC": "0.7 x 10^9/L",
+        "platelets": "29 x 10^9/L",
+        "PT": "13 seconds",
+        "APTT": "32 seconds",
+        "fibrinogen": "3.1 g/L",
+        "D_dimer": "Mildly elevated"
+      },
+      "morphology": {
+        "peripheral_blood": "Circulating blasts with occasional cup-like nuclear invaginations. No abnormal hypergranular promyelocytes and no faggot cells.",
+        "bone_marrow": "Hypercellular marrow with 64 percent blasts. No abnormal promyelocytic predominance."
+      },
+      "flow_cytometry": "Blasts express CD33 bright, CD13, cytoplasmic MPO and variable CD117. CD34 is negative and HLA-DR is negative. CD64 is partial. CD11b and CD14 are negative. No B- or T-lineage-defining markers are present.",
+      "cytogenetics": "Rapid FISH for PML::RARA is negative. Karyotype is normal.",
+      "molecular_genetics": "NPM1 mutation detected. FLT3-ITD is low-level positive. TP53 not detected.",
+      "question": "Which statement is most accurate?",
+      "options": {
+        "A": "HLA-DR negativity is specific for APL",
+        "B": "HLA-DR-negative AML can occur in NPM1-mutated AML; PML::RARA negativity and the morphology argue against APL",
+        "C": "The case is MPAL because HLA-DR is absent",
+        "D": "The case is not AML because CD34 is negative",
+        "E": "The normal fibrinogen proves that acute leukaemia is absent"
+      },
+      "correct_answer": "B",
+      "explanation": "HLA-DR negativity is a classic feature of APL but is not specific for APL. NPM1-mutated AML commonly shows absent or weak CD34 and absent or weak HLA-DR, with CD33-bright expression. In this case, the lack of abnormal promyelocytes or faggot cells, normal fibrinogen, and negative PML::RARA support NPM1-mutated AML rather than APL. In real practice, if APL is genuinely suspected clinically or morphologically, ATRA should be started immediately while confirmatory testing is performed. But once PML::RARA is negative and the integrated findings support NPM1-mutated AML, the diagnosis should not remain APL simply because HLA-DR is negative.",
+      "incorrect_option_explanations": {
+        "A": "Incorrect. HLA-DR negativity is typical but not specific for APL.",
+        "B": "Correct. NPM1-mutated AML is an important HLA-DR-negative APL mimic.",
+        "C": "Incorrect. HLA-DR absence has nothing to do with MPAL lineage assignment.",
+        "D": "Incorrect. CD34-negative AML is well recognised.",
+        "E": "Incorrect. Coagulation may be normal in non-APL AML; normal fibrinogen does not exclude acute leukaemia."
+      },
+      "examiner_commentary": "This is a high-yield examiner trap. Candidates often remember that APL is HLA-DR negative but forget that the reverse is not true.",
+      "clinical_pearl": "Treat suspected APL immediately, but do not diagnose APL from HLA-DR negativity alone.",
+      "memory_framework": "HLA-DR negative: think APL urgently, then check morphology, coagulation and PML::RARA.",
+      "why_this_matters": "APL must not be missed, but non-APL AML should not be misclassified once integrated data are available.",
+      "references": [
+        "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on acute myeloid leukaemia and laboratory diagnosis of haematological neoplasms",
+        "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+        "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022",
+        "ELN recommendations for diagnosis and management of AML in adults, 2022"
+      ],
+      "related_cases": [
+        "AML002",
+        "AML023",
+        "AML032"
+      ]
+    },
+    {
+      "id": 34,
+      "code": "AML034",
+      "version": "1.0",
+      "status": "validated",
+      "module": "AML",
+      "section": "Immunophenotyping I",
+      "subsection": "Aberrant lymphoid antigen expression",
+      "title": "Aberrant lymphoid antigen expression in AML",
+      "difficulty": "Examiner",
+      "difficulty_stars": 5,
+      "estimated_time_seconds": 180,
+      "question_type": "Single best answer",
+      "learning_objectives": [
+        "Recognise aberrant lymphoid antigen expression in AML",
+        "Avoid overdiagnosing mixed phenotype acute leukaemia",
+        "Understand the classic association between t(8;21) AML and CD19 expression"
+      ],
+      "tags": [
+        "AML",
+        "CD19",
+        "CD7",
+        "t(8;21)",
+        "RUNX1::RUNX1T1",
+        "MPAL"
+      ],
+      "clinical_vignette": "A 24-year-old man presents with fatigue, epistaxis and thrombocytopenia. Flow cytometry shows blasts with myeloid markers but also unexpected B-lineage antigen expression. The laboratory asks whether the case should be reported as mixed phenotype acute leukaemia.",
+      "laboratory_data": {
+        "Hb": "86 g/L",
+        "WBC": "13.2 x 10^9/L",
+        "ANC": "0.9 x 10^9/L",
+        "platelets": "25 x 10^9/L",
+        "LDH": "640 U/L",
+        "coagulation": "Normal"
+      },
+      "morphology": {
+        "peripheral_blood": "Circulating blasts with occasional Auer rods. Some neutrophils show dysplastic granulation.",
+        "bone_marrow": "Hypercellular marrow with 38 percent blasts and granulocytic maturation."
+      },
+      "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, HLA-DR and strong cytoplasmic MPO. CD19 is positive and CD56 is positive. CD10 is negative. Cytoplasmic CD79a is weak/partial. Cytoplasmic CD3 and surface CD3 are negative.",
+      "cytogenetics": "Karyotype shows t(8;21)(q22;q22.1). FISH confirms RUNX1::RUNX1T1.",
+      "molecular_genetics": "KIT mutation testing pending. FLT3-ITD not detected.",
+      "question": "What is the best diagnostic interpretation?",
+      "options": {
+        "A": "Mixed phenotype acute leukaemia, B/myeloid, because CD19 is expressed",
+        "B": "B-lymphoblastic leukaemia with aberrant myeloid markers",
+        "C": "AML with RUNX1::RUNX1T1; aberrant CD19 expression is a recognised pattern",
+        "D": "T-lymphoblastic leukaemia because CD56 is positive",
+        "E": "AML, myelodysplasia-related because dysgranulopoiesis is present"
+      },
+      "correct_answer": "C",
+      "explanation": "This is AML with RUNX1::RUNX1T1. Aberrant CD19 expression is a well-recognised feature of t(8;21) AML and should not automatically result in a diagnosis of mixed phenotype acute leukaemia. The blasts show strong MPO positivity and a recurrent AML-defining genetic abnormality. MPAL requires strict lineage criteria; CD19 alone, especially in the setting of RUNX1::RUNX1T1 AML, is insufficient. CD56 may be seen in t(8;21) AML and may have prognostic associations, but it does not define T-lineage or NK-lineage acute leukaemia in this context.",
+      "incorrect_option_explanations": {
+        "A": "Incorrect. CD19 alone is insufficient for MPAL, particularly when the case has t(8;21) AML.",
+        "B": "Incorrect. Auer rods, MPO positivity and RUNX1::RUNX1T1 support AML rather than B-ALL.",
+        "C": "Correct. This is a classic immunophenotypic pattern in RUNX1::RUNX1T1 AML.",
+        "D": "Incorrect. CD56 is not a T-lineage-defining marker. Cytoplasmic or surface CD3 would be required for T-lineage assignment.",
+        "E": "Incorrect. Dysplasia may be present in t(8;21), but the recurrent genetic AML category takes precedence."
+      },
+      "examiner_commentary": "This is one of the most common flow cytometry traps in AML. Aberrant lymphoid antigens are not the same thing as true mixed phenotype lineage assignment.",
+      "clinical_pearl": "In t(8;21) AML, CD19 can be a clue to the diagnosis rather than evidence against it.",
+      "memory_framework": "t(8;21): CD34 positive, HLA-DR positive, MPO positive, CD19 can appear.",
+      "why_this_matters": "Overcalling MPAL can lead to inappropriate risk discussion and treatment planning.",
+      "references": [
+        "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on acute myeloid leukaemia and laboratory diagnosis of haematological neoplasms",
+        "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+        "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022",
+        "ELN recommendations for diagnosis and management of AML in adults, 2022"
+      ],
+      "related_cases": [
+        "AML004",
+        "AML012",
+        "AML031",
+        "AML035"
+      ]
+    },
+    {
+      "id": 35,
+      "code": "AML035",
+      "version": "1.0",
+      "status": "validated",
+      "module": "AML",
+      "section": "Immunophenotyping I",
+      "subsection": "AML versus mixed phenotype acute leukaemia",
+      "title": "Distinguishing AML from MPAL using lineage-defining criteria",
+      "difficulty": "Examiner",
+      "difficulty_stars": 5,
+      "estimated_time_seconds": 210,
+      "question_type": "Single best answer",
+      "learning_objectives": [
+        "Apply lineage-defining criteria for MPAL",
+        "Recognise cytoplasmic CD3 as a T-lineage-defining marker",
+        "Distinguish aberrant antigen expression in AML from true bilineage acute leukaemia"
+      ],
+      "tags": [
+        "AML",
+        "MPAL",
+        "cytoplasmic CD3",
+        "MPO",
+        "lineage criteria",
+        "WHO5",
+        "ICC2022"
+      ],
+      "clinical_vignette": "A 29-year-old woman presents with fever, bruising and a WBC of 48 x 10^9/L. The blood film shows numerous blasts without Auer rods. The initial report describes an acute leukaemia with both myeloid and T-lineage features.",
+      "laboratory_data": {
+        "Hb": "72 g/L",
+        "WBC": "48.0 x 10^9/L",
+        "ANC": "0.4 x 10^9/L",
+        "platelets": "19 x 10^9/L",
+        "LDH": "1380 U/L",
+        "coagulation": "PT and APTT normal, fibrinogen normal"
+      },
+      "morphology": {
+        "peripheral_blood": "Large blasts with high nuclear-to-cytoplasmic ratio, fine chromatin and prominent nucleoli. No Auer rods.",
+        "bone_marrow": "Hypercellular marrow with 86 percent blasts."
+      },
+      "flow_cytometry": "A single blast population expresses CD34, CD117, CD13, CD33 and cytoplasmic MPO. The same population also expresses strong cytoplasmic CD3 and CD7. Surface CD3 is negative. CD19, CD10 and cytoplasmic CD79a are negative.",
+      "cytogenetics": "Karyotype pending. BCR::ABL1 and KMT2A rearrangement testing requested.",
+      "molecular_genetics": "FLT3, NPM1, CEBPA bZIP and broader NGS pending.",
+      "question": "Which interpretation is most appropriate?",
+      "options": {
+        "A": "AML with aberrant CD7 expression only",
+        "B": "T-lymphoblastic leukaemia because cytoplasmic CD3 is present",
+        "C": "Mixed phenotype acute leukaemia, T/myeloid",
+        "D": "AML with RUNX1::RUNX1T1 because CD7 is present",
+        "E": "Acute promyelocytic leukaemia because MPO is positive"
+      },
+      "correct_answer": "C",
+      "explanation": "This case fulfils criteria for mixed phenotype acute leukaemia, T/myeloid, because the blasts show myeloid lineage-defining cytoplasmic MPO and T-lineage-defining strong cytoplasmic CD3. CD7 alone would not define T-lineage because it is commonly aberrantly expressed in AML. However, cytoplasmic CD3 is a T-lineage-defining marker. The key is that both lineage-defining features are present in the acute leukaemia population. MPAL classification requires careful exclusion of genetically defined entities and should include testing for BCR::ABL1 and KMT2A rearrangements, because these have diagnostic, prognostic and therapeutic relevance.",
+      "incorrect_option_explanations": {
+        "A": "Incorrect. CD7 alone could be aberrant in AML, but strong cytoplasmic CD3 is T-lineage defining.",
+        "B": "Incorrect. The blasts also express cytoplasmic MPO, which establishes myeloid lineage; therefore this is not pure T-ALL.",
+        "C": "Correct. The combination of cytoplasmic MPO and strong cytoplasmic CD3 supports MPAL, T/myeloid.",
+        "D": "Incorrect. CD7 is not a marker of RUNX1::RUNX1T1 AML. t(8;21) is more classically associated with aberrant CD19.",
+        "E": "Incorrect. MPO positivity is not specific for APL. APL requires compatible morphology and PML::RARA or variant RARA rearrangement."
+      },
+      "examiner_commentary": "This question tests the difference between aberrant antigen expression and true lineage assignment. The decisive marker is cytoplasmic CD3, not CD7.",
+      "clinical_pearl": "For T-lineage in acute leukaemia, cytoplasmic or surface CD3 carries far more weight than CD7.",
+      "memory_framework": "MPAL T/myeloid = MPO for myeloid plus cytoplasmic CD3 for T-lineage.",
+      "why_this_matters": "MPAL has different treatment considerations from conventional AML and requires careful genetic assessment, including BCR::ABL1 and KMT2A testing.",
+      "references": [
+        "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on acute leukaemia and laboratory diagnosis of haematological neoplasms",
+        "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+        "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022"
+      ],
+      "related_cases": [
+        "AML031",
+        "AML034",
+        "AML041"
+      ]
+    }
+  ]
+}

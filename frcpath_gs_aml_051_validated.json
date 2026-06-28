@@ -1,0 +1,83 @@
+[
+  {
+    "id": 51,
+    "code": "AML051",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Cytogenetics",
+    "subsection": "RUNX1::RUNX1T1 AML",
+    "title": "Recognising AML with RUNX1::RUNX1T1 from integrated laboratory findings",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 360,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Recognise the clinicopathological features of RUNX1::RUNX1T1 AML",
+      "Interpret cytogenetic and immunophenotypic findings together",
+      "Understand AML-defining genetic abnormalities in WHO 5th Edition and ICC 2022"
+    ],
+    "clinical_vignette": "A 33-year-old woman presents with fatigue, bruising and recurrent infections. Bone marrow aspirate demonstrates 42% blasts with numerous Auer rods. Flow cytometry and rapid FISH are performed before conventional cytogenetics are available.",
+    "laboratory_data": {
+      "Hb": "78 g/L",
+      "WBC": "16.2 x10^9/L",
+      "Platelets": "34 x10^9/L",
+      "LDH": "1180 U/L"
+    },
+    "morphology": {
+      "peripheral_blood": "Circulating myeloblasts with occasional salmon-pink granules and rare Auer rods.",
+      "bone_marrow": "Hypercellular marrow with blasts showing maturation. Auer rods are readily identified."
+    },
+    "flow_cytometry": {
+      "positive": [
+        "MPO strong",
+        "CD13",
+        "CD33 (dim-partial)",
+        "CD34 bright",
+        "CD117",
+        "HLA-DR",
+        "CD19 partial",
+        "CD56 partial"
+      ],
+      "negative": [
+        "CD14",
+        "CD64",
+        "cyCD3",
+        "cyCD79a"
+      ],
+      "interpretation": "Immunophenotype is highly suggestive of core-binding factor AML with RUNX1::RUNX1T1."
+    },
+    "cytogenetics": "FISH demonstrates RUNX1::RUNX1T1 fusion. Conventional karyotype confirms t(8;21)(q22;q22.1).",
+    "molecular_genetics": "KIT mutation analysis pending. FLT3-ITD negative. NPM1 negative.",
+    "integrated_laboratory_diagnosis": "AML with RUNX1::RUNX1T1 fusion (core-binding factor AML).",
+    "question": "Which statement best reflects the significance of the cytogenetic finding?",
+    "options": [
+      "The diagnosis depends on ≥20% blasts before AML can be classified.",
+      "RUNX1::RUNX1T1 is an AML-defining genetic abnormality and establishes this subtype regardless of aberrant CD19 expression.",
+      "Partial CD19 expression indicates mixed phenotype acute leukaemia.",
+      "KIT mutation would reclassify the disease as adverse-risk AML.",
+      "Strong MPO excludes a core-binding factor AML."
+    ],
+    "correct_answer": "B. RUNX1::RUNX1T1 is an AML-defining genetic abnormality and establishes this subtype regardless of aberrant CD19 expression.",
+    "explanation": "The RUNX1::RUNX1T1 fusion defines a specific AML entity in WHO 5th Edition and ICC 2022. Aberrant CD19 and CD56 expression are recognised features of this subtype and do not imply mixed phenotype acute leukaemia. KIT mutations may influence relapse risk but do not change the diagnostic classification.",
+    "why_other_options_are_wrong": {
+      "A": "AML-defining genetic abnormalities establish the entity under current classifications.",
+      "C": "CD19 is commonly aberrantly expressed in RUNX1::RUNX1T1 AML.",
+      "D": "KIT mutations may have prognostic implications but do not redefine the entity.",
+      "E": "Strong MPO expression is typical of myeloid differentiation and is compatible with core-binding factor AML."
+    },
+    "frcpath_pearl": "When morphology, flow cytometry and FISH all point towards RUNX1::RUNX1T1 AML, issue an integrated diagnosis promptly while awaiting full cytogenetics and molecular profiling.",
+    "take_home_message": "Core-binding factor AML is an integrated morphologic, immunophenotypic and cytogenetic diagnosis. Aberrant antigen expression should not override AML-defining genetic abnormalities.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification, 2022",
+      "European LeukemiaNet AML Recommendations"
+    ],
+    "related_cases": [
+      "AML043",
+      "AML050",
+      "AML052"
+    ]
+  }
+]

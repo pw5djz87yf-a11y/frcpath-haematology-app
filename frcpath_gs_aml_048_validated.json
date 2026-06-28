@@ -1,0 +1,115 @@
+[
+  {
+    "id": 48,
+    "code": "AML048",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "subsection": "Mixed phenotype acute leukaemia versus AML with aberrant lymphoid markers",
+    "title": "MPAL B/myeloid versus AML with aberrant B-lineage antigen expression",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 300,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Apply lineage assignment principles in acute leukaemia immunophenotyping",
+      "Distinguish AML with aberrant B-lineage antigen expression from B/myeloid MPAL",
+      "Recognise that CD19 expression alone does not establish B-lineage assignment"
+    ],
+    "tags": [
+      "AML",
+      "MPAL",
+      "B/myeloid",
+      "immunophenotyping",
+      "CD19",
+      "cyCD79a",
+      "CD22",
+      "MPO",
+      "lineage assignment",
+      "WHO 5th Edition",
+      "ICC 2022"
+    ],
+    "clinical_vignette": "A 58-year-old woman presents with symptomatic anaemia, bruising and fever. There is no previous history of haematological disease. Bone marrow aspirate shows an acute leukaemia. Flow cytometry identifies one dominant blast population with myeloid differentiation and several B-lineage associated antigens.",
+    "laboratory_data": {
+      "Hb": "74 g/L",
+      "WBC": "22.4 x 10^9/L",
+      "ANC": "0.9 x 10^9/L",
+      "platelets": "31 x 10^9/L",
+      "LDH": "1420 U/L",
+      "uric_acid": "510 micromol/L",
+      "coagulation": "PT and APTT normal; fibrinogen normal"
+    },
+    "morphology": {
+      "peripheral_blood": "Numerous circulating blasts with high nuclear-to-cytoplasmic ratio, fine chromatin and occasional azurophilic granules. No Auer rods are seen.",
+      "bone_marrow": "Hypercellular marrow replaced by blasts. Blasts are medium-sized with scant-to-moderate cytoplasm. No convincing lymphoblast-predominant morphology is present."
+    },
+    "flow_cytometry": {
+      "specimen": "Bone marrow aspirate",
+      "blast_gate": "Single dominant abnormal CD45-dim blast population with low-to-intermediate side scatter, comprising 68% of nucleated cells",
+      "myeloid_markers": [
+        "MPO positive",
+        "CD13 positive",
+        "CD33 positive",
+        "CD117 positive",
+        "CD34 positive",
+        "HLA-DR positive"
+      ],
+      "b_lineage_associated_markers": [
+        "CD19 partial",
+        "cyCD79a weak",
+        "CD22 negative",
+        "CD10 negative",
+        "PAX5 not assessed by flow"
+      ],
+      "t_lineage_markers": [
+        "surface CD3 negative",
+        "cytoplasmic CD3 negative"
+      ],
+      "monocytic_markers": [
+        "CD14 negative",
+        "CD64 negative"
+      ],
+      "interpretation": "Acute myeloid leukaemia with aberrant expression of B-lineage-associated antigens. The findings do not fulfil criteria for B/myeloid mixed phenotype acute leukaemia because B-lineage assignment is not sufficiently strong."
+    },
+    "cytogenetics": "Rapid FISH is negative for BCR::ABL1 and KMT2A rearrangement. Conventional karyotype pending.",
+    "molecular_genetics": "NPM1 negative. FLT3-ITD negative. Broader NGS pending.",
+    "integrated_laboratory_diagnosis": "Acute myeloid leukaemia with aberrant B-lineage antigen expression, pending full cytogenetic and molecular classification. Current immunophenotype does not meet criteria for mixed phenotype acute leukaemia.",
+    "question": "Which interpretation is most appropriate for this immunophenotype?",
+    "options": [
+      "B/myeloid mixed phenotype acute leukaemia because any CD19 expression in AML is lineage-defining",
+      "B-lymphoblastic leukaemia because cyCD79a is weakly expressed",
+      "AML with aberrant B-lineage antigen expression because MPO is positive and B-lineage assignment is insufficient",
+      "T/myeloid mixed phenotype acute leukaemia because CD34 and HLA-DR are positive",
+      "Acute undifferentiated leukaemia because both myeloid and lymphoid antigens are present"
+    ],
+    "correct_answer": "C. AML with aberrant B-lineage antigen expression because MPO is positive and B-lineage assignment is insufficient",
+    "explanation": "The case demonstrates a dominant acute myeloid leukaemia blast population with clear myeloid lineage assignment by MPO expression and myeloid antigen expression. Aberrant lymphoid antigen expression is common in AML and does not automatically establish mixed phenotype acute leukaemia. B-lineage assignment requires strong evidence of B differentiation, not merely partial CD19 or weak cyCD79a. In this case, CD19 is only partial, cyCD79a is weak, CD22 and CD10 are negative, and there is no separate convincing lymphoblast population. Therefore, the most appropriate interpretation is AML with aberrant B-lineage antigen expression, pending genetic classification.",
+    "why_other_options_are_wrong": {
+      "A": "CD19 expression alone, especially if partial, does not define B-lineage MPAL. AML with RUNX1::RUNX1T1 and other AML subtypes may aberrantly express CD19.",
+      "B": "Weak cyCD79a alone is not sufficient to diagnose B-lymphoblastic leukaemia, particularly when MPO and myeloid markers are clearly positive.",
+      "D": "T-lineage assignment requires cytoplasmic or surface CD3. CD34 and HLA-DR are immaturity markers, not T-lineage markers.",
+      "E": "Acute undifferentiated leukaemia lacks lineage-defining markers. This case has MPO-positive myeloid differentiation."
+    },
+    "frcpath_pearl": "In acute leukaemia flow cytometry, distinguish lineage assignment from aberrant antigen expression. CD19, CD7 or TdT positivity does not automatically make AML into MPAL.",
+    "common_pitfalls": [
+      "Overcalling MPAL based on a single aberrant lymphoid marker",
+      "Ignoring MPO positivity as a strong myeloid lineage-defining feature",
+      "Failing to recognise that AML with recurrent genetic abnormalities may express lymphoid-associated antigens",
+      "Not checking for separate blast populations when considering MPAL"
+    ],
+    "take_home_message": "MPAL requires strict lineage assignment. AML commonly expresses aberrant lymphoid-associated antigens; these should not be overinterpreted without sufficient B- or T-lineage defining evidence.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, 2025",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022",
+      "European LeukemiaNet recommendations for diagnosis and management of AML"
+    ],
+    "related_cases": [
+      "AML035",
+      "AML036",
+      "AML043",
+      "AML049"
+    ]
+  }
+]

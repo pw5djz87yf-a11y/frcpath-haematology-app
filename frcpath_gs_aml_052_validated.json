@@ -1,0 +1,84 @@
+[
+  {
+    "id": 52,
+    "code": "AML052",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Cytogenetics",
+    "subsection": "CBFB::MYH11 AML",
+    "title": "Recognising AML with CBFB::MYH11 (inv(16)/t(16;16)) from integrated laboratory findings",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 360,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Recognise the morphology and immunophenotype of CBFB::MYH11 AML",
+      "Interpret core-binding factor cytogenetics",
+      "Understand diagnostic versus prognostic significance of accompanying mutations"
+    ],
+    "clinical_vignette": "A 41-year-old woman presents with fatigue, easy bruising and intermittent abdominal discomfort. Peripheral blood shows circulating blasts and eosinophilia. Bone marrow examination and rapid FISH are performed.",
+    "laboratory_data": {
+      "Hb": "83 g/L",
+      "WBC": "28.4 x10^9/L",
+      "Platelets": "46 x10^9/L",
+      "LDH": "1260 U/L"
+    },
+    "morphology": {
+      "peripheral_blood": "Myeloblasts with occasional Auer rods are present.",
+      "bone_marrow": "Hypercellular marrow with myelomonocytic blasts and abnormal eosinophils containing immature basophilic granules."
+    },
+    "flow_cytometry": {
+      "positive": [
+        "MPO strong",
+        "CD13",
+        "CD33",
+        "CD117",
+        "CD34 partial",
+        "CD15 partial",
+        "CD11c",
+        "CD14 partial",
+        "CD64 partial",
+        "CD2 aberrant"
+      ],
+      "negative": [
+        "cyCD3",
+        "CD19",
+        "cyCD79a"
+      ],
+      "interpretation": "Immunophenotype supports AML with myelomonocytic differentiation and is characteristic of CBFB::MYH11-associated AML."
+    },
+    "cytogenetics": "FISH detects CBFB::MYH11 fusion. Conventional karyotype confirms inv(16)(p13.1q22).",
+    "molecular_genetics": "KIT mutation testing pending. FLT3-ITD negative.",
+    "integrated_laboratory_diagnosis": "AML with CBFB::MYH11 fusion (core-binding factor AML).",
+    "question": "Which feature is the strongest clue suggesting CBFB::MYH11 AML before cytogenetic confirmation?",
+    "options": [
+      "Abnormal marrow eosinophils with immature basophilic granules and myelomonocytic differentiation",
+      "Diffuse marrow fibrosis",
+      "Strong CD19 expression",
+      "Absence of MPO",
+      "Marked erythroid hyperplasia"
+    ],
+    "correct_answer": "A. Abnormal marrow eosinophils with immature basophilic granules and myelomonocytic differentiation",
+    "explanation": "AML with CBFB::MYH11 typically demonstrates myelomonocytic differentiation together with abnormal eosinophils containing immature basophilic granules. Flow cytometry often shows monocytic markers with aberrant CD2. Identification of the CBFB::MYH11 fusion confirms the diagnosis under WHO 5th Edition and ICC 2022.",
+    "why_other_options_are_wrong": {
+      "B": "Fibrosis is not a defining feature of CBFB::MYH11 AML.",
+      "C": "Aberrant CD19 is more characteristic of RUNX1::RUNX1T1 AML.",
+      "D": "MPO is usually positive in this subtype.",
+      "E": "Erythroid hyperplasia is not a defining morphologic clue."
+    },
+    "frcpath_pearl": "When abnormal eosinophils accompany myelomonocytic AML, actively consider inv(16)/t(16;16) and request rapid CBFB::MYH11 testing.",
+    "take_home_message": "Morphology, flow cytometry and rapid molecular/cytogenetic testing should be integrated to rapidly identify core-binding factor AML.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification, 2022",
+      "European LeukemiaNet AML Recommendations"
+    ],
+    "related_cases": [
+      "AML042",
+      "AML051",
+      "AML053"
+    ]
+  }
+]

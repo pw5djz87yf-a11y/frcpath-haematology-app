@@ -1,0 +1,322 @@
+[
+  {
+    "id": 11,
+    "code": "AML011",
+    "module": "AML",
+    "section": "WHO5 and ICC Diagnosis",
+    "difficulty": "Hard",
+    "estimated_time_seconds": 150,
+    "learning_objectives": [
+      "Apply WHO 5th Edition and ICC 2022 AML diagnostic criteria.",
+      "Integrate morphology, flow cytometry, cytogenetics and molecular genetics.",
+      "Recognise common FRCPath diagnostic traps in AML classification."
+    ],
+    "tags": [
+      "AML",
+      "NPM1",
+      "WHO5",
+      "ICC2022",
+      "MRD",
+      "Diagnosis"
+    ],
+    "title": "AML with mutated NPM1 and 14 percent blasts",
+    "clinical_vignette": "A 52-year-old woman is referred with bruising and fatigue. She has no previous history of myeloid neoplasm or cytotoxic therapy.",
+    "laboratory_data": {
+      "Hb": "84 g/L",
+      "WBC": "18.6 x 10^9/L",
+      "Platelets": "42 x 10^9/L",
+      "LDH": "620 U/L",
+      "Coagulation": "PT and APTT normal; fibrinogen normal"
+    },
+    "morphology": "Peripheral blood shows circulating blasts with occasional cup-like nuclear invaginations. Bone marrow aspirate is hypercellular with 14 percent blasts and no convincing multilineage dysplasia.",
+    "flow_cytometry": "Blasts are CD33 bright, CD13 positive, MPO positive, CD117 positive, CD34 negative and HLA-DR negative to weak. There is no significant B- or T-lineage defining antigen expression.",
+    "cytogenetics": "Conventional karyotype: 46,XX. No recurrent balanced translocation detected by FISH.",
+    "molecular_genetics": "NGS detects an NPM1 exon 12 frameshift mutation with variant allele frequency 34 percent. FLT3-ITD and FLT3-TKD are not detected. No adverse-risk cytogenetic abnormality is present.",
+    "question": "Which is the most appropriate diagnosis under WHO 5th Edition?",
+    "options": {
+      "A": "Myelodysplastic syndrome with increased blasts",
+      "B": "Acute myeloid leukaemia with mutated NPM1",
+      "C": "Acute myeloid leukaemia, defined by differentiation",
+      "D": "Clonal cytopenia of undetermined significance",
+      "E": "Mixed phenotype acute leukaemia, B/myeloid"
+    },
+    "correct_answer": "B. Acute myeloid leukaemia with mutated NPM1",
+    "explanation": "WHO 5th Edition recognises AML with mutated NPM1 as an AML-defining genetic entity and does not require the traditional 20 percent blast threshold when the clinical and pathological context supports a myeloid neoplasm. The case is deliberately set at 14 percent blasts to test whether the candidate still applies the older 20 percent rule. The phenotype is also supportive: NPM1-mutated AML often shows strong CD33, absent or weak CD34, and absent or weak HLA-DR. The absence of FLT3-ITD and adverse-risk cytogenetics also matters for later ELN risk assignment, but the diagnostic answer here is the WHO entity AML with mutated NPM1. Under ICC 2022, a 10 percent blast threshold is retained for AML with recurrent genetic abnormalities including mutated NPM1, so this case would also qualify because the marrow blasts are 14 percent. This is an important modern FRCPath concept because the diagnosis changes patient counselling, treatment planning and MRD strategy. NPM1 is also a useful molecular MRD marker by quantitative PCR.",
+    "why_other_options_are_wrong": {
+      "A": "Incorrect. MDS with increased blasts is not the best diagnosis once an AML-defining NPM1 mutation is present in a compatible myeloid neoplasm.",
+      "B": "Correct. NPM1 mutation defines this WHO5 AML entity despite blasts below 20 percent.",
+      "C": "Incorrect. AML defined by differentiation is used when no defining genetic abnormality is identified.",
+      "D": "Incorrect. CCUS requires cytopenia with clonality but without diagnostic criteria for a myeloid neoplasm such as AML.",
+      "E": "Incorrect. There is no lineage-defining B or T marker pattern; MPO positivity supports myeloid lineage."
+    },
+    "examiner_commentary": "This question tests whether the candidate has moved beyond the older blast-threshold-only approach.",
+    "clinical_pearl": "Do not call a 14 percent blast NPM1-mutated case MDS simply because the blasts are below 20 percent.",
+    "memory_framework": "NPM1 equals no old 20 percent rule in WHO5, normal karyotype common, CD34 often negative, and PCR MRD useful.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia.",
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 10: Laboratory diagnosis of haematological neoplasms.",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022.",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022.",
+      "Dohner H et al. Diagnosis and management of AML in adults: 2022 ELN recommendations. Blood. 2022."
+    ],
+    "version": "1.0",
+    "last_reviewed": "2026-06",
+    "status": "validated"
+  },
+  {
+    "id": 12,
+    "code": "AML012",
+    "module": "AML",
+    "section": "WHO5 and ICC Diagnosis",
+    "difficulty": "Hard",
+    "estimated_time_seconds": 150,
+    "learning_objectives": [
+      "Apply WHO 5th Edition and ICC 2022 AML diagnostic criteria.",
+      "Integrate morphology, flow cytometry, cytogenetics and molecular genetics.",
+      "Recognise common FRCPath diagnostic traps in AML classification."
+    ],
+    "tags": [
+      "AML",
+      "RUNX1::RUNX1T1",
+      "t(8;21)",
+      "Core binding factor",
+      "Flow cytometry",
+      "WHO5"
+    ],
+    "title": "RUNX1::RUNX1T1 AML with low blast percentage",
+    "clinical_vignette": "A 26-year-old man presents with bone pain, fatigue and thrombocytopenia. There is no previous haematological disorder.",
+    "laboratory_data": {
+      "Hb": "91 g/L",
+      "WBC": "11.2 x 10^9/L",
+      "Platelets": "38 x 10^9/L",
+      "LDH": "510 U/L",
+      "Coagulation": "Normal"
+    },
+    "morphology": "Blood film shows circulating blasts with occasional Auer rods and dysplastic neutrophils. Bone marrow aspirate shows 8 percent blasts with granulocytic maturation.",
+    "flow_cytometry": "Blasts express CD34, CD117, HLA-DR, CD13, CD33 and MPO. There is aberrant CD19 expression and CD56 is positive.",
+    "cytogenetics": "Karyotype demonstrates t(8;21)(q22;q22.1). FISH confirms RUNX1::RUNX1T1 fusion.",
+    "molecular_genetics": "FLT3-ITD is negative. KIT mutation testing is pending.",
+    "question": "What is the best diagnostic interpretation?",
+    "options": {
+      "A": "Acute myeloid leukaemia with RUNX1::RUNX1T1 fusion",
+      "B": "Myelodysplastic syndrome with low blasts",
+      "C": "B-lymphoblastic leukaemia with aberrant myeloid markers",
+      "D": "Mixed phenotype acute leukaemia, B/myeloid",
+      "E": "Reactive marrow regeneration after infection"
+    },
+    "correct_answer": "A. Acute myeloid leukaemia with RUNX1::RUNX1T1 fusion",
+    "explanation": "RUNX1::RUNX1T1, produced by t(8;21), is a defining genetic abnormality in AML classification. WHO 5th Edition lists AML with RUNX1::RUNX1T1 among AML with defining genetic abnormalities. ICC 2022 also recognises AML with recurrent genetic abnormalities, with a required blast threshold of more than 10 percent for many such entities; however, in clinical practice an unequivocal t(8;21) with myeloid blasts and Auer rods is treated as core-binding factor AML, and the low blast count should prompt careful review and repeat marrow assessment rather than reclassification as a benign process. The question highlights the principle that genetic context can override a simplistic blast-count approach. The flow phenotype is classic: CD34 and HLA-DR positivity with myeloid markers and aberrant CD19, sometimes with CD56. CD19 expression in t(8;21) AML is a common trap and does not by itself make the disease B-ALL or MPAL.",
+    "why_other_options_are_wrong": {
+      "A": "Correct. t(8;21) with RUNX1::RUNX1T1 defines core-binding factor AML in the appropriate setting.",
+      "B": "Incorrect. The defining fusion and Auer rods argue strongly against MDS as the primary classification.",
+      "C": "Incorrect. MPO positivity, Auer rods and RUNX1::RUNX1T1 support AML, not B-ALL.",
+      "D": "Incorrect. Aberrant CD19 is common in t(8;21) AML and does not automatically establish MPAL.",
+      "E": "Incorrect. A recurrent AML fusion is not a reactive finding."
+    },
+    "examiner_commentary": "Examiners use this pattern to test whether candidates overinterpret aberrant lymphoid markers.",
+    "clinical_pearl": "In t(8;21), CD19 can be a clue to the diagnosis rather than evidence against it.",
+    "memory_framework": "t(8;21): Think CD34 positive, HLA-DR positive, MPO positive, aberrant CD19, core-binding factor AML.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia.",
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 10: Laboratory diagnosis of haematological neoplasms.",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022.",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022.",
+      "Dohner H et al. Diagnosis and management of AML in adults: 2022 ELN recommendations. Blood. 2022."
+    ],
+    "version": "1.0",
+    "last_reviewed": "2026-06",
+    "status": "validated"
+  },
+  {
+    "id": 13,
+    "code": "AML013",
+    "module": "AML",
+    "section": "WHO5 and ICC Diagnosis",
+    "difficulty": "Hard",
+    "estimated_time_seconds": 150,
+    "learning_objectives": [
+      "Apply WHO 5th Edition and ICC 2022 AML diagnostic criteria.",
+      "Integrate morphology, flow cytometry, cytogenetics and molecular genetics.",
+      "Recognise common FRCPath diagnostic traps in AML classification."
+    ],
+    "tags": [
+      "AML",
+      "CBFB::MYH11",
+      "inv(16)",
+      "Abnormal eosinophils",
+      "Core binding factor",
+      "Morphology"
+    ],
+    "title": "CBFB::MYH11 AML with abnormal eosinophils",
+    "clinical_vignette": "A 43-year-old man presents with fatigue and gingival swelling. He has no previous history of MDS or exposure to chemotherapy.",
+    "laboratory_data": {
+      "Hb": "76 g/L",
+      "WBC": "24.5 x 10^9/L",
+      "Platelets": "54 x 10^9/L",
+      "LDH": "780 U/L",
+      "Coagulation": "Normal"
+    },
+    "morphology": "Bone marrow aspirate shows 13 percent blasts and monoblasts. There are increased abnormal eosinophilic precursors with large purple-violet basophilic granules.",
+    "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, MPO and HLA-DR. A monocytic component expresses CD11c and CD64.",
+    "cytogenetics": "Karyotype shows inv(16)(p13.1q22). RT-PCR confirms CBFB::MYH11.",
+    "molecular_genetics": "NGS shows no TP53 mutation. FLT3-ITD is negative.",
+    "question": "What is the most appropriate diagnosis?",
+    "options": {
+      "A": "Acute myelomonocytic leukaemia with CBFB::MYH11",
+      "B": "Chronic eosinophilic leukaemia, not otherwise specified",
+      "C": "Hypereosinophilic syndrome with reactive marrow blasts",
+      "D": "Myelodysplastic syndrome with increased blasts",
+      "E": "Acute promyelocytic leukaemia, microgranular variant"
+    },
+    "correct_answer": "A. Acute myelomonocytic leukaemia with CBFB::MYH11",
+    "explanation": "inv(16) or t(16;16) creates CBFB::MYH11 and defines a core-binding factor AML entity. The morphology is highly characteristic: acute myelomonocytic features with abnormal eosinophils containing coarse basophilic granules. The blast percentage is intentionally below 20 percent to test whether the candidate recognises that a defining recurrent genetic abnormality can establish AML in the correct clinicopathological setting. This entity usually falls within favourable-risk AML by ELN 2022, although additional factors such as MRD response and some co-mutations may modify clinical decisions. It is not a primary eosinophilic disorder; the eosinophils are part of the AML morphology. The presence of gingival swelling can occur because of monocytic differentiation and should not distract from the cytogenetic diagnosis.",
+    "why_other_options_are_wrong": {
+      "A": "Correct. The combination of inv(16), CBFB::MYH11 and abnormal eosinophils is diagnostic.",
+      "B": "Incorrect. Chronic eosinophilic leukaemia is excluded by CBFB::MYH11 AML-defining genetics and blast population.",
+      "C": "Incorrect. The eosinophils are neoplastic-associated abnormal eosinophils, not a reactive hypereosinophilic syndrome.",
+      "D": "Incorrect. A defining AML fusion supersedes an MDS-with-blasts interpretation.",
+      "E": "Incorrect. APL is defined by PML::RARA or variant RARA rearrangement and has a different phenotype."
+    },
+    "examiner_commentary": "This case tests recognition of a morphology-genetics pairing, not just memorisation of inv(16).",
+    "clinical_pearl": "Abnormal eosinophils with purple basophilic granules in AML should trigger CBFB::MYH11 testing.",
+    "memory_framework": "inv(16): Myelomonocytic AML plus abnormal eosinophils equals CBFB::MYH11.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia.",
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 10: Laboratory diagnosis of haematological neoplasms.",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022.",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022.",
+      "Dohner H et al. Diagnosis and management of AML in adults: 2022 ELN recommendations. Blood. 2022."
+    ],
+    "version": "1.0",
+    "last_reviewed": "2026-06",
+    "status": "validated"
+  },
+  {
+    "id": 14,
+    "code": "AML014",
+    "module": "AML",
+    "section": "WHO5 and ICC Diagnosis",
+    "difficulty": "Very hard",
+    "estimated_time_seconds": 150,
+    "learning_objectives": [
+      "Apply WHO 5th Edition and ICC 2022 AML diagnostic criteria.",
+      "Integrate morphology, flow cytometry, cytogenetics and molecular genetics.",
+      "Recognise common FRCPath diagnostic traps in AML classification."
+    ],
+    "tags": [
+      "AML",
+      "CEBPA",
+      "bZIP",
+      "ELN2022",
+      "Molecular genetics",
+      "Favourable risk"
+    ],
+    "title": "AML with in-frame bZIP CEBPA mutation",
+    "clinical_vignette": "A 38-year-old woman is diagnosed with de novo AML after presenting with fatigue and recurrent infections.",
+    "laboratory_data": {
+      "Hb": "70 g/L",
+      "WBC": "32.0 x 10^9/L",
+      "Platelets": "29 x 10^9/L",
+      "LDH": "690 U/L",
+      "Coagulation": "Normal"
+    },
+    "morphology": "Bone marrow aspirate shows 46 percent myeloblasts without features of APL. Dysplasia is not prominent.",
+    "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, HLA-DR and MPO. No lineage-defining lymphoid marker expression is identified.",
+    "cytogenetics": "Karyotype is normal. FISH for RUNX1::RUNX1T1, CBFB::MYH11 and PML::RARA is negative.",
+    "molecular_genetics": "NGS detects a single in-frame mutation affecting the basic leucine zipper domain of CEBPA. NPM1 and FLT3-ITD are negative. No adverse-risk cytogenetic abnormality is present.",
+    "question": "Which statement is most accurate?",
+    "options": {
+      "A": "This is favourable-risk AML with CEBPA bZIP mutation",
+      "B": "This is adverse-risk AML because only biallelic CEBPA mutation is favourable",
+      "C": "This is AML myelodysplasia-related because CEBPA is an MR gene",
+      "D": "This is AML with mutated NPM1 because CEBPA and NPM1 are equivalent entities",
+      "E": "This should be classified as MDS/AML because the karyotype is normal"
+    },
+    "correct_answer": "A. This is favourable-risk AML with CEBPA bZIP mutation",
+    "explanation": "Modern classification and risk systems place emphasis on the location and type of CEBPA mutation. Earlier teaching focused on biallelic CEBPA mutations. Current WHO and ICC frameworks recognise in-frame mutations in the CEBPA basic leucine zipper domain as defining a biologically favourable AML group. ELN 2022 also treats in-frame bZIP CEBPA-mutated AML as favourable risk when adverse-risk features are absent. This question is designed to catch candidates who learned the older rule that only biallelic CEBPA mutation is favourable. CEBPA is a transcription factor important in myeloid differentiation. The normal karyotype and absence of NPM1 or FLT3-ITD do not undermine the diagnosis. The case is de novo AML with 46 percent blasts, so blast threshold issues are not the main trap; the main issue is correct molecular interpretation.",
+    "why_other_options_are_wrong": {
+      "A": "Correct. A single in-frame bZIP CEBPA mutation is now recognised as a favourable AML-defining/risk feature in the appropriate setting.",
+      "B": "Incorrect. This reflects older teaching; bZIP location is now central.",
+      "C": "Incorrect. CEBPA is not one of the defining myelodysplasia-related gene mutations used to classify AML-MR.",
+      "D": "Incorrect. NPM1 and CEBPA are distinct molecular entities with different MRD and biological implications.",
+      "E": "Incorrect. Normal karyotype does not imply MDS/AML when AML blast criteria and defining molecular features are present."
+    },
+    "examiner_commentary": "FRCPath questions increasingly test whether candidates know the updated CEBPA rule.",
+    "clinical_pearl": "Always specify whether CEBPA mutation involves the bZIP domain; not all CEBPA reports carry the same implication.",
+    "memory_framework": "CEBPA favourable now means in-frame bZIP, not simply 'any CEBPA' and not only the old biallelic rule.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia.",
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 10: Laboratory diagnosis of haematological neoplasms.",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022.",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022.",
+      "Dohner H et al. Diagnosis and management of AML in adults: 2022 ELN recommendations. Blood. 2022."
+    ],
+    "version": "1.0",
+    "last_reviewed": "2026-06",
+    "status": "validated"
+  },
+  {
+    "id": 15,
+    "code": "AML015",
+    "module": "AML",
+    "section": "WHO5 and ICC Diagnosis",
+    "difficulty": "Hard",
+    "estimated_time_seconds": 150,
+    "learning_objectives": [
+      "Apply WHO 5th Edition and ICC 2022 AML diagnostic criteria.",
+      "Integrate morphology, flow cytometry, cytogenetics and molecular genetics.",
+      "Recognise common FRCPath diagnostic traps in AML classification."
+    ],
+    "tags": [
+      "AML",
+      "Therapy-related",
+      "AML-MR",
+      "TP53",
+      "Complex karyotype",
+      "WHO5"
+    ],
+    "title": "Therapy-related AML after breast cancer",
+    "clinical_vignette": "A 61-year-old woman presents with pancytopenia. She received adjuvant chemotherapy and radiotherapy for breast cancer six years earlier.",
+    "laboratory_data": {
+      "Hb": "68 g/L",
+      "WBC": "3.4 x 10^9/L",
+      "Platelets": "22 x 10^9/L",
+      "LDH": "430 U/L",
+      "Coagulation": "Normal"
+    },
+    "morphology": "Bone marrow is hypercellular with 34 percent blasts and marked background dysplasia.",
+    "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, HLA-DR and MPO. There is no APL phenotype.",
+    "cytogenetics": "Karyotype shows a complex karyotype including monosomy 7 and deletion 5q. No recurrent balanced translocation is detected.",
+    "molecular_genetics": "NGS detects TP53 mutation with variant allele frequency 48 percent. NPM1, FLT3 and CEBPA bZIP mutations are not detected.",
+    "question": "How should this be classified most appropriately under WHO 5th Edition principles?",
+    "options": {
+      "A": "Therapy-related AML as a standalone primary disease category",
+      "B": "AML with myelodysplasia-related features, with therapy-relatedness recorded as a qualifier",
+      "C": "Acute promyelocytic leukaemia because of previous chemotherapy exposure",
+      "D": "MDS with increased blasts because the patient has pancytopenia and dysplasia",
+      "E": "AML with mutated NPM1 because therapy-related AML is usually NPM1-mutated"
+    },
+    "correct_answer": "B. AML with myelodysplasia-related features, with therapy-relatedness recorded as a qualifier",
+    "explanation": "WHO 5th Edition changed the way prior cytotoxic exposure is handled. Therapy-relatedness is no longer used as a standalone primary disease category in the same way as older classifications. Instead, AML is classified according to its defining genetic and biological features, while therapy-relatedness is recorded as a diagnostic qualifier. This case has AML by blast percentage and has myelodysplasia-related cytogenetic abnormalities, including abnormalities of chromosomes 5 and 7, together with a complex karyotype and TP53 mutation. Therefore, the best WHO-style classification is AML with myelodysplasia-related features or genetics, with a therapy-related qualifier. The prior breast cancer treatment remains clinically important because it influences prognosis, patient counselling and transplant planning, but it should not override the genetic classification. This is a common examiner trap because many candidates still use the older term therapy-related AML as the main diagnostic label.",
+    "why_other_options_are_wrong": {
+      "A": "Incorrect. Therapy-relatedness is now best recorded as a qualifier rather than the primary WHO5 disease category.",
+      "B": "Correct. The disease is classified by its AML-MR genetic/cytogenetic features, with therapy-relatedness added as a qualifier.",
+      "C": "Incorrect. APL requires PML::RARA or variant RARA rearrangement and typical morphology or phenotype.",
+      "D": "Incorrect. The marrow has 34 percent blasts, meeting AML criteria.",
+      "E": "Incorrect. NPM1 mutation is absent and therapy-related AML is often enriched for adverse cytogenetics and TP53 alteration rather than NPM1."
+    },
+    "examiner_commentary": "This case tests whether the candidate uses the newer WHO logic rather than older classification labels.",
+    "clinical_pearl": "Prior chemotherapy is clinically important, but current classification prioritises genetic disease biology.",
+    "memory_framework": "Therapy-related is now a qualifier: classify the AML first, then add the exposure history.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia.",
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 10: Laboratory diagnosis of haematological neoplasms.",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022.",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022.",
+      "Dohner H et al. Diagnosis and management of AML in adults: 2022 ELN recommendations. Blood. 2022."
+    ],
+    "version": "1.0",
+    "last_reviewed": "2026-06",
+    "status": "validated"
+  }
+]

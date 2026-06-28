@@ -1,0 +1,83 @@
+[
+  {
+    "id": 50,
+    "code": "AML050",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "subsection": "Integrated diagnostic approach",
+    "title": "Integrated immunophenotypic approach to acute leukaemia classification",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 360,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Integrate morphology, flow cytometry, cytogenetics and molecular data",
+      "Select the most appropriate integrated diagnosis",
+      "Recognise the limits of immunophenotyping alone"
+    ],
+    "clinical_vignette": "A 45-year-old man presents with fatigue, bruising and recurrent infections. Bone marrow aspirate demonstrates 72% blasts. Rapid ancillary investigations are available before final karyotype.",
+    "laboratory_data": {
+      "Hb": "76 g/L",
+      "WBC": "18.6 x10^9/L",
+      "Platelets": "22 x10^9/L",
+      "LDH": "1350 U/L"
+    },
+    "morphology": {
+      "peripheral_blood": "Circulating myeloblasts with occasional Auer rods.",
+      "bone_marrow": "Hypercellular marrow replaced by blasts with myeloid morphology."
+    },
+    "flow_cytometry": {
+      "positive": [
+        "MPO strong",
+        "CD13",
+        "CD33 bright",
+        "CD117",
+        "CD34 partial",
+        "HLA-DR",
+        "CD19 partial"
+      ],
+      "negative": [
+        "cyCD3",
+        "CD10",
+        "CD64",
+        "CD14"
+      ],
+      "interpretation": "Definitive myeloid lineage with aberrant CD19 expression."
+    },
+    "cytogenetics": "FISH detects RUNX1::RUNX1T1 fusion.",
+    "molecular_genetics": "KIT mutation detected. FLT3-ITD negative. NPM1 negative.",
+    "integrated_laboratory_diagnosis": "AML with RUNX1::RUNX1T1 fusion (core-binding factor AML).",
+    "question": "What is the most appropriate integrated interpretation of these findings?",
+    "options": [
+      "Mixed phenotype acute leukaemia because CD19 is expressed",
+      "AML with RUNX1::RUNX1T1; aberrant CD19 expression does not alter lineage assignment",
+      "B-lymphoblastic leukaemia with aberrant MPO expression",
+      "Acute undifferentiated leukaemia",
+      "AML with minimal differentiation"
+    ],
+    "correct_answer": "B. AML with RUNX1::RUNX1T1; aberrant CD19 expression does not alter lineage assignment",
+    "explanation": "The presence of strong MPO together with RUNX1::RUNX1T1 establishes AML with a defining genetic abnormality. Aberrant CD19 expression is well recognised in RUNX1::RUNX1T1 AML and does not justify reclassification as mixed phenotype acute leukaemia.",
+    "why_other_options_are_wrong": {
+      "A": "CD19 alone is not lineage-defining for MPAL when definitive myeloid lineage is established.",
+      "C": "B-ALL does not typically show strong MPO with RUNX1::RUNX1T1.",
+      "D": "Acute undifferentiated leukaemia lacks lineage-defining markers.",
+      "E": "AML with minimal differentiation is usually MPO negative."
+    },
+    "frcpath_pearl": "Always integrate morphology, immunophenotype and genetics. Genetics may define the AML subtype even when aberrant antigens are present.",
+    "take_home_message": "Integrated diagnosis is the cornerstone of modern AML classification. Aberrant antigen expression must not override lineage-defining markers or AML-defining genetic abnormalities.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification, 2022",
+      "ELN Recommendations"
+    ],
+    "related_cases": [
+      "AML043",
+      "AML048",
+      "AML049",
+      "AML051"
+    ]
+  }
+]

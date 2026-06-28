@@ -1,0 +1,372 @@
+[
+  {
+    "id": 26,
+    "code": "AML026",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Morphology",
+    "subsection": "Multilineage dysplasia",
+    "title": "AML with multilineage dysplasia but no AML-defining genetics",
+    "difficulty": "Hard",
+    "difficulty_stars": 4,
+    "estimated_time_seconds": 150,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Distinguish dysplasia as a morphological observation from AML myelodysplasia-related classification",
+      "Apply the 20 percent blast threshold when no AML-defining genetic abnormality is present",
+      "Recognise that morphology alone is no longer sufficient to define AML-MR in WHO 5th edition"
+    ],
+    "tags": [
+      "AML",
+      "morphology",
+      "dysplasia",
+      "AML-MR",
+      "WHO5",
+      "ICC2022"
+    ],
+    "clinical_vignette": "A 72-year-old man presents with progressive fatigue, recurrent chest infections and easy bruising. He has no prior chemotherapy or radiotherapy exposure and no known previous diagnosis of MDS. Examination shows pallor and scattered ecchymoses without splenomegaly.",
+    "laboratory_data": {
+      "Hb": "76 g/L",
+      "WBC": "2.1 x 10^9/L",
+      "ANC": "0.6 x 10^9/L",
+      "platelets": "42 x 10^9/L",
+      "MCV": "106 fL",
+      "LDH": "Mildly elevated",
+      "coagulation": "PT and APTT normal"
+    },
+    "morphology": {
+      "peripheral_blood": "Macrocytosis, hypogranular neutrophils and occasional pseudo-Pelger-Huet neutrophils. Rare circulating blasts.",
+      "bone_marrow": "Hypercellular marrow with erythroid and megakaryocytic dysplasia. Myeloblasts comprise 24 percent of nucleated marrow cells."
+    },
+    "flow_cytometry": "Expanded CD34-positive, CD117-positive, CD13-positive, CD33-positive myeloid blast population with aberrant CD7 expression. MPO is positive.",
+    "cytogenetics": "46,XY[20]. No recurrent AML-defining rearrangement detected by FISH panel.",
+    "molecular_genetics": "NGS shows SRSF2 p.P95H VAF 38 percent and ASXL1 frameshift VAF 35 percent. NPM1, FLT3-ITD, CEBPA bZIP and TP53 are negative.",
+    "question": "What is the most appropriate diagnostic classification?",
+    "options": {
+      "A": "Acute myeloid leukaemia, myelodysplasia-related",
+      "B": "Myelodysplastic syndrome with increased blasts",
+      "C": "Acute myeloid leukaemia, not otherwise specified because morphology alone defines AML-MR",
+      "D": "Therapy-related myeloid neoplasm",
+      "E": "Aplastic anaemia with clonal haematopoiesis"
+    },
+    "correct_answer": "A",
+    "explanation": "This patient has AML because the marrow blast count is at least 20 percent. The diagnosis is best classified as acute myeloid leukaemia, myelodysplasia-related because there are qualifying myelodysplasia-related mutations, specifically ASXL1 and SRSF2, in a case with AML-level blasts. The important examiner point is that dysplastic morphology supports a history of disordered myelopoiesis but, in WHO 5th edition, morphology alone is not the defining criterion for AML-MR. The diagnosis requires either defined myelodysplasia-related cytogenetic abnormalities or defined myelodysplasia-related gene mutations, or a documented antecedent MDS or MDS/MPN depending on the classification framework used. Here, the ASXL1 and SRSF2 mutations make the case AML-MR even though the karyotype is normal.",
+    "incorrect_option_explanations": {
+      "A": "Correct. AML-level blasts plus ASXL1 and SRSF2 mutations support AML myelodysplasia-related.",
+      "B": "Incorrect. The marrow blast count is 24 percent, exceeding the usual AML threshold when no special borderline category is being applied.",
+      "C": "Incorrect. AML-NOS would be considered only when defining genetic and myelodysplasia-related criteria are absent. Also, morphology alone is not the modern WHO5 basis for AML-MR.",
+      "D": "Incorrect. There is no previous cytotoxic therapy or radiotherapy exposure. Therapy-related is a clinical qualifier rather than the best primary diagnosis here.",
+      "E": "Incorrect. The marrow is hypercellular with 24 percent blasts, not hypocellular without increased blasts."
+    },
+    "examiner_commentary": "This case tests whether the candidate has updated from older AML-MRC terminology. The trap is to either over-rely on dysplasia alone or ignore myelodysplasia-related mutations.",
+    "clinical_pearl": "In modern AML classification, multilineage dysplasia is descriptive; defined genetics and clinical history drive the AML-MR category.",
+    "memory_framework": "AML-MR = AML-level disease plus MR cytogenetics, MR mutations or antecedent MDS/MDS-MPN history; not morphology alone.",
+    "why_this_matters": "Correct classification affects prognosis, ELN risk assessment and transplant discussion.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on acute myeloid leukaemia, myelodysplastic syndromes and laboratory diagnosis of haematological neoplasms",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022",
+      "ELN recommendations for diagnosis and management of AML in adults, 2022"
+    ],
+    "related_cases": [
+      "AML016",
+      "AML020",
+      "AML075",
+      "AML126"
+    ]
+  },
+  {
+    "id": 27,
+    "code": "AML027",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Morphology",
+    "subsection": "Pseudo-Pelger-Huet neutrophils",
+    "title": "Pseudo-Pelger-Huet change in myeloid neoplasia",
+    "difficulty": "Medium-Hard",
+    "difficulty_stars": 4,
+    "estimated_time_seconds": 120,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Recognise pseudo-Pelger-Huet neutrophils as acquired dysgranulopoiesis",
+      "Differentiate inherited Pelger-Huet anomaly from acquired dysplasia",
+      "Avoid diagnosing AML on dysplasia alone without blast quantification or AML-defining genetics"
+    ],
+    "tags": [
+      "AML",
+      "MDS",
+      "pseudo-Pelger",
+      "dysgranulopoiesis",
+      "morphology"
+    ],
+    "clinical_vignette": "A 68-year-old woman is investigated for pancytopenia. She has no fever and no recent exposure to mycophenolate, ganciclovir or other drugs known to cause Pelgeroid changes. A previous blood count 3 years ago was normal.",
+    "laboratory_data": {
+      "Hb": "88 g/L",
+      "WBC": "1.9 x 10^9/L",
+      "ANC": "0.7 x 10^9/L",
+      "platelets": "64 x 10^9/L",
+      "MCV": "101 fL",
+      "LDH": "Normal"
+    },
+    "morphology": {
+      "peripheral_blood": "Many neutrophils are bilobed or unilobed with coarse clumped chromatin. Granulation is reduced. No Auer rods are seen.",
+      "bone_marrow": "Hypercellular marrow with trilineage dysplasia and 12 percent myeloblasts."
+    },
+    "flow_cytometry": "CD34-positive blasts comprise 11 to 13 percent of marrow events. Granulocytic maturation shows reduced side scatter and asynchronous CD13/CD16 expression.",
+    "cytogenetics": "No AML-defining recurrent abnormality detected. Karyotype shows del(7q).",
+    "molecular_genetics": "NGS shows U2AF1 mutation. NPM1 and FLT3 are negative.",
+    "question": "Which interpretation of the blood film finding is most appropriate?",
+    "options": {
+      "A": "Inherited Pelger-Huet anomaly, requiring no further marrow assessment",
+      "B": "Acquired pseudo-Pelger-Huet change supporting dysgranulopoiesis in a myeloid neoplasm",
+      "C": "Pathognomonic evidence of acute promyelocytic leukaemia",
+      "D": "Reactive toxic change due to bacterial sepsis",
+      "E": "Diagnostic of chronic myeloid leukaemia blast phase"
+    },
+    "correct_answer": "B",
+    "explanation": "The bilobed or unilobed neutrophils with coarse chromatin and hypogranularity represent acquired pseudo-Pelger-Huet change, a classic morphological feature of dysgranulopoiesis. In this clinical setting of new cytopenias, marrow dysplasia, increased blasts and clonal abnormalities, it supports an underlying myeloid neoplasm. It does not by itself diagnose AML. With 12 percent marrow blasts and no AML-defining genetic abnormality, this would fit an MDS with increased blasts category under WHO-style terminology, while ICC may use MDS/AML for 10 to 19 percent blasts. The key lesson is that morphology must be integrated with blast count, cytogenetics and molecular data.",
+    "incorrect_option_explanations": {
+      "A": "Incorrect. Inherited Pelger-Huet anomaly is lifelong, usually benign and typically affects neutrophil nuclear segmentation without the broader cytopenic and dysplastic context seen here.",
+      "B": "Correct. This is acquired Pelgeroid dysgranulopoiesis in a clonal myeloid disorder.",
+      "C": "Incorrect. APL is suggested by abnormal promyelocytes, faggot cells, DIC and PML::RARA, not pseudo-Pelger-Huet neutrophils alone.",
+      "D": "Incorrect. Toxic change usually shows toxic granulation, vacuolation and Dohle bodies rather than hypogranular Pelgeroid dysplasia.",
+      "E": "Incorrect. CML blast phase requires BCR::ABL1-positive CML with blast-phase criteria."
+    },
+    "examiner_commentary": "FRCPath candidates must avoid equating one dysplastic feature with AML. The examiner is testing whether you can describe the morphology and then place it into the correct diagnostic framework.",
+    "clinical_pearl": "Pseudo-Pelger-Huet cells are a clue to dysgranulopoiesis, not an AML-defining feature.",
+    "memory_framework": "Pseudo-Pelger = acquired, dysplastic, clonal context; true Pelger = inherited, benign, stable.",
+    "why_this_matters": "Misclassification may lead to inappropriate AML therapy or missed MDS risk stratification.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on myelodysplastic syndromes and laboratory diagnosis of haematological neoplasms",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022"
+    ],
+    "related_cases": [
+      "AML026",
+      "AML020",
+      "AML034"
+    ]
+  },
+  {
+    "id": 28,
+    "code": "AML028",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Morphology",
+    "subsection": "Dry tap and marrow fibrosis",
+    "title": "Dry tap in suspected AML",
+    "difficulty": "Hard",
+    "difficulty_stars": 4,
+    "estimated_time_seconds": 150,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Identify important causes of dry tap in suspected acute leukaemia",
+      "Recognise acute megakaryoblastic leukaemia as a cause of marrow fibrosis",
+      "Choose appropriate next diagnostic investigations after failed aspirate"
+    ],
+    "tags": [
+      "AML",
+      "dry tap",
+      "fibrosis",
+      "acute megakaryoblastic leukaemia",
+      "CD41",
+      "CD61"
+    ],
+    "clinical_vignette": "A 19-month-old child presents with pallor, petechiae and hepatosplenomegaly. Two attempts at bone marrow aspiration yield a dry tap. A trephine biopsy is performed.",
+    "laboratory_data": {
+      "Hb": "69 g/L",
+      "WBC": "5.8 x 10^9/L",
+      "platelets": "18 x 10^9/L",
+      "LDH": "Elevated",
+      "coagulation": "Normal PT and APTT"
+    },
+    "morphology": {
+      "peripheral_blood": "Leukoerythroblastic features with occasional blasts showing cytoplasmic blebs.",
+      "bone_marrow": "Trephine biopsy shows diffuse infiltration by blasts and marked reticulin fibrosis."
+    },
+    "flow_cytometry": "Limited material from trephine suspension shows blasts expressing CD34, CD117, CD41 and CD61. MPO, CD3 and CD19 are negative.",
+    "cytogenetics": "Karyotype pending. FISH for KMT2A is negative.",
+    "molecular_genetics": "No result available at the time of diagnosis.",
+    "question": "What is the most likely diagnosis explaining the dry tap?",
+    "options": {
+      "A": "Acute megakaryoblastic leukaemia",
+      "B": "Acute promyelocytic leukaemia",
+      "C": "B-lymphoblastic leukaemia",
+      "D": "Severe aplastic anaemia",
+      "E": "Reactive marrow fibrosis secondary to iron deficiency"
+    },
+    "correct_answer": "A",
+    "explanation": "The combination of dry tap, trephine fibrosis, blasts with cytoplasmic blebbing and expression of megakaryocytic markers CD41 and CD61 is highly suggestive of acute megakaryoblastic leukaemia. Megakaryoblastic leukaemia often causes significant marrow fibrosis, which makes aspirates difficult or impossible. In a child, this diagnosis should also prompt assessment for Down syndrome-associated myeloid leukaemia if clinically relevant, and for appropriate cytogenetic and molecular studies. The diagnostic principle is that a dry tap is not a failed diagnosis; it is a diagnostic clue. Trephine biopsy, immunohistochemistry and flow cytometry from trephine or peripheral blood become crucial.",
+    "incorrect_option_explanations": {
+      "A": "Correct. Fibrosis plus CD41/CD61-positive blasts is the classic integrated pattern.",
+      "B": "Incorrect. APL usually presents with abnormal promyelocytes, coagulopathy and PML::RARA; CD41/CD61 positivity is not the defining phenotype.",
+      "C": "Incorrect. B-ALL would express B-lineage markers such as CD19, CD10, TdT and cytoplasmic CD79a rather than megakaryocytic markers.",
+      "D": "Incorrect. Aplastic anaemia is hypocellular without sheets of blasts and does not explain CD41/CD61-positive blast infiltration.",
+      "E": "Incorrect. Iron deficiency does not cause diffuse blast infiltration with megakaryoblast phenotype."
+    },
+    "examiner_commentary": "The examiner is testing whether the candidate understands that morphology and sample quality are part of interpretation. A dry tap in acute leukaemia should make you think of fibrosis, packed marrow or metastatic infiltration.",
+    "clinical_pearl": "Dry tap plus blasts with cytoplasmic blebs should trigger CD41, CD61 and CD42b assessment.",
+    "memory_framework": "Dry tap in AML: think fibrosis, megakaryoblasts, packed marrow, trephine first.",
+    "why_this_matters": "Failure to proceed to trephine-based diagnosis may delay treatment in a rapidly progressive paediatric leukaemia.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on acute myeloid leukaemia and laboratory diagnosis of haematological neoplasms",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022"
+    ],
+    "related_cases": [
+      "AML022",
+      "AML029",
+      "AML049"
+    ]
+  },
+  {
+    "id": 29,
+    "code": "AML029",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Morphology",
+    "subsection": "Hypocellular AML",
+    "title": "Hypocellular AML versus aplastic anaemia and hypocellular MDS",
+    "difficulty": "Examiner",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 180,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Distinguish hypocellular AML from aplastic anaemia and hypocellular MDS",
+      "Use blast percentage and immunohistochemistry in a hypocellular marrow",
+      "Recognise that marrow cellularity does not exclude AML"
+    ],
+    "tags": [
+      "AML",
+      "hypocellular AML",
+      "aplastic anaemia",
+      "hypocellular MDS",
+      "CD34"
+    ],
+    "clinical_vignette": "A 79-year-old man presents with severe pancytopenia and recurrent infections. There is no splenomegaly. The aspirate is aparticulate and haemodilute. The trephine biopsy is markedly hypocellular for age.",
+    "laboratory_data": {
+      "Hb": "71 g/L",
+      "WBC": "0.9 x 10^9/L",
+      "ANC": "0.2 x 10^9/L",
+      "platelets": "14 x 10^9/L",
+      "reticulocytes": "Low",
+      "LDH": "Mildly elevated"
+    },
+    "morphology": {
+      "peripheral_blood": "Pancytopenia with rare circulating blasts. No significant monocytosis.",
+      "bone_marrow": "Trephine cellularity is approximately 15 percent. Within cellular foci, CD34-positive blasts form clusters and account for 28 percent of nucleated marrow cells. Reticulin fibrosis is not increased."
+    },
+    "flow_cytometry": "Low cellularity specimen shows abnormal CD34-positive, CD117-positive, HLA-DR-positive, CD13-positive, CD33-positive blasts with aberrant CD7. MPO is positive.",
+    "cytogenetics": "No metaphases obtained. FISH negative for PML::RARA, RUNX1::RUNX1T1 and CBFB::MYH11.",
+    "molecular_genetics": "NGS shows RUNX1 and ASXL1 mutations. NPM1 and CEBPA bZIP mutations are not detected.",
+    "question": "Which diagnosis is most appropriate?",
+    "options": {
+      "A": "Severe aplastic anaemia",
+      "B": "Hypocellular myelodysplastic syndrome",
+      "C": "Hypocellular acute myeloid leukaemia",
+      "D": "Pure red cell aplasia",
+      "E": "Paroxysmal nocturnal haemoglobinuria without marrow neoplasia"
+    },
+    "correct_answer": "C",
+    "explanation": "This is hypocellular AML. The marrow is hypocellular, but the blast percentage within the nucleated marrow cell population is at AML level. CD34 immunohistochemistry demonstrates abnormal blast clusters, and flow cytometry confirms an aberrant myeloid blast population. Hypocellular AML is a classic diagnostic pitfall because the low cellularity can mimic aplastic anaemia or hypocellular MDS. The distinction depends on careful trephine assessment, blast quantification, immunohistochemistry and integrated flow and molecular findings. The presence of RUNX1 and ASXL1 mutations also supports a clonal myeloid neoplasm, although the decisive point for AML is the increased myeloid blasts.",
+    "incorrect_option_explanations": {
+      "A": "Incorrect. Aplastic anaemia is hypocellular but lacks increased blasts and abnormal CD34-positive blast clusters.",
+      "B": "Incorrect. Hypocellular MDS may show dysplasia and increased blasts below AML threshold, but here blasts are 28 percent.",
+      "C": "Correct. Hypocellularity does not prevent AML diagnosis when blasts are at AML level.",
+      "D": "Incorrect. Pure red cell aplasia causes isolated red cell aplasia, not pancytopenia with myeloid blasts.",
+      "E": "Incorrect. PNH may coexist with marrow failure but does not explain 28 percent abnormal myeloid blasts."
+    },
+    "examiner_commentary": "This is an examiner-level morphology and trephine interpretation question. The trap is to label any hypocellular pancytopenic marrow as aplastic anaemia.",
+    "clinical_pearl": "In a hypocellular marrow, CD34 immunostaining is often decisive for detecting abnormal blast clusters.",
+    "memory_framework": "Hypocellular does not mean benign: count blasts, stain CD34, integrate flow.",
+    "why_this_matters": "Aplastic anaemia and hypocellular AML require fundamentally different management strategies.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, chapters on acute myeloid leukaemia, acquired aplastic anaemia and laboratory diagnosis of haematological neoplasms",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022"
+    ],
+    "related_cases": [
+      "AML028",
+      "AML031",
+      "AML016"
+    ]
+  },
+  {
+    "id": 30,
+    "code": "AML030",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Morphology",
+    "subsection": "Trephine biopsy interpretation",
+    "title": "Trephine biopsy in suspected AML with inadequate aspirate",
+    "difficulty": "Hard",
+    "difficulty_stars": 4,
+    "estimated_time_seconds": 150,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Identify the role of trephine biopsy in AML diagnosis",
+      "Recognise when immunohistochemistry is required to classify acute leukaemia",
+      "Understand why blood and marrow diagnosis must integrate morphology, flow, cytogenetics and molecular testing"
+    ],
+    "tags": [
+      "AML",
+      "trephine",
+      "immunohistochemistry",
+      "CD34",
+      "MPO",
+      "laboratory diagnosis"
+    ],
+    "clinical_vignette": "A 61-year-old woman is referred with pancytopenia and 6 percent circulating blasts. Bone marrow aspiration is haemodilute and non-diagnostic. A trephine biopsy is obtained.",
+    "laboratory_data": {
+      "Hb": "82 g/L",
+      "WBC": "1.6 x 10^9/L",
+      "ANC": "0.4 x 10^9/L",
+      "platelets": "31 x 10^9/L",
+      "LDH": "Moderately elevated",
+      "coagulation": "Normal"
+    },
+    "morphology": {
+      "peripheral_blood": "Circulating blasts are medium-sized with fine chromatin and occasional azurophilic granules. No Auer rods seen.",
+      "bone_marrow": "Trephine shows a hypercellular marrow replaced by sheets and clusters of immature cells. Residual trilineage haematopoiesis is markedly reduced."
+    },
+    "flow_cytometry": "Peripheral blood flow shows a small abnormal myeloid blast population expressing CD34, CD117, CD13, CD33 and MPO.",
+    "cytogenetics": "FISH and karyotype pending.",
+    "molecular_genetics": "Rapid PCR for PML::RARA is negative.",
+    "question": "Which trephine immunohistochemistry panel is most appropriate to confirm and characterise the suspected AML?",
+    "options": {
+      "A": "CD34, CD117, MPO, CD61, glycophorin A and reticulin stain",
+      "B": "CD20, CD3, cyclin D1 and EBV-encoded RNA only",
+      "C": "Cytokeratin, S100 and desmin only",
+      "D": "Iron stain only, because flow cytometry is already diagnostic",
+      "E": "No further stains; trephine morphology alone is sufficient for complete AML classification"
+    },
+    "correct_answer": "A",
+    "explanation": "The appropriate approach is an immunohistochemical panel that confirms immaturity, myeloid lineage and key alternative lineages, while assessing fibrosis and marrow architecture. CD34 and CD117 help highlight blasts and their distribution. MPO supports myeloid differentiation. CD61 is useful if megakaryoblastic differentiation is a possibility, and glycophorin A helps assess erythroid differentiation or exclude erythroid-predominant processes. Reticulin staining assesses fibrosis, which can explain poor aspirate quality and has diagnostic relevance. Trephine morphology is powerful, but AML diagnosis and classification require integration with flow cytometry, cytogenetics and molecular findings.",
+    "incorrect_option_explanations": {
+      "A": "Correct. This panel addresses blast burden, lineage, alternative differentiation and fibrosis.",
+      "B": "Incorrect. This is mainly a lymphoid lymphoma panel and does not adequately assess suspected AML.",
+      "C": "Incorrect. This panel would be used to investigate metastatic carcinoma, melanoma or sarcoma, not first-line suspected AML.",
+      "D": "Incorrect. Iron stain is useful in MDS work-up but cannot confirm AML lineage or blast distribution by itself.",
+      "E": "Incorrect. Trephine morphology alone is insufficient for modern AML classification."
+    },
+    "examiner_commentary": "This case tests practical laboratory haematology: knowing what to do when the aspirate fails. FRCPath candidates are expected to understand the diagnostic pathway, not just final disease labels.",
+    "clinical_pearl": "In AML, the trephine is not a backup specimen; it provides architecture, cellularity, fibrosis and immunophenotypic localisation.",
+    "memory_framework": "Trephine AML panel: immature markers, lineage markers, fibrosis stain, then genetics.",
+    "why_this_matters": "A correct trephine strategy prevents missed AML, missed megakaryoblastic or erythroid differentiation, and missed fibrosis.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, chapter on laboratory diagnosis of haematological neoplasms",
+      "Hoffbrand's Postgraduate Haematology, 8th edition, chapter on acute myeloid leukaemia",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022"
+    ],
+    "related_cases": [
+      "AML028",
+      "AML029",
+      "AML041"
+    ]
+  }
+]

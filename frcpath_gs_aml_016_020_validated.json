@@ -1,0 +1,328 @@
+[
+  {
+    "id": 16,
+    "code": "AML016",
+    "module": "AML",
+    "section": "WHO5 and ICC Diagnosis",
+    "difficulty": "Hard",
+    "estimated_time_seconds": 180,
+    "learning_objectives": [
+      "Recognise AML, myelodysplasia-related using defining mutations rather than dysplasia alone.",
+      "Apply WHO 5th Edition and ICC 2022 principles to AML-MR classification.",
+      "Avoid over-reliance on multilineage dysplasia as a diagnostic criterion."
+    ],
+    "tags": [
+      "AML",
+      "AML-MR",
+      "ASXL1",
+      "SRSF2",
+      "WHO5",
+      "ICC2022",
+      "Diagnosis"
+    ],
+    "title": "AML, myelodysplasia-related defined by myelodysplasia-related mutations",
+    "clinical_vignette": "A 73-year-old man presents with progressive fatigue, easy bruising and recurrent infections. He has no documented prior myelodysplastic syndrome and no history of chemotherapy or radiotherapy.",
+    "laboratory_data": {
+      "Hb": "76 g/L",
+      "WBC": "3.1 x 10^9/L",
+      "Platelets": "38 x 10^9/L",
+      "ANC": "0.7 x 10^9/L",
+      "LDH": "410 U/L",
+      "Coagulation": "PT, APTT and fibrinogen within reference range"
+    },
+    "morphology": "Peripheral blood shows circulating blasts and dysgranulopoiesis with hypogranular neutrophils. Bone marrow aspirate is hypercellular with 28 percent myeloblasts and multilineage dysplasia involving granulocytic and megakaryocytic lineages.",
+    "flow_cytometry": "Blasts express CD34, CD117, HLA-DR, CD13, CD33 and MPO. There is aberrant CD7 expression on a subset. No B- or T-lineage defining immunophenotype is present.",
+    "cytogenetics": "Conventional karyotype: 46,XY. No recurrent balanced AML-defining rearrangement is detected by FISH.",
+    "molecular_genetics": "NGS detects ASXL1 p.G646Wfs with VAF 39 percent and SRSF2 p.P95H with VAF 42 percent. NPM1, FLT3-ITD, FLT3-TKD and bZIP CEBPA mutations are not detected.",
+    "question": "Which is the most appropriate diagnostic classification?",
+    "options": {
+      "A": "Acute myeloid leukaemia, myelodysplasia-related",
+      "B": "Acute myeloid leukaemia with mutated NPM1",
+      "C": "Myelodysplastic syndrome with increased blasts",
+      "D": "Acute myeloid leukaemia with RUNX1::RUNX1T1",
+      "E": "Acute myeloid leukaemia, defined by differentiation only"
+    },
+    "correct_answer": "A. Acute myeloid leukaemia, myelodysplasia-related",
+    "explanation": "This case is best classified as acute myeloid leukaemia, myelodysplasia-related because the marrow has at least 20 percent blasts and the NGS panel shows myelodysplasia-related gene mutations, specifically ASXL1 and SRSF2. A major modern classification point is that morphology alone is no longer sufficient to define AML-MR. In older terminology, multilineage dysplasia was heavily weighted; in current WHO 5th Edition and ICC frameworks, AML-MR is defined by a prior history of MDS or MDS/MPN, specific myelodysplasia-related cytogenetic abnormalities, or specified myelodysplasia-related mutations. The presence of ASXL1 and SRSF2 in a patient with 28 percent blasts is therefore decisive. This question is deliberately written to catch the common trainee habit of saying simply 'AML with multilineage dysplasia'. The correct reasoning is not 'dysplasia equals AML-MR'; rather, it is 'AML-level blasts plus myelodysplasia-related defining genetics equals AML-MR'. In ELN 2022, myelodysplasia-related gene mutations such as ASXL1, RUNX1, SRSF2, SF3B1, U2AF1, ZRSR2, STAG2, BCOR and EZH2 are adverse-risk markers, unless overridden by favourable-risk AML subtypes. This has direct treatment implications because older patients with AML-MR may be considered for CPX-351 if fit and eligible, hypomethylating agent plus venetoclax if unfit, and transplant in appropriate responders.",
+    "why_other_options_are_wrong": {
+      "A": "Correct. The blast count is in the AML range and ASXL1 plus SRSF2 are myelodysplasia-related mutations.",
+      "B": "Incorrect. NPM1 mutation is not present and the phenotype does not define NPM1-mutated AML.",
+      "C": "Incorrect. MDS with increased blasts is excluded by 28 percent blasts in this case under standard WHO criteria.",
+      "D": "Incorrect. RUNX1::RUNX1T1 is not detected and the flow phenotype is not enough to infer this genetic entity.",
+      "E": "Incorrect. AML defined by differentiation is used only when no defining genetic or myelodysplasia-related category applies. Here AML-MR applies."
+    },
+    "examiner_commentary": "This is an examiner-style classification question. The trap is to diagnose AML-MR because of dysplasia alone, or to ignore the adverse-risk significance of ASXL1 and SRSF2.",
+    "clinical_pearl": "In current AML classification, AML-MR is a genetic and clinical-history category, not simply a morphology category.",
+    "memory_framework": "AML-MR = AML blasts plus MR history, MR cytogenetics or MR mutations. Do not rely on dysplasia alone.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia.",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022.",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022.",
+      "Döhner H et al. Diagnosis and management of AML in adults: 2022 ELN recommendations. Blood. 2022."
+    ],
+    "version": "1.0",
+    "last_reviewed": "2026-06",
+    "status": "Validated"
+  },
+  {
+    "id": 17,
+    "code": "AML017",
+    "module": "AML",
+    "section": "WHO5 and ICC Diagnosis",
+    "difficulty": "Hard",
+    "estimated_time_seconds": 170,
+    "learning_objectives": [
+      "Recognise KMT2A-rearranged AML as a genetically defined AML entity.",
+      "Distinguish monocytic morphology from genetically defined AML classification.",
+      "Understand why fusion partner and MRD target documentation matter."
+    ],
+    "tags": [
+      "AML",
+      "KMT2A",
+      "MLLT3",
+      "Monocytic AML",
+      "Cytogenetics",
+      "WHO5",
+      "ICC2022"
+    ],
+    "title": "KMT2A-rearranged AML with monocytic differentiation",
+    "clinical_vignette": "A 41-year-old woman presents with fever, gum swelling and multiple violaceous skin nodules. She has no prior haematological disease.",
+    "laboratory_data": {
+      "Hb": "88 g/L",
+      "WBC": "64 x 10^9/L",
+      "Platelets": "31 x 10^9/L",
+      "Monocytes": "18 x 10^9/L equivalent monocytic cells and blasts",
+      "LDH": "980 U/L",
+      "Coagulation": "Mildly prolonged PT; fibrinogen 2.1 g/L"
+    },
+    "morphology": "Peripheral blood and marrow show numerous monoblasts and promonocytes with folded nuclei, abundant basophilic cytoplasm and occasional cytoplasmic vacuolation. Bone marrow blasts and promonocytes together comprise 72 percent of nucleated cells.",
+    "flow_cytometry": "The abnormal population expresses CD33 bright, CD13, CD64, CD14 partial, CD11c, CD36, lysozyme and HLA-DR. MPO is weak to moderate. CD34 is negative. No lineage-defining B or T markers are present.",
+    "cytogenetics": "Karyotype: 46,XX,t(9;11)(p21.3;q23.3). FISH demonstrates KMT2A rearrangement.",
+    "molecular_genetics": "RT-PCR confirms MLLT3::KMT2A. FLT3-ITD is not detected. NPM1 and bZIP CEBPA mutations are not detected.",
+    "question": "What is the most appropriate diagnostic category?",
+    "options": {
+      "A": "Acute monocytic leukaemia, defined by differentiation",
+      "B": "Acute myeloid leukaemia with KMT2A rearrangement",
+      "C": "Chronic myelomonocytic leukaemia in blast phase",
+      "D": "Mixed phenotype acute leukaemia with KMT2A rearrangement",
+      "E": "Acute promyelocytic leukaemia, microgranular variant"
+    },
+    "correct_answer": "B. Acute myeloid leukaemia with KMT2A rearrangement",
+    "explanation": "The defining abnormality is a KMT2A rearrangement, specifically t(9;11) resulting in MLLT3::KMT2A. The morphology and immunophenotype show monocytic differentiation, but the primary diagnostic category is genetically defined AML with KMT2A rearrangement. This distinction matters because current AML classifications prioritise recurrent defining genetic abnormalities over older morphology-only categories. Monocytic morphology explains the clinical features, including gingival hypertrophy, skin involvement and higher risk of extramedullary or CNS disease, but it does not supersede the genetic diagnosis. In the ICC framework, recurrent genetic AML categories generally require at least 10 percent blasts in blood or marrow, which is exceeded here. In WHO 5th Edition, KMT2A rearrangement is also a defining genetic abnormality. The exact fusion partner should be reported because KMT2A-rearranged AML is biologically heterogeneous and fusion partner can influence prognosis and clinical trial eligibility. This case is also useful for teaching that CD34 negativity and HLA-DR positivity with strong monocytic markers should not be mistaken for APL; the key is the presence of CD64, CD14 or CD11c, lysozyme, and KMT2A rearrangement rather than PML::RARA.",
+    "why_other_options_are_wrong": {
+      "A": "Incorrect. The leukaemia has monocytic differentiation, but a defining KMT2A rearrangement is present, so the genetically defined category is preferred.",
+      "B": "Correct. t(9;11) with MLLT3::KMT2A defines AML with KMT2A rearrangement in the appropriate blast context.",
+      "C": "Incorrect. CMML requires persistent monocytosis with features of an MDS/MPN overlap neoplasm; the acute presentation and KMT2A fusion support AML.",
+      "D": "Incorrect. There is no B- or T-lineage defining immunophenotype. KMT2A rearrangement can occur in MPAL, but this case is immunophenotypically myeloid/monocytic.",
+      "E": "Incorrect. Microgranular APL may mimic monocytic leukaemia morphologically, but it is typically PML::RARA positive, strongly MPO positive, and lacks the monocytic marker pattern shown here."
+    },
+    "examiner_commentary": "The examiner wants to know whether the candidate prioritises genetics over FAB-style morphology while still recognising clinically important monocytic behaviour.",
+    "clinical_pearl": "KMT2A-rearranged AML often shows monocytic differentiation and extramedullary disease; always document the fusion partner when possible.",
+    "memory_framework": "Monocytic look plus KMT2A rearrangement = classify by KMT2A first, describe monocytic differentiation second.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia.",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022.",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022.",
+      "Döhner H et al. Diagnosis and management of AML in adults: 2022 ELN recommendations. Blood. 2022."
+    ],
+    "version": "1.0",
+    "last_reviewed": "2026-06",
+    "status": "Validated"
+  },
+  {
+    "id": 18,
+    "code": "AML018",
+    "module": "AML",
+    "section": "WHO5 and ICC Diagnosis",
+    "difficulty": "Hard",
+    "estimated_time_seconds": 170,
+    "learning_objectives": [
+      "Recognise MECOM-rearranged AML and its characteristic clinicopathological pattern.",
+      "Integrate thrombocytosis and abnormal megakaryocytes with inv(3) or t(3;3).",
+      "Apply ELN adverse-risk classification to MECOM-rearranged AML."
+    ],
+    "tags": [
+      "AML",
+      "MECOM",
+      "inv(3)",
+      "GATA2",
+      "Thrombocytosis",
+      "ELN2022",
+      "Adverse risk"
+    ],
+    "title": "MECOM-rearranged AML presenting with thrombocytosis and dwarf megakaryocytes",
+    "clinical_vignette": "A 58-year-old woman is investigated for anaemia and constitutional symptoms. Unlike most AML presentations, her platelet count is markedly elevated.",
+    "laboratory_data": {
+      "Hb": "82 g/L",
+      "WBC": "12.8 x 10^9/L",
+      "Platelets": "720 x 10^9/L",
+      "LDH": "690 U/L",
+      "Uric acid": "480 micromol/L",
+      "Coagulation": "Normal PT, APTT and fibrinogen"
+    },
+    "morphology": "Bone marrow aspirate shows 24 percent myeloblasts. Trephine biopsy is hypercellular with numerous small hypolobated and unilobed megakaryocytes arranged in clusters. Dysplasia is prominent.",
+    "flow_cytometry": "Blasts express CD34, CD117, HLA-DR, CD13, CD33 and MPO. There is aberrant CD7 expression. Megakaryocytic markers are not expressed by the blast population.",
+    "cytogenetics": "Karyotype: 46,XX,inv(3)(q21.3q26.2). FISH confirms MECOM rearrangement with involvement of the GATA2 enhancer region.",
+    "molecular_genetics": "NGS does not detect NPM1, FLT3-ITD or bZIP CEBPA mutations. No TP53 mutation is detected.",
+    "question": "Which statement best describes this AML subtype?",
+    "options": {
+      "A": "It is favourable-risk AML because the platelet count is high and megakaryocytes are increased",
+      "B": "It is AML with MECOM rearrangement and is adverse risk by ELN 2022",
+      "C": "It is essential thrombocythaemia with reactive marrow blasts",
+      "D": "It is acute megakaryoblastic leukaemia because the marrow contains abnormal megakaryocytes",
+      "E": "It should be classified as AML with mutated NPM1 if the karyotype is otherwise balanced"
+    },
+    "correct_answer": "B. It is AML with MECOM rearrangement and is adverse risk by ELN 2022",
+    "explanation": "This is AML with MECOM rearrangement, classically associated with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2). The case includes the classic triad that candidates should remember: anaemia or cytopenias, paradoxical thrombocytosis, and abnormal small hypolobated megakaryocytes. The rearrangement juxtaposes regulatory elements involving GATA2 with MECOM, driving aberrant MECOM expression. This AML subtype carries an adverse prognosis and is classified as adverse risk in ELN 2022. The high platelet count is a trap. Thrombocytosis should not reassure the candidate or lead to a diagnosis of essential thrombocythaemia when there are AML-level blasts and a defining inv(3) abnormality. Likewise, abnormal megakaryocytes do not mean acute megakaryoblastic leukaemia unless the blasts themselves show megakaryocytic differentiation, such as CD41, CD61 or CD42b expression. Here the blasts are myeloid and MPO positive. Recognising this entity is clinically important because it is associated with poor response to conventional chemotherapy and early transplant consideration is generally appropriate for eligible patients who achieve remission.",
+    "why_other_options_are_wrong": {
+      "A": "Incorrect. Thrombocytosis is a recognised feature of MECOM-rearranged AML, but the genetic abnormality confers adverse risk.",
+      "B": "Correct. inv(3) involving MECOM defines this AML subtype and ELN 2022 places it in the adverse-risk group.",
+      "C": "Incorrect. Essential thrombocythaemia does not explain 24 percent myeloblasts and inv(3) with MECOM rearrangement.",
+      "D": "Incorrect. Acute megakaryoblastic leukaemia requires megakaryoblastic immunophenotype of blasts. Abnormal background megakaryocytes alone are not sufficient.",
+      "E": "Incorrect. NPM1 mutation is not present. A balanced rearrangement involving MECOM is itself defining and adverse."
+    },
+    "examiner_commentary": "This case tests whether the candidate recognises the unusual association of AML with thrombocytosis, a classic clue to MECOM rearrangement.",
+    "clinical_pearl": "AML plus thrombocytosis plus dwarf megakaryocytes should trigger a search for inv(3) or t(3;3) involving MECOM.",
+    "memory_framework": "MECOM = Megakaryocytes abnormal, Elevated platelets, Clinically adverse Outcome, Manage with transplant consideration.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia.",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022.",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022.",
+      "Döhner H et al. Diagnosis and management of AML in adults: 2022 ELN recommendations. Blood. 2022."
+    ],
+    "version": "1.0",
+    "last_reviewed": "2026-06",
+    "status": "Validated"
+  },
+  {
+    "id": 19,
+    "code": "AML019",
+    "module": "AML",
+    "section": "WHO5 and ICC Diagnosis",
+    "difficulty": "Very Hard",
+    "estimated_time_seconds": 200,
+    "learning_objectives": [
+      "Distinguish WHO5 and ICC approaches to TP53-mutated AML.",
+      "Recognise complex karyotype and TP53 mutation as adverse biology.",
+      "Understand the distinction between diagnostic entity and ELN risk group."
+    ],
+    "tags": [
+      "AML",
+      "TP53",
+      "Complex karyotype",
+      "WHO5",
+      "ICC2022",
+      "ELN2022",
+      "Adverse risk"
+    ],
+    "title": "TP53-mutated AML with complex karyotype",
+    "clinical_vignette": "A 69-year-old man presents with pancytopenia and weight loss. He has no prior diagnosis of MDS and no previous cytotoxic therapy.",
+    "laboratory_data": {
+      "Hb": "71 g/L",
+      "WBC": "2.4 x 10^9/L",
+      "Platelets": "26 x 10^9/L",
+      "ANC": "0.5 x 10^9/L",
+      "LDH": "530 U/L",
+      "Coagulation": "Normal"
+    },
+    "morphology": "Bone marrow is hypercellular with 34 percent blasts. Marked dysmegakaryopoiesis and dyserythropoiesis are present. No Auer rods are seen.",
+    "flow_cytometry": "Blasts express CD34, CD117, HLA-DR, CD13, CD33 dim and MPO partial. Aberrant CD7 is present. There is no monocytic, B-lineage or T-lineage defining phenotype.",
+    "cytogenetics": "Complex karyotype: 45,XY,del(5q),-7,add(17p),-18,+mar with more than three unrelated abnormalities. FISH shows 17p deletion.",
+    "molecular_genetics": "NGS detects TP53 p.R175H with VAF 48 percent and TP53 copy loss by cytogenetics/FISH, consistent with multi-hit TP53 alteration. NPM1, FLT3-ITD and bZIP CEBPA are not detected.",
+    "question": "Which interpretation is most accurate?",
+    "options": {
+      "A": "WHO5 and ICC both classify this as AML with mutated TP53 as a distinct AML entity",
+      "B": "ICC recognises AML with mutated TP53, while WHO5 generally classifies the case within AML, myelodysplasia-related or related myeloid neoplasm categories depending on context",
+      "C": "TP53 mutation is favourable risk if FLT3-ITD is absent",
+      "D": "The complex karyotype is irrelevant once TP53 mutation is detected",
+      "E": "This should be classified as acute promyelocytic leukaemia because 17p is involved"
+    },
+    "correct_answer": "B. ICC recognises AML with mutated TP53, while WHO5 generally classifies the case within AML, myelodysplasia-related or related myeloid neoplasm categories depending on context",
+    "explanation": "This case is designed to test a difficult but important distinction between classification systems. The biology is unmistakably adverse: complex karyotype, chromosome 5 and 7 abnormalities, 17p loss, and a TP53 mutation with high VAF plus copy loss, consistent with multi-hit TP53 alteration. Under the ICC, AML with mutated TP53 is recognised as a distinct entity when criteria are met. WHO 5th Edition acknowledges the major adverse significance of TP53 alteration in myeloid neoplasms but does not create AML with mutated TP53 as the same standalone AML entity in the way ICC does; many such AML cases fall into AML, myelodysplasia-related or a related myeloid neoplasm category depending on blast count, cytogenetics and clinical history. For examination purposes, the candidate must separate three related but different ideas: diagnostic classification, risk stratification and treatment implication. Regardless of the exact classification label, ELN 2022 places mutated TP53 and complex or monosomal karyotype AML in the adverse-risk group. This has major practical implications: response to standard intensive chemotherapy is poor, transplant outcomes are inferior, clinical trial enrolment is strongly encouraged, and non-intensive approaches such as azacitidine plus venetoclax may be used in older or unfit patients while acknowledging limited durability in TP53-mutated disease.",
+    "why_other_options_are_wrong": {
+      "A": "Incorrect. ICC recognises AML with mutated TP53 as a distinct entity, but WHO5 does not use the identical standalone AML category in the same way.",
+      "B": "Correct. This captures the key WHO5 versus ICC distinction and the adverse biological significance.",
+      "C": "Incorrect. TP53 mutation is adverse risk, particularly with complex karyotype or multi-hit status. Absence of FLT3-ITD does not make it favourable.",
+      "D": "Incorrect. Complex and monosomal karyotypes remain prognostically important and often coexist with TP53 alterations.",
+      "E": "Incorrect. APL is defined by PML::RARA or variant RARA rearrangements, not by generic 17p involvement or TP53 abnormality."
+    },
+    "examiner_commentary": "This is a high-level classification question. The expected answer is not merely 'TP53 is bad', but an understanding that WHO5 and ICC label TP53-mutated AML differently.",
+    "clinical_pearl": "TP53-mutated AML with complex karyotype is among the highest-risk AML groups, regardless of whether the classification system labels it as a distinct entity.",
+    "memory_framework": "TP53 = Think Poor response, complex karyotype, high relapse, trial first.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia.",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022.",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022.",
+      "Döhner H et al. Diagnosis and management of AML in adults: 2022 ELN recommendations. Blood. 2022."
+    ],
+    "version": "1.0",
+    "last_reviewed": "2026-06",
+    "status": "Validated"
+  },
+  {
+    "id": 20,
+    "code": "AML020",
+    "module": "AML",
+    "section": "WHO5 and ICC Diagnosis",
+    "difficulty": "Examiner Challenge",
+    "estimated_time_seconds": 220,
+    "learning_objectives": [
+      "Compare WHO5 and ICC classification of 10 to 19 percent blast myeloid neoplasms.",
+      "Recognise the ICC MDS/AML category.",
+      "Avoid incorrectly applying the 20 percent AML threshold to all genetically defined entities."
+    ],
+    "tags": [
+      "AML",
+      "MDS/AML",
+      "ICC2022",
+      "WHO5",
+      "Blast threshold",
+      "MDS",
+      "Classification"
+    ],
+    "title": "Borderline 15 percent blasts: WHO5 versus ICC classification",
+    "clinical_vignette": "A 76-year-old woman is referred for macrocytic anaemia and neutropenia. She has no prior cytotoxic exposure. There is no organomegaly and no monocytosis.",
+    "laboratory_data": {
+      "Hb": "82 g/L",
+      "MCV": "108 fL",
+      "WBC": "2.2 x 10^9/L",
+      "ANC": "0.6 x 10^9/L",
+      "Platelets": "74 x 10^9/L",
+      "LDH": "260 U/L",
+      "Coagulation": "Normal"
+    },
+    "morphology": "Bone marrow aspirate is hypercellular with trilineage dysplasia and 15 percent myeloblasts. Ring sideroblasts are present in 8 percent of erythroid precursors. No Auer rods are seen.",
+    "flow_cytometry": "CD34-positive myeloblasts comprise 15 percent of nucleated marrow cells and express CD117, HLA-DR, CD13 and CD33 with partial aberrant CD7. MPO is positive. There is no lineage ambiguity.",
+    "cytogenetics": "Karyotype: 46,XX. FISH for RUNX1::RUNX1T1, CBFB::MYH11, PML::RARA, KMT2A, MECOM and BCR::ABL1 is negative.",
+    "molecular_genetics": "NGS detects SRSF2 p.P95H with VAF 35 percent and STAG2 frameshift mutation with VAF 38 percent. NPM1, FLT3-ITD, FLT3-TKD and bZIP CEBPA are not detected. TP53 is wild type.",
+    "question": "Which statement best compares the WHO5 and ICC classification approaches for this case?",
+    "options": {
+      "A": "Both WHO5 and ICC classify this as AML because any SRSF2 mutation overrides blast percentage",
+      "B": "WHO5 would generally retain this within MDS with increased blasts, whereas ICC uses an MDS/AML category for 10 to 19 percent blasts with relevant features when AML-defining genetics are absent",
+      "C": "Both WHO5 and ICC classify this as acute promyelocytic leukaemia because the marrow is hypercellular",
+      "D": "ICC would classify this as favourable-risk AML because TP53 is wild type",
+      "E": "This is clonal haematopoiesis of indeterminate potential because the blast count is below 20 percent"
+    },
+    "correct_answer": "B. WHO5 would generally retain this within MDS with increased blasts, whereas ICC uses an MDS/AML category for 10 to 19 percent blasts with relevant features when AML-defining genetics are absent",
+    "explanation": "This is a deliberately difficult WHO5 versus ICC comparison case. The patient has cytopenias, dysplasia and 15 percent marrow blasts, with no AML-defining recurrent genetic abnormality such as PML::RARA, RUNX1::RUNX1T1, CBFB::MYH11, KMT2A rearrangement, MECOM rearrangement, NPM1 mutation or bZIP CEBPA mutation. Under a WHO5 approach, a myeloid neoplasm with 10 to 19 percent blasts and dysplasia without AML-defining genetics is generally retained in the MDS category, such as MDS with increased blasts, rather than being called AML. By contrast, ICC introduced the MDS/AML category for cases with 10 to 19 percent blasts, recognising that these cases sit biologically and clinically between classical MDS and AML. ICC also applies modifiers for genetic features such as myelodysplasia-related gene mutations, myelodysplasia-related cytogenetic abnormalities or mutated TP53 when present. This distinction is highly examinable because many candidates simplistically apply '20 percent equals AML' without recognising the exceptions, or they overcorrect and call every 10 to 19 percent blast case AML. The correct answer requires nuance: this is not AML by WHO5 in the absence of AML-defining genetics, but it can be captured as MDS/AML in ICC. Clinically, the distinction should not delay appropriate management; treatment decisions depend on age, fitness, cytopenias, risk genetics, patient preference and trial availability.",
+    "why_other_options_are_wrong": {
+      "A": "Incorrect. Myelodysplasia-related mutations alone do not automatically make a 15 percent blast case AML under WHO5. ICC would use MDS/AML terminology rather than simply AML in this blast range.",
+      "B": "Correct. This is the key WHO5 versus ICC distinction for 10 to 19 percent blast myeloid neoplasms without AML-defining genetics.",
+      "C": "Incorrect. APL requires PML::RARA or a relevant RARA rearrangement and compatible morphology, neither of which is present.",
+      "D": "Incorrect. TP53 wild type does not imply favourable risk. SRSF2 and STAG2 are myelodysplasia-related mutations and not favourable markers.",
+      "E": "Incorrect. CHIP has no significant cytopenia-driven myeloid neoplasm with 15 percent blasts. This patient has a myeloid neoplasm, not CHIP."
+    },
+    "examiner_commentary": "This is an examiner challenge case because it requires the candidate to hold two classification systems in mind at the same time and avoid giving a simplistic answer.",
+    "clinical_pearl": "For 10 to 19 percent blasts without AML-defining genetics, always ask: am I answering according to WHO5 or ICC?",
+    "memory_framework": "10 to 19 blasts: WHO thinks MDS category unless AML-defining genetics; ICC creates MDS/AML bridge category.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapters 32 and 34: Acute myeloid leukaemia and myelodysplastic syndromes.",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition, 2022.",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022.",
+      "Döhner H et al. Diagnosis and management of AML in adults: 2022 ELN recommendations. Blood. 2022."
+    ],
+    "version": "1.0",
+    "last_reviewed": "2026-06",
+    "status": "Validated"
+  }
+]

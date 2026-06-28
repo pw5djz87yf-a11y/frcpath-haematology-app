@@ -1,0 +1,142 @@
+[
+  {
+    "id": 41,
+    "code": "AML041",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "title": "Pure erythroid leukaemia immunophenotype",
+    "difficulty": "Hard",
+    "question_type": "Single best answer",
+    "question": "Which immunophenotypic profile best supports pure erythroid leukaemia?",
+    "options": [
+      "CD71+, Glycophorin A+, E-cadherin+, CD117 variable",
+      "CD34+, MPO+, CD13+, CD33+",
+      "CD19+, CD10+, TdT+",
+      "CD41+, CD61+, CD42b+",
+      "CD64+, CD14+, CD11c+"
+    ],
+    "correct_answer": "A. CD71+, Glycophorin A+, E-cadherin+, CD117 variable",
+    "explanation": "Pure erythroid leukaemia shows erythroid markers including CD71, glycophorin A and E-cadherin with absent MPO.",
+    "takeaway": "Interpret flow cytometry together with morphology, genetics and WHO 5th Edition/ICC classification.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  },
+  {
+    "id": 42,
+    "code": "AML042",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "title": "Flow profile of CBFB::MYH11 AML",
+    "difficulty": "Hard",
+    "question_type": "Single best answer",
+    "question": "Which aberrant marker is classically associated with AML carrying CBFB::MYH11?",
+    "options": [
+      "CD2",
+      "CD5",
+      "CD7",
+      "CD56",
+      "TdT"
+    ],
+    "correct_answer": "A. CD2",
+    "explanation": "AML with CBFB::MYH11 commonly shows myeloid/monocytic differentiation with aberrant CD2.",
+    "takeaway": "Interpret flow cytometry together with morphology, genetics and WHO 5th Edition/ICC classification.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  },
+  {
+    "id": 43,
+    "code": "AML043",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "title": "RUNX1::RUNX1T1 AML",
+    "difficulty": "Hard",
+    "question_type": "Single best answer",
+    "question": "Which immunophenotypic combination most strongly suggests RUNX1::RUNX1T1 AML?",
+    "options": [
+      "CD19 with CD56 on myeloblasts",
+      "CD14 with CD64",
+      "TdT with CD3",
+      "CD41 with CD61",
+      "CD235a with CD71"
+    ],
+    "correct_answer": "A. CD19 with CD56 on myeloblasts",
+    "explanation": "RUNX1::RUNX1T1 AML often aberrantly expresses CD19 and CD56.",
+    "takeaway": "Interpret flow cytometry together with morphology, genetics and WHO 5th Edition/ICC classification.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  },
+  {
+    "id": 44,
+    "code": "AML044",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "title": "KMT2A-rearranged AML",
+    "difficulty": "Hard",
+    "question_type": "Single best answer",
+    "question": "Which marker is particularly useful in KMT2A-rearranged AML with monocytic differentiation?",
+    "options": [
+      "NG2 (CSPG4)",
+      "CD10",
+      "CD42b",
+      "Glycophorin A",
+      "CD79a"
+    ],
+    "correct_answer": "A. NG2 (CSPG4)",
+    "explanation": "NG2/CSPG4 expression is a recognised clue to KMT2A-rearranged AML.",
+    "takeaway": "Interpret flow cytometry together with morphology, genetics and WHO 5th Edition/ICC classification.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  },
+  {
+    "id": 45,
+    "code": "AML045",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "title": "Acute basophilic leukaemia",
+    "difficulty": "Hard",
+    "question_type": "Single best answer",
+    "question": "Which marker best supports basophilic differentiation?",
+    "options": [
+      "CD123",
+      "CD19",
+      "CD41",
+      "MPO bright",
+      "CD10"
+    ],
+    "correct_answer": "A. CD123",
+    "explanation": "Basophilic blasts frequently express CD123 together with other basophil-associated markers.",
+    "takeaway": "Interpret flow cytometry together with morphology, genetics and WHO 5th Edition/ICC classification.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th Edition",
+      "International Consensus Classification (2022)",
+      "ELN Recommendations"
+    ]
+  }
+]

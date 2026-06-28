@@ -1,0 +1,86 @@
+[
+  {
+    "id": 49,
+    "code": "AML049",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "subsection": "Early T-cell precursor ALL versus AML",
+    "title": "Distinguishing Early T-cell Precursor ALL from AML with aberrant T-lineage antigen expression",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 300,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Recognise the immunophenotype of ETP-ALL",
+      "Differentiate ETP-ALL from AML with aberrant T-cell markers",
+      "Apply lineage-defining markers according to WHO5/ICC"
+    ],
+    "clinical_vignette": "A 27-year-old man presents with fever, fatigue and bruising. Bone marrow examination demonstrates an acute leukaemia. Flow cytometry shows a single blast population with stem-cell and myeloid-associated antigen expression.",
+    "laboratory_data": {
+      "Hb": "81 g/L",
+      "WBC": "34.8 x10^9/L",
+      "Platelets": "28 x10^9/L",
+      "LDH": "1580 U/L"
+    },
+    "morphology": {
+      "peripheral_blood": "Numerous blasts with fine chromatin and scant agranular cytoplasm. No Auer rods.",
+      "bone_marrow": "Hypercellular marrow replaced by blasts without convincing granulocytic maturation."
+    },
+    "flow_cytometry": {
+      "blast_gate": "CD45-dim, low SSC blasts (74%)",
+      "positive": [
+        "cytoplasmic CD3 strong",
+        "CD7 bright",
+        "CD2 positive",
+        "CD34 bright",
+        "CD117 partial",
+        "CD13 partial",
+        "CD33 partial"
+      ],
+      "negative": [
+        "MPO",
+        "surface CD3",
+        "CD1a",
+        "CD8",
+        "CD19",
+        "cyCD79a",
+        "CD10",
+        "CD64",
+        "CD14"
+      ],
+      "interpretation": "Strong cytoplasmic CD3 establishes T-lineage. Stem-cell/myeloid antigen co-expression with absent MPO favours ETP-ALL rather than AML."
+    },
+    "cytogenetics": "Normal male karyotype. BCR::ABL1 negative.",
+    "molecular_genetics": "NOTCH1 pending. FLT3 and NPM1 negative.",
+    "integrated_laboratory_diagnosis": "Early T-cell precursor acute lymphoblastic leukaemia (ETP-ALL).",
+    "question": "Which finding is most decisive in distinguishing this case from AML with aberrant T-cell antigen expression?",
+    "options": [
+      "CD117 expression",
+      "CD13 expression",
+      "Strong cytoplasmic CD3 positivity with absent MPO",
+      "CD34 positivity",
+      "High blast percentage"
+    ],
+    "correct_answer": "C. Strong cytoplasmic CD3 positivity with absent MPO",
+    "explanation": "Cytoplasmic CD3 is the lineage-defining marker for T-lineage acute leukaemia. Although ETP-ALL frequently expresses stem-cell and myeloid-associated antigens (CD34, CD117, CD13, CD33), absence of MPO argues against myeloid lineage. AML may aberrantly express CD7 or other T-associated antigens but does not show lineage-defining cytoplasmic CD3.",
+    "why_other_options_are_wrong": {
+      "A": "CD117 is a stem-cell marker shared by AML and ETP-ALL.",
+      "B": "CD13 may be aberrantly expressed in ETP-ALL and AML.",
+      "D": "CD34 is a non-specific immaturity marker.",
+      "E": "Blast percentage does not determine lineage."
+    },
+    "frcpath_pearl": "Do not diagnose AML because myeloid-associated antigens are present. Lineage-defining markers override aberrant antigen expression.",
+    "take_home_message": "Cytoplasmic CD3 defines T-lineage; MPO defines myeloid lineage. ETP-ALL commonly co-expresses stem-cell and myeloid-associated antigens.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition (2025)",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification, 2022"
+    ],
+    "related_cases": [
+      "AML048",
+      "AML050"
+    ]
+  }
+]

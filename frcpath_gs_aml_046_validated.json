@@ -1,0 +1,123 @@
+[
+  {
+    "id": 46,
+    "code": "AML046",
+    "version": "2.0",
+    "status": "validated",
+    "module": "AML",
+    "section": "Immunophenotyping",
+    "subsection": "Acute megakaryoblastic leukaemia",
+    "title": "Acute megakaryoblastic leukaemia: true megakaryocytic differentiation versus platelet adherence",
+    "difficulty": "Consultant",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 240,
+    "question_type": "Single best answer",
+    "learning_objectives": [
+      "Recognise the immunophenotypic profile of acute megakaryoblastic leukaemia",
+      "Understand the diagnostic pitfall of false-positive megakaryocytic markers due to platelet adherence",
+      "Integrate morphology, flow cytometry, trephine findings and genetics in suspected AMKL"
+    ],
+    "tags": [
+      "AML",
+      "immunophenotyping",
+      "acute megakaryoblastic leukaemia",
+      "AMKL",
+      "CD41",
+      "CD61",
+      "CD42b",
+      "platelet adherence",
+      "marrow fibrosis",
+      "flow cytometry"
+    ],
+    "clinical_vignette": "A 19-year-old woman presents with 3 weeks of progressive fatigue, gum bleeding and extensive bruising. Examination shows pallor and petechiae. There is no clinically significant lymphadenopathy or splenomegaly. Bone marrow aspiration is attempted but yields a dry tap. A trephine biopsy and peripheral blood flow cytometry are performed.",
+    "laboratory_data": {
+      "Hb": "67 g/L",
+      "WBC": "5.8 x 10^9/L",
+      "ANC": "0.7 x 10^9/L",
+      "platelets": "18 x 10^9/L",
+      "MCV": "91 fL",
+      "LDH": "1120 U/L",
+      "uric_acid": "480 micromol/L",
+      "coagulation": "PT, APTT and fibrinogen within reference range"
+    },
+    "morphology": {
+      "peripheral_blood": "Occasional circulating blasts are seen. Some have irregular cytoplasmic borders with cytoplasmic blebs. No Auer rods are identified.",
+      "bone_marrow": "Aspirate is a dry tap. Trephine biopsy is hypercellular and shows diffuse replacement by blasts with marked reticulin fibrosis. The blasts are medium-sized with irregular nuclear contours and occasional cytoplasmic blebbing. Residual trilineage haematopoiesis is markedly reduced."
+    },
+    "flow_cytometry": {
+      "specimen": "Peripheral blood and limited haemodilute marrow aspirate",
+      "blast_gate": "Abnormal CD45-dim blast population with low-to-intermediate side scatter",
+      "positive_markers": [
+        "CD34 partial",
+        "CD117 positive",
+        "CD33 positive",
+        "CD13 partial",
+        "CD41 strong",
+        "CD61 strong",
+        "CD42b positive"
+      ],
+      "negative_markers": [
+        "MPO",
+        "CD14",
+        "CD64",
+        "CD19",
+        "cyCD79a",
+        "CD10",
+        "surface CD3",
+        "cytoplasmic CD3"
+      ],
+      "interpretation": "The abnormal blast population shows convincing megakaryocytic differentiation. The presence of multiple megakaryocytic-associated markers supports true megakaryoblastic differentiation rather than non-specific platelet adherence."
+    },
+    "trephine_immunohistochemistry": {
+      "positive": [
+        "CD34 highlights a blast population",
+        "CD61 strongly positive in blasts",
+        "Factor VIII-related antigen positive in a subset of blasts"
+      ],
+      "negative": [
+        "MPO negative in blasts",
+        "CD3 negative",
+        "CD20 negative"
+      ],
+      "reticulin": "Marked reticulin fibrosis"
+    },
+    "cytogenetics": "Conventional karyotype pending. FISH for recurrent AML-defining rearrangements has been requested.",
+    "molecular_genetics": "NGS pending. FLT3 and NPM1 rapid testing pending.",
+    "integrated_laboratory_diagnosis": "Acute myeloid leukaemia with megakaryoblastic differentiation, consistent with acute megakaryoblastic leukaemia, pending cytogenetic and molecular correlation.",
+    "question": "Which feature provides the strongest evidence that this abnormal blast population represents acute megakaryoblastic leukaemia rather than false-positive platelet adherence?",
+    "options": [
+      "Surface CD41 expression alone",
+      "Co-expression of CD41, CD61 and CD42b on the blast population with compatible morphology and trephine findings",
+      "CD117 expression on the abnormal blast population",
+      "Absence of MPO expression",
+      "Presence of marrow fibrosis on trephine biopsy"
+    ],
+    "correct_answer": "B. Co-expression of CD41, CD61 and CD42b on the blast population with compatible morphology and trephine findings",
+    "explanation": "The strongest evidence for acute megakaryoblastic leukaemia is integrated demonstration of megakaryocytic differentiation using more than one megakaryocytic marker, supported by morphology and trephine findings. CD41, CD61 and CD42b are megakaryocytic-associated markers, but platelet adherence can cause false-positive surface staining, especially for CD41. Therefore, surface CD41 alone is insufficient. In this case, the combination of CD41, CD61 and CD42b expression on the blast population, cytoplasmic blebbing, dry tap, trephine fibrosis and CD61-positive blasts on biopsy supports true megakaryoblastic differentiation. MPO negativity is compatible with AMKL but is not specific.",
+    "why_other_options_are_wrong": {
+      "A": "Surface CD41 expression alone is a classic pitfall because adherent platelets can produce false-positive staining on non-megakaryoblastic blasts.",
+      "C": "CD117 is a marker of immaturity and is seen in many AML subtypes. It does not establish megakaryocytic differentiation.",
+      "D": "MPO negativity is common in AMKL but also occurs in minimally differentiated AML, acute leukaemias of ambiguous lineage and some acute lymphoblastic leukaemias.",
+      "E": "Marrow fibrosis is common in AMKL and explains the dry tap, but fibrosis is not specific and may occur in other myeloid neoplasms."
+    },
+    "frcpath_pearl": "Do not diagnose AMKL from CD41 positivity alone. Platelet adherence can mislead flow cytometry interpretation. Look for multiple megakaryocytic markers, preferably supported by trephine immunohistochemistry and morphology.",
+    "common_pitfalls": [
+      "Mistaking platelet-adherent blasts for true CD41-positive megakaryoblasts",
+      "Over-relying on MPO negativity to classify lineage",
+      "Failing to perform trephine immunohistochemistry when the aspirate is a dry tap",
+      "Missing AMKL because the peripheral blast count may be modest"
+    ],
+    "take_home_message": "Acute megakaryoblastic leukaemia is an integrated diagnosis. True megakaryocytic differentiation is best supported by concordant CD41, CD61 and CD42b expression with compatible morphology and trephine findings.",
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, 2025",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukemias, 2022",
+      "European LeukemiaNet recommendations for diagnosis and management of AML"
+    ],
+    "related_cases": [
+      "AML038",
+      "AML041",
+      "AML047"
+    ]
+  }
+]

@@ -1,0 +1,362 @@
+[
+  {
+    "id": 21,
+    "code": "AML021",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "batch": "Batch 3",
+    "section": "Morphology I",
+    "subtopic": "Recognition of myeloblasts",
+    "difficulty": "Hard",
+    "difficulty_stars": 4,
+    "estimated_time_seconds": 120,
+    "question_type": "Single Best Answer",
+    "tags": [
+      "AML",
+      "Morphology",
+      "Myeloblasts",
+      "Flow cytometry",
+      "Diagnosis"
+    ],
+    "title": "Recognition of Myeloblasts in Suspected Acute Leukaemia",
+    "clinical_vignette": "A 46-year-old man presents with two weeks of fatigue, bruising and low-grade fever. There is no lymphadenopathy or mediastinal mass. Full blood count shows Hb 78 g/L, WBC 34.5 x 10^9/L and platelets 24 x 10^9/L. The peripheral blood film shows numerous medium-to-large blasts with high nuclear-to-cytoplasmic ratio, fine chromatin, 2 to 4 nucleoli and moderate basophilic cytoplasm. Occasional cells contain delicate azurophilic granules. No definitive Auer rods are seen.",
+    "laboratory_data": {
+      "Hb": "78 g/L",
+      "WBC": "34.5 x 10^9/L",
+      "Platelets": "24 x 10^9/L",
+      "LDH": "780 U/L",
+      "Coagulation": "PT and APTT normal, fibrinogen normal"
+    },
+    "morphology": {
+      "peripheral_blood": "Medium-to-large blasts with fine chromatin, prominent nucleoli and occasional azurophilic granules.",
+      "bone_marrow": "Hypercellular marrow with 62% blasts. Background trilineage haematopoiesis is markedly reduced."
+    },
+    "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, HLA-DR and cytoplasmic MPO. They are negative for cytoplasmic CD3, surface CD3, CD19, CD10, CD79a and CD41.",
+    "cytogenetics": "Karyotype pending at the time of initial diagnosis.",
+    "molecular_genetics": "Rapid PCR panel pending.",
+    "question": "Which feature most strongly supports assignment of these blasts to myeloid lineage?",
+    "options": {
+      "A": "Expression of CD34 and HLA-DR",
+      "B": "Fine chromatin with prominent nucleoli",
+      "C": "Cytoplasmic myeloperoxidase positivity",
+      "D": "Thrombocytopenia with circulating blasts",
+      "E": "Absence of lymphadenopathy and mediastinal mass"
+    },
+    "correct_answer": "C",
+    "explanation": "The strongest evidence for myeloid lineage is cytoplasmic myeloperoxidase (MPO) positivity. Morphology can suggest AML, especially when blasts show azurophilic granules or Auer rods, but lineage assignment in modern practice should be integrated with cytochemistry or flow cytometry. MPO positivity identifies granulocytic myeloid differentiation and is a key discriminator between AML and lymphoblastic leukaemia. CD13, CD33 and CD117 support myeloid differentiation, but MPO is more lineage-defining than these myeloid-associated markers alone. In an FRCPath-style question, the safest answer is the feature that directly proves lineage rather than features that merely suggest immaturity or acute leukaemia.",
+    "incorrect_option_explanations": {
+      "A": "CD34 and HLA-DR indicate immaturity and are common in AML, but they are not lineage-specific. They can also be expressed in lymphoblastic leukaemia and other immature neoplasms.",
+      "B": "Fine chromatin and nucleoli are typical of blasts but do not reliably distinguish myeloblasts from lymphoblasts or other immature cells.",
+      "D": "Thrombocytopenia with circulating blasts supports acute leukaemia, but it does not establish myeloid lineage.",
+      "E": "The absence of lymphadenopathy or mediastinal mass may make T-ALL less likely clinically, but it is not a lineage-defining laboratory feature."
+    },
+    "examiner_commentary": "This case tests whether the candidate can distinguish morphology suggesting acute leukaemia from laboratory evidence that assigns lineage. FRCPath candidates should avoid over-reliance on the appearance of blasts alone when flow cytometry is available.",
+    "clinical_pearl": "In acute leukaemia, first prove lineage; then classify using morphology, flow cytometry, cytogenetics and molecular genetics.",
+    "memory_framework": "MPO means Myeloid Proven Objectively.",
+    "learning_objectives": [
+      "Recognise morphological features of blasts",
+      "Identify MPO as a myeloid lineage-defining feature",
+      "Avoid diagnosing AML on morphology alone when flow cytometry is available"
+    ],
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 10: Laboratory diagnosis of haematological neoplasms",
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022"
+    ],
+    "related_cases": [
+      "AML031",
+      "AML041",
+      "AML044"
+    ]
+  },
+  {
+    "id": 22,
+    "code": "AML022",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "batch": "Batch 3",
+    "section": "Morphology I",
+    "subtopic": "Auer rods",
+    "difficulty": "Hard",
+    "difficulty_stars": 4,
+    "estimated_time_seconds": 120,
+    "question_type": "Single Best Answer",
+    "tags": [
+      "AML",
+      "Auer rods",
+      "Morphology",
+      "MPO",
+      "RUNX1::RUNX1T1"
+    ],
+    "title": "Auer Rods and Myeloid Lineage",
+    "clinical_vignette": "A 58-year-old woman is investigated for pancytopenia. Her blood film shows 38% circulating blasts. Several blasts contain single slender red-purple needle-like cytoplasmic inclusions. Bone marrow aspirate confirms 54% blasts. Cytochemistry shows strong myeloperoxidase positivity. Flow cytometry shows CD34, CD117, CD13, CD33 and HLA-DR expression.",
+    "laboratory_data": {
+      "Hb": "82 g/L",
+      "WBC": "18.2 x 10^9/L",
+      "Platelets": "31 x 10^9/L",
+      "LDH": "620 U/L",
+      "Coagulation": "Normal PT, APTT and fibrinogen"
+    },
+    "morphology": {
+      "peripheral_blood": "Blasts with occasional single Auer rods.",
+      "bone_marrow": "Increased myeloblasts with maturation. No abnormal promyelocytic predominance."
+    },
+    "flow_cytometry": "CD34 positive, CD117 positive, CD13 positive, CD33 positive, HLA-DR positive, MPO positive. CD19 is weakly aberrant in a subset.",
+    "cytogenetics": "FISH for PML::RARA negative. Full karyotype pending.",
+    "molecular_genetics": "Rapid PCR pending.",
+    "question": "What is the most important diagnostic implication of the Auer rods in this case?",
+    "options": {
+      "A": "They confirm lymphoid lineage and favour B-ALL",
+      "B": "They support myeloid lineage and make AML the most likely diagnostic category",
+      "C": "They are specific for acute promyelocytic leukaemia",
+      "D": "They prove therapy-related AML",
+      "E": "They indicate chronic myeloid leukaemia in blast crisis"
+    },
+    "correct_answer": "B",
+    "explanation": "Auer rods are abnormal azurophilic cytoplasmic inclusions derived from fused primary granules and are a strong morphological clue to myeloid differentiation. In a patient with excess blasts, their presence supports AML rather than ALL. They are not specific for APL; APL classically shows abnormal promyelocytes with heavy granulation and often bundles of Auer rods, whereas this case describes single Auer rods in myeloblasts with an HLA-DR-positive CD34-positive phenotype, making typical APL unlikely. Auer rods must still be interpreted in the full diagnostic context, because modern AML classification depends on integrated morphology, flow cytometry, cytogenetics and molecular genetics.",
+    "incorrect_option_explanations": {
+      "A": "Lymphoblasts do not characteristically contain Auer rods. B-ALL is supported by B-lineage markers such as CD19, CD10 and cytoplasmic CD79a, not Auer rods.",
+      "C": "Bundles of Auer rods in abnormal promyelocytes are highly suggestive of APL, but single Auer rods are seen in other AML subtypes, including AML with maturation and core-binding factor AML.",
+      "D": "Therapy-related disease is a clinical qualifier based on prior cytotoxic therapy or radiation, not the presence of Auer rods.",
+      "E": "CML blast crisis requires evidence of BCR::ABL1-positive CML or a prior chronic phase. Auer rods alone do not establish this."
+    },
+    "examiner_commentary": "The trap is to equate any Auer rod with APL. The examiner expects candidates to recognise that Auer rods prove myeloid differentiation but do not by themselves define a specific WHO entity.",
+    "clinical_pearl": "Auer rods strongly support AML, but PML::RARA testing is required when APL is suspected clinically or morphologically.",
+    "memory_framework": "Auer rod = AML until proven otherwise; bundle of Auer rods = think APL urgently.",
+    "learning_objectives": [
+      "Understand the diagnostic significance of Auer rods",
+      "Differentiate single Auer rods from faggot cells",
+      "Integrate morphology with flow cytometry and genetics"
+    ],
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 10: Laboratory diagnosis of haematological neoplasms",
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition"
+    ],
+    "related_cases": [
+      "AML002",
+      "AML023",
+      "AML061"
+    ]
+  },
+  {
+    "id": 23,
+    "code": "AML023",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "batch": "Batch 3",
+    "section": "Morphology I",
+    "subtopic": "Faggot cells and APL variants",
+    "difficulty": "Very hard",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 150,
+    "question_type": "Single Best Answer",
+    "tags": [
+      "APL",
+      "PML::RARA",
+      "Faggot cells",
+      "Microgranular APL",
+      "Emergency haematology"
+    ],
+    "title": "Faggot Cells and Microgranular APL",
+    "clinical_vignette": "A 34-year-old woman presents with gum bleeding, extensive bruising and headache. FBC shows Hb 71 g/L, WBC 72 x 10^9/L and platelets 11 x 10^9/L. PT and APTT are prolonged, fibrinogen is 0.6 g/L and D-dimer is markedly elevated. The blood film shows many abnormal cells with folded or bilobed nuclei. Some cells are hypogranular, but occasional cells contain bundles of Auer rods.",
+    "laboratory_data": {
+      "Hb": "71 g/L",
+      "WBC": "72 x 10^9/L",
+      "Platelets": "11 x 10^9/L",
+      "Fibrinogen": "0.6 g/L",
+      "D-dimer": "Markedly elevated"
+    },
+    "morphology": {
+      "peripheral_blood": "Abnormal promyelocytes, many with folded or bilobed nuclei; occasional cells show bundles of Auer rods.",
+      "bone_marrow": "Packed with abnormal promyelocytes. Microgranular variant suspected."
+    },
+    "flow_cytometry": "Abnormal cells are strongly MPO positive, CD33 bright, CD13 positive, CD117 positive, HLA-DR negative and CD34 negative to dim. Monocytic markers CD14 and CD64 are not convincingly expressed.",
+    "cytogenetics": "Urgent FISH for PML::RARA requested.",
+    "molecular_genetics": "PML::RARA RT-PCR pending.",
+    "question": "What is the most appropriate immediate interpretation and action?",
+    "options": {
+      "A": "Acute monocytic leukaemia is most likely; wait for full cytogenetics before starting disease-specific therapy",
+      "B": "Microgranular acute promyelocytic leukaemia is likely; start ATRA immediately with aggressive correction of coagulopathy",
+      "C": "T-lymphoblastic leukaemia is likely; start steroid pre-phase and defer transfusion support",
+      "D": "AML with inv(16) is likely; proceed with standard 7+3 induction without ATRA",
+      "E": "Sepsis-associated DIC is most likely; treat infection first and repeat marrow after coagulopathy improves"
+    },
+    "correct_answer": "B",
+    "explanation": "This is a classic emergency presentation of acute promyelocytic leukaemia, most likely the microgranular variant. Microgranular APL can mimic acute monocytic leukaemia because the abnormal promyelocytes often have folded, bilobed or reniform nuclei and may appear deceptively hypogranular on light microscopy. However, the combination of severe consumptive coagulopathy, strong MPO positivity, CD33-bright expression, HLA-DR negativity, CD34 negativity or dim expression, and occasional cells with bundles of Auer rods should immediately trigger treatment as APL. ATRA should be started at clinical or morphological suspicion, before genetic confirmation, because early mortality is driven by haemorrhage. Platelets, cryoprecipitate or fibrinogen concentrate, and plasma support should be used aggressively according to local protocol.",
+    "incorrect_option_explanations": {
+      "A": "Acute monocytic leukaemia can have folded nuclei, but the severe APL-type coagulopathy, HLA-DR-negative CD34-negative phenotype and bundles of Auer rods favour APL. Waiting for cytogenetics may be dangerous.",
+      "C": "T-ALL is not supported by the morphology, MPO positivity or immunophenotype. Steroid pre-phase is not the priority.",
+      "D": "AML with inv(16) is associated with abnormal eosinophils, not classic APL coagulopathy with abnormal promyelocytes and faggot cells.",
+      "E": "Sepsis can cause DIC, but the blood film and immunophenotype point to APL. Treating presumed sepsis while delaying ATRA risks fatal haemorrhage."
+    },
+    "examiner_commentary": "This question tests whether candidates recognise microgranular APL, one of the most dangerous morphology traps in haematology. The correct response is not simply naming the disease; it is acting before confirmatory genetics return.",
+    "clinical_pearl": "Suspected APL is a treatment emergency: start ATRA first, confirm PML::RARA in parallel.",
+    "memory_framework": "APL = ATRA Promptly, Labs Later.",
+    "learning_objectives": [
+      "Recognise microgranular APL",
+      "Understand why APL can mimic monocytic AML",
+      "Prioritise immediate ATRA and coagulation support"
+    ],
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 10: Laboratory diagnosis of haematological neoplasms",
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "European LeukemiaNet recommendations for AML"
+    ],
+    "related_cases": [
+      "AML002",
+      "AML012",
+      "AML046"
+    ]
+  },
+  {
+    "id": 24,
+    "code": "AML024",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "batch": "Batch 3",
+    "section": "Morphology I",
+    "subtopic": "Abnormal eosinophils in CBFB::MYH11 AML",
+    "difficulty": "Hard",
+    "difficulty_stars": 4,
+    "estimated_time_seconds": 130,
+    "question_type": "Single Best Answer",
+    "tags": [
+      "CBFB::MYH11",
+      "inv(16)",
+      "Abnormal eosinophils",
+      "Core-binding factor AML",
+      "Morphology"
+    ],
+    "title": "Abnormal Eosinophils in inv(16) AML",
+    "clinical_vignette": "A 42-year-old man presents with fatigue and gingival swelling. FBC shows Hb 86 g/L, WBC 24 x 10^9/L and platelets 42 x 10^9/L. Bone marrow aspirate shows increased blasts and immature monocytic cells. Eosinophilic precursors are increased and contain large abnormal purple-violet basophilic granules. The blast count is 14%.",
+    "laboratory_data": {
+      "Hb": "86 g/L",
+      "WBC": "24 x 10^9/L",
+      "Platelets": "42 x 10^9/L",
+      "LDH": "890 U/L",
+      "Coagulation": "No DIC"
+    },
+    "morphology": {
+      "peripheral_blood": "Circulating blasts and monocytic cells. No APL-type abnormal promyelocytes.",
+      "bone_marrow": "Myelomonocytic proliferation with abnormal eosinophilic precursors containing large purple-violet basophilic granules."
+    },
+    "flow_cytometry": "Blasts express CD34, CD117, CD13, CD33, MPO and HLA-DR. Monocytic component expresses CD64 and CD11c.",
+    "cytogenetics": "Karyotype shows inv(16)(p13.1q22).",
+    "molecular_genetics": "RT-PCR detects CBFB::MYH11 fusion.",
+    "question": "What is the most appropriate diagnosis?",
+    "options": {
+      "A": "Myelodysplastic syndrome with increased blasts because marrow blasts are below 20%",
+      "B": "Acute myeloid leukaemia with CBFB::MYH11 fusion",
+      "C": "Chronic eosinophilic leukaemia, NOS",
+      "D": "Acute promyelocytic leukaemia with PML::RARA",
+      "E": "Reactive eosinophilia associated with infection"
+    },
+    "correct_answer": "B",
+    "explanation": "The diagnosis is acute myeloid leukaemia with CBFB::MYH11 fusion, classically associated with inv(16) or t(16;16). The morphological clue is the presence of abnormal eosinophilic precursors with large purple-violet basophilic granules in a myelomonocytic marrow. In WHO 5th edition, CBFB::MYH11 is an AML-defining genetic abnormality; therefore AML can be diagnosed even when the blast percentage is below the traditional 20% threshold. This entity is part of core-binding factor AML and usually falls within a favourable-risk biological group, although final risk and management still depend on additional molecular findings and treatment response.",
+    "incorrect_option_explanations": {
+      "A": "A blast count below 20% does not exclude AML when an AML-defining recurrent genetic abnormality such as CBFB::MYH11 is present.",
+      "C": "Chronic eosinophilic leukaemia is not the correct diagnosis when CBFB::MYH11 and an AML-type blast population are present.",
+      "D": "APL is defined by PML::RARA and abnormal promyelocytes, often with severe DIC. The morphology and genetics here are different.",
+      "E": "The eosinophils are abnormal neoplastic eosinophilic precursors, not a reactive eosinophilia."
+    },
+    "examiner_commentary": "This case tests integration of morphology and genetics. The examiner expects the candidate to recognise that abnormal marrow eosinophils are not just a descriptive finding; they are a clue to CBFB::MYH11 AML.",
+    "clinical_pearl": "In AML, abnormal eosinophils with purple-violet granules should immediately prompt testing for inv(16) or CBFB::MYH11.",
+    "memory_framework": "inv(16) = immature eosinophils with intense violet granules.",
+    "learning_objectives": [
+      "Recognise abnormal eosinophils associated with CBFB::MYH11",
+      "Apply AML-defining genetics despite blasts below 20%",
+      "Differentiate neoplastic eosinophilia from reactive eosinophilia"
+    ],
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia",
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 10: Laboratory diagnosis of haematological neoplasms",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022"
+    ],
+    "related_cases": [
+      "AML013",
+      "AML062",
+      "AML132"
+    ]
+  },
+  {
+    "id": 25,
+    "code": "AML025",
+    "version": "1.0",
+    "status": "validated",
+    "module": "AML",
+    "batch": "Batch 3",
+    "section": "Morphology I",
+    "subtopic": "Acute monoblastic versus acute monocytic leukaemia",
+    "difficulty": "Very hard",
+    "difficulty_stars": 5,
+    "estimated_time_seconds": 150,
+    "question_type": "Single Best Answer",
+    "tags": [
+      "AML",
+      "Monoblastic leukaemia",
+      "Monocytic leukaemia",
+      "NSE",
+      "CD64",
+      "Gingival hypertrophy"
+    ],
+    "title": "Acute Monoblastic versus Acute Monocytic AML",
+    "clinical_vignette": "A 39-year-old woman presents with fever, gum hypertrophy and tender violaceous skin nodules. FBC shows Hb 74 g/L, WBC 86 x 10^9/L and platelets 28 x 10^9/L. Bone marrow aspirate shows that 82% of the monocytic-lineage cells are large monoblasts with abundant basophilic cytoplasm, round nuclei, delicate chromatin and prominent nucleoli. Promonocytes and more mature monocytes form a minor component.",
+    "laboratory_data": {
+      "Hb": "74 g/L",
+      "WBC": "86 x 10^9/L",
+      "Platelets": "28 x 10^9/L",
+      "LDH": "1300 U/L",
+      "Coagulation": "Mildly prolonged PT, fibrinogen 1.8 g/L"
+    },
+    "morphology": {
+      "peripheral_blood": "Numerous monoblasts with occasional promonocytes. No abnormal promyelocyte predominance.",
+      "bone_marrow": "Predominantly monoblasts, comprising more than 80% of monocytic-lineage cells."
+    },
+    "flow_cytometry": "Blasts express CD33, CD64, CD11c, CD14 partial, CD4, CD36 and HLA-DR. MPO is negative to weak. Cytochemistry shows strong non-specific esterase positivity inhibited by sodium fluoride.",
+    "cytogenetics": "No PML::RARA, RUNX1::RUNX1T1 or CBFB::MYH11 detected on rapid FISH panel.",
+    "molecular_genetics": "NGS pending.",
+    "question": "What is the most precise morphological diagnosis?",
+    "options": {
+      "A": "Acute monoblastic leukaemia",
+      "B": "Acute monocytic leukaemia",
+      "C": "Acute promyelocytic leukaemia, microgranular variant",
+      "D": "Acute myeloid leukaemia with minimal differentiation",
+      "E": "Chronic myelomonocytic leukaemia"
+    },
+    "correct_answer": "A",
+    "explanation": "This case is most precisely classified morphologically as acute monoblastic leukaemia. The key point is the predominance of monoblasts: when most monocytic-lineage leukaemic cells are monoblasts, the term monoblastic is used; when there is a greater mixture of monoblasts, promonocytes and monocytes, acute monocytic leukaemia is more appropriate. The clinical findings of gingival hypertrophy and skin nodules are classic for AML with monocytic differentiation because monocytic blasts have a tendency for tissue infiltration. The immunophenotype supports monocytic differentiation, particularly CD64, CD11c, CD36 and partial CD14, and the cytochemical finding of non-specific esterase inhibited by sodium fluoride is a traditional but important clue. Modern classification should still incorporate cytogenetic and molecular results, but the question asks for the most precise morphological diagnosis.",
+    "incorrect_option_explanations": {
+      "B": "Acute monocytic leukaemia is closely related, but it is less precise here because more than 80% of monocytic-lineage cells are monoblasts rather than a mixture with promonocytes and monocytes.",
+      "C": "Microgranular APL can mimic monocytic AML morphologically, but APL usually shows strong MPO, CD33 bright, HLA-DR negativity and PML::RARA. The monocytic markers and NSE pattern favour monoblastic AML.",
+      "D": "AML with minimal differentiation lacks convincing lineage maturation and usually requires immunophenotypic evidence of myeloid lineage without clear morphological differentiation. This case shows clear monocytic differentiation.",
+      "E": "CMML requires persistent monocytosis with fewer than 20% blasts or blast equivalents. This is an acute leukaemia with extensive marrow replacement by monoblasts."
+    },
+    "examiner_commentary": "The examiner is testing whether candidates know that monoblasts and promonocytes are not interchangeable descriptions. The distinction is morphological, but it correlates with clinical behaviour and immunophenotype.",
+    "clinical_pearl": "Gum hypertrophy, skin infiltration and high WBC should make you look carefully for monocytic differentiation and consider CNS risk assessment according to local practice.",
+    "memory_framework": "Monoblastic = mostly monoblasts; monocytic = monoblasts plus promonocytes plus monocytes.",
+    "learning_objectives": [
+      "Differentiate acute monoblastic from acute monocytic leukaemia",
+      "Recognise clinical features of monocytic tissue infiltration",
+      "Interpret non-specific esterase and monocytic flow markers"
+    ],
+    "references": [
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 10: Laboratory diagnosis of haematological neoplasms",
+      "Hoffbrand's Postgraduate Haematology, 8th edition, Chapter 32: Acute myeloid leukaemia",
+      "WHO Classification of Haematolymphoid Tumours, 5th edition",
+      "International Consensus Classification of Myeloid Neoplasms and Acute Leukaemias, 2022"
+    ],
+    "related_cases": [
+      "AML008",
+      "AML048",
+      "AML060"
+    ]
+  }
+]
