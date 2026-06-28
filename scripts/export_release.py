@@ -10,7 +10,7 @@ import re
 import shutil
 from pathlib import Path
 
-APP_FILENAME = "frcpath_haematology_revision_portal (6).html"
+APP_FILENAME = "index.html"
 BANK_GLOB = "frcpath_gs_aml_*.json"
 MANIFEST_FILENAME = "aml-question-bank-manifest.json"
 PACKAGE_NAME = "frcpath-haematology-release"
