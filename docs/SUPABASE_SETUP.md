@@ -26,11 +26,13 @@ Progress is stored in `public.user_progress` with `user_id uuid` as the primary 
 
 Row Level Security is enabled on:
 
+
 - `user_progress`: authenticated users can select, insert, update, or delete only their own row.
-- `question_attempts`: authenticated users can select, insert, or update only rows matching their own user ID.
+- `question_progress`: authenticated users can select, insert, or update only rows matching their own user ID. Each row stores `question_code`, `status`, attempt counters, and `last_attempted_at`.
+- `question_attempts`: retained for compatibility with earlier analytics deployments; new cross-device progress uses `question_progress`.
 - `app_admins`: users can only see whether their own UUID is an administrator.
 
-The frontend records aggregate question attempts through `record_question_attempt`. The admin dashboard calls `get_admin_dashboard`, a guarded database function that rejects every authenticated user whose UUID is absent from `app_admins`.
+The frontend writes absolute, retry-safe progress through `save_question_progress`. The admin dashboard calls `get_admin_dashboard`, a guarded database function that rejects every authenticated user whose UUID is absent from `app_admins`.
 
 ## 3. Assign the administrator
 
@@ -43,14 +45,31 @@ values ('00000000-0000-0000-0000-000000000000');
 
 Use the UUID only. Do not put an administrator email address in the repository or frontend configuration.
 
-## 4. Guest import and sync behavior
+
+## 4. Cross-device progress
+
+Question content remains in repository JSON files and `aml-question-bank-manifest.json`. Supabase stores no question text.
+
+For each authenticated user and question code, `question_progress` stores:
+
+- `user_id`
+- `question_code`
+- `status`: `correct`, `incorrect`, or `skipped`
+- `attempts` and `correct_attempts`
+- `last_attempted_at`
+
+On sign-in, the app loads these rows and merges them with the browser fallback using the most recent attempt timestamp. The dashboard then offers **Continue from AMLxxx** for the first unanswered or skipped question.
+
+When offline, progress remains in `localStorage` and a pending question-progress queue. The queue is sent through `save_question_progress` when connectivity returns or the user presses **Sync Now**. Absolute counters and timestamps make retries idempotent.
+
+## 5. Guest import and sync behavior
 
 - Guests can use the full app without an account.
 - Guest progress remains in browser local storage.
 - At first sign-in, the app offers to merge local guest progress into the cloud row.
 - Bookmarks, study answers, exam history, notes, and sound preference are synchronized.
 - Signing out restores the guest snapshot for that browser session when one is available.
-- Admin analytics count attempts recorded while users are signed in.
+- Admin analytics count synchronized attempts from `question_progress`.
 
 ## Safe and unsafe values
 
