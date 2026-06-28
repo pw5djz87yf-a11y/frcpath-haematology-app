@@ -1314,6 +1314,53 @@
       }
     }
 
+    let feedbackAudioContext = null;
+
+    function playFeedbackSound(isCorrect) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+
+      try {
+        if (!feedbackAudioContext) {
+          feedbackAudioContext = new AudioContextClass();
+        }
+        if (feedbackAudioContext.state === 'suspended') {
+          void feedbackAudioContext.resume();
+        }
+
+        const startTime = feedbackAudioContext.currentTime;
+        const notes = isCorrect
+          ? [
+              { frequency: 523.25, offset: 0, duration: 0.11 },
+              { frequency: 659.25, offset: 0.1, duration: 0.18 }
+            ]
+          : [
+              { frequency: 392.0, offset: 0, duration: 0.13 },
+              { frequency: 293.66, offset: 0.12, duration: 0.2 }
+            ];
+
+        notes.forEach(note => {
+          const oscillator = feedbackAudioContext.createOscillator();
+          const gain = feedbackAudioContext.createGain();
+          const noteStart = startTime + note.offset;
+          const noteEnd = noteStart + note.duration;
+
+          oscillator.type = isCorrect ? 'sine' : 'triangle';
+          oscillator.frequency.setValueAtTime(note.frequency, noteStart);
+          gain.gain.setValueAtTime(0.0001, noteStart);
+          gain.gain.exponentialRampToValueAtTime(0.12, noteStart + 0.015);
+          gain.gain.exponentialRampToValueAtTime(0.0001, noteEnd);
+
+          oscillator.connect(gain);
+          gain.connect(feedbackAudioContext.destination);
+          oscillator.start(noteStart);
+          oscillator.stop(noteEnd + 0.02);
+        });
+      } catch (error) {
+        console.warn('Answer feedback sound is unavailable:', error);
+      }
+    }
+
     function submitStudyChoice(choice) {
       const q = appState.studyFilteredList[appState.currentStudyIndex];
       const isCorrect = q.correct_answer === choice;
@@ -1324,6 +1371,7 @@
       };
       
       saveState();
+      playFeedbackSound(isCorrect);
 
       if (isCorrect) {
         showToast("Correct choice selected!", "success");
