@@ -35,8 +35,10 @@ SPEECH = [
 ]
 
 
-def spoken(t):
+def spoken(t, mac=False):
     for pat, rep in SPEECH:
+        if mac and pat.startswith("[Hh]aem"):
+            continue  # the macOS voices pronounce haem- correctly
         t = re.sub(pat, rep, t)
     return t
 
@@ -292,24 +294,35 @@ def main():
     ap.add_argument("--voice", default="mb-en1")
     ap.add_argument("--speed", type=int, default=175)
     ap.add_argument("--only", help="comma-separated shot ids, for previews")
+    ap.add_argument("--export-mac", metavar="FILE", help="write a self-contained macOS script that records every line with `say`, then stop")
+    ap.add_argument("--audio-dir", help="use pre-recorded NNNN.wav files from this folder (e.g. from the macOS script) instead of espeak-ng")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     fdir = os.path.join(a.out, "frames"); os.makedirs(fdir, exist_ok=True)
     adir = os.path.join(a.out, "audio"); os.makedirs(adir, exist_ok=True)
 
-    shots = [s for s in SHOTS if not a.only or s["id"] in a.only.split(",")]
-    plan, jobs = [], []
+    only = a.only.split(",") if a.only else None
+    plan, jobs, mac_lines = [], [], []
     n = 0
-    for shot in shots:
+    for shot in SHOTS:
         ch = chunks_for(shot)
         for j, c in enumerate(ch):
-            n += 1
+            n += 1  # global numbering, so recorded NNNN.wav files always match
+            if only and shot["id"] not in only:
+                continue
             base = f"{n:04d}"
             hp, pp, wp = (os.path.join(fdir, base + ".html"), os.path.join(fdir, base + ".png"), os.path.join(adir, base + ".wav"))
             with open(hp, "w") as f:
                 f.write(frame_html(shot, c["step"], c["text"]))
             jobs.append(dict(html=hp, png=pp))
-            subprocess.run(["espeak-ng", "-v", a.voice, "-s", str(a.speed), "-w", wp, spoken(c["text"])], check=True)
+            if a.export_mac:
+                mac_lines.append(f"{base}\t{spoken(c['text'], mac=True)}")
+            elif a.audio_dir:
+                wp = os.path.join(a.audio_dir, base + ".wav")
+                if not os.path.exists(wp):
+                    sys.exit(f"missing recorded line {wp}")
+            else:
+                subprocess.run(["espeak-ng", "-v", a.voice, "-s", str(a.speed), "-w", wp, spoken(c["text"])], check=True)
             end = c["text"].rstrip()[-1]
             pause = 0.12 if end == "," else 0.25 if end in ":;" else 0.4
             if shot["type"] == "hook":
@@ -318,6 +331,11 @@ def main():
                 pause += 0.45
             plan.append(dict(png=pp, wav=wp, pause=pause, text=c["text"]))
 
+    if a.export_mac:
+        tpl = open(os.path.join(HERE, "mac_voice_template.sh")).read()
+        open(a.export_mac, "w").write(tpl.replace("__LINES__", "\n".join(mac_lines)))
+        print(f"wrote {a.export_mac} ({len(mac_lines)} lines)")
+        return
     subprocess.run(["node", os.path.join(HERE, "shoot.js"), json.dumps(jobs)], check=True)
 
     # audio: concatenate chunk WAVs with silences
