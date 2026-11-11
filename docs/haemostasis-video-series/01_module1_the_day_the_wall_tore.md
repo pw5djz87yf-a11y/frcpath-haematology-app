@@ -1,7 +1,7 @@
 # Module 1: The Day the Wall Tore
 ### Haemostasis overview: vascular, platelet, coagulation and fibrinolytic phases
 
-**Series:** *The Chronicles of Vessel-on-the-Hill* · **Runtime:** about 8.5–9 min as drafted (trim plan in Part B) · **Draft v0.1 for review**
+**Series:** *The Chronicles of Vessel-on-the-Hill* · **Runtime:** about 9 min · **Draft v0.2 (decisions from your review applied)**
 
 **Learning outcomes.** By the end of this module the viewer can:
 1. Define haemostasis as a balance: stopping bleeding locally while keeping blood fluid everywhere else.
@@ -27,11 +27,12 @@ Every character maps to one real entity. Icons are flat, high-contrast and reuse
 | Rope | von Willebrand factor | Red | Coiled rope with a hook at each end |
 | Messengers | Clotting factors (each wears its Roman numeral) | Red | Runner holding a torch |
 | Magic ink | Calcium (Ca²⁺; historically factor IV) | Red droplet with a white "Ca" | Ink pot |
-| Vitamin K Forge | Hepatic γ-carboxylation of factors II, VII, IX and X (and of proteins C and S) | Red forge with a gold side-door for C and S | Anvil with a "K" on it |
+| Liver Workshop | The liver (hepatocytes), which makes most clotting factors and fibrinogen | Neutral stone building with red output | Workshop with a chimney |
+| Vitamin K Forge | Vitamin K-dependent γ-carboxylation in the liver: it *finishes* factors II, VII, IX and X (and proteins C and S) so they can bind calcium. It does not make them. | Red forge with a gold side-door for C and S | Anvil with a "K" on it |
 | Thrombin the Mayor | Thrombin (factor IIa) | Red | Mayor's chain of office |
 | Fibrin net | Fibrin; cross-linked by factor XIII | Red | Woven net |
-| Stitcher XIII *(proposed addition, see Physiology check, item 8)* | Factor XIIIa | Red | Needle and thread |
-| Gatekeepers | Antithrombin, protein C, protein S (+ TFPI) | Gold | Key-holder at a gate |
+| Stitcher XIII | Factor XIIIa (cross-links fibrin) | Red | Needle and thread |
+| Gatekeepers | Antithrombin, protein C, protein S and TFPI (the fourth, smallest Gatekeeper, at the Alarm Bell) | Gold | Key-holder at a gate |
 | Foreman tPA | Tissue plasminogen activator | Blue | Hard hat and whistle |
 | Demolition Crew | Plasmin (from plasminogen) | Blue | Workers with shears |
 | Rubble | D-dimer and other fibrin degradation products | Blue | Small pile of paired stones |
@@ -41,7 +42,7 @@ Every character maps to one real entity. Icons are flat, high-contrast and reuse
 
 ## Part B: Narration script
 
-*Current length about 1,450 spoken words (hook lines included). At a brisk 165–170 words per minute that is about 8.5–9 minutes. To reach a strict 8 minutes, trim CD39, TFPI and the endothelin and serotonin detail (about 150 words); these points still appear on screen. **[Story]** = story voice; **[Science]** = clinical voice. **Hook lines are in bold** and are repeated at the end of each scene.*
+*Length about 1,470 spoken words (hook lines included). At about 165 words per minute that gives a runtime of about 9 minutes, as agreed. **[Story]** = story voice; **[Science]** = clinical voice. **Hook lines are in bold** and are repeated at the end of each scene.*
 
 ### Scene 0: Cold open (0:00–0:30) [Story]
 
@@ -103,7 +104,7 @@ The platelet plug forms within minutes, but it is fragile. It needs a fibrin net
 
 ### Scene 5: The coagulation phase (3:50–5:30)
 
-**[Story]** At the alarm bell, the first messenger lights a torch. Each messenger lights the next, and the flame runs along the castle road. But a messenger can only stand on the guards' shields if it is painted with magic ink. Many messengers were made in the Vitamin K Forge. At the end of the road waits Thrombin the Mayor.
+**[Story]** At the alarm bell, the first messenger lights a torch. Each messenger lights the next, and the flame runs along the castle road. But a messenger can only stand on the guards' shields if it is painted with magic ink. The messengers are built in the Liver Workshop, but four of them, II, VII, IX and X, cannot grip the ink until the Vitamin K Forge has put the final edge on them. At the end of the road waits Thrombin the Mayor.
 
 **[Science]** Coagulation turns the fragile platelet plug into a stable clot. Most clotting factors circulate as inactive precursors of enzymes. Each activated factor activates the next, so a small signal is amplified into a large burst.
 
@@ -115,11 +116,11 @@ In **propagation**, two complexes assemble on the activated platelet surface. Th
 
 These complexes need **calcium**, which bridges the factors to the negatively charged phospholipid. That is why blood taken into a citrate tube does not clot: citrate binds calcium, and the laboratory adds calcium back to start the test.
 
-Factors **II, VII, IX and X**, together with the natural anticoagulants **protein C and protein S**, need **vitamin K** to become functional in the liver. Warfarin blocks the recycling of vitamin K, so it takes days to work fully: the factors already in the circulation have to be cleared first.
+Factors **II, VII, IX and X**, together with the natural anticoagulants **protein C and protein S**, are made in the liver, but they only become functional once **vitamin K** has completed them. Vitamin K is the cofactor for γ-carboxylation, which gives them the calcium-binding Gla domains. Warfarin blocks the recycling of vitamin K, so it takes days to work fully: the factors already in the circulation have to be cleared first.
 
 Finally, thrombin converts soluble **fibrinogen** into **fibrin** and activates **factor XIII**, which cross-links the fibrin into a stable mesh.
 
-> **Hooks: "Each torch lights the next, and the flame grows." "No ink, no stick." "Ten, nine, seven, two: forged with K." "The Mayor turns thread into net."**
+> **Hooks: "Each torch lights the next, and the flame grows." "No ink, no stick." "Ten, nine, seven, two: finished by K." "The Mayor turns thread into net."**
 
 ### Scene 6: The Gatekeepers (5:30–6:15)
 
@@ -163,7 +164,7 @@ These roads are a laboratory model. In the body, factor XII is not needed: its d
 
 Let's walk the wall one more time.
 
-*Stop the bleed, keep the flow.* A healthy wall keeps the peace. First, the walls squeeze, and the alarm bell rings. Rope ties guards to the wall. Guards plug the gap: quick but fragile. Each torch lights the next. No ink, no stick. Ten, nine, seven, two: forged with K. The Mayor turns thread into net. C cuts, S supports. Build the net, then clear the net.
+*Stop the bleed, keep the flow.* A healthy wall keeps the peace. First, the walls squeeze, and the alarm bell rings. Rope ties guards to the wall. Guards plug the gap: quick but fragile. Each torch lights the next. No ink, no stick. Ten, nine, seven, two: finished by K. The Mayor turns thread into net. C cuts, S supports. Build the net, then clear the net.
 
 And in haemophilia A: Eight missing on the long road, APTT long, PT normal.
 
@@ -197,7 +198,7 @@ Next time: the Platelet Guards, up close.
 | | 5.2 | Small thrombin flame sends sparks back to light side-torches V, VIII and XI, and to the guards (shields brighten). VIII is unhooked from the Rope. | Red | **Amplification:** thrombin activates platelets, V, VIII, XI |
 | | 5.3 | Camera pans to two towers built *on top of* the guards' shields: "Tenase" (IXa + VIIIa) and "Prothrombinase" (Xa + Va). Big flame. | Red | **Propagation:** tenase · prothrombinase → thrombin burst |
 | | 5.4 | Ink-pot cutaway: messengers' feet painted with "Ca"; unpainted messengers slide off the shield. Inset: a citrate tube "stealing" the ink, and a lab pipette adding it back. | Red ink; grey lab inset | *Ca²⁺ links factors to phospholipid* · Hook card **"No ink, no stick."** |
-| | 5.5 | Vitamin K Forge: anvil stamps II, VII, IX and X (red) and, through a gold side-door, protein C and protein S. A warfarin spanner jams the gears; a calendar flips several days. | Red; gold side-door | **Vitamin K-dependent: II, VII, IX, X + protein C, S** · *Warfarin: takes days* · Hook card **"Ten, nine, seven, two: forged with K."** |
+| | 5.5 | Liver Workshop rolls out messengers II, VII, IX and X with blunt blades. In the Vitamin K Forge next door, the anvil sharpens their blades (γ-carboxylation → Gla domains), so now the ink sticks to them. Through a gold side-door, protein C and protein S are sharpened too. A warfarin spanner jams the gears; a calendar flips several days. | Red; gold side-door | **Liver makes; vitamin K completes: II, VII, IX, X + protein C, S** · *Warfarin: takes days* · Hook card **"Ten, nine, seven, two: finished by K."** |
 | | 5.6 | Mayor's Hall: Thrombin the Mayor spins threads (fibrinogen → fibrin); Stitcher XIII ties knots across threads | Red | *Fibrinogen → fibrin; XIIIa cross-links* · Hook card **"The Mayor turns thread into net."** |
 | | 5.7 | Hook card summary | Red | **"Each torch lights the next, and the flame grows."** |
 | **6** 5:30–6:15 | 6.1 | Relay map zooms out; gold Gatekeepers appear at gates. Antithrombin padlocks the Mayor's door and the Xa tower; a heparin key turns the padlock fast. | Gold | **Antithrombin:** thrombin, Xa (+ IXa, XIa, XIIa) · heparin accelerates |
@@ -334,7 +335,7 @@ E. Factor XIII
 | 7 | Platelet count 150–400 ×10⁹/L; lifespan about 7–10 days; about one-third pooled in the spleen | "Guards plug the gap: quick but fragile." |
 | 8 | Cell-based model: initiation (TF–VIIa) → amplification (thrombin activates platelets, V, VIII, XI) → propagation (tenase IXa–VIIIa; prothrombinase Xa–Va) | "Each torch lights the next, and the flame grows." |
 | 9 | Ca²⁺ (factor IV) links Gla-domain factors to phosphatidylserine; citrate 3.2%, 9:1 blood:anticoagulant | "No ink, no stick." |
-| 10 | Vitamin K-dependent: II, VII, IX, X + protein C, protein S (and protein Z); warfarin inhibits VKORC1 | "Ten, nine, seven, two: forged with K." |
+| 10 | Vitamin K-dependent: II, VII, IX, X + protein C, protein S (and protein Z). The liver makes them; vitamin K is the cofactor for γ-carboxylation, which completes them. Warfarin inhibits VKORC1 | "Ten, nine, seven, two: finished by K." |
 | 11 | Factor VII has the shortest half-life (about 4–6 h [VERIFY]) → PT/INR rises first; prothrombin about 60–72 h [VERIFY] → warfarin takes days for its full effect | "The forge is jammed, but old stock lasts for days." |
 | 12 | Thrombin: fibrinogen → fibrin; activates V, VIII, XI, XIII and platelets; with thrombomodulin, activates protein C | "The Mayor turns thread into net." |
 | 13 | Antithrombin inhibits thrombin and Xa (also IXa, XIa, XIIa); heparin accelerates it | "Antithrombin locks the Mayor's door; heparin speeds the key." |
@@ -352,18 +353,18 @@ E. Factor XIII
 
 ## Part G: Physiology check (story against science)
 
-Each element of the story world was tested against standard physiology. Where the brief's metaphor could mislead, the script has been adjusted (column 4). **Items marked ⚠️ need your decision.**
+Each element of the story world was tested against standard physiology. Where the brief's metaphor could mislead, the script has been adjusted (column 4). Decisions from your review of v0.1 are recorded in the table.
 
 | # | Story element (from the brief) | Physiology | Verdict and change made |
 |---|---|---|---|
 | 1 | "Platelet Guards arrive first and plug the tear" | Vasoconstriction is the very first response; platelet adhesion and tissue factor exposure begin within the same seconds. Coagulation does not wait for the plug to finish. | **Adjusted.** The wall *squeezes* first (Scene 3), and guards arrive while the alarm bell is already ringing. A "phases overlap" card is shown. Guards are still "first to plug the tear", which is accurate. |
 | 2 | "Torch relay: each messenger lights the next" | Broadly correct as amplification, but the in-vivo process is the **cell-based model**, with thrombin feedback (V, VIII, XI, platelets). The intrinsic/extrinsic split is an *in vitro* model. | **Adjusted.** Scene 5 shows the relay starting at TF–VIIa, with feedback sparks. The "long road / short road" framing is reserved for the **Inspectors** (Scene 8) and labelled as a laboratory model. |
 | 3 | "Magic ink: calcium, needed for messengers to stick to the guards' surface (phospholipid)" | Accurate. Ca²⁺ bridges Gla domains to phosphatidylserine. Calcium is also needed elsewhere (e.g. factor XIII activity, platelet signalling). | **Kept.** Citrate tube link added; it is high-yield and true to the metaphor. |
-| 4 | "Vitamin K Forge: where II, VII, IX and X are made" | The liver makes these, and vitamin K is a *cofactor* for γ-carboxylation (the forge "finishes" them). It also carboxylates **protein C and protein S** (and protein Z). This matters for warfarin-induced skin necrosis and the early prothrombotic window. | **Adjusted.** The forge has a gold side-door for C and S. ⚠️ "Made in the forge" is a slight simplification (the forge *activates/finishes* them). Suggested narration in Module 3: "the forge puts the final edge on the blades". |
+| 4 | "Vitamin K Forge: where II, VII, IX and X are made" | The liver makes these, and vitamin K is a *cofactor* for γ-carboxylation (the forge "finishes" them). It also carboxylates **protein C and protein S** (and protein Z). This matters for warfarin-induced skin necrosis and the early prothrombotic window. | **Corrected (approved).** The story now separates the two roles. The **Liver Workshop** makes the factors, and the **Vitamin K Forge** completes them by sharpening their blades (γ-carboxylation), so they can grip the calcium ink. The forge has a gold side-door for C and S. |
 | 5 | "Warfarin jams the forge (days to work)" | Correct. Warfarin inhibits VKORC1. Its onset depends on clearance of pre-existing factors (II has the longest half-life). | **Kept.** |
 | 6 | "Thrombin the Mayor converts fibrinogen to fibrin" | Correct but incomplete. Thrombin also activates platelets, V, VIII, XI and XIII, and, bound to thrombomodulin, activates protein C. | **Extended.** The Mayor "changes sides" on healthy wall (Scene 6). This makes the story richer without contradicting it. |
-| 7 | "Gatekeepers: antithrombin, protein C and protein S (C and S cut Va and VIIIa)" | Correct. Antithrombin mainly inhibits thrombin and Xa. **TFPI** is a fourth important natural inhibitor, not in the brief's mapping. | ⚠️ **Proposed addition:** TFPI as a small fourth Gatekeeper at the Alarm Bell (shown briefly in Scene 6). Remove if you'd prefer to keep strictly to the brief's cast. |
-| 8 | Fibrin net / D-dimer as rubble | D-dimer requires **factor XIII** cross-linking. Without a XIII character, "rubble" can't be explained correctly. | ⚠️ **Proposed addition:** "Stitcher XIII", who knots the net. The hook "D-dimer is rubble from a stitched net" depends on it. |
+| 7 | "Gatekeepers: antithrombin, protein C and protein S (C and S cut Va and VIIIa)" | Correct. Antithrombin mainly inhibits thrombin and Xa. **TFPI** is a fourth important natural inhibitor, not in the brief's mapping. | **Added (approved).** TFPI is the fourth, smallest Gatekeeper, at the Alarm Bell (Scene 6). |
+| 8 | Fibrin net / D-dimer as rubble | D-dimer requires **factor XIII** cross-linking. Without a XIII character, "rubble" can't be explained correctly. | **Added (approved).** "Stitcher XIII" knots the net. The hook "D-dimer is rubble from a stitched net" depends on this. |
 | 9 | "Foreman tPA and the Demolition Crew dissolve the net once the wall is repaired" | Fibrinolysis starts alongside fibrin formation (tPA and plasminogen bind fibrin as it forms) but is held back by PAI-1, α2-antiplasmin and TAFI. Net breakdown is mainly later. | **Adjusted.** The crew "camp beside the net all along" and the whistle marks the main phase. Brakes are shown in gold with a blue outline. |
 | 10 | "PT checks the short road (extrinsic, via VII)" | PT also depends on X, V, II and fibrinogen (the common pathway). Saying "via VII" alone would mislead in SBAs (e.g. prothrombin deficiency prolongs both tests). | **Adjusted.** Both Inspectors are shown walking the common road too. |
 | 11 | "APTT checks the long road (XII, XI, IX, VIII)" | Correct, plus prekallikrein, HMWK and the common pathway. XII is *not* needed in vivo. | **Kept, with caveat** (XII "lab only" badge). |
@@ -371,7 +372,7 @@ Each element of the story world was tested against standard physiology. Where th
 | 13 | Colour rule "gold = inhibitors/gatekeepers" | PAI-1 and α2-antiplasmin inhibit *fibrinolysis*, so plain gold could suggest they are anticoagulants. | **Adjusted.** Fibrinolytic inhibitors are gold with a blue outline. |
 | 14 | Haemophilia A worked example | Correct: APTT prolonged, PT normal. Note that haemophilia B and VWD (via low VIII) give the same screening pattern. | **Kept**, with the differential given in the SBA explanation. |
 
-**No contradictions remain between the story and the physiology, provided items 4, 7 and 8 are approved as described.**
+**No contradictions remain between the story and the physiology.**
 
 ### Open [VERIFY] items for Module 1
 - Factor VII half-life (about 4–6 h) and prothrombin half-life (about 60–72 h)
@@ -382,10 +383,12 @@ Each element of the story world was tested against standard physiology. Where th
 
 ---
 
-## Review checklist for you
+## Review log
 
-1. Approve or reject the proposed additions: **TFPI Gatekeeper** (item 7) and **Stitcher XIII** (item 8).
-2. Is "the forge finishes the blades" acceptable wording for vitamin K's role (item 4)?
-3. Pacing: the draft runs about 8.5–9 minutes (about 1,450 words). Should I trim it to a strict 8 minutes (suggested cuts are given in Part B), or keep the detail?
-4. Depth: are any points too advanced, or not advanced enough, for an overview module (e.g. CD39, protein Z)?
-5. Do the hook lines work for you? Any you'd like to rewrite before they are locked across the series?
+**v0.1 → v0.2 (your decisions)**
+- TFPI added as the fourth Gatekeeper.
+- Stitcher XIII (factor XIIIa) added.
+- Vitamin K wording corrected: the liver makes the factors and vitamin K completes them. The Liver Workshop was added as a character, and the hook is now "Ten, nine, seven, two: finished by K".
+- Runtime set at about 9 minutes; no trims.
+
+**Still open (optional):** the [VERIFY] values listed above, and whether you want to rewrite any hook lines before they are fixed for the whole series.

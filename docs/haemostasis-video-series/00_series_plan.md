@@ -2,13 +2,13 @@
 
 **Audience:** haematology trainee preparing for FRCPath Haematology Part 1 (January 2027 sitting)
 **Format:** six short animated modules, about 8 minutes each (around 50 minutes in total)
-**Status:** Plan v0.1 plus Module 1 draft. **Paused for review.** No further modules are built and no video is rendered until you approve.
+**Status:** Plan v0.2 plus Module 1 draft v0.2 (review decisions applied). **Paused before Module 2.** No further modules are built and no video is rendered until you approve.
 
 ---
 
 ## The memory device in one paragraph
 
-Vessel-on-the-Hill is a walled kingdom with a red river running through it. When the wall tears, the same story always plays out in the same order. The walls squeeze. The **Platelet Guards** rush to the breach and are tied on with **Rope** (vWF). A **torch relay** of messengers (clotting factors) runs along a castle road; each messenger can only stand on the guards' shields if it is painted with **magic ink** (calcium). Many of them were made in the **Vitamin K Forge**. The relay ends at **Thrombin the Mayor**, who spins the **fibrin net**. The **Gatekeepers** (antithrombin, protein C, protein S) stop the relay spreading beyond the breach. Once the wall has healed, **Foreman tPA** sends in the **Demolition Crew** (plasmin), who leave **rubble** behind (D-dimer). Three **Inspectors** (PT, APTT, TT) walk the roads to check which messenger has gone missing.
+Vessel-on-the-Hill is a walled kingdom with a red river running through it. When the wall tears, the same story always plays out in the same order. The walls squeeze. The **Platelet Guards** rush to the breach and are tied on with **Rope** (vWF). A **torch relay** of messengers (clotting factors) runs along a castle road; each messenger can only stand on the guards' shields if it is painted with **magic ink** (calcium). The messengers are built in the **Liver Workshop**, and four of them (II, VII, IX, X) are completed in the **Vitamin K Forge**, which sharpens their blades so the ink can stick. The relay ends at **Thrombin the Mayor**, who spins the **fibrin net**; **Stitcher XIII** knots it tight. The **Gatekeepers** (antithrombin, protein C, protein S and TFPI) stop the relay spreading beyond the breach. Once the wall has healed, **Foreman tPA** sends in the **Demolition Crew** (plasmin), who leave **rubble** behind (D-dimer). Three **Inspectors** (PT, APTT, TT) walk the roads to check which messenger has gone missing.
 
 ## Fixed conventions (all modules)
 
@@ -29,9 +29,9 @@ Vessel-on-the-Hill is a walled kingdom with a red river running through it. When
 
 | # | Title | Opening story scene (30 s) | Clinical scope | Key diagrams | Est. length |
 |---|---|---|---|---|---|
-| **1** | **The Day the Wall Tore** (overview) | A siege stone cracks the wall. The kingdom's four responses play out in fast-forward. | Normal antithrombotic endothelium; the four phases (vascular, platelet, coagulation, fibrinolytic); how the phases overlap; the cell-based model; preview of the lab Inspectors; haemophilia A worked example | Kingdom overview map; simplified relay map; preview of the Inspectors' road map | 8 min |
+| **1** | **The Day the Wall Tore** (overview) | A siege stone cracks the wall. The kingdom's four responses play out in fast-forward. | Normal antithrombotic endothelium; the four phases (vascular, platelet, coagulation, fibrinolytic); how the phases overlap; the cell-based model; preview of the lab Inspectors; haemophilia A worked example | Kingdom overview map; simplified relay map; preview of the Inspectors' road map | 9 min |
 | 2 | **The Platelet Guards** | Guards are summoned from the Marrow Barracks and tie themselves to the breach. | Megakaryopoiesis and lifespan; adhesion (GPIb-IX-V–vWF, GPVI and α2β1–collagen); activation (shape change, granule release, ADP/P2Y12, TXA2, PAR-1); aggregation (GPIIb/IIIa–fibrinogen); procoagulant surface (phosphatidylserine); vWF structure, multimers, ADAMTS13; antiplatelet drug targets | Platelet anatomy icon; adhesion–activation–aggregation strip; receptor/ligand table | 8 min |
-| 3 | **The Torch Relay** | The first messenger lights a torch at the alarm bell (tissue factor), and the flame races along the castle road. | Extrinsic, intrinsic and common pathways (the lab model) against the cell-based model (initiation, amplification, propagation); tenase and prothrombinase; calcium and phospholipid; Vitamin K Forge (II, VII, IX, X, protein C, protein S; γ-carboxylation; VKORC1); roles of VIII, IX, XI; thrombin generation and feedback; fibrin and XIII; antithrombin (and heparin), protein C, protein S, TFPI | **Full castle relay map** (cascade); cell-based model three-panel diagram; Vitamin K Forge cycle | 8–9 min |
+| 3 | **The Torch Relay** | The first messenger lights a torch at the alarm bell (tissue factor), and the flame races along the castle road. | Extrinsic, intrinsic and common pathways (the lab model) against the cell-based model (initiation, amplification, propagation); tenase and prothrombinase; calcium and phospholipid; Liver Workshop and Vitamin K Forge (the liver makes II, VII, IX, X, protein C and protein S; vitamin K completes them by γ-carboxylation; VKORC1); roles of VIII, IX, XI; thrombin generation and feedback; fibrin and XIII; antithrombin (and heparin), protein C, protein S, TFPI | **Full castle relay map** (cascade); cell-based model three-panel diagram; Vitamin K Forge cycle | 8–9 min |
 | 4 | **The Demolition Crew** | The wall is healed. Foreman tPA blows his whistle and the crew dismantles the net. | Plasminogen, tPA, uPA; fibrin-dependence of tPA; plasmin; PAI-1, α2-antiplasmin, TAFI; FDPs and D-dimer (cross-linked fibrin); therapeutic fibrinolysis and tranexamic acid | Fibrinolysis map in blue and gold; D-dimer formation strip | 7–8 min |
 | 5 | **The Inspectors** | Three grey-coated Inspectors walk the roads with stopwatches and find one messenger missing. | PT/INR (ISI, INR calculation), APTT, TT, Clauss fibrinogen, platelet count, blood film, platelet function (PFA-100, light transmission aggregometry), mixing studies (factor deficiency against inhibitor; time-dependent inhibitors; lupus anticoagulant), pre-analytical issues (citrate ratio, high haematocrit, heparin contamination). What each abnormal pattern suggests. | **Lab-test interpretation flowchart**; Inspectors' road map; pattern table | 8–9 min |
 | 6 | **Trouble in the Kingdom** | Several districts report trouble at once. The Inspectors' reports are read aloud. | Haemophilia A and B; von Willebrand disease (types 1, 2A/2B/2M/2N, 3); DIC (ISTH score); warfarin and DOAC effects on tests and reversal; liver disease (rebalanced haemostasis) | Clinical-pattern flowchart; DOAC and test effects table; ISTH DIC scoring card | 9–10 min |
@@ -40,7 +40,7 @@ Vessel-on-the-Hill is a walled kingdom with a red river running through it. When
 
 ## Deliverables per module
 
-1. Narration script (about 8 minutes, plain English)
+1. Narration script (about 8–9 minutes, plain English)
 2. Scene-by-scene storyboard (visuals, colour code, on-screen text)
 3. Diagram specifications (cascade map and lab flowchart, at the depth that module needs)
 4. Five single-best-answer (SBA) questions, set in the story world but with exam-accurate answers and full explanations
