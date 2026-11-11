@@ -1,0 +1,651 @@
+1
+00:00:00,000 --> 00:00:04,236
+High on its hill, the kingdom of Vessel-on-the-Hill wraps a great stone wall around a red river.
+
+2
+00:00:04,636 --> 00:00:09,636
+On peaceful days the wall's lanterns glow softly, and the message to everyone is simple: keep flowing.
+
+3
+00:00:10,486 --> 00:00:11,591
+Then, crack.
+
+4
+00:00:11,991 --> 00:00:13,467
+A siege stone splits the wall,
+
+5
+00:00:13,587 --> 00:00:15,108
+and the river begins to spill.
+
+6
+00:00:15,958 --> 00:00:18,467
+What happens next always happens in the same order.
+
+7
+00:00:18,867 --> 00:00:19,898
+The walls squeeze.
+
+8
+00:00:20,298 --> 00:00:21,408
+The Guards rush in.
+
+9
+00:00:21,808 --> 00:00:24,308
+A torch relay races along the castle road to wake the Mayor,
+
+10
+00:00:24,427 --> 00:00:25,462
+who spins a net.
+
+11
+00:00:25,862 --> 00:00:28,998
+And when the wall has healed, a demolition crew clears the net away.
+
+12
+00:00:29,398 --> 00:00:31,234
+This is the story of the day the wall tore.
+
+13
+00:00:32,084 --> 00:00:32,984
+Module one.
+
+14
+00:00:33,384 --> 00:00:34,473
+The Day the Wall Tore.
+
+15
+00:00:35,323 --> 00:00:40,808
+This is haemostasis: the body's way of stopping bleeding at a site of injury, while keeping blood fluid everywhere else.
+
+16
+00:00:41,208 --> 00:00:43,228
+Remember both halves of that sentence.
+
+17
+00:00:43,628 --> 00:00:45,620
+Haemostasis is not just clotting.
+
+18
+00:00:46,020 --> 00:00:49,076
+It is clotting in the right place, for the right length of time.
+
+19
+00:00:49,476 --> 00:00:51,479
+We describe four phases: vascular,
+
+20
+00:00:51,599 --> 00:00:52,275
+platelet,
+
+21
+00:00:52,395 --> 00:00:53,451
+coagulation
+
+22
+00:00:53,851 --> 00:00:55,019
+and fibrinolytic.
+
+23
+00:00:55,419 --> 00:00:59,193
+The vascular and platelet phases together are called primary haemostasis.
+
+24
+00:00:59,593 --> 00:01:01,797
+Coagulation is secondary haemostasis.
+
+25
+00:01:02,647 --> 00:01:04,544
+Stop the bleed, keep the flow.
+
+26
+00:01:05,694 --> 00:01:09,005
+Before any tear, the wall itself is the kingdom's chief peacekeeper.
+
+27
+00:01:09,405 --> 00:01:11,962
+Intact endothelium is actively antithrombotic.
+
+28
+00:01:12,362 --> 00:01:17,817
+It releases prostacyclin and nitric oxide, which dilate the vessel and keep platelets quiet.
+
+29
+00:01:18,217 --> 00:01:22,402
+Its surface carries heparan sulphate, which strongly accelerates antithrombin,
+
+30
+00:01:22,522 --> 00:01:27,634
+and thrombomodulin, which captures thrombin and redirects it to activate protein C.
+
+31
+00:01:28,034 --> 00:01:34,521
+It expresses tissue factor pathway inhibitor, and it breaks down the platelet agonist ADP using the surface enzyme CD39,
+
+32
+00:01:34,641 --> 00:01:37,216
+and it secretes tissue plasminogen activator.
+
+33
+00:01:38,066 --> 00:01:44,607
+The molecules that start clotting, collagen and tissue factor, sit behind the endothelium, out of contact with flowing blood.
+
+34
+00:01:45,457 --> 00:01:47,117
+A healthy wall keeps the peace.
+
+35
+00:01:48,267 --> 00:01:49,531
+The stone strikes.
+
+36
+00:01:49,931 --> 00:01:52,550
+The wall flinches and squeezes, narrowing the gap.
+
+37
+00:01:53,400 --> 00:01:54,939
+The vascular phase is immediate.
+
+38
+00:01:55,339 --> 00:01:59,088
+A local reflex causes vasoconstriction, which slows blood flow.
+
+39
+00:01:59,488 --> 00:02:05,546
+It is reinforced by thromboxane A2 and serotonin released from platelets, and by endothelin from the endothelium.
+
+40
+00:02:05,946 --> 00:02:08,516
+Vasoconstriction matters most in small vessels.
+
+41
+00:02:09,366 --> 00:02:12,971
+Behind the broken stones, an alarm bell is suddenly exposed to the river.
+
+42
+00:02:13,371 --> 00:02:16,593
+Injury also exposes what was hidden: subendothelial collagen,
+
+43
+00:02:16,713 --> 00:02:18,995
+von Willebrand factor bound to the matrix,
+
+44
+00:02:19,115 --> 00:02:22,950
+and tissue factor on cells such as fibroblasts and smooth muscle cells.
+
+45
+00:02:23,350 --> 00:02:25,771
+Tissue factor is the trigger for coagulation.
+
+46
+00:02:26,171 --> 00:02:28,580
+Note that these events start at the same moment.
+
+47
+00:02:28,980 --> 00:02:32,877
+The four phases overlap, and we separate them only to make them easier to understand.
+
+48
+00:02:33,727 --> 00:02:35,263
+First, the walls squeeze.
+
+49
+00:02:35,963 --> 00:02:38,338
+Tissue factor is the alarm bell behind the wall.
+
+50
+00:02:39,488 --> 00:02:40,926
+The Platelet Guards arrive.
+
+51
+00:02:41,326 --> 00:02:43,448
+They throw ropes to the wall and tie on.
+
+52
+00:02:43,848 --> 00:02:46,805
+Then they raise spiked shields and link arms with one another.
+
+53
+00:02:47,205 --> 00:02:50,321
+The gap is plugged, but a line of guards can still be pushed aside.
+
+54
+00:02:51,171 --> 00:02:53,389
+Primary haemostasis has three steps.
+
+55
+00:02:53,789 --> 00:02:54,544
+Adhesion.
+
+56
+00:02:54,944 --> 00:02:59,128
+Under the high shear of arterial and small-vessel flow, platelet glycoprotein Ib,
+
+57
+00:02:59,248 --> 00:03:05,237
+part of the GPIb-IX-V complex, binds von Willebrand factor attached to exposed collagen.
+
+58
+00:03:05,637 --> 00:03:10,400
+Platelets also bind collagen directly through GPVI and integrin α2β1.
+
+59
+00:03:11,250 --> 00:03:12,223
+Activation.
+
+60
+00:03:12,623 --> 00:03:14,049
+Platelets change shape,
+
+61
+00:03:14,169 --> 00:03:18,250
+release granule contents such as ADP, and make thromboxane A2.
+
+62
+00:03:18,650 --> 00:03:20,329
+These recruit more platelets.
+
+63
+00:03:20,729 --> 00:03:25,566
+The activated platelet also flips negatively charged phosphatidylserine to its outer surface.
+
+64
+00:03:25,966 --> 00:03:29,031
+This surface is the stage on which coagulation will be built.
+
+65
+00:03:29,881 --> 00:03:30,797
+Aggregation.
+
+66
+00:03:31,197 --> 00:03:35,451
+Activated glycoprotein IIb/IIIa binds fibrinogen and von Willebrand factor,
+
+67
+00:03:35,571 --> 00:03:37,631
+which bridge one platelet to the next.
+
+68
+00:03:38,031 --> 00:03:44,337
+The Rope has one more job: in plasma, von Willebrand factor carries factor VIII and protects it from rapid clearance.
+
+69
+00:03:44,737 --> 00:03:47,956
+The platelet plug forms within minutes, but it is fragile.
+
+70
+00:03:48,356 --> 00:03:50,614
+It needs a fibrin net to hold it in place.
+
+71
+00:03:51,464 --> 00:03:53,019
+Rope ties guards to the wall.
+
+72
+00:03:53,719 --> 00:03:56,901
+GPIb grabs the rope; IIb/IIIa links guard to guard.
+
+73
+00:03:57,601 --> 00:04:00,016
+Guards plug the gap: quick but fragile.
+
+74
+00:04:01,166 --> 00:04:03,852
+At the alarm bell, the first messenger lights a torch.
+
+75
+00:04:04,252 --> 00:04:07,747
+Each messenger lights the next, and the flame runs along the castle road.
+
+76
+00:04:08,147 --> 00:04:12,151
+But a messenger can only stand on the guards' shields if it is painted with magic ink.
+
+77
+00:04:12,551 --> 00:04:14,425
+The messengers are built in the Liver Workshop,
+
+78
+00:04:14,545 --> 00:04:20,929
+but four of them, II, VII, IX and X, cannot grip the ink until the Vitamin K Forge has put the final edge on them.
+
+79
+00:04:21,329 --> 00:04:23,518
+At the end of the road waits Thrombin the Mayor.
+
+80
+00:04:24,368 --> 00:04:27,787
+Coagulation turns the fragile platelet plug into a stable clot.
+
+81
+00:04:28,187 --> 00:04:31,696
+Most clotting factors circulate as inactive precursors of enzymes.
+
+82
+00:04:32,096 --> 00:04:36,809
+Each activated factor activates the next, so a small signal is amplified into a large burst.
+
+83
+00:04:37,659 --> 00:04:41,268
+In the body, coagulation starts when tissue factor binds factor VIIa.
+
+84
+00:04:41,668 --> 00:04:46,491
+This complex activates factors X and IX, and a small amount of thrombin forms.
+
+85
+00:04:46,891 --> 00:04:48,074
+This is initiation.
+
+86
+00:04:48,474 --> 00:04:51,413
+That small amount of thrombin then amplifies the process.
+
+87
+00:04:51,813 --> 00:04:58,785
+It fully activates platelets, and it activates factors V, VIII and XI, releasing VIII from its von Willebrand factor carrier.
+
+88
+00:04:59,185 --> 00:05:03,281
+In propagation, two complexes assemble on the activated platelet surface.
+
+89
+00:05:03,681 --> 00:05:07,316
+The tenase complex, IXa with VIIIa, activates factor X.
+
+90
+00:05:07,716 --> 00:05:12,441
+The prothrombinase complex, Xa with Va, converts prothrombin to thrombin.
+
+91
+00:05:12,841 --> 00:05:14,628
+The result is a burst of thrombin.
+
+92
+00:05:15,478 --> 00:05:20,218
+These complexes need calcium, which bridges the factors to the negatively charged phospholipid.
+
+93
+00:05:20,618 --> 00:05:25,036
+That is why blood taken into a citrate tube does not clot: citrate binds calcium,
+
+94
+00:05:25,156 --> 00:05:27,925
+and the laboratory adds calcium back to start the test.
+
+95
+00:05:28,775 --> 00:05:35,244
+Factors II, VII, IX and X, together with the natural anticoagulants protein C and protein S, are made in the liver,
+
+96
+00:05:35,364 --> 00:05:38,943
+but they only become functional once vitamin K has completed them.
+
+97
+00:05:39,343 --> 00:05:44,399
+Vitamin K is the cofactor for gamma-carboxylation, which gives them the calcium-binding Gla domains.
+
+98
+00:05:44,799 --> 00:05:47,080
+Warfarin blocks the recycling of vitamin K,
+
+99
+00:05:47,200 --> 00:05:51,923
+so it takes days to work fully: the factors already in the circulation have to be cleared first.
+
+100
+00:05:52,773 --> 00:05:55,995
+Finally, thrombin converts soluble fibrinogen into fibrin,
+
+101
+00:05:56,115 --> 00:06:00,340
+and activates factor XIII, which cross-links the fibrin into a stable mesh.
+
+102
+00:06:01,190 --> 00:06:03,866
+Each torch lights the next, and the flame grows.
+
+103
+00:06:04,566 --> 00:06:05,830
+No ink, no stick.
+
+104
+00:06:06,530 --> 00:06:09,254
+Ten, nine, seven, two: finished by K.
+
+105
+00:06:09,954 --> 00:06:11,491
+The Mayor turns thread into net.
+
+106
+00:06:12,641 --> 00:06:15,450
+A relay that never stopped would set the whole kingdom ablaze.
+
+107
+00:06:15,850 --> 00:06:18,716
+So at every gate stands a Gatekeeper, dressed in gold.
+
+108
+00:06:19,566 --> 00:06:22,157
+Natural anticoagulants keep the clot local.
+
+109
+00:06:22,557 --> 00:06:28,238
+Antithrombin inactivates thrombin and factor Xa, and to a lesser extent IXa, XIa and XIIa.
+
+110
+00:06:28,638 --> 00:06:32,533
+Heparin, and heparan sulphate on the vessel wall, accelerate it enormously.
+
+111
+00:06:33,383 --> 00:06:37,691
+Protein C is activated when thrombin binds thrombomodulin on healthy endothelium.
+
+112
+00:06:38,091 --> 00:06:41,316
+So once the Mayor steps outside the breach, he changes sides.
+
+113
+00:06:41,716 --> 00:06:47,216
+Activated protein C, with its cofactor protein S, cleaves and inactivates factors Va and VIIIa.
+
+114
+00:06:47,616 --> 00:06:51,342
+Tissue factor pathway inhibitor switches off the starting complex early on.
+
+115
+00:06:51,742 --> 00:06:55,388
+When a Gatekeeper is missing, the result is thrombosis, not bleeding.
+
+116
+00:06:56,238 --> 00:06:59,252
+Antithrombin locks the Mayor's door; heparin speeds the key.
+
+117
+00:06:59,952 --> 00:07:02,783
+C cuts, S supports: Five and Eight stop.
+
+118
+00:07:03,933 --> 00:07:06,667
+When the wall is mended, Foreman tPA blows his whistle.
+
+119
+00:07:07,067 --> 00:07:11,307
+The Demolition Crew, who have been camped beside the net all along, take it apart
+
+120
+00:07:11,707 --> 00:07:13,258
+and leave a little rubble behind.
+
+121
+00:07:14,108 --> 00:07:16,548
+Fibrinolysis removes the clot as the vessel heals.
+
+122
+00:07:16,948 --> 00:07:22,085
+Tissue plasminogen activator, released from endothelium, converts plasminogen into plasmin.
+
+123
+00:07:22,485 --> 00:07:26,412
+It works far better when both are bound to fibrin, which keeps lysis local.
+
+124
+00:07:26,812 --> 00:07:30,134
+Plasmin breaks fibrin into fibrin degradation products.
+
+125
+00:07:30,534 --> 00:07:36,997
+Cross-linked fibrin, made by factor XIII, breaks down into fragments containing two linked D-domains: D-dimer.
+
+126
+00:07:37,397 --> 00:07:40,968
+A raised D-dimer tells us that fibrin was formed and then broken down.
+
+127
+00:07:41,818 --> 00:07:43,274
+The crew has brakes too.
+
+128
+00:07:43,674 --> 00:07:45,110
+PAI-1 inhibits tPA,
+
+129
+00:07:45,230 --> 00:07:47,701
+and α2-antiplasmin inhibits plasmin.
+
+130
+00:07:48,101 --> 00:07:50,730
+Formation and breakdown of fibrin overlap in time.
+
+131
+00:07:51,130 --> 00:07:53,302
+The crew's tools are on site from the start.
+
+132
+00:07:54,152 --> 00:07:55,922
+Build the net, then clear the net.
+
+133
+00:07:56,622 --> 00:07:58,574
+D-dimer is rubble from a stitched net.
+
+134
+00:07:59,724 --> 00:08:03,780
+When something goes wrong, the kingdom sends its Inspectors, dressed in grey.
+
+135
+00:08:04,630 --> 00:08:07,872
+In the laboratory we split coagulation into two roads that join.
+
+136
+00:08:08,272 --> 00:08:11,732
+The prothrombin time, PT, is started with tissue factor.
+
+137
+00:08:12,132 --> 00:08:18,456
+It tests the short, extrinsic road through factor VII, then the common road: X, V, II and fibrinogen.
+
+138
+00:08:18,856 --> 00:08:22,203
+The INR is derived from the PT to standardise warfarin monitoring.
+
+139
+00:08:22,603 --> 00:08:26,588
+The activated partial thromboplastin time, APTT, tests the long,
+
+140
+00:08:26,708 --> 00:08:30,975
+intrinsic road, XII, XI, IX and VIII, and then the same common road.
+
+141
+00:08:31,375 --> 00:08:35,342
+The thrombin time tests only the final step, from fibrinogen to fibrin.
+
+142
+00:08:35,742 --> 00:08:37,360
+These roads are a laboratory model.
+
+143
+00:08:37,760 --> 00:08:43,324
+In the body, factor XII is not needed: its deficiency prolongs the APTT but does not cause bleeding.
+
+144
+00:08:44,174 --> 00:08:48,154
+Worked example: in haemophilia A, messenger VIII is missing from the long road.
+
+145
+00:08:48,554 --> 00:08:50,917
+The APTT is prolonged; the PT is normal.
+
+146
+00:08:51,767 --> 00:08:53,758
+PT: short road, Seven.
+
+147
+00:08:54,458 --> 00:08:57,896
+APTT: long road: Twelve, Eleven, Nine, Eight.
+
+148
+00:08:58,596 --> 00:09:00,285
+TT watches the Mayor's last job.
+
+149
+00:09:00,985 --> 00:09:04,061
+Eight missing on the long road: APTT long, PT normal.
+
+150
+00:09:05,211 --> 00:09:07,001
+Let's walk the wall one more time.
+
+151
+00:09:07,401 --> 00:09:09,298
+Stop the bleed, keep the flow.
+
+152
+00:09:09,698 --> 00:09:11,357
+A healthy wall keeps the peace.
+
+153
+00:09:11,757 --> 00:09:14,428
+First, the walls squeeze, and the alarm bell rings.
+
+154
+00:09:14,828 --> 00:09:16,384
+Rope ties guards to the wall.
+
+155
+00:09:16,784 --> 00:09:19,198
+Guards plug the gap: quick but fragile.
+
+156
+00:09:19,598 --> 00:09:21,238
+Each torch lights the next.
+
+157
+00:09:21,638 --> 00:09:22,902
+No ink, no stick.
+
+158
+00:09:23,302 --> 00:09:26,027
+Ten, nine, seven, two: finished by K.
+
+159
+00:09:26,427 --> 00:09:27,963
+The Mayor turns thread into net.
+
+160
+00:09:28,363 --> 00:09:30,046
+C cuts, S supports.
+
+161
+00:09:30,446 --> 00:09:32,216
+Build the net, then clear the net.
+
+162
+00:09:32,616 --> 00:09:36,747
+And in haemophilia A: Eight missing on the long road, APTT long, PT normal.
+
+163
+00:09:37,597 --> 00:09:40,520
+Next time: the Platelet Guards, up close.
